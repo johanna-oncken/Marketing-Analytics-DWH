@@ -1,6 +1,7 @@
 # Marketing-Analytics-DWH
 End-to-end data warehouse (Bronze/Silver/Gold) with multi-touch attribution and Tableau dashboards
 
+ 👉 Please click on the pictures to view the results presenting dashboards on Tableau Public.
 <p align="center">
    <a href="https://public.tableau.com/views/Multi-TouchMarketingDashboard/Overall?:language=de-DE&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link">
     <img src="https://github.com/user-attachments/assets/374a6cf6-2f55-4d5a-a97c-fd4636b1c662" width="30%" alt="LTV Cohort Dashboard"/>
