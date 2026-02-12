@@ -180,7 +180,7 @@ The Gold Layer is the business-level data representation, structured to support 
   
 ---
 
-### 11. **gold.fact_attribution_linear**
+### 11.1 **gold.fact_attribution_linear**
 - **Purpose:** Takes the journey data from fact_touchpath and computes the linear revenue share. For each purchase, revenue is divided evenly among all touchpoints in the use's conversion path.
 - **Grain:**   One row per per **attributed** touchpoint contributing to a purchase  (1 purchase x N touchpoints -> N rows with revenue_share)
 - **Columns:**
@@ -201,6 +201,8 @@ The Gold Layer is the business-level data representation, structured to support 
 | purchase_date       | DATE          | Date of the purchase.                                                                         |
   
 ---
+
+### 11.2 **gold.fact_attribution_linear_with_costs**
 
 ### 12. **gold.fact_attribution_last_touch**
 - **Purpose:** Records final interaction before conversion, assigns 100% of purchase revenue to the last touchpoint (classic last-touch attribution).
