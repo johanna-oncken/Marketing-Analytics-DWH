@@ -203,6 +203,28 @@ The Gold Layer is the business-level data representation, structured to support 
 ---
 
 ### 11.2 **gold.fact_attribution_linear_with_costs**
+- **Purpose:** Enhanced version of fact_attribution_linear that includes proportional cost attribution alongside revenue attribution. Daily campaign costs are distributed evenly across all touchpoints for that campaign on that day, enabling accurate ROI/ROAS calculations at the touchpoint level. **Excludes organic channels** (Direct, Email, Organic Search, Referral) since these have no media costs.
+- **Grain:**   One row per attributed touchpoint contributing to a purchase (1 purchase × N paid touchpoints → N rows with revenue_share and cost_share)
+- **Cost Attribution Logic:** cost_share = campaign_daily_spend / touchpoints_for_that_campaign_on_that_day
+- **Columns:**
+
+| Column Name         | Data Type     | Description                                                                                   |
+|---------------------|---------------|-----------------------------------------------------------------------------------------------|
+| attribution_key     | INT           | Surrogate key for each revenue allocation.                                                    |
+| user_id             | INT           | User related to the purchase.                                                                 |
+| purchase_id         | INT           | Purchase whose revenue is being split.                                                        |
+| touchpoint_number   | INT           | Ordering number of the touchpoint within the user journey.                                    |
+| channel             | NVARCHAR(50)  | Channel receiving a share of revenue.                                                         |
+| campaign_id         | INT           | Marketing campaign associated with the touchpoint.                                            |
+| interaction_type    | NVARCHAR(50)  | Type of interaction recorded (View, Impression, Click)                                        |
+| touchpoint_time     | DATETIME2     | Timestamp of the touchpoint.                                                                  |
+| revenue_share       | DECIMAL(12,2) | Revenue portion allocated to this touchpoint.                                                 |
+| total_revenue       | DECIMAL(12,2) | Total purchase revenue.                                                                       |
+| touchpoints_in_path | INT | Total number of touchpoints in the path.                                                                |
+| purchase_date   | DATE | Date of the purchase.                                                                                      |
+| cost_share   | DECIMAL(12,2) | Proportionally attributed cost (daily campaign spend ÷ touchpoints for that campaign/day).           |
+  
+---
 
 ### 12. **gold.fact_attribution_last_touch**
 - **Purpose:** Records final interaction before conversion, assigns 100% of purchase revenue to the last touchpoint (classic last-touch attribution).
