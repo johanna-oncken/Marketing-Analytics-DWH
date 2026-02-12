@@ -1,6 +1,7 @@
 # Marketing-Analytics-DWH
 **End-to-end data warehouse (Bronze/Silver/Gold) with multi-touch attribution and Tableau dashboards**
 
+ 💼  Visit my LinkedIn profile: https://www.linkedin.com/in/johanna-oncken/
  👉 Click the images to explore the interactive dashboards on Tableau Public.
 <p align="center">
    <a href="https://public.tableau.com/views/Multi-TouchMarketingDashboard/Overall?:language=de-DE&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link">
