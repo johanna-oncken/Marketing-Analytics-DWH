@@ -1,5 +1,5 @@
 # Marketing-Analytics-DWH
-End-to-end data warehouse (Bronze/Silver/Gold) with multi-touch attribution and Tableau dashboards
+**End-to-end data warehouse (Bronze/Silver/Gold) with multi-touch attribution and Tableau dashboards**
 
  👉 Please click on the pictures to view the results presenting dashboards on Tableau Public.
 <p align="center">
