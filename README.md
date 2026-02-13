@@ -235,8 +235,3 @@ GROUP BY channel;</code></pre>
   </tbody>
 </table>
 
-
-
-
-
-<h4>2.1) 📂 Repository Structure</h4>
