@@ -17,7 +17,6 @@
 <p>📍 About: This demo project is intended to <strong>showcase skills</strong> and uses <strong>synthetically generated data</strong>.</p>
 
 <h4>Repository Structure</h4>
-
 <pre>
 Marketing-Analytics-DWH/
 │
@@ -42,9 +41,7 @@ Marketing-Analytics-DWH/
     ├── scripts/
     └── results/
         ├── performance_analysis/
-        ├── path_length_and_channel_efficiency/
-        ├── measure_exploration.csv
-        └── magnitude_exploration.csv
+        └── path_length_and_channel_efficiency/
 </pre>
 
 <h2>1) Marketing Analysis</h2>
