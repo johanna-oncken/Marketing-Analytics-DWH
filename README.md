@@ -126,6 +126,8 @@
 
 <p>The analytical fact tables (<code>fact_touchpath</code>, <code>fact_attribution_linear</code>, <code>fact_attribution_last_touch</code>, <code>fact_attribution_linear_with_costs</code>) form a fact constellation that references <code>fact_purchases</code> through the natural key <code>purchase_id</code> to enable multi-touch attribution analysis.</p>
 
+<p>See the <a href="https://github.com/johanna-oncken/Marketing-Analytics-DWH/blob/main/data_warehouse/docs/data_model.pdf"><strong>Data Model Document</strong></a></p>
+
 <img width="847" height="696" alt="Data model" src="https://github.com/user-attachments/assets/4e1d7917-fc2a-42d9-9bea-ab54effc50f1" />
 
 <hr>
