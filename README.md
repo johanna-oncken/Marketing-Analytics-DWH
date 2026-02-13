@@ -15,32 +15,22 @@
 </p>
 
 <p>📍 About: This demo project is intended to <strong>showcase skills</strong> and uses <strong>synthetically generated data</strong>.</p>
-<p><b>Repository Structure</b></p>
 <pre>
+Repository Structure
+
 Marketing-Analytics-DWH/
-│
-├── datasets/
-│   ├── marketing_platform/
-│   ├── web_analytics/
-│   └── crm_system/
-│
+├── datasets/                marketing_platform/ · web_analytics/ · crm_system/
 ├── data_warehouse/
 │   ├── scripts/
 │   │   ├── bronze/
-│   │   ├── silver/
-│   │   │   └── profile_cleaning/
+│   │   ├── silver/          incl. profile_cleaning/
 │   │   ├── gold/
-│   │   ├── tests/
-│   │   │   ├── quality_checks_silver/
-│   │   │   └── quality_checks_gold.sql
+│   │   ├── tests/           quality_checks_silver/ · quality_checks_gold.sql
 │   │   └── init_database.sql
 │   └── docs/
-│
 └── marketing_analytics/
     ├── scripts/
-    └── results/
-        ├── performance_analysis/
-        └── path_length_and_channel_efficiency/
+    └── results/             performance_analysis/ · path_length_and_channel_efficiency/
 </pre>
 
 <h2>1) Marketing Analysis</h2>
