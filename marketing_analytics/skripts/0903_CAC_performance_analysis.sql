@@ -15,12 +15,12 @@ SQL Functions Used:
 Queries: 
     1) CAC overall 
     2) CAC Performance monthly
-    3.1) Monthly CAC Performance and MOM-Analysis by Campaigns
-    3.2) Top Ten Campaigns by CAC Monthly Improvements 
-    3.3) Top Ten Campaigns by CAC Monthly Declines 
-    4.1) Monthly CAC Performance and MOM-Analysis by Channels
-    4.2) Top Ten Channels by CAC Monthly Improvements 
-    4.3) Top Ten Channels by CAC Monthly Declinse
+    3.1) Monthly CAC Performance and MOM-Analysis by Channels
+    3.2) Top Ten Channels by CAC Monthly Improvements 
+    3.3) Top Ten Channels by CAC Monthly Declinse
+    4.1) Monthly CAC Performance and MOM-Analysis by Campaigns
+    4.2) Top Ten Campaigns by CAC Monthly Improvements 
+    4.3) Top Ten Campaigns by CAC Monthly Declines 
 
 ===============================================================================
 */
@@ -110,12 +110,116 @@ ORDER BY performance_month;
 GO
 
 
+
 /*
 ===============================================================================
-3) CAMPAIGNS
+3) CHANNELS
 ===============================================================================
 */
 -- 3.1) MoM by Monthly Ad Spend and Newly Acquired Customers
+--      Analyze Month-over-Month TOFU CAC channel performance 
+DROP VIEW IF EXISTS gold.channels_cac;
+GO
+
+CREATE VIEW gold.channels_cac AS
+WITH monthly_customers AS (
+SELECT
+    DATEFROMPARTS(YEAR(f.purchase_date), MONTH(f.purchase_date), 1) AS performance_month, 
+    acquisition_channel,
+    COUNT(DISTINCT user_id) AS new_customers
+FROM gold.fact_purchases f
+WHERE acquisition_channel IS NOT NULL
+GROUP BY DATEFROMPARTS(YEAR(f.purchase_date), MONTH(f.purchase_date), 1), acquisition_channel
+), 
+monthly_spend AS (
+SELECT 
+    DATEFROMPARTS(YEAR(spend_date), MONTH(spend_date), 1) AS performance_month,
+    channel, 
+    SUM(spend) AS current_spend 
+FROM gold.fact_spend 
+WHERE channel IS NOT NULL 
+GROUP BY DATEFROMPARTS(YEAR(spend_date), MONTH(spend_date), 1), channel
+), 
+cac_metrics AS (
+SELECT
+    COALESCE(c.performance_month, s.performance_month) AS performance_month,
+    c.acquisition_channel, 
+    c.new_customers AS current_new_customers,
+    s.current_spend,
+    s.current_spend/NULLIF(c.new_customers, 0) AS cac
+FROM monthly_customers c
+FULL JOIN monthly_spend s 
+ON c.performance_month = s.performance_month 
+    AND c.acquisition_channel = s.channel
+)
+
+SELECT 
+    performance_month,
+    acquisition_channel, 
+    current_spend,
+    current_new_customers,
+    cac AS current_cac,
+    AVG(cac) OVER(PARTITION BY acquisition_channel) AS avg_cac,
+    (cac) - AVG(cac) OVER(PARTITION BY acquisition_channel) AS diff_avg,
+    CASE 
+        WHEN (cac) - AVG(cac) OVER(PARTITION BY acquisition_channel) > 0 THEN 'Worsened (Above Avg)'
+        WHEN (cac) - AVG(cac) OVER(PARTITION BY acquisition_channel) < 0 THEN 'Improved (Below Avg)' 
+        ELSE 'Equals Average'
+    END AS avg_change,
+    -- Month-over_Month Analysis 
+    LAG(cac) OVER(PARTITION BY acquisition_channel ORDER BY performance_month) AS pm_cac, 
+    (cac) - LAG(cac) OVER(PARTITION BY acquisition_channel ORDER BY performance_month) AS diff_pm_cac,
+    CASE 
+        WHEN (cac) - LAG(cac) OVER(PARTITION BY acquisition_channel ORDER BY performance_month) > 0 THEN 'Worsened (Higher)'
+        WHEN (cac) - LAG(cac) OVER(PARTITION BY acquisition_channel ORDER BY performance_month) < 0 THEN 'Improved (Lower)'
+        ELSE 'No Change'
+    END AS pm_change,
+    ROUND(
+        CASE 
+            WHEN LAG(cac) OVER(PARTITION BY acquisition_channel ORDER BY performance_month) = 0 THEN NULL 
+            ELSE ((cac) - LAG(cac) OVER(PARTITION BY acquisition_channel ORDER BY performance_month))/LAG(cac) OVER(PARTITION BY acquisition_channel ORDER BY performance_month)*100 
+        END
+    ,2) AS mom_percentage
+FROM cac_metrics
+WHERE acquisition_channel IS NOT NULL;
+GO
+
+SELECT *
+FROM gold.channels_cac
+ORDER BY acquisition_channel, performance_month;
+GO
+
+-- 3.2) Top 10 Improvements MoM CAC channels
+SELECT TOP 10 *
+FROM gold.channels_cac
+WHERE diff_pm_cac IS NOT NULL
+ORDER BY diff_pm_cac ASC; 
+
+SELECT TOP 10 *
+FROM gold.channels_cac
+WHERE pm_cac IS NOT NULL
+ORDER BY mom_percentage ASC;
+
+-- 3.3) Top 10 Declines MoM CAC channels
+SELECT TOP 10 *
+FROM gold.channels_cac
+WHERE diff_pm_cac IS NOT NULL
+ORDER BY diff_pm_cac DESC; 
+
+SELECT TOP 10 *
+FROM gold.channels_cac
+WHERE pm_cac IS NOT NULL
+ORDER BY mom_percentage DESC;
+
+
+
+
+/*
+===============================================================================
+4) CAMPAIGNS
+===============================================================================
+*/
+-- 4.1) MoM by Monthly Ad Spend and Newly Acquired Customers
 --      Analyze Month-over-Month TOFU CAC campaign performance 
 DROP VIEW IF EXISTS gold.campaigns_cac;
 GO
@@ -193,7 +297,7 @@ FROM gold.campaigns_cac
 ORDER BY acquisition_campaign, performance_month;
 GO
 
--- 3.2) Top 10 Improvements MoM CAC campaigns
+-- 4.2) Top 10 Improvements MoM CAC campaigns
 SELECT TOP 10 *
 FROM gold.campaigns_cac
 WHERE diff_pm_cac IS NOT NULL
@@ -204,7 +308,7 @@ FROM gold.campaigns_cac
 WHERE pm_cac IS NOT NULL
 ORDER BY mom_percentage ASC;
 
--- 3.3) Top 10 Declines MoM CAC campaigns
+-- 4.3) Top 10 Declines MoM CAC campaigns
 SELECT TOP 10 *
 FROM gold.campaigns_cac
 WHERE diff_pm_cac IS NOT NULL
@@ -216,103 +320,4 @@ WHERE pm_cac IS NOT NULL
 ORDER BY mom_percentage DESC;
 
 
-/*
-===============================================================================
-4) CHANNELS
-===============================================================================
-*/
--- 4.1) MoM by Monthly Ad Spend and Newly Acquired Customers
---      Analyze Month-over-Month TOFU CAC channel performance 
-DROP VIEW IF EXISTS gold.channels_cac;
-GO
-
-CREATE VIEW gold.channels_cac AS
-WITH monthly_customers AS (
-SELECT
-    DATEFROMPARTS(YEAR(f.purchase_date), MONTH(f.purchase_date), 1) AS performance_month, 
-    acquisition_channel,
-    COUNT(DISTINCT user_id) AS new_customers
-FROM gold.fact_purchases f
-WHERE acquisition_channel IS NOT NULL
-GROUP BY DATEFROMPARTS(YEAR(f.purchase_date), MONTH(f.purchase_date), 1), acquisition_channel
-), 
-monthly_spend AS (
-SELECT 
-    DATEFROMPARTS(YEAR(spend_date), MONTH(spend_date), 1) AS performance_month,
-    channel, 
-    SUM(spend) AS current_spend 
-FROM gold.fact_spend 
-WHERE channel IS NOT NULL 
-GROUP BY DATEFROMPARTS(YEAR(spend_date), MONTH(spend_date), 1), channel
-), 
-cac_metrics AS (
-SELECT
-    COALESCE(c.performance_month, s.performance_month) AS performance_month,
-    c.acquisition_channel, 
-    c.new_customers AS current_new_customers,
-    s.current_spend,
-    s.current_spend/NULLIF(c.new_customers, 0) AS cac
-FROM monthly_customers c
-FULL JOIN monthly_spend s 
-ON c.performance_month = s.performance_month 
-    AND c.acquisition_channel = s.channel
-)
-
-SELECT 
-    performance_month,
-    acquisition_channel, 
-    current_spend,
-    current_new_customers,
-    cac AS current_cac,
-    AVG(cac) OVER(PARTITION BY acquisition_channel) AS avg_cac,
-    (cac) - AVG(cac) OVER(PARTITION BY acquisition_channel) AS diff_avg,
-    CASE 
-        WHEN (cac) - AVG(cac) OVER(PARTITION BY acquisition_channel) > 0 THEN 'Worsened (Above Avg)'
-        WHEN (cac) - AVG(cac) OVER(PARTITION BY acquisition_channel) < 0 THEN 'Improved (Below Avg)' 
-        ELSE 'Equals Average'
-    END AS avg_change,
-    -- Month-over_Month Analysis 
-    LAG(cac) OVER(PARTITION BY acquisition_channel ORDER BY performance_month) AS pm_cac, 
-    (cac) - LAG(cac) OVER(PARTITION BY acquisition_channel ORDER BY performance_month) AS diff_pm_cac,
-    CASE 
-        WHEN (cac) - LAG(cac) OVER(PARTITION BY acquisition_channel ORDER BY performance_month) > 0 THEN 'Worsened (Higher)'
-        WHEN (cac) - LAG(cac) OVER(PARTITION BY acquisition_channel ORDER BY performance_month) < 0 THEN 'Improved (Lower)'
-        ELSE 'No Change'
-    END AS pm_change,
-    ROUND(
-        CASE 
-            WHEN LAG(cac) OVER(PARTITION BY acquisition_channel ORDER BY performance_month) = 0 THEN NULL 
-            ELSE ((cac) - LAG(cac) OVER(PARTITION BY acquisition_channel ORDER BY performance_month))/LAG(cac) OVER(PARTITION BY acquisition_channel ORDER BY performance_month)*100 
-        END
-    ,2) AS mom_percentage
-FROM cac_metrics
-WHERE acquisition_channel IS NOT NULL;
-GO
-
-SELECT *
-FROM gold.channels_cac
-ORDER BY acquisition_channel, performance_month;
-GO
-
--- 4.2) Top 10 Improvements MoM CAC channels
-SELECT TOP 10 *
-FROM gold.channels_cac
-WHERE diff_pm_cac IS NOT NULL
-ORDER BY diff_pm_cac ASC; 
-
-SELECT TOP 10 *
-FROM gold.channels_cac
-WHERE pm_cac IS NOT NULL
-ORDER BY mom_percentage ASC;
-
--- 4.3) Top 10 Declines MoM CAC channels
-SELECT TOP 10 *
-FROM gold.channels_cac
-WHERE diff_pm_cac IS NOT NULL
-ORDER BY diff_pm_cac DESC; 
-
-SELECT TOP 10 *
-FROM gold.channels_cac
-WHERE pm_cac IS NOT NULL
-ORDER BY mom_percentage DESC;
 
