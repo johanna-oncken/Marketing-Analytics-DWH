@@ -20,6 +20,8 @@
 <h4>1.1) Project Brief</h4>
 <p>Tasked with analyzing ad data from January to April 2024, I will start by addressing stakeholder communication and presenting the analysis results. In Section 2, I will then cover the data overview, the ETL pipeline, and the data warehouse build process.</p>
 <h2>2) End-To-End Data Warehouse and ETL</h2>
+<h4>2.1) 📂 Repository Structure</h4>
+
 
 <img width="1037" height="691" alt="Bildschirmfoto 2026-02-13 um 12 17 03" src="https://github.com/user-attachments/assets/45c62603-db58-4ba2-aa9a-760a78bb8eab" />
 
