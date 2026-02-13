@@ -18,7 +18,8 @@
 <p>Repository Structure:</p>
 <pre>
 Marketing-Analytics-DWH/
-├── datasets/                marketing_platform/ · web_analytics/ · crm_system/
+├── datasets/               marketing_platform/ · web_analytics/ · crm_system/
+│ 
 ├── data_warehouse/
 │   ├── scripts/
 │   │   ├────────── bronze/
@@ -27,8 +28,13 @@ Marketing-Analytics-DWH/
 │   │   ├────────── tests/  quality_checks_silver/ · quality_checks_gold.sql
 │   │   └── init_database.sql
 │   └── docs/
+│ 
 └── marketing_analytics/
-    ├────────────── scripts/ 01-04 (exploration), 05-08 (preliminary analysis), 0901-0911 (performance analysis), 10 (path length), 11(channel effciency)
+    ├────────────── scripts/ 01-04 (exploration), 
+    │                        05-08 (preliminary analysis),
+    │                        0901-0911 (performance analysis),
+    │                        10 (path length), 11(channel effciency)
+    │
     └────────────── results/ performance_analysis/ · path_length_and_channel_efficiency/
 </pre>
 
