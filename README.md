@@ -14,6 +14,8 @@
   </a>
 </p>
 
+<p>💡 Disclaimer: This is a demo project intended for skill demonstration and uses synthetically generated data.</p>
+
 <h3>Marketing Analysis</h3>
 
 <h3>End-To-End Data Warehouse and ETL</h3>
