@@ -16,6 +16,37 @@
 
 <p>📍 About: This demo project is intended to <strong>showcase skills</strong> and uses <strong>synthetically generated data</strong>.</p>
 
+<h4>Repository Structure</h4>
+
+<pre>
+Marketing-Analytics-DWH/
+│
+├── datasets/
+│   ├── marketing_platform/
+│   ├── web_analytics/
+│   └── crm_system/
+│
+├── data_warehouse/
+│   ├── scripts/
+│   │   ├── bronze/
+│   │   ├── silver/
+│   │   │   └── profile_cleaning/
+│   │   ├── gold/
+│   │   ├── tests/
+│   │   │   ├── quality_checks_silver/
+│   │   │   └── quality_checks_gold.sql
+│   │   └── init_database.sql
+│   └── docs/
+│
+└── marketing_analytics/
+    ├── scripts/
+    └── results/
+        ├── performance_analysis/
+        ├── path_length_and_channel_efficiency/
+        ├── measure_exploration.csv
+        └── magnitude_exploration.csv
+</pre>
+
 <h2>1) Marketing Analysis</h2>
 <h4>1.1) Project Brief</h4>
 <p>Tasked with analyzing ad data from January to April 2024, I will start by addressing stakeholder communication and presenting the analysis results. In Section 2, I will then cover the data overview, the ETL pipeline, and the data warehouse build process.</p>
