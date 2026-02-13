@@ -134,7 +134,7 @@
 
 <hr>
 
-<h4>2.6) Why <code>fact_attribution_linear_with_costs</code> Exists</h4>
+<h4>2.6) Why <code>fact_attribution_linear_with_costs</code> exists</h4>
 
 <h5>2.6.1) The Problem</h5>
 
