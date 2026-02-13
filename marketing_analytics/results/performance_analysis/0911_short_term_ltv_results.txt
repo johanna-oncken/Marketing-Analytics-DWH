@@ -3,11 +3,10 @@ Short Term LTV Performance Analysis – Query Results
 ===============================================================================
 
 Queries: 
-    1) User Acquisition View (first-touch attribution)
-    2) Overall Profitability: LTV, CAC, LTV:CAC Ratio, ROI (120 days)
-    3) Cohort Analysis by Acquisition Month with LTV, LTV:CAC Ratio and ROI
-    4) Cohort Analysis by Acquisition Channel with LTV, LTV:CAC Ratio and ROI
-    5) Cohort Analysis by Acquisition Campaign with LTV, LTV:CAC Ratio and ROI
+    1) Overall Profitability: LTV, CAC, LTV:CAC Ratio, ROI (120 days)
+    2) Cohort Analysis by Acquisition Month with LTV, LTV:CAC Ratio and ROI
+    3) Cohort Analysis by Acquisition Channel with LTV, LTV:CAC Ratio and ROI
+    4) Cohort Analysis by Acquisition Campaign with LTV, LTV:CAC Ratio and ROI
 
 ================================================================================
 1) Overall Profitability: LTV, CAC, LTV:CAC Ratio, ROI (120 Days)
