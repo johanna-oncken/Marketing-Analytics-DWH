@@ -4,6 +4,16 @@ CPA Cost per Acquisition Performance Analysis — Results
 ===============================================================================
 */
 
+Queries: 
+    1) CPA overall 
+    2) CPA Performance monthly
+    3.1) Monthly CPA Performance and MOM Analysis by Channels 
+    3.2) Top Ten Channels by Monthly CPA Improvements 
+    3.3) Top Ten Channels by Monthly CPA Declines
+    4.1) Monthly CPA Performance and MOM Analysis by Campaigns 
+    4.2) Top Ten Campaigns by Monthly CPA Improvements 
+    4.3) Top Ten Campaigns by Monthly CPA Declines 
+
 ===============================================================================
 1) CPA Overall
 ===============================================================================
