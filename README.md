@@ -21,7 +21,7 @@
 <p>Tasked with analyzing ad data from January to April 2024, I will start by addressing stakeholder communication and presenting the analysis results. In Section 2, I will then cover the data overview, the ETL pipeline, and the data warehouse build process.</p>
 
 <h2>2) End-To-End Data Warehouse and ETL</h2>
-<p>A SQL Server data warehouse for marketing analytics, built on a Bronze → Silver → Gold medallion architecture. The warehouse integrates data from three source systems (marketing platform, web analytics, crm systems) and models it into a star schema with a fact constellation for multi-touch attribution.</p>
+<p>A SQL Server data warehouse for marketing analytics, built on a Bronze → Silver → Gold medallion architecture. The warehouse, named <strong>marketing_dw</strong>, integrates data from three source systems (marketing platform, web analytics, crm systems) and models it into a star schema with a fact constellation for multi-touch attribution.</p>
 <h4>2.1)Architecture</h4>
 <p>The warehouse follows a three-layer medallion architecture:</p>
 <img width="1037" height="691" alt="Bildschirmfoto 2026-02-13 um 12 17 03" src="https://github.com/user-attachments/assets/45c62603-db58-4ba2-aa9a-760a78bb8eab" />
