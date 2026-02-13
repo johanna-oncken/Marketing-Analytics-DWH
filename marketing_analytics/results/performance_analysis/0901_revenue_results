@@ -2,21 +2,20 @@
 
 Queries: 
     1) Revenue Performance monthly
-    2.1) Mid of Funnel (MOFU) Monthly Revenue Performance and MOM-Analysis by Campaigns
-    2.2) Top of Funnel (TOFU) Monthly Revenue Performance and MOM-Analysis by Campaigns
-    2.3) Bottom of Funnel (BOFU) Monthly Revenue Performance and MOM-Analysis by Campaigns
-    2.4) Top Ten MOM Campaigns by TOFU/MOFU/BOFU 
-    3.1) Mid of Funnel (MOFU) Monthly Revenue Performance and MOM-Analysis by Channels
-    3.2) Top of Funnel (TOFU) Monthly Revenue Performance and MOM-Analysis by Channels
-    3.3) Bottom of Funnel (BOFU) Monthly Revenue Performance and MOM-Analysis by Channels
-    3.4) Top Ten MOM Channels by TOFU/MOFU/BOFU 
+    2.1) Mid of Funnel (MOFU) Monthly Revenue Performance and MOM-Analysis by Channels
+    2.2) Top of Funnel (TOFU) Monthly Revenue Performance and MOM-Analysis by Channels
+    2.3) Bottom of Funnel (BOFU) Monthly Revenue Performance and MOM-Analysis by Channels
+    2.4) Top Ten MOM Channels by TOFU/MOFU/BOFU 
+    3.1) Mid of Funnel (MOFU) Monthly Revenue Performance and MOM-Analysis by Campaigns
+    3.2) Top of Funnel (TOFU) Monthly Revenue Performance and MOM-Analysis by Campaigns
+    3.3) Bottom of Funnel (BOFU) Monthly Revenue Performance and MOM-Analysis by Campaigns
+    3.4) Top Ten MOM Campaigns by TOFU/MOFU/BOFU 
     4.1) Mid of Funnel (MOFU) Monthly Revenue Performance and MOM-Analysis by Interaction Type
     4.2) Top Ten MOM Interaction Types by MUFO
 
 
 1) Revenue Performance monthly
 ========================================
-
 performance_month  current_revenue  avg_current_revenue  diff_avg    avg_change  pm_current_revenue  diff_pm_current_revenue  pm_change   mom_percentage
 -----------------  ---------------  -------------------  ----------  ----------  ------------------  -----------------------  ----------  --------------
 2024-01-01         104089.57        100251.995000        3837.58     Above Avg   NULL                NULL                     No Change   NULL          
@@ -25,11 +24,250 @@ performance_month  current_revenue  avg_current_revenue  diff_avg    avg_change 
 2024-04-01         87286.61         100251.995000        -12965.39   Below Avg   101783.61           -14497.00                Decrease    -14.240000    
 ((4 rows affected))
 
-2) CAMPAIGNS
-========================================
--- 2.1) MOFU Full-Funnel Contributers
-========================================
 
+2) CHANNELS
+=====================================
+-- 2.1) MOFU Full-Funnel Contributers
+--=================================== 
+performance_month  channel         current_revenue  avg_revenue   diff_avg    avg_change  pm_revenue  diff_pm     pm_change   mom_percentage
+-----------------  --------------  ---------------  ------------  ----------  ----------  ----------  ----------  ----------  --------------
+2024-01-01         Direct          7072.62          10550.537500  -3477.92    Below Avg   NULL        NULL        No Change   NULL          
+2024-02-01         Direct          12916.49         10550.537500  2365.95     Above Avg   7072.62     5843.87     Increase    82.630000     
+2024-03-01         Direct          12110.65         10550.537500  1560.11     Above Avg   12916.49    -805.84     Decrease    -6.240000     
+2024-04-01         Direct          10102.39         10550.537500  -448.15     Below Avg   12110.65    -2008.26    Decrease    -16.580000    
+2024-01-01         Email           7530.36          10277.225000  -2746.87    Below Avg   NULL        NULL        No Change   NULL          
+2024-02-01         Email           12241.32         10277.225000  1964.10     Above Avg   7530.36     4710.96     Increase    62.560000     
+2024-03-01         Email           10948.09         10277.225000  670.87      Above Avg   12241.32    -1293.23    Decrease    -10.560000    
+2024-04-01         Email           10389.13         10277.225000  111.91      Above Avg   10948.09    -558.96     Decrease    -5.110000     
+2024-01-01         Facebook Ads    7156.83          10240.710000  -3083.88    Below Avg   NULL        NULL        No Change   NULL          
+2024-02-01         Facebook Ads    12203.93         10240.710000  1963.22     Above Avg   7156.83     5047.10     Increase    70.520000     
+2024-03-01         Facebook Ads    11575.36         10240.710000  1334.65     Above Avg   12203.93    -628.57     Decrease    -5.150000     
+2024-04-01         Facebook Ads    10026.72         10240.710000  -213.99     Below Avg   11575.36    -1548.64    Decrease    -13.380000    
+2024-01-01         Google Display  7500.24          10999.447500  -3499.21    Below Avg   NULL        NULL        No Change   NULL          
+2024-02-01         Google Display  12662.75         10999.447500  1663.30     Above Avg   7500.24     5162.51     Increase    68.830000     
+2024-03-01         Google Display  12387.00         10999.447500  1387.55     Above Avg   12662.75    -275.75     Decrease    -2.180000     
+2024-04-01         Google Display  11447.80         10999.447500  448.35      Above Avg   12387.00    -939.20     Decrease    -7.580000     
+2024-01-01         Google Search   8769.99          11864.695000  -3094.71    Below Avg   NULL        NULL        No Change   NULL          
+2024-02-01         Google Search   14230.48         11864.695000  2365.79     Above Avg   8769.99     5460.49     Increase    62.260000     
+2024-03-01         Google Search   13111.59         11864.695000  1246.90     Above Avg   14230.48    -1118.89    Decrease    -7.860000     
+2024-04-01         Google Search   11346.72         11864.695000  -517.98     Below Avg   13111.59    -1764.87    Decrease    -13.460000    
+2024-01-01         Instagram Ads   8850.38          10554.742500  -1704.36    Below Avg   NULL        NULL        No Change   NULL          
+2024-02-01         Instagram Ads   10747.18         10554.742500  192.44      Above Avg   8850.38     1896.80     Increase    21.430000     
+2024-03-01         Instagram Ads   12322.88         10554.742500  1768.14     Above Avg   10747.18    1575.70     Increase    14.660000     
+2024-04-01         Instagram Ads   10298.53         10554.742500  -256.21     Below Avg   12322.88    -2024.35    Decrease    -16.430000    
+2024-01-01         Organic Search  6818.04          10267.647500  -3449.61    Below Avg   NULL        NULL        No Change   NULL          
+2024-02-01         Organic Search  11362.06         10267.647500  1094.41     Above Avg   6818.04     4544.02     Increase    66.650000     
+2024-03-01         Organic Search  11909.94         10267.647500  1642.29     Above Avg   11362.06    547.88      Increase    4.820000      
+2024-04-01         Organic Search  10980.55         10267.647500  712.90      Above Avg   11909.94    -929.39     Decrease    -7.800000     
+2024-01-01         Referral        7739.99          10293.705000  -2553.72    Below Avg   NULL        NULL        No Change   NULL          
+2024-02-01         Referral        11182.97         10293.705000  889.27      Above Avg   7739.99     3442.98     Increase    44.480000     
+2024-03-01         Referral        12588.42         10293.705000  2294.72     Above Avg   11182.97    1405.45     Increase    12.570000     
+2024-04-01         Referral        9663.44          10293.705000  -630.27     Below Avg   12588.42    -2924.98    Decrease    -23.240000    
+2024-01-01         TikTok Ads      7393.04          10570.912500  -3177.87    Below Avg   NULL        NULL        No Change   NULL          
+2024-02-01         TikTok Ads      12764.15         10570.912500  2193.24     Above Avg   7393.04     5371.11     Increase    72.650000     
+2024-03-01         TikTok Ads      12027.28         10570.912500  1456.37     Above Avg   12764.15    -736.87     Decrease    -5.770000     
+2024-04-01         TikTok Ads      10099.18         10570.912500  -471.73     Below Avg   12027.28    -1928.10    Decrease    -16.030000    
+((36 rows affected))
+
+2) CHANNELS
+=====================================
+-- 2.2) TOFU Full-Funnel Contributers
+--===================================
+performance_month  acquisition_channel  current_revenue  avg_revenue   diff_avg    avg_change  pm_revenue  diff_pm     pm_change   mom_percentage
+-----------------  -------------------  ---------------  ------------  ----------  ----------  ----------  ----------  ----------  --------------
+2024-01-01         NULL                 4733.89          4846.375000   -112.49     Below Avg   NULL        NULL        No Change   NULL          
+2024-02-01         NULL                 3919.55          4846.375000   -926.83     Below Avg   4733.89     -814.34     Decrease    -17.200000    
+2024-03-01         NULL                 6100.10          4846.375000   1253.73     Above Avg   3919.55     2180.55     Increase    55.630000     
+2024-04-01         NULL                 4631.96          4846.375000   -214.42     Below Avg   6100.10     -1468.14    Decrease    -24.070000    
+2024-01-01         Direct               9573.24          9533.875000   39.37       Above Avg   NULL        NULL        No Change   NULL          
+2024-02-01         Direct               11388.57         9533.875000   1854.70     Above Avg   9573.24     1815.33     Increase    18.960000     
+2024-03-01         Direct               9294.62          9533.875000   -239.26     Below Avg   11388.57    -2093.95    Decrease    -18.390000    
+2024-04-01         Direct               7879.07          9533.875000   -1654.81    Below Avg   9294.62     -1415.55    Decrease    -15.230000    
+2024-01-01         Email                11681.38         10816.632500  864.75      Above Avg   NULL        NULL        No Change   NULL          
+2024-02-01         Email                12616.87         10816.632500  1800.24     Above Avg   11681.38    935.49      Increase    8.010000      
+2024-03-01         Email                11131.81         10816.632500  315.18      Above Avg   12616.87    -1485.06    Decrease    -11.770000    
+2024-04-01         Email                7836.47          10816.632500  -2980.16    Below Avg   11131.81    -3295.34    Decrease    -29.600000    
+2024-01-01         Facebook Ads         10082.69         10533.817500  -451.13     Below Avg   NULL        NULL        No Change   NULL          
+2024-02-01         Facebook Ads         12139.69         10533.817500  1605.87     Above Avg   10082.69    2057.00     Increase    20.400000     
+2024-03-01         Facebook Ads         10989.06         10533.817500  455.24      Above Avg   12139.69    -1150.63    Decrease    -9.480000     
+2024-04-01         Facebook Ads         8923.83          10533.817500  -1609.99    Below Avg   10989.06    -2065.23    Decrease    -18.790000    
+2024-01-01         Google Display       12156.00         10029.877500  2126.12     Above Avg   NULL        NULL        No Change   NULL          
+2024-02-01         Google Display       10524.02         10029.877500  494.14      Above Avg   12156.00    -1631.98    Decrease    -13.430000    
+2024-03-01         Google Display       9645.25          10029.877500  -384.63     Below Avg   10524.02    -878.77     Decrease    -8.350000     
+2024-04-01         Google Display       7794.24          10029.877500  -2235.64    Below Avg   9645.25     -1851.01    Decrease    -19.190000    
+2024-01-01         Google Search        11478.17         10928.825000  549.35      Above Avg   NULL        NULL        No Change   NULL          
+2024-02-01         Google Search        11730.01         10928.825000  801.19      Above Avg   11478.17    251.84      Increase    2.190000      
+2024-03-01         Google Search        12819.30         10928.825000  1890.48     Above Avg   11730.01    1089.29     Increase    9.290000      
+2024-04-01         Google Search        7687.82          10928.825000  -3241.01    Below Avg   12819.30    -5131.48    Decrease    -40.030000    
+2024-01-01         Instagram Ads        10016.58         10794.412500  -777.83     Below Avg   NULL        NULL        No Change   NULL          
+2024-02-01         Instagram Ads        12563.49         10794.412500  1769.08     Above Avg   10016.58    2546.91     Increase    25.430000     
+2024-03-01         Instagram Ads        9076.82          10794.412500  -1717.59    Below Avg   12563.49    -3486.67    Decrease    -27.750000    
+2024-04-01         Instagram Ads        11520.76         10794.412500  726.35      Above Avg   9076.82     2443.94     Increase    26.930000     
+2024-01-01         Organic Search       10586.71         11098.395000  -511.69     Below Avg   NULL        NULL        No Change   NULL          
+2024-02-01         Organic Search       11552.46         11098.395000  454.07      Above Avg   10586.71    965.75      Increase    9.120000      
+2024-03-01         Organic Search       11721.58         11098.395000  623.19      Above Avg   11552.46    169.12      Increase    1.460000      
+2024-04-01         Organic Search       10532.83         11098.395000  -565.57     Below Avg   11721.58    -1188.75    Decrease    -10.140000    
+2024-01-01         Referral             12846.65         10505.847500  2340.80     Above Avg   NULL        NULL        No Change   NULL          
+2024-02-01         Referral             10650.62         10505.847500  144.77      Above Avg   12846.65    -2196.03    Decrease    -17.090000    
+2024-03-01         Referral             9748.54          10505.847500  -757.31     Below Avg   10650.62    -902.08     Decrease    -8.470000     
+2024-04-01         Referral             8777.58          10505.847500  -1728.27    Below Avg   9748.54     -970.96     Decrease    -9.960000     
+2024-01-01         TikTok Ads           10934.26         11163.937500  -229.68     Below Avg   NULL        NULL        No Change   NULL          
+2024-02-01         TikTok Ads           10762.91         11163.937500  -401.03     Below Avg   10934.26    -171.35     Decrease    -1.570000     
+2024-03-01         TikTok Ads           11256.53         11163.937500  92.59       Above Avg   10762.91    493.62      Increase    4.590000      
+2024-04-01         TikTok Ads           11702.05         11163.937500  538.11      Above Avg   11256.53    445.52      Increase    3.960000      
+((40 rows affected))
+
+2) CHANNELS
+=====================================
+-- 2.3) BOFU Full-Funnel Contributers
+--===================================
+performance_month  last_touch_channel  current_revenue  avg_revenue   diff_avg    avg_change  pm_revenue  diff_pm     pm_change   mom_percentage
+-----------------  ------------------  ---------------  ------------  ----------  ----------  ----------  ----------  ----------  --------------
+2024-01-01         Direct              7414.96          10218.637500  -2803.68    Below Avg   NULL        NULL        No Change   NULL          
+2024-02-01         Direct              12443.73         10218.637500  2225.09     Above Avg   7414.96     5028.77     Increase    67.820000     
+2024-03-01         Direct              11589.41         10218.637500  1370.77     Above Avg   12443.73    -854.32     Decrease    -6.870000     
+2024-04-01         Direct              9426.45          10218.637500  -792.19     Below Avg   11589.41    -2162.96    Decrease    -18.660000    
+2024-01-01         Email               7702.31          9407.202500   -1704.89    Below Avg   NULL        NULL        No Change   NULL          
+2024-02-01         Email               10573.31         9407.202500   1166.11     Above Avg   7702.31     2871.00     Increase    37.270000     
+2024-03-01         Email               10841.04         9407.202500   1433.84     Above Avg   10573.31    267.73      Increase    2.530000      
+2024-04-01         Email               8512.15          9407.202500   -895.05     Below Avg   10841.04    -2328.89    Decrease    -21.480000    
+2024-01-01         Facebook Ads        5971.33          9489.472500   -3518.14    Below Avg   NULL        NULL        No Change   NULL          
+2024-02-01         Facebook Ads        11329.13         9489.472500   1839.66     Above Avg   5971.33     5357.80     Increase    89.730000     
+2024-03-01         Facebook Ads        10620.08         9489.472500   1130.61     Above Avg   11329.13    -709.05     Decrease    -6.260000     
+2024-04-01         Facebook Ads        10037.35         9489.472500   547.88      Above Avg   10620.08    -582.73     Decrease    -5.490000     
+2024-01-01         Google Display      5527.63          10640.522500  -5112.89    Below Avg   NULL        NULL        No Change   NULL          
+2024-02-01         Google Display      13345.06         10640.522500  2704.54     Above Avg   5527.63     7817.43     Increase    141.420000    
+2024-03-01         Google Display      12561.22         10640.522500  1920.70     Above Avg   13345.06    -783.84     Decrease    -5.870000     
+2024-04-01         Google Display      11128.18         10640.522500  487.66      Above Avg   12561.22    -1433.04    Decrease    -11.410000    
+2024-01-01         Google Search       8368.39          10879.575000  -2511.19    Below Avg   NULL        NULL        No Change   NULL          
+2024-02-01         Google Search       13773.17         10879.575000  2893.60     Above Avg   8368.39     5404.78     Increase    64.590000     
+2024-03-01         Google Search       11917.70         10879.575000  1038.13     Above Avg   13773.17    -1855.47    Decrease    -13.470000    
+2024-04-01         Google Search       9459.04          10879.575000  -1420.54    Below Avg   11917.70    -2458.66    Decrease    -20.630000    
+2024-01-01         Instagram Ads       9038.24          10299.807500  -1261.57    Below Avg   NULL        NULL        No Change   NULL          
+2024-02-01         Instagram Ads       9363.57          10299.807500  -936.24     Below Avg   9038.24     325.33      Increase    3.600000      
+2024-03-01         Instagram Ads       9915.90          10299.807500  -383.91     Below Avg   9363.57     552.33      Increase    5.900000      
+2024-04-01         Instagram Ads       12881.52         10299.807500  2581.71     Above Avg   9915.90     2965.62     Increase    29.910000     
+2024-01-01         Organic Search      6400.53          9409.817500   -3009.29    Below Avg   NULL        NULL        No Change   NULL          
+2024-02-01         Organic Search      10411.90         9409.817500   1002.08     Above Avg   6400.53     4011.37     Increase    62.670000     
+2024-03-01         Organic Search      11968.77         9409.817500   2558.95     Above Avg   10411.90    1556.87     Increase    14.950000     
+2024-04-01         Organic Search      8858.07          9409.817500   -551.75     Below Avg   11968.77    -3110.70    Decrease    -25.990000    
+2024-01-01         Referral            7394.74          9317.465000   -1922.73    Below Avg   NULL        NULL        No Change   NULL          
+2024-02-01         Referral            10693.63         9317.465000   1376.17     Above Avg   7394.74     3298.89     Increase    44.610000     
+2024-03-01         Referral            11488.53         9317.465000   2171.07     Above Avg   10693.63    794.90      Increase    7.430000      
+2024-04-01         Referral            7692.96          9317.465000   -1624.51    Below Avg   11488.53    -3795.57    Decrease    -33.040000    
+2024-01-01         TikTok Ads          6767.26          9858.855000   -3091.60    Below Avg   NULL        NULL        No Change   NULL          
+2024-02-01         TikTok Ads          12619.96         9858.855000   2761.11     Above Avg   6767.26     5852.70     Increase    86.490000     
+2024-03-01         TikTok Ads          10757.31         9858.855000   898.46      Above Avg   12619.96    -1862.65    Decrease    -14.760000    
+2024-04-01         TikTok Ads          9290.89          9858.855000   -567.97     Below Avg   10757.31    -1466.42    Decrease    -13.630000    
+((36 rows affected))
+
+-- 2.4) TOP 10 MoM TOFU/Multi/BOFU 
+--==================================
+-- Top 10 MoM channels within funnel - ORDER BY diff_pm DESC;
+====================================
+performance_month  channel         current_revenue  avg_revenue   diff_avg    avg_change  pm_revenue  diff_pm     pm_change   mom_percentage
+-----------------  --------------  ---------------  ------------  ----------  ----------  ----------  ----------  ----------  --------------
+2024-02-01         Direct          12916.49         10550.537500  2365.95     Above Avg   7072.62     5843.87     Increase    82.630000     
+2024-02-01         Google Search   14230.48         11864.695000  2365.79     Above Avg   8769.99     5460.49     Increase    62.260000     
+2024-02-01         TikTok Ads      12764.15         10570.912500  2193.24     Above Avg   7393.04     5371.11     Increase    72.650000     
+2024-02-01         Google Display  12662.75         10999.447500  1663.30     Above Avg   7500.24     5162.51     Increase    68.830000     
+2024-02-01         Facebook Ads    12203.93         10240.710000  1963.22     Above Avg   7156.83     5047.10     Increase    70.520000     
+2024-02-01         Email           12241.32         10277.225000  1964.10     Above Avg   7530.36     4710.96     Increase    62.560000     
+2024-02-01         Organic Search  11362.06         10267.647500  1094.41     Above Avg   6818.04     4544.02     Increase    66.650000     
+2024-02-01         Referral        11182.97         10293.705000  889.27      Above Avg   7739.99     3442.98     Increase    44.480000     
+2024-02-01         Instagram Ads   10747.18         10554.742500  192.44      Above Avg   8850.38     1896.80     Increase    21.430000     
+2024-03-01         Instagram Ads   12322.88         10554.742500  1768.14     Above Avg   10747.18    1575.70     Increase    14.660000     
+((10 rows affected))
+
+
+-- Top 10 MoM channels within funnel - WHERE pm_revenue > ORDER BY mom_percentage DESC;
+====================================
+performance_month  channel         current_revenue  avg_revenue   diff_avg    avg_change  pm_revenue  diff_pm     pm_change   mom_percentage
+-----------------  --------------  ---------------  ------------  ----------  ----------  ----------  ----------  ----------  --------------
+2024-02-01         Direct          12916.49         10550.537500  2365.95     Above Avg   7072.62     5843.87     Increase    82.630000     
+2024-02-01         TikTok Ads      12764.15         10570.912500  2193.24     Above Avg   7393.04     5371.11     Increase    72.650000     
+2024-02-01         Facebook Ads    12203.93         10240.710000  1963.22     Above Avg   7156.83     5047.10     Increase    70.520000     
+2024-02-01         Google Display  12662.75         10999.447500  1663.30     Above Avg   7500.24     5162.51     Increase    68.830000     
+2024-02-01         Organic Search  11362.06         10267.647500  1094.41     Above Avg   6818.04     4544.02     Increase    66.650000     
+2024-02-01         Email           12241.32         10277.225000  1964.10     Above Avg   7530.36     4710.96     Increase    62.560000     
+2024-02-01         Google Search   14230.48         11864.695000  2365.79     Above Avg   8769.99     5460.49     Increase    62.260000     
+2024-02-01         Referral        11182.97         10293.705000  889.27      Above Avg   7739.99     3442.98     Increase    44.480000     
+2024-02-01         Instagram Ads   10747.18         10554.742500  192.44      Above Avg   8850.38     1896.80     Increase    21.430000     
+2024-03-01         Instagram Ads   12322.88         10554.742500  1768.14     Above Avg   10747.18    1575.70     Increase    14.660000     
+((10 rows affected))
+
+
+-- Top 10 MoM acquisition channels - ORDER BY diff_pm DESC;
+=====================================
+performance_month  acquisition_channel  current_revenue  avg_revenue   diff_avg    avg_change  pm_revenue  diff_pm     pm_change   mom_percentage
+-----------------  -------------------  ---------------  ------------  ----------  ----------  ----------  ----------  ----------  --------------
+2024-02-01         Instagram Ads        12563.49         10794.412500  1769.08     Above Avg   10016.58    2546.91     Increase    25.430000     
+2024-04-01         Instagram Ads        11520.76         10794.412500  726.35      Above Avg   9076.82     2443.94     Increase    26.930000     
+2024-03-01         NULL                 6100.10          4846.375000   1253.73     Above Avg   3919.55     2180.55     Increase    55.630000     
+2024-02-01         Facebook Ads         12139.69         10533.817500  1605.87     Above Avg   10082.69    2057.00     Increase    20.400000     
+2024-02-01         Direct               11388.57         9533.875000   1854.70     Above Avg   9573.24     1815.33     Increase    18.960000     
+2024-03-01         Google Search        12819.30         10928.825000  1890.48     Above Avg   11730.01    1089.29     Increase    9.290000      
+2024-02-01         Organic Search       11552.46         11098.395000  454.07      Above Avg   10586.71    965.75      Increase    9.120000      
+2024-02-01         Email                12616.87         10816.632500  1800.24     Above Avg   11681.38    935.49      Increase    8.010000      
+2024-03-01         TikTok Ads           11256.53         11163.937500  92.59       Above Avg   10762.91    493.62      Increase    4.590000      
+2024-04-01         TikTok Ads           11702.05         11163.937500  538.11      Above Avg   11256.53    445.52      Increase    3.960000      
+((10 rows affected))
+
+-- Top 10 MoM acquisition channels - WHERE pm_revenue > ORDER BY mom_percentage DESC;
+=====================================
+performance_month  acquisition_channel  current_revenue  avg_revenue   diff_avg    avg_change  pm_revenue  diff_pm     pm_change   mom_percentage
+-----------------  -------------------  ---------------  ------------  ----------  ----------  ----------  ----------  ----------  --------------
+2024-03-01         NULL                 6100.10          4846.375000   1253.73     Above Avg   3919.55     2180.55     Increase    55.630000     
+2024-04-01         Instagram Ads        11520.76         10794.412500  726.35      Above Avg   9076.82     2443.94     Increase    26.930000     
+2024-02-01         Instagram Ads        12563.49         10794.412500  1769.08     Above Avg   10016.58    2546.91     Increase    25.430000     
+2024-02-01         Facebook Ads         12139.69         10533.817500  1605.87     Above Avg   10082.69    2057.00     Increase    20.400000     
+2024-02-01         Direct               11388.57         9533.875000   1854.70     Above Avg   9573.24     1815.33     Increase    18.960000     
+2024-03-01         Google Search        12819.30         10928.825000  1890.48     Above Avg   11730.01    1089.29     Increase    9.290000      
+2024-02-01         Organic Search       11552.46         11098.395000  454.07      Above Avg   10586.71    965.75      Increase    9.120000      
+2024-02-01         Email                12616.87         10816.632500  1800.24     Above Avg   11681.38    935.49      Increase    8.010000      
+2024-03-01         TikTok Ads           11256.53         11163.937500  92.59       Above Avg   10762.91    493.62      Increase    4.590000      
+2024-04-01         TikTok Ads           11702.05         11163.937500  538.11      Above Avg   11256.53    445.52      Increase    3.960000      
+((10 rows affected))
+
+-- Top 10 MoM last-touch channels - ORDER BY diff_pm DESC;
+=====================================
+performance_month  last_touch_channel  current_revenue  avg_revenue   diff_avg    avg_change  pm_revenue  diff_pm     pm_change   mom_percentage
+-----------------  ------------------  ---------------  ------------  ----------  ----------  ----------  ----------  ----------  --------------
+2024-02-01         Google Display      13345.06         10640.522500  2704.54     Above Avg   5527.63     7817.43     Increase    141.420000    
+2024-02-01         TikTok Ads          12619.96         9858.855000   2761.11     Above Avg   6767.26     5852.70     Increase    86.490000     
+2024-02-01         Google Search       13773.17         10879.575000  2893.60     Above Avg   8368.39     5404.78     Increase    64.590000     
+2024-02-01         Facebook Ads        11329.13         9489.472500   1839.66     Above Avg   5971.33     5357.80     Increase    89.730000     
+2024-02-01         Direct              12443.73         10218.637500  2225.09     Above Avg   7414.96     5028.77     Increase    67.820000     
+2024-02-01         Organic Search      10411.90         9409.817500   1002.08     Above Avg   6400.53     4011.37     Increase    62.670000     
+2024-02-01         Referral            10693.63         9317.465000   1376.17     Above Avg   7394.74     3298.89     Increase    44.610000     
+2024-04-01         Instagram Ads       12881.52         10299.807500  2581.71     Above Avg   9915.90     2965.62     Increase    29.910000     
+2024-02-01         Email               10573.31         9407.202500   1166.11     Above Avg   7702.31     2871.00     Increase    37.270000     
+2024-03-01         Organic Search      11968.77         9409.817500   2558.95     Above Avg   10411.90    1556.87     Increase    14.950000     
+((10 rows affected))
+
+-- Top 10 MoM last-touch channels - WHERE pm_revenue > ORDER BY mom_percentage DESC;
+=====================================
+performance_month  last_touch_channel  current_revenue  avg_revenue   diff_avg    avg_change  pm_revenue  diff_pm     pm_change   mom_percentage
+-----------------  ------------------  ---------------  ------------  ----------  ----------  ----------  ----------  ----------  --------------
+2024-02-01         Google Display      13345.06         10640.522500  2704.54     Above Avg   5527.63     7817.43     Increase    141.420000    
+2024-02-01         Facebook Ads        11329.13         9489.472500   1839.66     Above Avg   5971.33     5357.80     Increase    89.730000     
+2024-02-01         TikTok Ads          12619.96         9858.855000   2761.11     Above Avg   6767.26     5852.70     Increase    86.490000     
+2024-02-01         Direct              12443.73         10218.637500  2225.09     Above Avg   7414.96     5028.77     Increase    67.820000     
+2024-02-01         Google Search       13773.17         10879.575000  2893.60     Above Avg   8368.39     5404.78     Increase    64.590000     
+2024-02-01         Organic Search      10411.90         9409.817500   1002.08     Above Avg   6400.53     4011.37     Increase    62.670000     
+2024-02-01         Referral            10693.63         9317.465000   1376.17     Above Avg   7394.74     3298.89     Increase    44.610000     
+2024-02-01         Email               10573.31         9407.202500   1166.11     Above Avg   7702.31     2871.00     Increase    37.270000     
+2024-04-01         Instagram Ads       12881.52         10299.807500  2581.71     Above Avg   9915.90     2965.62     Increase    29.910000     
+2024-03-01         Organic Search      11968.77         9409.817500   2558.95     Above Avg   10411.90    1556.87     Increase    14.950000     
+((10 rows affected))
+
+
+
+
+3) CAMPAIGNS
+========================================
+-- 3.1) MOFU Full-Funnel Contributers
+========================================
 performance_month  campaign_id  campaign_name          current_revenue  avg_revenue  diff_avg    avg_change  pm_revenue  diff_pm     pm_change   mom_percentage
 -----------------  -----------  ---------------------  ---------------  -----------  ----------  ----------  ----------  ----------  ----------  --------------
 2024-01-01         1            NULL                   1562.75          1744.210000  -181.46     Below Avg   NULL        NULL        No Change   NULL          
@@ -246,11 +484,10 @@ performance_month  campaign_id  campaign_name          current_revenue  avg_reve
 2024-04-01         53           Spring_Prospecting_EU  1719.28          1691.120000  28.16       Above Avg   2090.67     -371.39     Decrease    -17.760000    
 ((212 rows affected))
 
-2) CAMPAIGNS
+3) CAMPAIGNS
 ========================================
--- 2.2) TOFU Full-Funnel Contributers
+-- 3.2) TOFU Full-Funnel Contributers
 ========================================
-
 performance_month  acquisition_campaign  campaign_name          current_revenue  avg_revenue  diff_avg    avg_change  pm_revenue  diff_pm     pm_change   mom_percentage
 -----------------  --------------------  ---------------------  ---------------  -----------  ----------  ----------  ----------  ----------  ----------  --------------
 2024-01-01         1                     NULL                   1121.81          1947.152500  -825.34     Below Avg   NULL        NULL        No Change   NULL          
@@ -467,11 +704,10 @@ performance_month  acquisition_campaign  campaign_name          current_revenue 
 2024-04-01         53                    Spring_Prospecting_EU  1815.15          2037.087500  -221.94     Below Avg   810.23      1004.92     Increase    124.030000    
 ((212 rows affected))
 
-2) CAMPAIGNS
+3) CAMPAIGNS
 ========================================
--- 2.3) BOFU Full-Funnel Contributers
+-- 3.3) BOFU Full-Funnel Contributers
 ========================================
-
 performance_month  last_touch_campaign  campaign_name          current_revenue  avg_revenue  diff_avg    avg_change  pm_revenue  diff_pm     pm_change   mom_percentage
 -----------------  -------------------  ---------------------  ---------------  -----------  ----------  ----------  ----------  ----------  ----------  --------------
 2024-01-01         1                    NULL                   1590.95          1655.497500  -64.55      Below Avg   NULL        NULL        No Change   NULL          
@@ -689,7 +925,7 @@ performance_month  last_touch_campaign  campaign_name          current_revenue  
 ((212 rows affected))
 
 
--- 2.4) Top Ten MOM Campaigns by TOFU/MOFU/BOFU
+-- 3.4) Top Ten MOM Campaigns by TOFU/MOFU/BOFU
 ========================================
 -- Top 10 MoM campaigns within funnel - ORDER BY diff_pm DESC; 
 ========================================
@@ -787,242 +1023,6 @@ performance_month  last_touch_campaign  campaign_name          current_revenue  
 2024-02-01         3                    Summer_Launch          1440.48          1719.787500  -279.31     Below Avg   538.35      902.13      Increase    167.570000    
 ((10 rows affected))
 
-
-3) CHANNELS
-=====================================
--- 3.1) MOFU Full-Funnel Contributers
---=================================== 
-performance_month  channel         current_revenue  avg_revenue   diff_avg    avg_change  pm_revenue  diff_pm     pm_change   mom_percentage
------------------  --------------  ---------------  ------------  ----------  ----------  ----------  ----------  ----------  --------------
-2024-01-01         Direct          7072.62          10550.537500  -3477.92    Below Avg   NULL        NULL        No Change   NULL          
-2024-02-01         Direct          12916.49         10550.537500  2365.95     Above Avg   7072.62     5843.87     Increase    82.630000     
-2024-03-01         Direct          12110.65         10550.537500  1560.11     Above Avg   12916.49    -805.84     Decrease    -6.240000     
-2024-04-01         Direct          10102.39         10550.537500  -448.15     Below Avg   12110.65    -2008.26    Decrease    -16.580000    
-2024-01-01         Email           7530.36          10277.225000  -2746.87    Below Avg   NULL        NULL        No Change   NULL          
-2024-02-01         Email           12241.32         10277.225000  1964.10     Above Avg   7530.36     4710.96     Increase    62.560000     
-2024-03-01         Email           10948.09         10277.225000  670.87      Above Avg   12241.32    -1293.23    Decrease    -10.560000    
-2024-04-01         Email           10389.13         10277.225000  111.91      Above Avg   10948.09    -558.96     Decrease    -5.110000     
-2024-01-01         Facebook Ads    7156.83          10240.710000  -3083.88    Below Avg   NULL        NULL        No Change   NULL          
-2024-02-01         Facebook Ads    12203.93         10240.710000  1963.22     Above Avg   7156.83     5047.10     Increase    70.520000     
-2024-03-01         Facebook Ads    11575.36         10240.710000  1334.65     Above Avg   12203.93    -628.57     Decrease    -5.150000     
-2024-04-01         Facebook Ads    10026.72         10240.710000  -213.99     Below Avg   11575.36    -1548.64    Decrease    -13.380000    
-2024-01-01         Google Display  7500.24          10999.447500  -3499.21    Below Avg   NULL        NULL        No Change   NULL          
-2024-02-01         Google Display  12662.75         10999.447500  1663.30     Above Avg   7500.24     5162.51     Increase    68.830000     
-2024-03-01         Google Display  12387.00         10999.447500  1387.55     Above Avg   12662.75    -275.75     Decrease    -2.180000     
-2024-04-01         Google Display  11447.80         10999.447500  448.35      Above Avg   12387.00    -939.20     Decrease    -7.580000     
-2024-01-01         Google Search   8769.99          11864.695000  -3094.71    Below Avg   NULL        NULL        No Change   NULL          
-2024-02-01         Google Search   14230.48         11864.695000  2365.79     Above Avg   8769.99     5460.49     Increase    62.260000     
-2024-03-01         Google Search   13111.59         11864.695000  1246.90     Above Avg   14230.48    -1118.89    Decrease    -7.860000     
-2024-04-01         Google Search   11346.72         11864.695000  -517.98     Below Avg   13111.59    -1764.87    Decrease    -13.460000    
-2024-01-01         Instagram Ads   8850.38          10554.742500  -1704.36    Below Avg   NULL        NULL        No Change   NULL          
-2024-02-01         Instagram Ads   10747.18         10554.742500  192.44      Above Avg   8850.38     1896.80     Increase    21.430000     
-2024-03-01         Instagram Ads   12322.88         10554.742500  1768.14     Above Avg   10747.18    1575.70     Increase    14.660000     
-2024-04-01         Instagram Ads   10298.53         10554.742500  -256.21     Below Avg   12322.88    -2024.35    Decrease    -16.430000    
-2024-01-01         Organic Search  6818.04          10267.647500  -3449.61    Below Avg   NULL        NULL        No Change   NULL          
-2024-02-01         Organic Search  11362.06         10267.647500  1094.41     Above Avg   6818.04     4544.02     Increase    66.650000     
-2024-03-01         Organic Search  11909.94         10267.647500  1642.29     Above Avg   11362.06    547.88      Increase    4.820000      
-2024-04-01         Organic Search  10980.55         10267.647500  712.90      Above Avg   11909.94    -929.39     Decrease    -7.800000     
-2024-01-01         Referral        7739.99          10293.705000  -2553.72    Below Avg   NULL        NULL        No Change   NULL          
-2024-02-01         Referral        11182.97         10293.705000  889.27      Above Avg   7739.99     3442.98     Increase    44.480000     
-2024-03-01         Referral        12588.42         10293.705000  2294.72     Above Avg   11182.97    1405.45     Increase    12.570000     
-2024-04-01         Referral        9663.44          10293.705000  -630.27     Below Avg   12588.42    -2924.98    Decrease    -23.240000    
-2024-01-01         TikTok Ads      7393.04          10570.912500  -3177.87    Below Avg   NULL        NULL        No Change   NULL          
-2024-02-01         TikTok Ads      12764.15         10570.912500  2193.24     Above Avg   7393.04     5371.11     Increase    72.650000     
-2024-03-01         TikTok Ads      12027.28         10570.912500  1456.37     Above Avg   12764.15    -736.87     Decrease    -5.770000     
-2024-04-01         TikTok Ads      10099.18         10570.912500  -471.73     Below Avg   12027.28    -1928.10    Decrease    -16.030000    
-((36 rows affected))
-
-3) CHANNELS
-=====================================
--- 3.2) TOFU Full-Funnel Contributers
---===================================
-performance_month  acquisition_channel  current_revenue  avg_revenue   diff_avg    avg_change  pm_revenue  diff_pm     pm_change   mom_percentage
------------------  -------------------  ---------------  ------------  ----------  ----------  ----------  ----------  ----------  --------------
-2024-01-01         NULL                 4733.89          4846.375000   -112.49     Below Avg   NULL        NULL        No Change   NULL          
-2024-02-01         NULL                 3919.55          4846.375000   -926.83     Below Avg   4733.89     -814.34     Decrease    -17.200000    
-2024-03-01         NULL                 6100.10          4846.375000   1253.73     Above Avg   3919.55     2180.55     Increase    55.630000     
-2024-04-01         NULL                 4631.96          4846.375000   -214.42     Below Avg   6100.10     -1468.14    Decrease    -24.070000    
-2024-01-01         Direct               9573.24          9533.875000   39.37       Above Avg   NULL        NULL        No Change   NULL          
-2024-02-01         Direct               11388.57         9533.875000   1854.70     Above Avg   9573.24     1815.33     Increase    18.960000     
-2024-03-01         Direct               9294.62          9533.875000   -239.26     Below Avg   11388.57    -2093.95    Decrease    -18.390000    
-2024-04-01         Direct               7879.07          9533.875000   -1654.81    Below Avg   9294.62     -1415.55    Decrease    -15.230000    
-2024-01-01         Email                11681.38         10816.632500  864.75      Above Avg   NULL        NULL        No Change   NULL          
-2024-02-01         Email                12616.87         10816.632500  1800.24     Above Avg   11681.38    935.49      Increase    8.010000      
-2024-03-01         Email                11131.81         10816.632500  315.18      Above Avg   12616.87    -1485.06    Decrease    -11.770000    
-2024-04-01         Email                7836.47          10816.632500  -2980.16    Below Avg   11131.81    -3295.34    Decrease    -29.600000    
-2024-01-01         Facebook Ads         10082.69         10533.817500  -451.13     Below Avg   NULL        NULL        No Change   NULL          
-2024-02-01         Facebook Ads         12139.69         10533.817500  1605.87     Above Avg   10082.69    2057.00     Increase    20.400000     
-2024-03-01         Facebook Ads         10989.06         10533.817500  455.24      Above Avg   12139.69    -1150.63    Decrease    -9.480000     
-2024-04-01         Facebook Ads         8923.83          10533.817500  -1609.99    Below Avg   10989.06    -2065.23    Decrease    -18.790000    
-2024-01-01         Google Display       12156.00         10029.877500  2126.12     Above Avg   NULL        NULL        No Change   NULL          
-2024-02-01         Google Display       10524.02         10029.877500  494.14      Above Avg   12156.00    -1631.98    Decrease    -13.430000    
-2024-03-01         Google Display       9645.25          10029.877500  -384.63     Below Avg   10524.02    -878.77     Decrease    -8.350000     
-2024-04-01         Google Display       7794.24          10029.877500  -2235.64    Below Avg   9645.25     -1851.01    Decrease    -19.190000    
-2024-01-01         Google Search        11478.17         10928.825000  549.35      Above Avg   NULL        NULL        No Change   NULL          
-2024-02-01         Google Search        11730.01         10928.825000  801.19      Above Avg   11478.17    251.84      Increase    2.190000      
-2024-03-01         Google Search        12819.30         10928.825000  1890.48     Above Avg   11730.01    1089.29     Increase    9.290000      
-2024-04-01         Google Search        7687.82          10928.825000  -3241.01    Below Avg   12819.30    -5131.48    Decrease    -40.030000    
-2024-01-01         Instagram Ads        10016.58         10794.412500  -777.83     Below Avg   NULL        NULL        No Change   NULL          
-2024-02-01         Instagram Ads        12563.49         10794.412500  1769.08     Above Avg   10016.58    2546.91     Increase    25.430000     
-2024-03-01         Instagram Ads        9076.82          10794.412500  -1717.59    Below Avg   12563.49    -3486.67    Decrease    -27.750000    
-2024-04-01         Instagram Ads        11520.76         10794.412500  726.35      Above Avg   9076.82     2443.94     Increase    26.930000     
-2024-01-01         Organic Search       10586.71         11098.395000  -511.69     Below Avg   NULL        NULL        No Change   NULL          
-2024-02-01         Organic Search       11552.46         11098.395000  454.07      Above Avg   10586.71    965.75      Increase    9.120000      
-2024-03-01         Organic Search       11721.58         11098.395000  623.19      Above Avg   11552.46    169.12      Increase    1.460000      
-2024-04-01         Organic Search       10532.83         11098.395000  -565.57     Below Avg   11721.58    -1188.75    Decrease    -10.140000    
-2024-01-01         Referral             12846.65         10505.847500  2340.80     Above Avg   NULL        NULL        No Change   NULL          
-2024-02-01         Referral             10650.62         10505.847500  144.77      Above Avg   12846.65    -2196.03    Decrease    -17.090000    
-2024-03-01         Referral             9748.54          10505.847500  -757.31     Below Avg   10650.62    -902.08     Decrease    -8.470000     
-2024-04-01         Referral             8777.58          10505.847500  -1728.27    Below Avg   9748.54     -970.96     Decrease    -9.960000     
-2024-01-01         TikTok Ads           10934.26         11163.937500  -229.68     Below Avg   NULL        NULL        No Change   NULL          
-2024-02-01         TikTok Ads           10762.91         11163.937500  -401.03     Below Avg   10934.26    -171.35     Decrease    -1.570000     
-2024-03-01         TikTok Ads           11256.53         11163.937500  92.59       Above Avg   10762.91    493.62      Increase    4.590000      
-2024-04-01         TikTok Ads           11702.05         11163.937500  538.11      Above Avg   11256.53    445.52      Increase    3.960000      
-((40 rows affected))
-
-3) CHANNELS
-=====================================
--- 3.3) BOFU Full-Funnel Contributers
---===================================
-performance_month  last_touch_channel  current_revenue  avg_revenue   diff_avg    avg_change  pm_revenue  diff_pm     pm_change   mom_percentage
------------------  ------------------  ---------------  ------------  ----------  ----------  ----------  ----------  ----------  --------------
-2024-01-01         Direct              7414.96          10218.637500  -2803.68    Below Avg   NULL        NULL        No Change   NULL          
-2024-02-01         Direct              12443.73         10218.637500  2225.09     Above Avg   7414.96     5028.77     Increase    67.820000     
-2024-03-01         Direct              11589.41         10218.637500  1370.77     Above Avg   12443.73    -854.32     Decrease    -6.870000     
-2024-04-01         Direct              9426.45          10218.637500  -792.19     Below Avg   11589.41    -2162.96    Decrease    -18.660000    
-2024-01-01         Email               7702.31          9407.202500   -1704.89    Below Avg   NULL        NULL        No Change   NULL          
-2024-02-01         Email               10573.31         9407.202500   1166.11     Above Avg   7702.31     2871.00     Increase    37.270000     
-2024-03-01         Email               10841.04         9407.202500   1433.84     Above Avg   10573.31    267.73      Increase    2.530000      
-2024-04-01         Email               8512.15          9407.202500   -895.05     Below Avg   10841.04    -2328.89    Decrease    -21.480000    
-2024-01-01         Facebook Ads        5971.33          9489.472500   -3518.14    Below Avg   NULL        NULL        No Change   NULL          
-2024-02-01         Facebook Ads        11329.13         9489.472500   1839.66     Above Avg   5971.33     5357.80     Increase    89.730000     
-2024-03-01         Facebook Ads        10620.08         9489.472500   1130.61     Above Avg   11329.13    -709.05     Decrease    -6.260000     
-2024-04-01         Facebook Ads        10037.35         9489.472500   547.88      Above Avg   10620.08    -582.73     Decrease    -5.490000     
-2024-01-01         Google Display      5527.63          10640.522500  -5112.89    Below Avg   NULL        NULL        No Change   NULL          
-2024-02-01         Google Display      13345.06         10640.522500  2704.54     Above Avg   5527.63     7817.43     Increase    141.420000    
-2024-03-01         Google Display      12561.22         10640.522500  1920.70     Above Avg   13345.06    -783.84     Decrease    -5.870000     
-2024-04-01         Google Display      11128.18         10640.522500  487.66      Above Avg   12561.22    -1433.04    Decrease    -11.410000    
-2024-01-01         Google Search       8368.39          10879.575000  -2511.19    Below Avg   NULL        NULL        No Change   NULL          
-2024-02-01         Google Search       13773.17         10879.575000  2893.60     Above Avg   8368.39     5404.78     Increase    64.590000     
-2024-03-01         Google Search       11917.70         10879.575000  1038.13     Above Avg   13773.17    -1855.47    Decrease    -13.470000    
-2024-04-01         Google Search       9459.04          10879.575000  -1420.54    Below Avg   11917.70    -2458.66    Decrease    -20.630000    
-2024-01-01         Instagram Ads       9038.24          10299.807500  -1261.57    Below Avg   NULL        NULL        No Change   NULL          
-2024-02-01         Instagram Ads       9363.57          10299.807500  -936.24     Below Avg   9038.24     325.33      Increase    3.600000      
-2024-03-01         Instagram Ads       9915.90          10299.807500  -383.91     Below Avg   9363.57     552.33      Increase    5.900000      
-2024-04-01         Instagram Ads       12881.52         10299.807500  2581.71     Above Avg   9915.90     2965.62     Increase    29.910000     
-2024-01-01         Organic Search      6400.53          9409.817500   -3009.29    Below Avg   NULL        NULL        No Change   NULL          
-2024-02-01         Organic Search      10411.90         9409.817500   1002.08     Above Avg   6400.53     4011.37     Increase    62.670000     
-2024-03-01         Organic Search      11968.77         9409.817500   2558.95     Above Avg   10411.90    1556.87     Increase    14.950000     
-2024-04-01         Organic Search      8858.07          9409.817500   -551.75     Below Avg   11968.77    -3110.70    Decrease    -25.990000    
-2024-01-01         Referral            7394.74          9317.465000   -1922.73    Below Avg   NULL        NULL        No Change   NULL          
-2024-02-01         Referral            10693.63         9317.465000   1376.17     Above Avg   7394.74     3298.89     Increase    44.610000     
-2024-03-01         Referral            11488.53         9317.465000   2171.07     Above Avg   10693.63    794.90      Increase    7.430000      
-2024-04-01         Referral            7692.96          9317.465000   -1624.51    Below Avg   11488.53    -3795.57    Decrease    -33.040000    
-2024-01-01         TikTok Ads          6767.26          9858.855000   -3091.60    Below Avg   NULL        NULL        No Change   NULL          
-2024-02-01         TikTok Ads          12619.96         9858.855000   2761.11     Above Avg   6767.26     5852.70     Increase    86.490000     
-2024-03-01         TikTok Ads          10757.31         9858.855000   898.46      Above Avg   12619.96    -1862.65    Decrease    -14.760000    
-2024-04-01         TikTok Ads          9290.89          9858.855000   -567.97     Below Avg   10757.31    -1466.42    Decrease    -13.630000    
-((36 rows affected))
-
--- 3.4) TOP 10 MoM TOFU/Multi/BOFU 
---==================================
--- Top 10 MoM channels within funnel - ORDER BY diff_pm DESC;
-====================================
-performance_month  channel         current_revenue  avg_revenue   diff_avg    avg_change  pm_revenue  diff_pm     pm_change   mom_percentage
------------------  --------------  ---------------  ------------  ----------  ----------  ----------  ----------  ----------  --------------
-2024-02-01         Direct          12916.49         10550.537500  2365.95     Above Avg   7072.62     5843.87     Increase    82.630000     
-2024-02-01         Google Search   14230.48         11864.695000  2365.79     Above Avg   8769.99     5460.49     Increase    62.260000     
-2024-02-01         TikTok Ads      12764.15         10570.912500  2193.24     Above Avg   7393.04     5371.11     Increase    72.650000     
-2024-02-01         Google Display  12662.75         10999.447500  1663.30     Above Avg   7500.24     5162.51     Increase    68.830000     
-2024-02-01         Facebook Ads    12203.93         10240.710000  1963.22     Above Avg   7156.83     5047.10     Increase    70.520000     
-2024-02-01         Email           12241.32         10277.225000  1964.10     Above Avg   7530.36     4710.96     Increase    62.560000     
-2024-02-01         Organic Search  11362.06         10267.647500  1094.41     Above Avg   6818.04     4544.02     Increase    66.650000     
-2024-02-01         Referral        11182.97         10293.705000  889.27      Above Avg   7739.99     3442.98     Increase    44.480000     
-2024-02-01         Instagram Ads   10747.18         10554.742500  192.44      Above Avg   8850.38     1896.80     Increase    21.430000     
-2024-03-01         Instagram Ads   12322.88         10554.742500  1768.14     Above Avg   10747.18    1575.70     Increase    14.660000     
-((10 rows affected))
-
-
--- Top 10 MoM channels within funnel - WHERE pm_revenue > ORDER BY mom_percentage DESC;
-====================================
-performance_month  channel         current_revenue  avg_revenue   diff_avg    avg_change  pm_revenue  diff_pm     pm_change   mom_percentage
------------------  --------------  ---------------  ------------  ----------  ----------  ----------  ----------  ----------  --------------
-2024-02-01         Direct          12916.49         10550.537500  2365.95     Above Avg   7072.62     5843.87     Increase    82.630000     
-2024-02-01         TikTok Ads      12764.15         10570.912500  2193.24     Above Avg   7393.04     5371.11     Increase    72.650000     
-2024-02-01         Facebook Ads    12203.93         10240.710000  1963.22     Above Avg   7156.83     5047.10     Increase    70.520000     
-2024-02-01         Google Display  12662.75         10999.447500  1663.30     Above Avg   7500.24     5162.51     Increase    68.830000     
-2024-02-01         Organic Search  11362.06         10267.647500  1094.41     Above Avg   6818.04     4544.02     Increase    66.650000     
-2024-02-01         Email           12241.32         10277.225000  1964.10     Above Avg   7530.36     4710.96     Increase    62.560000     
-2024-02-01         Google Search   14230.48         11864.695000  2365.79     Above Avg   8769.99     5460.49     Increase    62.260000     
-2024-02-01         Referral        11182.97         10293.705000  889.27      Above Avg   7739.99     3442.98     Increase    44.480000     
-2024-02-01         Instagram Ads   10747.18         10554.742500  192.44      Above Avg   8850.38     1896.80     Increase    21.430000     
-2024-03-01         Instagram Ads   12322.88         10554.742500  1768.14     Above Avg   10747.18    1575.70     Increase    14.660000     
-((10 rows affected))
-
-
--- Top 10 MoM acquisition channels - ORDER BY diff_pm DESC;
-=====================================
-performance_month  acquisition_channel  current_revenue  avg_revenue   diff_avg    avg_change  pm_revenue  diff_pm     pm_change   mom_percentage
------------------  -------------------  ---------------  ------------  ----------  ----------  ----------  ----------  ----------  --------------
-2024-02-01         Instagram Ads        12563.49         10794.412500  1769.08     Above Avg   10016.58    2546.91     Increase    25.430000     
-2024-04-01         Instagram Ads        11520.76         10794.412500  726.35      Above Avg   9076.82     2443.94     Increase    26.930000     
-2024-03-01         NULL                 6100.10          4846.375000   1253.73     Above Avg   3919.55     2180.55     Increase    55.630000     
-2024-02-01         Facebook Ads         12139.69         10533.817500  1605.87     Above Avg   10082.69    2057.00     Increase    20.400000     
-2024-02-01         Direct               11388.57         9533.875000   1854.70     Above Avg   9573.24     1815.33     Increase    18.960000     
-2024-03-01         Google Search        12819.30         10928.825000  1890.48     Above Avg   11730.01    1089.29     Increase    9.290000      
-2024-02-01         Organic Search       11552.46         11098.395000  454.07      Above Avg   10586.71    965.75      Increase    9.120000      
-2024-02-01         Email                12616.87         10816.632500  1800.24     Above Avg   11681.38    935.49      Increase    8.010000      
-2024-03-01         TikTok Ads           11256.53         11163.937500  92.59       Above Avg   10762.91    493.62      Increase    4.590000      
-2024-04-01         TikTok Ads           11702.05         11163.937500  538.11      Above Avg   11256.53    445.52      Increase    3.960000      
-((10 rows affected))
-
--- Top 10 MoM acquisition channels - WHERE pm_revenue > ORDER BY mom_percentage DESC;
-=====================================
-performance_month  acquisition_channel  current_revenue  avg_revenue   diff_avg    avg_change  pm_revenue  diff_pm     pm_change   mom_percentage
------------------  -------------------  ---------------  ------------  ----------  ----------  ----------  ----------  ----------  --------------
-2024-03-01         NULL                 6100.10          4846.375000   1253.73     Above Avg   3919.55     2180.55     Increase    55.630000     
-2024-04-01         Instagram Ads        11520.76         10794.412500  726.35      Above Avg   9076.82     2443.94     Increase    26.930000     
-2024-02-01         Instagram Ads        12563.49         10794.412500  1769.08     Above Avg   10016.58    2546.91     Increase    25.430000     
-2024-02-01         Facebook Ads         12139.69         10533.817500  1605.87     Above Avg   10082.69    2057.00     Increase    20.400000     
-2024-02-01         Direct               11388.57         9533.875000   1854.70     Above Avg   9573.24     1815.33     Increase    18.960000     
-2024-03-01         Google Search        12819.30         10928.825000  1890.48     Above Avg   11730.01    1089.29     Increase    9.290000      
-2024-02-01         Organic Search       11552.46         11098.395000  454.07      Above Avg   10586.71    965.75      Increase    9.120000      
-2024-02-01         Email                12616.87         10816.632500  1800.24     Above Avg   11681.38    935.49      Increase    8.010000      
-2024-03-01         TikTok Ads           11256.53         11163.937500  92.59       Above Avg   10762.91    493.62      Increase    4.590000      
-2024-04-01         TikTok Ads           11702.05         11163.937500  538.11      Above Avg   11256.53    445.52      Increase    3.960000      
-((10 rows affected))
-
--- Top 10 MoM last-touch channels - ORDER BY diff_pm DESC;
-=====================================
-performance_month  last_touch_channel  current_revenue  avg_revenue   diff_avg    avg_change  pm_revenue  diff_pm     pm_change   mom_percentage
------------------  ------------------  ---------------  ------------  ----------  ----------  ----------  ----------  ----------  --------------
-2024-02-01         Google Display      13345.06         10640.522500  2704.54     Above Avg   5527.63     7817.43     Increase    141.420000    
-2024-02-01         TikTok Ads          12619.96         9858.855000   2761.11     Above Avg   6767.26     5852.70     Increase    86.490000     
-2024-02-01         Google Search       13773.17         10879.575000  2893.60     Above Avg   8368.39     5404.78     Increase    64.590000     
-2024-02-01         Facebook Ads        11329.13         9489.472500   1839.66     Above Avg   5971.33     5357.80     Increase    89.730000     
-2024-02-01         Direct              12443.73         10218.637500  2225.09     Above Avg   7414.96     5028.77     Increase    67.820000     
-2024-02-01         Organic Search      10411.90         9409.817500   1002.08     Above Avg   6400.53     4011.37     Increase    62.670000     
-2024-02-01         Referral            10693.63         9317.465000   1376.17     Above Avg   7394.74     3298.89     Increase    44.610000     
-2024-04-01         Instagram Ads       12881.52         10299.807500  2581.71     Above Avg   9915.90     2965.62     Increase    29.910000     
-2024-02-01         Email               10573.31         9407.202500   1166.11     Above Avg   7702.31     2871.00     Increase    37.270000     
-2024-03-01         Organic Search      11968.77         9409.817500   2558.95     Above Avg   10411.90    1556.87     Increase    14.950000     
-((10 rows affected))
-
--- Top 10 MoM last-touch channels - WHERE pm_revenue > ORDER BY mom_percentage DESC;
-=====================================
-performance_month  last_touch_channel  current_revenue  avg_revenue   diff_avg    avg_change  pm_revenue  diff_pm     pm_change   mom_percentage
------------------  ------------------  ---------------  ------------  ----------  ----------  ----------  ----------  ----------  --------------
-2024-02-01         Google Display      13345.06         10640.522500  2704.54     Above Avg   5527.63     7817.43     Increase    141.420000    
-2024-02-01         Facebook Ads        11329.13         9489.472500   1839.66     Above Avg   5971.33     5357.80     Increase    89.730000     
-2024-02-01         TikTok Ads          12619.96         9858.855000   2761.11     Above Avg   6767.26     5852.70     Increase    86.490000     
-2024-02-01         Direct              12443.73         10218.637500  2225.09     Above Avg   7414.96     5028.77     Increase    67.820000     
-2024-02-01         Google Search       13773.17         10879.575000  2893.60     Above Avg   8368.39     5404.78     Increase    64.590000     
-2024-02-01         Organic Search      10411.90         9409.817500   1002.08     Above Avg   6400.53     4011.37     Increase    62.670000     
-2024-02-01         Referral            10693.63         9317.465000   1376.17     Above Avg   7394.74     3298.89     Increase    44.610000     
-2024-02-01         Email               10573.31         9407.202500   1166.11     Above Avg   7702.31     2871.00     Increase    37.270000     
-2024-04-01         Instagram Ads       12881.52         10299.807500  2581.71     Above Avg   9915.90     2965.62     Increase    29.910000     
-2024-03-01         Organic Search      11968.77         9409.817500   2558.95     Above Avg   10411.90    1556.87     Increase    14.950000     
-((10 rows affected))
 
 
 
