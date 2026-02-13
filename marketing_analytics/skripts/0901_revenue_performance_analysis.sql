@@ -1,3 +1,4 @@
+
 /*
 ===============================================================================
 Revenue Performance Analysis (Month-over-Month)
@@ -14,14 +15,14 @@ SQL Functions Used:
 
 Queries: 
     1) Revenue Performance monthly
-    2.1) Mid of Funnel (MOFU) Monthly Revenue Performance and MOM-Analysis by Campaigns
-    2.2) Top of Funnel (TOFU) Monthly Revenue Performance and MOM-Analysis by Campaigns
-    2.3) Bottom of Funnel (BOFU) Monthly Revenue Performance and MOM-Analysis by Campaigns
-    2.4) Top Ten MOM Campaigns by TOFU/MOFU/BOFU 
-    3.1) Mid of Funnel (MOFU) Monthly Revenue Performance and MOM-Analysis by Channels
-    3.2) Top of Funnel (TOFU) Monthly Revenue Performance and MOM-Analysis by Channels
-    3.3) Bottom of Funnel (BOFU) Monthly Revenue Performance and MOM-Analysis by Channels
-    3.4) Top Ten MOM Channels by TOFU/MOFU/BOFU 
+    2.1) Mid of Funnel (MOFU) Monthly Revenue Performance and MOM-Analysis by Channels
+    2.2) Top of Funnel (TOFU) Monthly Revenue Performance and MOM-Analysis by Channels
+    2.3) Bottom of Funnel (BOFU) Monthly Revenue Performance and MOM-Analysis by Channels
+    2.4) Top Ten MOM Channels by TOFU/MOFU/BOFU 
+    3.1) Mid of Funnel (MOFU) Monthly Revenue Performance and MOM-Analysis by Campaigns
+    3.2) Top of Funnel (TOFU) Monthly Revenue Performance and MOM-Analysis by Campaigns
+    3.3) Bottom of Funnel (BOFU) Monthly Revenue Performance and MOM-Analysis by Campaigns
+    3.4) Top Ten MOM Campaigns by TOFU/MOFU/BOFU 
     4.1) Mid of Funnel (MOFU) Monthly Revenue Performance and MOM-Analysis by Interaction Type
     4.2) Top Ten MOM Interaction Types by MUFO
 
@@ -80,13 +81,205 @@ ORDER BY performance_month;
 GO
 
 
+
 /*
 ===============================================================================
-2) CAMPAIGNS
+2) CHANNELS
 ===============================================================================
 */
 --===================================
 -- 2.1) MOFU Full-Funnel Contributers
+--=================================== 
+-- MoM by Multi-Touch Revenue Shares
+-- Analyze Month-over-Month performance of channels by comparing their revenue to both the average revenue performance of the channel and the previous month revenue 
+DROP VIEW IF EXISTS gold.funnel_channels_performance;
+GO
+
+CREATE VIEW gold.funnel_channels_performance AS
+WITH monthly_revenue AS (
+SELECT
+    DATEFROMPARTS(YEAR(purchase_date), MONTH(purchase_date), 1) performance_month, 
+    channel, 
+    SUM(revenue_share) AS current_revenue 
+FROM gold.fact_attribution_linear 
+GROUP BY DATEFROMPARTS(YEAR(purchase_date), MONTH(purchase_date), 1), channel
+) 
+SELECT 
+    performance_month,
+    channel,
+    current_revenue,
+    AVG(current_revenue) OVER(PARTITION BY channel) AS avg_revenue,
+    current_revenue - AVG(current_revenue) OVER(PARTITION BY channel) AS diff_avg,
+    CASE 
+        WHEN current_revenue - AVG(current_revenue) OVER(PARTITION BY channel) > 0 THEN 'Above Avg'
+        WHEN current_revenue - AVG(current_revenue) OVER(PARTITION BY channel) < 0 THEN 'Below Avg' 
+        ELSE 'Equals Average'
+    END AS avg_change,
+    -- Month-over_Month Analysis 
+    LAG(current_revenue) OVER(PARTITION BY channel ORDER BY performance_month) AS pm_revenue, 
+    current_revenue - LAG(current_revenue) OVER(PARTITION BY channel ORDER BY performance_month) AS diff_pm,
+    CASE 
+        WHEN current_revenue - LAG(current_revenue) OVER(PARTITION BY channel ORDER BY performance_month) > 0 THEN 'Increase'
+        WHEN current_revenue - LAG(current_revenue) OVER(PARTITION BY channel ORDER BY performance_month) < 0 THEN 'Decrease'
+        ELSE 'No Change'
+    END AS pm_change,
+    ROUND(
+        CASE 
+            WHEN LAG(current_revenue) OVER(PARTITION BY channel ORDER BY performance_month) = 0 THEN NULL 
+            ELSE (current_revenue - LAG(current_revenue) OVER(PARTITION BY   channel ORDER BY performance_month))/LAG(current_revenue) OVER(PARTITION BY channel ORDER BY performance_month)*100 
+        END
+    ,2) AS mom_percentage
+FROM monthly_revenue;
+GO
+
+SELECT *
+FROM gold.funnel_channels_performance
+ORDER BY channel, performance_month;
+GO
+
+--=====================================
+-- 2.2) TOFU Top of Funnel Contributers
+--=====================================
+-- MoM by Full Purchase Revenues
+-- Analyze Month-over-Month performance by acquisition channel to see which channels are bringing users in
+DROP VIEW IF EXISTS gold.acquisition_channels_performance;
+GO
+
+CREATE VIEW gold.acquisition_channels_performance AS
+WITH monthly_revenue AS (
+SELECT
+    DATEFROMPARTS(YEAR(purchase_date), MONTH(purchase_date), 1) AS performance_month, 
+    acquisition_channel, 
+    SUM(revenue) AS current_revenue 
+FROM gold.fact_purchases 
+GROUP BY DATEFROMPARTS(YEAR(purchase_date), MONTH(purchase_date), 1), acquisition_channel
+) 
+SELECT 
+    performance_month,
+    acquisition_channel,
+    current_revenue,
+    AVG(current_revenue) OVER(PARTITION BY acquisition_channel) AS avg_revenue,
+    current_revenue - AVG(current_revenue) OVER(PARTITION BY acquisition_channel) AS diff_avg,
+    CASE 
+        WHEN current_revenue - AVG(current_revenue) OVER(PARTITION BY acquisition_channel) > 0 THEN 'Above Avg'
+        WHEN current_revenue - AVG(current_revenue) OVER(PARTITION BY acquisition_channel) < 0 THEN 'Below Avg' 
+        ELSE 'Equals Average'
+    END AS avg_change,
+    -- Month-over_Month Analysis 
+    LAG(current_revenue) OVER(PARTITION BY acquisition_channel ORDER BY performance_month) AS pm_revenue, 
+    current_revenue - LAG(current_revenue) OVER(PARTITION BY acquisition_channel ORDER BY performance_month) AS diff_pm,
+    CASE 
+        WHEN current_revenue - LAG(current_revenue) OVER(PARTITION BY acquisition_channel ORDER BY performance_month) > 0 THEN 'Increase'
+        WHEN current_revenue - LAG(current_revenue) OVER(PARTITION BY acquisition_channel ORDER BY performance_month) < 0 THEN 'Decrease'
+        ELSE 'No Change'
+    END AS pm_change,
+    ROUND(
+        CASE 
+            WHEN LAG(current_revenue) OVER(PARTITION BY acquisition_channel ORDER BY performance_month) = 0 THEN NULL 
+            ELSE (current_revenue - LAG(current_revenue) OVER(PARTITION BY   acquisition_channel ORDER BY performance_month))/LAG(current_revenue) OVER(PARTITION BY acquisition_channel ORDER BY performance_month)*100 
+        END
+    ,2) AS mom_percentage
+FROM monthly_revenue;
+GO 
+
+SELECT * 
+FROM gold.acquisition_channels_performance
+ORDER BY acquisition_channel, performance_month;
+GO
+
+
+--==============================================
+-- 2.3) BOFU Bottom of Funnel Conversion Drivers
+--==============================================
+-- MoM by Full Purchase Revenues 
+-- Analyze Month-over-Month performance by last-touch channel to see which channels are driving conversion
+DROP VIEW IF EXISTS gold.last_touch_channels_performance;
+GO
+
+CREATE VIEW gold.last_touch_channels_performance AS
+WITH monthly_revenue AS (
+SELECT
+    DATEFROMPARTS(YEAR(purchase_date), MONTH(purchase_date), 1) AS performance_month, 
+    last_touch_channel, 
+    SUM(revenue) AS current_revenue 
+FROM gold.fact_attribution_last_touch 
+GROUP BY DATEFROMPARTS(YEAR(purchase_date), MONTH(purchase_date), 1), last_touch_channel
+) 
+SELECT 
+    performance_month,
+    last_touch_channel, 
+    current_revenue,
+    AVG(current_revenue) OVER(PARTITION BY last_touch_channel) AS avg_revenue,
+    current_revenue - AVG(current_revenue) OVER(PARTITION BY last_touch_channel) AS diff_avg,
+    CASE 
+        WHEN current_revenue - AVG(current_revenue) OVER(PARTITION BY last_touch_channel) > 0 THEN 'Above Avg'
+        WHEN current_revenue - AVG(current_revenue) OVER(PARTITION BY last_touch_channel) < 0 THEN 'Below Avg' 
+        ELSE 'Equals Average'
+    END AS avg_change,
+    -- Month-over_Month Analysis 
+    LAG(current_revenue) OVER(PARTITION BY last_touch_channel ORDER BY performance_month) AS pm_revenue, 
+    current_revenue - LAG(current_revenue) OVER(PARTITION BY last_touch_channel ORDER BY performance_month) AS diff_pm,
+    CASE 
+        WHEN current_revenue - LAG(current_revenue) OVER(PARTITION BY last_touch_channel ORDER BY performance_month) > 0 THEN 'Increase'
+        WHEN current_revenue - LAG(current_revenue) OVER(PARTITION BY last_touch_channel ORDER BY performance_month) < 0 THEN 'Decrease'
+        ELSE 'No Change'
+    END AS pm_change,
+    ROUND(
+        CASE 
+            WHEN LAG(current_revenue) OVER(PARTITION BY last_touch_channel ORDER BY performance_month) = 0 THEN NULL 
+            ELSE (current_revenue - LAG(current_revenue) OVER(PARTITION BY   last_touch_channel ORDER BY performance_month))/LAG(current_revenue) OVER(PARTITION BY last_touch_channel ORDER BY performance_month)*100 
+        END
+    ,2) AS mom_percentage
+FROM monthly_revenue;
+GO 
+
+SELECT * 
+FROM gold.last_touch_channels_performance
+ORDER BY last_touch_channel, performance_month;
+
+
+--==================================
+-- 2.4) TOP 10 MoM TOFU/Multi/BOFU 
+--==================================
+-- Top 10 MoM channels within funnel
+SELECT TOP 10 *
+FROM gold.funnel_channels_performance
+ORDER BY diff_pm DESC;
+
+SELECT TOP 10 *
+FROM gold.funnel_channels_performance
+WHERE pm_revenue > 0
+ORDER BY mom_percentage DESC;
+
+-- Top 10 MoM acquisition channels
+SELECT TOP 10 *
+FROM gold.acquisition_channels_performance
+ORDER BY diff_pm DESC;
+
+SELECT TOP 10 *
+FROM gold.acquisition_channels_performance
+WHERE pm_revenue > 0
+ORDER BY mom_percentage DESC;
+
+-- Top 10 MoM last-touch campaigns
+SELECT TOP 10 *
+FROM gold.last_touch_channels_performance
+ORDER BY diff_pm DESC;
+
+SELECT TOP 10 *
+FROM gold.last_touch_channels_performance
+WHERE pm_revenue > 0
+ORDER BY mom_percentage DESC;
+
+
+
+/*
+===============================================================================
+3) CAMPAIGNS
+===============================================================================
+*/
+--===================================
+-- 3.1) MOFU Full-Funnel Contributers
 --=================================== 
 -- MoM by Multi-Touch Revenue Shares
 -- Analyze Month-over-Month performance of campaigns by comparing their revenue to both the average revenue performance of the campaign and the previous month evenue 
@@ -141,7 +334,7 @@ ORDER BY campaign_id, performance_month;
 GO
 
 --=====================================
--- 2.2) TOFU Top of Funnel Contributers
+-- 3.2) TOFU Top of Funnel Contributers
 --=====================================
 -- MoM by Full Purchase Revenues
 -- Analyze Month-over-Month performance by acquisition campaign to see which campaigns are bringing users in
@@ -196,7 +389,7 @@ ORDER BY acquisition_campaign, performance_month;
 GO
 
 --==============================================
--- 2.3) BOFU Bottom of Funnel Conversion Drivers
+-- 3.3) BOFU Bottom of Funnel Conversion Drivers
 --==============================================
 -- MoM by Full Purchase Revenues 
 -- Analyze Month-over-Month performance by last-touch campaign to see which campaigns are driving conversion
@@ -251,7 +444,7 @@ ORDER BY last_touch_campaign, performance_month;
 
 
 --==================================
--- 2.4) TOP 10 MoM TOFU/Multi/BOFU 
+-- 3.4) TOP 10 MoM TOFU/Multi/BOFU 
 --==================================
 -- Top 10 MoM campaigns within funnel
 SELECT TOP 10 *
@@ -283,195 +476,6 @@ FROM gold.last_touch_campaigns_performance
 WHERE pm_revenue > 0
 ORDER BY mom_percentage DESC;
 
-
-/*
-===============================================================================
-3) CHANNELS
-===============================================================================
-*/
---===================================
--- 3.1) MOFU Full-Funnel Contributers
---=================================== 
--- MoM by Multi-Touch Revenue Shares
--- Analyze Month-over-Month performance of channels by comparing their revenue to both the average revenue performance of the channel and the previous month revenue 
-DROP VIEW IF EXISTS gold.funnel_channels_performance;
-GO
-
-CREATE VIEW gold.funnel_channels_performance AS
-WITH monthly_revenue AS (
-SELECT
-    DATEFROMPARTS(YEAR(purchase_date), MONTH(purchase_date), 1) performance_month, 
-    channel, 
-    SUM(revenue_share) AS current_revenue 
-FROM gold.fact_attribution_linear 
-GROUP BY DATEFROMPARTS(YEAR(purchase_date), MONTH(purchase_date), 1), channel
-) 
-SELECT 
-    performance_month,
-    channel,
-    current_revenue,
-    AVG(current_revenue) OVER(PARTITION BY channel) AS avg_revenue,
-    current_revenue - AVG(current_revenue) OVER(PARTITION BY channel) AS diff_avg,
-    CASE 
-        WHEN current_revenue - AVG(current_revenue) OVER(PARTITION BY channel) > 0 THEN 'Above Avg'
-        WHEN current_revenue - AVG(current_revenue) OVER(PARTITION BY channel) < 0 THEN 'Below Avg' 
-        ELSE 'Equals Average'
-    END AS avg_change,
-    -- Month-over_Month Analysis 
-    LAG(current_revenue) OVER(PARTITION BY channel ORDER BY performance_month) AS pm_revenue, 
-    current_revenue - LAG(current_revenue) OVER(PARTITION BY channel ORDER BY performance_month) AS diff_pm,
-    CASE 
-        WHEN current_revenue - LAG(current_revenue) OVER(PARTITION BY channel ORDER BY performance_month) > 0 THEN 'Increase'
-        WHEN current_revenue - LAG(current_revenue) OVER(PARTITION BY channel ORDER BY performance_month) < 0 THEN 'Decrease'
-        ELSE 'No Change'
-    END AS pm_change,
-    ROUND(
-        CASE 
-            WHEN LAG(current_revenue) OVER(PARTITION BY channel ORDER BY performance_month) = 0 THEN NULL 
-            ELSE (current_revenue - LAG(current_revenue) OVER(PARTITION BY   channel ORDER BY performance_month))/LAG(current_revenue) OVER(PARTITION BY channel ORDER BY performance_month)*100 
-        END
-    ,2) AS mom_percentage
-FROM monthly_revenue;
-GO
-
-SELECT *
-FROM gold.funnel_channels_performance
-ORDER BY channel, performance_month;
-GO
-
---=====================================
--- 3.2) TOFU Top of Funnel Contributers
---=====================================
--- MoM by Full Purchase Revenues
--- Analyze Month-over-Month performance by acquisition channel to see which channels are bringing users in
-DROP VIEW IF EXISTS gold.acquisition_channels_performance;
-GO
-
-CREATE VIEW gold.acquisition_channels_performance AS
-WITH monthly_revenue AS (
-SELECT
-    DATEFROMPARTS(YEAR(purchase_date), MONTH(purchase_date), 1) AS performance_month, 
-    acquisition_channel, 
-    SUM(revenue) AS current_revenue 
-FROM gold.fact_purchases 
-GROUP BY DATEFROMPARTS(YEAR(purchase_date), MONTH(purchase_date), 1), acquisition_channel
-) 
-SELECT 
-    performance_month,
-    acquisition_channel,
-    current_revenue,
-    AVG(current_revenue) OVER(PARTITION BY acquisition_channel) AS avg_revenue,
-    current_revenue - AVG(current_revenue) OVER(PARTITION BY acquisition_channel) AS diff_avg,
-    CASE 
-        WHEN current_revenue - AVG(current_revenue) OVER(PARTITION BY acquisition_channel) > 0 THEN 'Above Avg'
-        WHEN current_revenue - AVG(current_revenue) OVER(PARTITION BY acquisition_channel) < 0 THEN 'Below Avg' 
-        ELSE 'Equals Average'
-    END AS avg_change,
-    -- Month-over_Month Analysis 
-    LAG(current_revenue) OVER(PARTITION BY acquisition_channel ORDER BY performance_month) AS pm_revenue, 
-    current_revenue - LAG(current_revenue) OVER(PARTITION BY acquisition_channel ORDER BY performance_month) AS diff_pm,
-    CASE 
-        WHEN current_revenue - LAG(current_revenue) OVER(PARTITION BY acquisition_channel ORDER BY performance_month) > 0 THEN 'Increase'
-        WHEN current_revenue - LAG(current_revenue) OVER(PARTITION BY acquisition_channel ORDER BY performance_month) < 0 THEN 'Decrease'
-        ELSE 'No Change'
-    END AS pm_change,
-    ROUND(
-        CASE 
-            WHEN LAG(current_revenue) OVER(PARTITION BY acquisition_channel ORDER BY performance_month) = 0 THEN NULL 
-            ELSE (current_revenue - LAG(current_revenue) OVER(PARTITION BY   acquisition_channel ORDER BY performance_month))/LAG(current_revenue) OVER(PARTITION BY acquisition_channel ORDER BY performance_month)*100 
-        END
-    ,2) AS mom_percentage
-FROM monthly_revenue;
-GO 
-
-SELECT * 
-FROM gold.acquisition_channels_performance
-ORDER BY acquisition_channel, performance_month;
-GO
-
-
---==============================================
--- 3.3) BOFU Bottom of Funnel Conversion Drivers
---==============================================
--- MoM by Full Purchase Revenues 
--- Analyze Month-over-Month performance by last-touch channel to see which channels are driving conversion
-DROP VIEW IF EXISTS gold.last_touch_channels_performance;
-GO
-
-CREATE VIEW gold.last_touch_channels_performance AS
-WITH monthly_revenue AS (
-SELECT
-    DATEFROMPARTS(YEAR(purchase_date), MONTH(purchase_date), 1) AS performance_month, 
-    last_touch_channel, 
-    SUM(revenue) AS current_revenue 
-FROM gold.fact_attribution_last_touch 
-GROUP BY DATEFROMPARTS(YEAR(purchase_date), MONTH(purchase_date), 1), last_touch_channel
-) 
-SELECT 
-    performance_month,
-    last_touch_channel, 
-    current_revenue,
-    AVG(current_revenue) OVER(PARTITION BY last_touch_channel) AS avg_revenue,
-    current_revenue - AVG(current_revenue) OVER(PARTITION BY last_touch_channel) AS diff_avg,
-    CASE 
-        WHEN current_revenue - AVG(current_revenue) OVER(PARTITION BY last_touch_channel) > 0 THEN 'Above Avg'
-        WHEN current_revenue - AVG(current_revenue) OVER(PARTITION BY last_touch_channel) < 0 THEN 'Below Avg' 
-        ELSE 'Equals Average'
-    END AS avg_change,
-    -- Month-over_Month Analysis 
-    LAG(current_revenue) OVER(PARTITION BY last_touch_channel ORDER BY performance_month) AS pm_revenue, 
-    current_revenue - LAG(current_revenue) OVER(PARTITION BY last_touch_channel ORDER BY performance_month) AS diff_pm,
-    CASE 
-        WHEN current_revenue - LAG(current_revenue) OVER(PARTITION BY last_touch_channel ORDER BY performance_month) > 0 THEN 'Increase'
-        WHEN current_revenue - LAG(current_revenue) OVER(PARTITION BY last_touch_channel ORDER BY performance_month) < 0 THEN 'Decrease'
-        ELSE 'No Change'
-    END AS pm_change,
-    ROUND(
-        CASE 
-            WHEN LAG(current_revenue) OVER(PARTITION BY last_touch_channel ORDER BY performance_month) = 0 THEN NULL 
-            ELSE (current_revenue - LAG(current_revenue) OVER(PARTITION BY   last_touch_channel ORDER BY performance_month))/LAG(current_revenue) OVER(PARTITION BY last_touch_channel ORDER BY performance_month)*100 
-        END
-    ,2) AS mom_percentage
-FROM monthly_revenue;
-GO 
-
-SELECT * 
-FROM gold.last_touch_channels_performance
-ORDER BY last_touch_channel, performance_month;
-
-
---==================================
--- 3.4) TOP 10 MoM TOFU/Multi/BOFU 
---==================================
--- Top 10 MoM channels within funnel
-SELECT TOP 10 *
-FROM gold.funnel_channels_performance
-ORDER BY diff_pm DESC;
-
-SELECT TOP 10 *
-FROM gold.funnel_channels_performance
-WHERE pm_revenue > 0
-ORDER BY mom_percentage DESC;
-
--- Top 10 MoM acquisition channels
-SELECT TOP 10 *
-FROM gold.acquisition_channels_performance
-ORDER BY diff_pm DESC;
-
-SELECT TOP 10 *
-FROM gold.acquisition_channels_performance
-WHERE pm_revenue > 0
-ORDER BY mom_percentage DESC;
-
--- Top 10 MoM last-touch campaigns
-SELECT TOP 10 *
-FROM gold.last_touch_channels_performance
-ORDER BY diff_pm DESC;
-
-SELECT TOP 10 *
-FROM gold.last_touch_channels_performance
-WHERE pm_revenue > 0
-ORDER BY mom_percentage DESC;
 
 
 /*
