@@ -15,14 +15,15 @@ SQL Functions Used:
 Queries: 
     1) AOV overall 
     2) AOV Performance monthly
-    3.1) Mid of Funnel (MOFU) Monthly AOV Performance and MOM-Analysis by Campaigns
-    3.2) Top of Funnel (TOFU) Monthly AOV Performance and MOM-Analysis by Campaigns
-    3.3) Bottom of Funnel (BOFU) Monthly AOV Performance and MOM-Analysis by Campaigns
-    3.4) Top 10 Improvements/Declines MoM AOV Campaigns
-    4.1) Mid of Funnel (MOFU) Monthly AOV Performance and MOM-Analysis by Channels
-    4.2) Top of Funnel (TOFU) Monthly AOV Performance and MOM-Analysis by Channels
-    4.3) Bottom of Funnel (BOFU) Monthly AOV Performance and MOM-Analysis by Channels
-    4.4) Top 10 Improvements/Declines MoM AOV Channels
+    3.1) Mid of Funnel (MOFU) Monthly AOV Performance and MOM-Analysis by Channels
+    3.2) Top of Funnel (TOFU) Monthly AOV Performance and MOM-Analysis by Channels
+    3.3) Bottom of Funnel (BOFU) Monthly AOV Performance and MOM-Analysis by Channels
+    3.4) Top 10 Improvements/Declines MoM AOV Channels
+    4.1) Mid of Funnel (MOFU) Monthly AOV Performance and MOM-Analysis by Campaigns
+    4.2) Top of Funnel (TOFU) Monthly AOV Performance and MOM-Analysis by Campaigns
+    4.3) Bottom of Funnel (BOFU) Monthly AOV Performance and MOM-Analysis by Campaigns
+    4.4) Top 10 Improvements/Declines MoM AOV Campaigns
+    
 
 ===============================================================================
 */
@@ -113,11 +114,282 @@ GO
 
 /*
 ===============================================================================
-3) CAMPAIGNS
+3) CHANNELS
 ===============================================================================
 */
 --===================================
 -- 3.1) MOFU Full-Funnel Contributers
+--=================================== 
+-- MoM by Multi-Touch Revenue Shares and Monthly Orders
+-- Analyze Month-over-Month AOV performance of channels by comparing their AOV to both the average AOV performance of the channel and the previous month AOV 
+DROP VIEW IF EXISTS gold.channels_aov;
+GO
+
+CREATE VIEW gold.channels_aov AS
+WITH monthly_revenue AS (
+SELECT
+    DATEFROMPARTS(YEAR(purchase_date), MONTH(purchase_date), 1) AS performance_month, 
+    channel,
+    SUM(revenue_share) AS current_revenue 
+FROM gold.fact_attribution_linear 
+WHERE channel IS NOT NULL
+GROUP BY DATEFROMPARTS(YEAR(purchase_date), MONTH(purchase_date), 1), channel
+), 
+monthly_orders AS (
+SELECT 
+    DATEFROMPARTS(YEAR(purchase_date), MONTH(purchase_date), 1) AS performance_month,
+    channel, 
+    COUNT(DISTINCT purchase_id) AS current_orders
+FROM gold.fact_attribution_linear
+WHERE channel IS NOT NULL 
+GROUP BY DATEFROMPARTS(YEAR(purchase_date), MONTH(purchase_date), 1), channel
+), 
+aov_metrics AS (
+SELECT
+    COALESCE(r.performance_month, o.performance_month) AS performance_month,
+    r.channel,
+    r.current_revenue,
+    o.current_orders,
+    r.current_revenue/NULLIF(o.current_orders, 0) AS aov
+FROM monthly_revenue r
+INNER JOIN monthly_orders o
+ON r.performance_month = o.performance_month 
+    AND r.channel = o.channel
+
+)
+
+SELECT 
+    performance_month,
+    channel,
+    current_revenue,
+    current_orders,
+    aov AS current_aov,
+    AVG(aov) OVER(PARTITION BY channel) AS avg_aov,
+    (aov) - AVG(aov) OVER(PARTITION BY channel) AS diff_avg,
+    CASE 
+        WHEN (aov) - AVG(aov) OVER(PARTITION BY channel) > 0 THEN 'Above Avg'
+        WHEN (aov) - AVG(aov) OVER(PARTITION BY channel) < 0 THEN 'Below Avg' 
+        ELSE 'Equals Average'
+    END AS avg_change,
+    -- Month-over_Month Analysis 
+    LAG(aov) OVER(PARTITION BY channel ORDER BY performance_month) AS pm_aov, 
+    (aov) - LAG(aov) OVER(PARTITION BY channel ORDER BY performance_month) AS diff_pm_aov,
+    CASE 
+        WHEN (aov) - LAG(aov) OVER(PARTITION BY channel ORDER BY performance_month) > 0 THEN 'Increase'
+        WHEN (aov) - LAG(aov) OVER(PARTITION BY channel ORDER BY performance_month) < 0 THEN 'Decrease'
+        ELSE 'No Change'
+    END AS pm_change,
+    ROUND(
+        CASE 
+            WHEN LAG(aov) OVER(PARTITION BY channel ORDER BY performance_month) = 0 THEN NULL 
+            ELSE ((aov) - LAG(aov) OVER(PARTITION BY channel ORDER BY performance_month))/LAG(aov) OVER(PARTITION BY channel ORDER BY performance_month)*100 
+        END
+    ,2) AS mom_percentage
+FROM aov_metrics;
+GO
+
+SELECT *
+FROM gold.channels_aov
+WHERE current_orders > 0
+ORDER BY channel, performance_month;
+GO
+
+
+--=====================================
+-- 3.2) TOFU Top of Funnel Contributers
+--=====================================
+-- MoM by Full Purchase Revenues and Monthly Orders
+-- Analyze Month-over-Month aov performance by acquisition channel to see the quality of new users
+DROP VIEW IF EXISTS gold.acquisition_channels_aov;
+GO
+
+CREATE VIEW gold.acquisition_channels_aov AS
+WITH monthly_revenue AS (
+SELECT
+    DATEFROMPARTS(YEAR(f.purchase_date), MONTH(f.purchase_date), 1) AS performance_month, 
+    p.acquisition_channel, 
+    SUM(f.revenue_share) AS current_revenue 
+FROM gold.fact_attribution_linear f
+LEFT JOIN gold.fact_purchases p 
+ON f.purchase_id = p.purchase_id
+WHERE p.acquisition_channel IS NOT NULL
+GROUP BY DATEFROMPARTS(YEAR(f.purchase_date), MONTH(f.purchase_date), 1), p.acquisition_channel
+), 
+monthly_orders AS (
+SELECT 
+    DATEFROMPARTS(YEAR(f.purchase_date), MONTH(f.purchase_date), 1) AS performance_month,
+    p.acquisition_channel, 
+    COUNT(DISTINCT f.purchase_id) AS current_orders
+FROM gold.fact_attribution_linear f 
+LEFT JOIN gold.fact_purchases p 
+ON f.purchase_id = p.purchase_id 
+WHERE p.acquisition_channel IS NOT NULL 
+GROUP BY DATEFROMPARTS(YEAR(f.purchase_date), MONTH(f.purchase_date), 1), p.acquisition_channel
+),
+aov_metrics AS (
+SELECT
+    COALESCE(r.performance_month, o.performance_month) AS performance_month,
+    r.acquisition_channel, 
+    r.current_revenue,
+    o.current_orders,
+    r.current_revenue/NULLIF(o.current_orders, 0) AS aov
+FROM monthly_revenue r
+INNER JOIN monthly_orders o
+ON r.performance_month = o.performance_month 
+    AND r.acquisition_channel = o.acquisition_channel
+)
+
+SELECT 
+    performance_month,
+    acquisition_channel, 
+    current_revenue,
+    current_orders,
+    aov AS current_aov,
+    AVG(aov) OVER(PARTITION BY acquisition_channel) AS avg_aov,
+    (aov) - AVG(aov) OVER(PARTITION BY acquisition_channel) AS diff_avg,
+    CASE 
+        WHEN (aov) - AVG(aov) OVER(PARTITION BY acquisition_channel) > 0 THEN 'Above Avg'
+        WHEN (aov) - AVG(aov) OVER(PARTITION BY acquisition_channel) < 0 THEN 'Below Avg' 
+        ELSE 'Equals Average'
+    END AS avg_change,
+    -- Month-over_Month Analysis 
+    LAG(aov) OVER(PARTITION BY acquisition_channel ORDER BY performance_month) AS pm_aov, 
+    (aov) - LAG(aov) OVER(PARTITION BY acquisition_channel ORDER BY performance_month) AS diff_pm_aov,
+    CASE 
+        WHEN (aov) - LAG(aov) OVER(PARTITION BY acquisition_channel ORDER BY performance_month) > 0 THEN 'Increase'
+        WHEN (aov) - LAG(aov) OVER(PARTITION BY acquisition_channel ORDER BY performance_month) < 0 THEN 'Decrease'
+        ELSE 'No Change'
+    END AS pm_change,
+    ROUND(
+        CASE 
+            WHEN LAG(aov) OVER(PARTITION BY acquisition_channel ORDER BY performance_month) = 0 THEN NULL 
+            ELSE ((aov) - LAG(aov) OVER(PARTITION BY acquisition_channel ORDER BY performance_month))/LAG(aov) OVER(PARTITION BY acquisition_channel ORDER BY performance_month)*100 
+        END
+    ,2) AS mom_percentage
+FROM aov_metrics;
+GO
+
+SELECT *
+FROM gold.acquisition_channels_aov
+WHERE current_orders > 0
+ORDER BY acquisition_channel, performance_month;
+GO
+
+
+
+--==============================================
+-- 3.3) BOFU Bottom of Funnel Conversion Drivers
+--==============================================
+-- MoM by Full Purchase Revenues and Monthly Orders
+-- Analyze Month-over-Month aov performance by last-touch channels to see closing stage value
+DROP VIEW IF EXISTS gold.last_touch_channels_aov;
+GO
+
+CREATE VIEW gold.last_touch_channels_aov AS
+WITH monthly_revenue AS (
+SELECT
+    DATEFROMPARTS(YEAR(f.purchase_date), MONTH(f.purchase_date), 1) AS performance_month, 
+    f.last_touch_channel, 
+    SUM(f.revenue) AS current_revenue 
+FROM gold.fact_attribution_last_touch f
+WHERE f.last_touch_channel IS NOT NULL
+GROUP BY DATEFROMPARTS(YEAR(f.purchase_date), MONTH(f.purchase_date), 1), f.last_touch_channel
+), 
+monthly_orders AS (
+SELECT 
+    DATEFROMPARTS(YEAR(purchase_date), MONTH(purchase_date), 1) AS performance_month,
+    last_touch_channel, 
+    COUNT(purchase_id) AS current_orders
+FROM gold.fact_attribution_last_touch
+WHERE last_touch_channel IS NOT NULL 
+GROUP BY DATEFROMPARTS(YEAR(purchase_date), MONTH(purchase_date), 1), last_touch_channel
+), 
+aov_metrics AS (
+SELECT
+    COALESCE(r.performance_month, o.performance_month) AS performance_month,
+    r.last_touch_channel,
+    r.current_revenue,
+    o.current_orders,
+    r.current_revenue/NULLIF(o.current_orders, 0) AS aov
+FROM monthly_revenue r
+INNER JOIN monthly_orders o
+ON r.performance_month = o.performance_month 
+    AND r.last_touch_channel = o.last_touch_channel
+)
+
+SELECT 
+    performance_month,
+    last_touch_channel,
+    current_revenue,
+    current_orders,
+    aov AS current_aov,
+    AVG(aov) OVER(PARTITION BY last_touch_channel) AS avg_aov,
+    (aov) - AVG(aov) OVER(PARTITION BY last_touch_channel) AS diff_avg,
+    CASE 
+        WHEN (aov) - AVG(aov) OVER(PARTITION BY last_touch_channel) > 0 THEN 'Above Avg'
+        WHEN (aov) - AVG(aov) OVER(PARTITION BY last_touch_channel) < 0 THEN 'Below Avg' 
+        ELSE 'Equals Average'
+    END AS avg_change,
+
+    -- Month-over_Month Analysis 
+    LAG(aov) OVER(PARTITION BY last_touch_channel ORDER BY performance_month) AS pm_aov, 
+    (aov) - LAG(aov) OVER(PARTITION BY last_touch_channel ORDER BY performance_month) AS diff_pm_aov,
+    CASE 
+        WHEN (aov) - LAG(aov) OVER(PARTITION BY last_touch_channel ORDER BY performance_month) > 0 THEN 'Increase'
+        WHEN (aov) - LAG(aov) OVER(PARTITION BY last_touch_channel ORDER BY performance_month) < 0 THEN 'Decrease'
+        ELSE 'No Change'
+    END AS pm_change,
+    ROUND(
+        CASE 
+            WHEN LAG(aov) OVER(PARTITION BY last_touch_channel ORDER BY performance_month) = 0 THEN NULL 
+            ELSE ((aov) - LAG(aov) OVER(PARTITION BY last_touch_channel ORDER BY performance_month))/LAG(aov) OVER(PARTITION BY last_touch_channel ORDER BY performance_month)*100 
+        END
+    ,2) AS mom_percentage
+FROM aov_metrics;
+GO
+
+SELECT *
+FROM gold.last_touch_channels_aov
+WHERE current_orders > 0 
+ORDER BY last_touch_channel, performance_month;
+GO
+
+
+--====================================================
+-- 3.4) Top 10 Improvements/Declines MoM AOV Channels
+--====================================================
+
+-- Top 10 improvements:
+SELECT TOP 10 *
+FROM gold.channels_aov
+WHERE diff_pm_aov IS NOT NULL
+ORDER BY diff_pm_aov DESC; 
+
+SELECT TOP 10 *
+FROM gold.channels_aov
+WHERE pm_aov IS NOT NULL
+ORDER BY mom_percentage DESC;
+
+-- Top 10 declines:
+SELECT TOP 10 *
+FROM gold.channels_aov
+WHERE diff_pm_aov IS NOT NULL
+ORDER BY diff_pm_aov ASC; 
+
+SELECT TOP 10 *
+FROM gold.channels_aov
+WHERE pm_aov IS NOT NULL
+ORDER BY mom_percentage ASC;
+
+
+
+/*
+===============================================================================
+4) CAMPAIGNS
+===============================================================================
+*/
+--===================================
+-- 4.1) MOFU Full-Funnel Contributers
 --=================================== 
 -- MoM by Multi-Touch Revenue Shares and Monthly Orders
 -- Analyze Month-over-Month AOV performance of campaigns by comparing their AOV to both the average AOV performance of the campaign and the previous month AOV 
@@ -200,7 +472,7 @@ GO
 
 
 --=====================================
--- 3.2) TOFU Top of Funnel Contributers
+-- 4.2) TOFU Top of Funnel Contributers
 --=====================================
 -- MoM by Full Purchase Revenues and Monthly Orders
 -- Analyze Month-over-Month aov performance by acquisition campaign to see the quality of new users
@@ -286,7 +558,7 @@ GO
 
 
 --==============================================
--- 3.3) BOFU Bottom of Funnel Conversion Drivers
+-- 4.3) BOFU Bottom of Funnel Conversion Drivers
 --==============================================
 -- MoM by Full Purchase Revenues and Monthly Orders
 -- Analyze Month-over-Month aov performance by last-touch campaign to see closing stage value
@@ -367,9 +639,9 @@ ORDER BY last_touch_campaign, performance_month;
 GO
 
 --====================================================
--- 3.4) Top 10 Improvements/Declines MoM AOV Campaigns
+-- 4.4) Top 10 Improvements/Declines MoM AOV Campaigns
 --====================================================
-/*
+
 -- Top 10 improvements:
 SELECT TOP 10 *
 FROM gold.campaigns_aov
@@ -391,274 +663,5 @@ SELECT TOP 10 *
 FROM gold.campaigns_aov
 WHERE pm_aov IS NOT NULL
 ORDER BY mom_percentage ASC;
-*/
-
-/*
-===============================================================================
-4) CHANNELS
-===============================================================================
-*/
---===================================
--- 4.1) MOFU Full-Funnel Contributers
---=================================== 
--- MoM by Multi-Touch Revenue Shares and Monthly Orders
--- Analyze Month-over-Month AOV performance of channels by comparing their AOV to both the average AOV performance of the channel and the previous month AOV 
-DROP VIEW IF EXISTS gold.channels_aov;
-GO
-
-CREATE VIEW gold.channels_aov AS
-WITH monthly_revenue AS (
-SELECT
-    DATEFROMPARTS(YEAR(purchase_date), MONTH(purchase_date), 1) AS performance_month, 
-    channel,
-    SUM(revenue_share) AS current_revenue 
-FROM gold.fact_attribution_linear 
-WHERE channel IS NOT NULL
-GROUP BY DATEFROMPARTS(YEAR(purchase_date), MONTH(purchase_date), 1), channel
-), 
-monthly_orders AS (
-SELECT 
-    DATEFROMPARTS(YEAR(purchase_date), MONTH(purchase_date), 1) AS performance_month,
-    channel, 
-    COUNT(DISTINCT purchase_id) AS current_orders
-FROM gold.fact_attribution_linear
-WHERE channel IS NOT NULL 
-GROUP BY DATEFROMPARTS(YEAR(purchase_date), MONTH(purchase_date), 1), channel
-), 
-aov_metrics AS (
-SELECT
-    COALESCE(r.performance_month, o.performance_month) AS performance_month,
-    r.channel,
-    r.current_revenue,
-    o.current_orders,
-    r.current_revenue/NULLIF(o.current_orders, 0) AS aov
-FROM monthly_revenue r
-INNER JOIN monthly_orders o
-ON r.performance_month = o.performance_month 
-    AND r.channel = o.channel
-
-)
-
-SELECT 
-    performance_month,
-    channel,
-    current_revenue,
-    current_orders,
-    aov AS current_aov,
-    AVG(aov) OVER(PARTITION BY channel) AS avg_aov,
-    (aov) - AVG(aov) OVER(PARTITION BY channel) AS diff_avg,
-    CASE 
-        WHEN (aov) - AVG(aov) OVER(PARTITION BY channel) > 0 THEN 'Above Avg'
-        WHEN (aov) - AVG(aov) OVER(PARTITION BY channel) < 0 THEN 'Below Avg' 
-        ELSE 'Equals Average'
-    END AS avg_change,
-    -- Month-over_Month Analysis 
-    LAG(aov) OVER(PARTITION BY channel ORDER BY performance_month) AS pm_aov, 
-    (aov) - LAG(aov) OVER(PARTITION BY channel ORDER BY performance_month) AS diff_pm_aov,
-    CASE 
-        WHEN (aov) - LAG(aov) OVER(PARTITION BY channel ORDER BY performance_month) > 0 THEN 'Increase'
-        WHEN (aov) - LAG(aov) OVER(PARTITION BY channel ORDER BY performance_month) < 0 THEN 'Decrease'
-        ELSE 'No Change'
-    END AS pm_change,
-    ROUND(
-        CASE 
-            WHEN LAG(aov) OVER(PARTITION BY channel ORDER BY performance_month) = 0 THEN NULL 
-            ELSE ((aov) - LAG(aov) OVER(PARTITION BY channel ORDER BY performance_month))/LAG(aov) OVER(PARTITION BY channel ORDER BY performance_month)*100 
-        END
-    ,2) AS mom_percentage
-FROM aov_metrics;
-GO
-
-SELECT *
-FROM gold.channels_aov
-WHERE current_orders > 0
-ORDER BY channel, performance_month;
-GO
 
 
---=====================================
--- 4.2) TOFU Top of Funnel Contributers
---=====================================
--- MoM by Full Purchase Revenues and Monthly Orders
--- Analyze Month-over-Month aov performance by acquisition channel to see the quality of new users
-DROP VIEW IF EXISTS gold.acquisition_channels_aov;
-GO
-
-CREATE VIEW gold.acquisition_channels_aov AS
-WITH monthly_revenue AS (
-SELECT
-    DATEFROMPARTS(YEAR(f.purchase_date), MONTH(f.purchase_date), 1) AS performance_month, 
-    p.acquisition_channel, 
-    SUM(f.revenue_share) AS current_revenue 
-FROM gold.fact_attribution_linear f
-LEFT JOIN gold.fact_purchases p 
-ON f.purchase_id = p.purchase_id
-WHERE p.acquisition_channel IS NOT NULL
-GROUP BY DATEFROMPARTS(YEAR(f.purchase_date), MONTH(f.purchase_date), 1), p.acquisition_channel
-), 
-monthly_orders AS (
-SELECT 
-    DATEFROMPARTS(YEAR(f.purchase_date), MONTH(f.purchase_date), 1) AS performance_month,
-    p.acquisition_channel, 
-    COUNT(DISTINCT f.purchase_id) AS current_orders
-FROM gold.fact_attribution_linear f 
-LEFT JOIN gold.fact_purchases p 
-ON f.purchase_id = p.purchase_id 
-WHERE p.acquisition_channel IS NOT NULL 
-GROUP BY DATEFROMPARTS(YEAR(f.purchase_date), MONTH(f.purchase_date), 1), p.acquisition_channel
-),
-aov_metrics AS (
-SELECT
-    COALESCE(r.performance_month, o.performance_month) AS performance_month,
-    r.acquisition_channel, 
-    r.current_revenue,
-    o.current_orders,
-    r.current_revenue/NULLIF(o.current_orders, 0) AS aov
-FROM monthly_revenue r
-INNER JOIN monthly_orders o
-ON r.performance_month = o.performance_month 
-    AND r.acquisition_channel = o.acquisition_channel
-)
-
-SELECT 
-    performance_month,
-    acquisition_channel, 
-    current_revenue,
-    current_orders,
-    aov AS current_aov,
-    AVG(aov) OVER(PARTITION BY acquisition_channel) AS avg_aov,
-    (aov) - AVG(aov) OVER(PARTITION BY acquisition_channel) AS diff_avg,
-    CASE 
-        WHEN (aov) - AVG(aov) OVER(PARTITION BY acquisition_channel) > 0 THEN 'Above Avg'
-        WHEN (aov) - AVG(aov) OVER(PARTITION BY acquisition_channel) < 0 THEN 'Below Avg' 
-        ELSE 'Equals Average'
-    END AS avg_change,
-    -- Month-over_Month Analysis 
-    LAG(aov) OVER(PARTITION BY acquisition_channel ORDER BY performance_month) AS pm_aov, 
-    (aov) - LAG(aov) OVER(PARTITION BY acquisition_channel ORDER BY performance_month) AS diff_pm_aov,
-    CASE 
-        WHEN (aov) - LAG(aov) OVER(PARTITION BY acquisition_channel ORDER BY performance_month) > 0 THEN 'Increase'
-        WHEN (aov) - LAG(aov) OVER(PARTITION BY acquisition_channel ORDER BY performance_month) < 0 THEN 'Decrease'
-        ELSE 'No Change'
-    END AS pm_change,
-    ROUND(
-        CASE 
-            WHEN LAG(aov) OVER(PARTITION BY acquisition_channel ORDER BY performance_month) = 0 THEN NULL 
-            ELSE ((aov) - LAG(aov) OVER(PARTITION BY acquisition_channel ORDER BY performance_month))/LAG(aov) OVER(PARTITION BY acquisition_channel ORDER BY performance_month)*100 
-        END
-    ,2) AS mom_percentage
-FROM aov_metrics;
-GO
-
-SELECT *
-FROM gold.acquisition_channels_aov
-WHERE current_orders > 0
-ORDER BY acquisition_channel, performance_month;
-GO
-
-
-
---==============================================
--- 4.3) BOFU Bottom of Funnel Conversion Drivers
---==============================================
--- MoM by Full Purchase Revenues and Monthly Orders
--- Analyze Month-over-Month aov performance by last-touch channels to see closing stage value
-DROP VIEW IF EXISTS gold.last_touch_channels_aov;
-GO
-
-CREATE VIEW gold.last_touch_channels_aov AS
-WITH monthly_revenue AS (
-SELECT
-    DATEFROMPARTS(YEAR(f.purchase_date), MONTH(f.purchase_date), 1) AS performance_month, 
-    f.last_touch_channel, 
-    SUM(f.revenue) AS current_revenue 
-FROM gold.fact_attribution_last_touch f
-WHERE f.last_touch_channel IS NOT NULL
-GROUP BY DATEFROMPARTS(YEAR(f.purchase_date), MONTH(f.purchase_date), 1), f.last_touch_channel
-), 
-monthly_orders AS (
-SELECT 
-    DATEFROMPARTS(YEAR(purchase_date), MONTH(purchase_date), 1) AS performance_month,
-    last_touch_channel, 
-    COUNT(purchase_id) AS current_orders
-FROM gold.fact_attribution_last_touch
-WHERE last_touch_channel IS NOT NULL 
-GROUP BY DATEFROMPARTS(YEAR(purchase_date), MONTH(purchase_date), 1), last_touch_channel
-), 
-aov_metrics AS (
-SELECT
-    COALESCE(r.performance_month, o.performance_month) AS performance_month,
-    r.last_touch_channel,
-    r.current_revenue,
-    o.current_orders,
-    r.current_revenue/NULLIF(o.current_orders, 0) AS aov
-FROM monthly_revenue r
-INNER JOIN monthly_orders o
-ON r.performance_month = o.performance_month 
-    AND r.last_touch_channel = o.last_touch_channel
-)
-
-SELECT 
-    performance_month,
-    last_touch_channel,
-    current_revenue,
-    current_orders,
-    aov AS current_aov,
-    AVG(aov) OVER(PARTITION BY last_touch_channel) AS avg_aov,
-    (aov) - AVG(aov) OVER(PARTITION BY last_touch_channel) AS diff_avg,
-    CASE 
-        WHEN (aov) - AVG(aov) OVER(PARTITION BY last_touch_channel) > 0 THEN 'Above Avg'
-        WHEN (aov) - AVG(aov) OVER(PARTITION BY last_touch_channel) < 0 THEN 'Below Avg' 
-        ELSE 'Equals Average'
-    END AS avg_change,
-
-    -- Month-over_Month Analysis 
-    LAG(aov) OVER(PARTITION BY last_touch_channel ORDER BY performance_month) AS pm_aov, 
-    (aov) - LAG(aov) OVER(PARTITION BY last_touch_channel ORDER BY performance_month) AS diff_pm_aov,
-    CASE 
-        WHEN (aov) - LAG(aov) OVER(PARTITION BY last_touch_channel ORDER BY performance_month) > 0 THEN 'Increase'
-        WHEN (aov) - LAG(aov) OVER(PARTITION BY last_touch_channel ORDER BY performance_month) < 0 THEN 'Decrease'
-        ELSE 'No Change'
-    END AS pm_change,
-    ROUND(
-        CASE 
-            WHEN LAG(aov) OVER(PARTITION BY last_touch_channel ORDER BY performance_month) = 0 THEN NULL 
-            ELSE ((aov) - LAG(aov) OVER(PARTITION BY last_touch_channel ORDER BY performance_month))/LAG(aov) OVER(PARTITION BY last_touch_channel ORDER BY performance_month)*100 
-        END
-    ,2) AS mom_percentage
-FROM aov_metrics;
-GO
-
-SELECT *
-FROM gold.last_touch_channels_aov
-WHERE current_orders > 0 
-ORDER BY last_touch_channel, performance_month;
-GO
-
-
---====================================================
--- 4.4) Top 10 Improvements/Declines MoM AOV Channels
---====================================================
-/*
--- Top 10 improvements:
-SELECT TOP 10 *
-FROM gold.channels_aov
-WHERE diff_pm_aov IS NOT NULL
-ORDER BY diff_pm_aov DESC; 
-
-SELECT TOP 10 *
-FROM gold.channels_aov
-WHERE pm_aov IS NOT NULL
-ORDER BY mom_percentage DESC;
-
--- Top 10 declines:
-SELECT TOP 10 *
-FROM gold.channels_aov
-WHERE diff_pm_aov IS NOT NULL
-ORDER BY diff_pm_aov ASC; 
-
-SELECT TOP 10 *
-FROM gold.channels_aov
-WHERE pm_aov IS NOT NULL
-ORDER BY mom_percentage ASC;
-*/
