@@ -18,7 +18,7 @@
 
 <h2>1) Marketing Analysis</h2>
 <h4>1.1) Project Brief</h4>
-<p>tasked with analyzing ad data from January to April 2024.</p>
+<p>Tasked with analyzing ad data from January to April 2024, I will start by addressing stakeholder communication and presenting the analysis results. In Section 2, I will then cover the data overview, the ETL pipeline, and the data warehouse build process.</p>
 <h2>2) End-To-End Data Warehouse and ETL</h2>
 
 
