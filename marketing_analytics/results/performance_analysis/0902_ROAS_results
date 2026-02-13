@@ -3,14 +3,14 @@
 Queries: 
     1) ROAS overall 
     2) ROAS Performance monthly
-    3.1) Mid of Funnel (MOFU) Monthly ROAS Performance and MOM-Analysis by Campaigns
-    3.2) Top of Funnel (TOFU) Monthly ROAS Performance and MOM-Analysis by Campaigns
-    3.3) Bottom of Funnel (BOFU) Monthly ROAS Performance and MOM-Analysis by Campaigns
-    3.4) Top Ten MOM Campaigns by TOFU/MOFU/BOFU 
-    4.1) Mid of Funnel (MOFU) Monthly ROAS Performance and MOM-Analysis by Channels
-    4.2) Top of Funnel (TOFU) Monthly ROAS Performance and MOM-Analysis by Channels
-    4.3) Bottom of Funnel (BOFU) Monthly ROAS Performance and MOM-Analysis by Channels
-    4.4) Top Ten MOM Channels by TOFU/MOFU/BOFU 
+    3.1) Mid of Funnel (MOFU) Monthly ROAS Performance and MOM-Analysis by Channels
+    3.2) Top of Funnel (TOFU) Monthly ROAS Performance and MOM-Analysis by Channels
+    3.3) Bottom of Funnel (BOFU) Monthly ROAS Performance and MOM-Analysis by Channels
+    3.4) Top Ten MOM Channels by TOFU/MOFU/BOFU 
+    4.1) Mid of Funnel (MOFU) Monthly ROAS Performance and MOM-Analysis by Campaigns
+    4.2) Top of Funnel (TOFU) Monthly ROAS Performance and MOM-Analysis by Campaigns
+    4.3) Bottom of Funnel (BOFU) Monthly ROAS Performance and MOM-Analysis by Campaigns
+    4.4) Top Ten MOM Campaigns by TOFU/MOFU/BOFU 
 
 
 
@@ -38,10 +38,202 @@ performance_month  current_revenue  current_spend  current_roas  avg_roas    dif
 ((4 rows affected))
 
 
-
-3) CAMPAIGNS
---=====================================
+3) CHANNELS
+--========================================
 -- 3.1) MOFU Full-Funnel Contributers
+==========================================
+performance_month  channel         current_revenue  current_spend  current_roas  avg_roas    diff_avg    avg_change  pm_roas     diff_pm_roas  pm_change   mom_percentage
+-----------------  --------------  ---------------  -------------  ------------  ----------  ----------  ----------  ----------  ------------  ----------  --------------
+2024-01-01         Facebook Ads    5538.94          1279.96        4.327432      2.517311    1.810121    Above Avg   NULL        NULL          No Change   NULL          
+2024-02-01         Facebook Ads    10108.71         3711.52        2.723603      2.517311    0.206292    Above Avg   4.327432    -1.603829     Decrease    -37.060000    
+2024-03-01         Facebook Ads    7865.36          4532.54        1.735309      2.517311    -0.782002   Below Avg   2.723603    -0.988294     Decrease    -36.290000    
+2024-04-01         Facebook Ads    4580.82          3570.67        1.282902      2.517311    -1.234409   Below Avg   1.735309    -0.452407     Decrease    -26.070000    
+2024-01-01         Google Display  6803.24          1523.97        4.464156      2.557933    1.906223    Above Avg   NULL        NULL          No Change   NULL          
+2024-02-01         Google Display  10271.13         3866.80        2.656235      2.557933    0.098302    Above Avg   4.464156    -1.807921     Decrease    -40.500000    
+2024-03-01         Google Display  8394.65          4394.41        1.910301      2.557933    -0.647632   Below Avg   2.656235    -0.745934     Decrease    -28.080000    
+2024-04-01         Google Display  4686.54          3902.06        1.201042      2.557933    -1.356891   Below Avg   1.910301    -0.709259     Decrease    -37.130000    
+2024-01-01         Google Search   7310.72          1631.51        4.480953      2.506795    1.974158    Above Avg   NULL        NULL          No Change   NULL          
+2024-02-01         Google Search   11473.13         4009.27        2.861650      2.506795    0.354855    Above Avg   4.480953    -1.619303     Decrease    -36.140000    
+2024-03-01         Google Search   8456.93          5425.84        1.558639      2.506795    -0.948156   Below Avg   2.861650    -1.303011     Decrease    -45.530000    
+2024-04-01         Google Search   4843.04          4301.33        1.125940      2.506795    -1.380855   Below Avg   1.558639    -0.432699     Decrease    -27.760000    
+2024-01-01         Instagram Ads   7725.53          1807.55        4.274033      2.373926    1.900107    Above Avg   NULL        NULL          No Change   NULL          
+2024-02-01         Instagram Ads   8519.28          3654.58        2.331124      2.373926    -0.042802   Below Avg   4.274033    -1.942909     Decrease    -45.460000    
+2024-03-01         Instagram Ads   7859.29          4687.19        1.676759      2.373926    -0.697167   Below Avg   2.331124    -0.654365     Decrease    -28.070000    
+2024-04-01         Instagram Ads   4416.23          3638.38        1.213790      2.373926    -1.160136   Below Avg   1.676759    -0.462969     Decrease    -27.610000    
+2024-01-01         TikTok Ads      6606.22          1393.76        4.739854      2.580137    2.159717    Above Avg   NULL        NULL          No Change   NULL          
+2024-02-01         TikTok Ads      10035.77         3567.98        2.812731      2.580137    0.232594    Above Avg   4.739854    -1.927123     Decrease    -40.660000    
+2024-03-01         TikTok Ads      7656.04          4585.27        1.669703      2.580137    -0.910434   Below Avg   2.812731    -1.143028     Decrease    -40.640000    
+2024-04-01         TikTok Ads      4527.47          4122.39        1.098263      2.580137    -1.481874   Below Avg   1.669703    -0.571440     Decrease    -34.220000    
+((20 rows affected))
+
+
+3) CHANNELS
+--========================================
+-- 3.2) TOFU Full-Funnel Contributers
+==========================================
+performance_month  acquisition_channel  current_revenue  current_spend  current_roas  avg_roas    diff_avg    avg_change  pm_roas     diff_pm_roas  pm_change   mom_percentage
+-----------------  -------------------  ---------------  -------------  ------------  ----------  ----------  ----------  ----------  ------------  ----------  --------------
+2024-01-01         Facebook Ads         4282.47          847.93         5.050499      3.025569    2.024930    Above Avg   NULL        NULL          No Change   NULL          
+2024-02-01         Facebook Ads         4966.73          1488.50        3.336734      3.025569    0.311165    Above Avg   5.050499    -1.713765     Decrease    -33.930000    
+2024-03-01         Facebook Ads         3214.89          1382.66        2.325148      3.025569    -0.700421   Below Avg   3.336734    -1.011586     Decrease    -30.320000    
+2024-04-01         Facebook Ads         1623.19          1167.85        1.389895      3.025569    -1.635674   Below Avg   2.325148    -0.935253     Decrease    -40.220000    
+2024-01-01         Google Display       5183.51          975.70         5.312606      3.071398    2.241208    Above Avg   NULL        NULL          No Change   NULL          
+2024-02-01         Google Display       5109.06          1576.69        3.240370      3.071398    0.168972    Above Avg   5.312606    -2.072236     Decrease    -39.010000    
+2024-03-01         Google Display       3528.70          1467.06        2.405286      3.071398    -0.666112   Below Avg   3.240370    -0.835084     Decrease    -25.770000    
+2024-04-01         Google Display       1451.36          1093.44        1.327333      3.071398    -1.744065   Below Avg   2.405286    -1.077953     Decrease    -44.820000    
+2024-01-01         Google Search        5733.42          1259.96        4.550477      2.741370    1.809107    Above Avg   NULL        NULL          No Change   NULL          
+2024-02-01         Google Search        6260.46          1859.14        3.367395      2.741370    0.626025    Above Avg   4.550477    -1.183082     Decrease    -26.000000    
+2024-03-01         Google Search        3145.02          1746.05        1.801219      2.741370    -0.940151   Below Avg   3.367395    -1.566176     Decrease    -46.510000    
+2024-04-01         Google Search        1693.97          1359.10        1.246390      2.741370    -1.494980   Below Avg   1.801219    -0.554829     Decrease    -30.800000    
+2024-01-01         Instagram Ads        6067.25          1248.38        4.860098      2.833044    2.027054    Above Avg   NULL        NULL          No Change   NULL          
+2024-02-01         Instagram Ads        4512.58          1475.07        3.059231      2.833044    0.226187    Above Avg   4.860098    -1.800867     Decrease    -37.050000    
+2024-03-01         Instagram Ads        3077.84          1555.40        1.978809      2.833044    -0.854235   Below Avg   3.059231    -1.080422     Decrease    -35.320000    
+2024-04-01         Instagram Ads        1360.59          948.78         1.434041      2.833044    -1.399003   Below Avg   1.978809    -0.544768     Decrease    -27.530000    
+2024-01-01         TikTok Ads           5424.83          857.09         6.329358      3.255109    3.074249    Above Avg   NULL        NULL          No Change   NULL          
+2024-02-01         TikTok Ads           6228.52          1723.12        3.614675      3.255109    0.359566    Above Avg   6.329358    -2.714683     Decrease    -42.890000    
+2024-03-01         TikTok Ads           3159.11          1750.34        1.804855      3.255109    -1.450254   Below Avg   3.614675    -1.809820     Decrease    -50.070000    
+2024-04-01         TikTok Ads           1114.78          876.71         1.271549      3.255109    -1.983560   Below Avg   1.804855    -0.533306     Decrease    -29.550000    
+((20 rows affected))
+
+
+3) CHANNELS
+--========================================
+-- 3.3) BOFU Full-Funnel Contributers
+==========================================
+performance_month  last_touch_channel  current_revenue  current_spend  current_roas  avg_roas    diff_avg    avg_change  pm_roas     diff_pm_roas  pm_change   mom_percentage
+-----------------  ------------------  ---------------  -------------  ------------  ----------  ----------  ----------  ----------  ------------  ----------  --------------
+2024-01-01         Facebook Ads        5074.53          850.79         5.964491      5.091530    0.872961    Above Avg   NULL        NULL          No Change   NULL          
+2024-02-01         Facebook Ads        9376.48          1603.46        5.847654      5.091530    0.756124    Above Avg   5.964491    -0.116837     Decrease    -1.960000     
+2024-03-01         Facebook Ads        5844.12          1364.18        4.283980      5.091530    -0.807550   Below Avg   5.847654    -1.563674     Decrease    -26.740000    
+2024-04-01         Facebook Ads        2367.97          554.56         4.269997      5.091530    -0.821533   Below Avg   4.283980    -0.013983     Decrease    -0.330000     
+2024-01-01         Google Display      5167.71          1019.86        5.067077      4.993410    0.073667    Above Avg   NULL        NULL          No Change   NULL          
+2024-02-01         Google Display      10625.10         1690.54        6.285033      4.993410    1.291623    Above Avg   5.067077    1.217956      Increase    24.040000     
+2024-03-01         Google Display      7536.57          1323.20        5.695714      4.993410    0.702304    Above Avg   6.285033    -0.589319     Decrease    -9.380000     
+2024-04-01         Google Display      1415.95          483.95         2.925818      4.993410    -2.067592   Below Avg   5.695714    -2.769896     Decrease    -48.630000    
+2024-01-01         Google Search       7463.82          951.12         7.847400      5.067053    2.780347    Above Avg   NULL        NULL          No Change   NULL          
+2024-02-01         Google Search       10853.92         1696.88        6.396398      5.067053    1.329345    Above Avg   7.847400    -1.451002     Decrease    -18.490000    
+2024-03-01         Google Search       6566.68          1621.56        4.049606      5.067053    -1.017447   Below Avg   6.396398    -2.346792     Decrease    -36.690000    
+2024-04-01         Google Search       1033.28          523.23         1.974810      5.067053    -3.092243   Below Avg   4.049606    -2.074796     Decrease    -51.230000    
+2024-01-01         Instagram Ads       8465.45          1342.85        6.304092      4.746501    1.557591    Above Avg   NULL        NULL          No Change   NULL          
+2024-02-01         Instagram Ads       7682.28          1646.78        4.665031      4.746501    -0.081470   Below Avg   6.304092    -1.639061     Decrease    -26.000000    
+2024-03-01         Instagram Ads       4955.17          1295.11        3.826061      4.746501    -0.920440   Below Avg   4.665031    -0.838970     Decrease    -17.980000    
+2024-04-01         Instagram Ads       2014.99          480.81         4.190823      4.746501    -0.555678   Below Avg   3.826061    0.364762      Increase    9.530000      
+2024-01-01         TikTok Ads          7271.47          1100.23        6.609045      5.561276    1.047769    Above Avg   NULL        NULL          No Change   NULL          
+2024-02-01         TikTok Ads          10036.96         1750.34        5.734291      5.561276    0.173015    Above Avg   6.609045    -0.874754     Decrease    -13.240000    
+2024-03-01         TikTok Ads          6064.51          1137.04        5.333594      5.561276    -0.227682   Below Avg   5.734291    -0.400697     Decrease    -6.990000     
+2024-04-01         TikTok Ads          3010.61          659.04         4.568174      5.561276    -0.993102   Below Avg   5.333594    -0.765420     Decrease    -14.350000    
+((20 rows affected))
+
+
+
+-- 3.4) TOP 10 MoM TOFU/Multi/BOFU 
+--======================================
+-- Top 10 MoM channels within funnel - ORDER BY diff_pm_roas DESC;
+========================================
+performance_month  channel         current_revenue  current_spend  current_roas  avg_roas    diff_avg    avg_change  pm_roas     diff_pm_roas  pm_change   mom_percentage
+-----------------  --------------  ---------------  -------------  ------------  ----------  ----------  ----------  ----------  ------------  ----------  --------------
+2024-04-01         Google Search   4843.04          4301.33        1.125940      2.506795    -1.380855   Below Avg   1.558639    -0.432699     Decrease    -27.760000    
+2024-04-01         Facebook Ads    4580.82          3570.67        1.282902      2.517311    -1.234409   Below Avg   1.735309    -0.452407     Decrease    -26.070000    
+2024-04-01         Instagram Ads   4416.23          3638.38        1.213790      2.373926    -1.160136   Below Avg   1.676759    -0.462969     Decrease    -27.610000    
+2024-04-01         TikTok Ads      4527.47          4122.39        1.098263      2.580137    -1.481874   Below Avg   1.669703    -0.571440     Decrease    -34.220000    
+2024-03-01         Instagram Ads   7859.29          4687.19        1.676759      2.373926    -0.697167   Below Avg   2.331124    -0.654365     Decrease    -28.070000    
+2024-04-01         Google Display  4686.54          3902.06        1.201042      2.557933    -1.356891   Below Avg   1.910301    -0.709259     Decrease    -37.130000    
+2024-03-01         Google Display  8394.65          4394.41        1.910301      2.557933    -0.647632   Below Avg   2.656235    -0.745934     Decrease    -28.080000    
+2024-03-01         Facebook Ads    7865.36          4532.54        1.735309      2.517311    -0.782002   Below Avg   2.723603    -0.988294     Decrease    -36.290000    
+2024-03-01         TikTok Ads      7656.04          4585.27        1.669703      2.580137    -0.910434   Below Avg   2.812731    -1.143028     Decrease    -40.640000    
+2024-03-01         Google Search   8456.93          5425.84        1.558639      2.506795    -0.948156   Below Avg   2.861650    -1.303011     Decrease    -45.530000    
+((10 rows affected))
+
+
+-- Top 10 MoM channels within funnel - WHERE pm_roas > ORDER BY mom_percentage DESC;
+========================================
+performance_month  channel         current_revenue  current_spend  current_roas  avg_roas    diff_avg    avg_change  pm_roas     diff_pm_roas  pm_change   mom_percentage
+-----------------  --------------  ---------------  -------------  ------------  ----------  ----------  ----------  ----------  ------------  ----------  --------------
+2024-04-01         Facebook Ads    4580.82          3570.67        1.282902      2.517311    -1.234409   Below Avg   1.735309    -0.452407     Decrease    -26.070000    
+2024-04-01         Instagram Ads   4416.23          3638.38        1.213790      2.373926    -1.160136   Below Avg   1.676759    -0.462969     Decrease    -27.610000    
+2024-04-01         Google Search   4843.04          4301.33        1.125940      2.506795    -1.380855   Below Avg   1.558639    -0.432699     Decrease    -27.760000    
+2024-03-01         Instagram Ads   7859.29          4687.19        1.676759      2.373926    -0.697167   Below Avg   2.331124    -0.654365     Decrease    -28.070000    
+2024-03-01         Google Display  8394.65          4394.41        1.910301      2.557933    -0.647632   Below Avg   2.656235    -0.745934     Decrease    -28.080000    
+2024-04-01         TikTok Ads      4527.47          4122.39        1.098263      2.580137    -1.481874   Below Avg   1.669703    -0.571440     Decrease    -34.220000    
+2024-02-01         Google Search   11473.13         4009.27        2.861650      2.506795    0.354855    Above Avg   4.480953    -1.619303     Decrease    -36.140000    
+2024-03-01         Facebook Ads    7865.36          4532.54        1.735309      2.517311    -0.782002   Below Avg   2.723603    -0.988294     Decrease    -36.290000    
+2024-02-01         Facebook Ads    10108.71         3711.52        2.723603      2.517311    0.206292    Above Avg   4.327432    -1.603829     Decrease    -37.060000    
+2024-04-01         Google Display  4686.54          3902.06        1.201042      2.557933    -1.356891   Below Avg   1.910301    -0.709259     Decrease    -37.130000    
+((10 rows affected))
+
+
+-- Top 10 MoM acquisition channels - ORDER BY diff_pm_roas DESC;
+========================================
+performance_month  acquisition_channel  current_revenue  current_spend  current_roas  avg_roas    diff_avg    avg_change  pm_roas     diff_pm_roas  pm_change   mom_percentage
+-----------------  -------------------  ---------------  -------------  ------------  ----------  ----------  ----------  ----------  ------------  ----------  --------------
+2024-04-01         TikTok Ads           1114.78          876.71         1.271549      3.255109    -1.983560   Below Avg   1.804855    -0.533306     Decrease    -29.550000    
+2024-04-01         Instagram Ads        1360.59          948.78         1.434041      2.833044    -1.399003   Below Avg   1.978809    -0.544768     Decrease    -27.530000    
+2024-04-01         Google Search        1693.97          1359.10        1.246390      2.741370    -1.494980   Below Avg   1.801219    -0.554829     Decrease    -30.800000    
+2024-03-01         Google Display       3528.70          1467.06        2.405286      3.071398    -0.666112   Below Avg   3.240370    -0.835084     Decrease    -25.770000    
+2024-04-01         Facebook Ads         1623.19          1167.85        1.389895      3.025569    -1.635674   Below Avg   2.325148    -0.935253     Decrease    -40.220000    
+2024-03-01         Facebook Ads         3214.89          1382.66        2.325148      3.025569    -0.700421   Below Avg   3.336734    -1.011586     Decrease    -30.320000    
+2024-04-01         Google Display       1451.36          1093.44        1.327333      3.071398    -1.744065   Below Avg   2.405286    -1.077953     Decrease    -44.820000    
+2024-03-01         Instagram Ads        3077.84          1555.40        1.978809      2.833044    -0.854235   Below Avg   3.059231    -1.080422     Decrease    -35.320000    
+2024-02-01         Google Search        6260.46          1859.14        3.367395      2.741370    0.626025    Above Avg   4.550477    -1.183082     Decrease    -26.000000    
+2024-03-01         Google Search        3145.02          1746.05        1.801219      2.741370    -0.940151   Below Avg   3.367395    -1.566176     Decrease    -46.510000    
+((10 rows affected))
+
+
+-- Top 10 MoM acquisition channels - WHERE pm_roas > ORDER BY mom_percentage DESC;
+========================================
+performance_month  acquisition_channel  current_revenue  current_spend  current_roas  avg_roas    diff_avg    avg_change  pm_roas     diff_pm_roas  pm_change   mom_percentage
+-----------------  -------------------  ---------------  -------------  ------------  ----------  ----------  ----------  ----------  ------------  ----------  --------------
+2024-03-01         Google Display       3528.70          1467.06        2.405286      3.071398    -0.666112   Below Avg   3.240370    -0.835084     Decrease    -25.770000    
+2024-02-01         Google Search        6260.46          1859.14        3.367395      2.741370    0.626025    Above Avg   4.550477    -1.183082     Decrease    -26.000000    
+2024-04-01         Instagram Ads        1360.59          948.78         1.434041      2.833044    -1.399003   Below Avg   1.978809    -0.544768     Decrease    -27.530000    
+2024-04-01         TikTok Ads           1114.78          876.71         1.271549      3.255109    -1.983560   Below Avg   1.804855    -0.533306     Decrease    -29.550000    
+2024-03-01         Facebook Ads         3214.89          1382.66        2.325148      3.025569    -0.700421   Below Avg   3.336734    -1.011586     Decrease    -30.320000    
+2024-04-01         Google Search        1693.97          1359.10        1.246390      2.741370    -1.494980   Below Avg   1.801219    -0.554829     Decrease    -30.800000    
+2024-02-01         Facebook Ads         4966.73          1488.50        3.336734      3.025569    0.311165    Above Avg   5.050499    -1.713765     Decrease    -33.930000    
+2024-03-01         Instagram Ads        3077.84          1555.40        1.978809      2.833044    -0.854235   Below Avg   3.059231    -1.080422     Decrease    -35.320000    
+2024-02-01         Instagram Ads        4512.58          1475.07        3.059231      2.833044    0.226187    Above Avg   4.860098    -1.800867     Decrease    -37.050000    
+2024-02-01         Google Display       5109.06          1576.69        3.240370      3.071398    0.168972    Above Avg   5.312606    -2.072236     Decrease    -39.010000    
+((10 rows affected))
+
+
+-- Top 10 MoM last-touch campaigns - ORDER BY diff_pm_roas DESC;
+========================================
+performance_month  last_touch_channel  current_revenue  current_spend  current_roas  avg_roas    diff_avg    avg_change  pm_roas     diff_pm_roas  pm_change   mom_percentage
+-----------------  ------------------  ---------------  -------------  ------------  ----------  ----------  ----------  ----------  ------------  ----------  --------------
+2024-02-01         Google Display      10625.10         1690.54        6.285033      4.993410    1.291623    Above Avg   5.067077    1.217956      Increase    24.040000     
+2024-04-01         Instagram Ads       2014.99          480.81         4.190823      4.746501    -0.555678   Below Avg   3.826061    0.364762      Increase    9.530000      
+2024-04-01         Facebook Ads        2367.97          554.56         4.269997      5.091530    -0.821533   Below Avg   4.283980    -0.013983     Decrease    -0.330000     
+2024-02-01         Facebook Ads        9376.48          1603.46        5.847654      5.091530    0.756124    Above Avg   5.964491    -0.116837     Decrease    -1.960000     
+2024-03-01         TikTok Ads          6064.51          1137.04        5.333594      5.561276    -0.227682   Below Avg   5.734291    -0.400697     Decrease    -6.990000     
+2024-03-01         Google Display      7536.57          1323.20        5.695714      4.993410    0.702304    Above Avg   6.285033    -0.589319     Decrease    -9.380000     
+2024-04-01         TikTok Ads          3010.61          659.04         4.568174      5.561276    -0.993102   Below Avg   5.333594    -0.765420     Decrease    -14.350000    
+2024-03-01         Instagram Ads       4955.17          1295.11        3.826061      4.746501    -0.920440   Below Avg   4.665031    -0.838970     Decrease    -17.980000    
+2024-02-01         TikTok Ads          10036.96         1750.34        5.734291      5.561276    0.173015    Above Avg   6.609045    -0.874754     Decrease    -13.240000    
+2024-02-01         Google Search       10853.92         1696.88        6.396398      5.067053    1.329345    Above Avg   7.847400    -1.451002     Decrease    -18.490000    
+((10 rows affected))
+
+
+-- Top 10 MoM last-touch campaigns - WHERE pm_roas > ORDER BY mom_percentage DESC;
+========================================
+performance_month  last_touch_channel  current_revenue  current_spend  current_roas  avg_roas    diff_avg    avg_change  pm_roas     diff_pm_roas  pm_change   mom_percentage
+-----------------  ------------------  ---------------  -------------  ------------  ----------  ----------  ----------  ----------  ------------  ----------  --------------
+2024-02-01         Google Display      10625.10         1690.54        6.285033      4.993410    1.291623    Above Avg   5.067077    1.217956      Increase    24.040000     
+2024-04-01         Instagram Ads       2014.99          480.81         4.190823      4.746501    -0.555678   Below Avg   3.826061    0.364762      Increase    9.530000      
+2024-04-01         Facebook Ads        2367.97          554.56         4.269997      5.091530    -0.821533   Below Avg   4.283980    -0.013983     Decrease    -0.330000     
+2024-02-01         Facebook Ads        9376.48          1603.46        5.847654      5.091530    0.756124    Above Avg   5.964491    -0.116837     Decrease    -1.960000     
+2024-03-01         TikTok Ads          6064.51          1137.04        5.333594      5.561276    -0.227682   Below Avg   5.734291    -0.400697     Decrease    -6.990000     
+2024-03-01         Google Display      7536.57          1323.20        5.695714      4.993410    0.702304    Above Avg   6.285033    -0.589319     Decrease    -9.380000     
+2024-02-01         TikTok Ads          10036.96         1750.34        5.734291      5.561276    0.173015    Above Avg   6.609045    -0.874754     Decrease    -13.240000    
+2024-04-01         TikTok Ads          3010.61          659.04         4.568174      5.561276    -0.993102   Below Avg   5.333594    -0.765420     Decrease    -14.350000    
+2024-03-01         Instagram Ads       4955.17          1295.11        3.826061      4.746501    -0.920440   Below Avg   4.665031    -0.838970     Decrease    -17.980000    
+2024-02-01         Google Search       10853.92         1696.88        6.396398      5.067053    1.329345    Above Avg   7.847400    -1.451002     Decrease    -18.490000    
+((10 rows affected))
+
+
+
+4) CAMPAIGNS
+--=====================================
+-- 4.1) MOFU Full-Funnel Contributers
 ========================================
 performance_month  campaign_id  campaign_name          current_revenue  current_spend  current_roas  avg_roas    diff_avg    avg_change  pm_roas     diff_pm_roas  pm_change   mom_percentage
 -----------------  -----------  ---------------------  ---------------  -------------  ------------  ----------  ----------  ----------  ----------  ------------  ----------  --------------
@@ -259,9 +451,10 @@ performance_month  campaign_id  campaign_name          current_revenue  current_
 2024-04-01         53           Spring_Prospecting_EU  540.06           379.18         1.424283      2.448185    -1.023902   Below Avg   1.811230    -0.386947     Decrease    -21.360000    
 ((212 rows affected))
 
-3) CAMPAIGNS
+
+4) CAMPAIGNS
 --=====================================
--- 3.2) TOFU Full-Funnel Contributers
+-- 4.2) TOFU Full-Funnel Contributers
 ========================================
 performance_month  acquisition_campaign  campaign_name          current_revenue  current_spend  current_roas  avg_roas    diff_avg    avg_change  pm_roas     diff_pm_roas  pm_change   mom_percentage
 -----------------  --------------------  ---------------------  ---------------  -------------  ------------  ----------  ----------  ----------  ----------  ------------  ----------  --------------
@@ -478,9 +671,10 @@ performance_month  acquisition_campaign  campaign_name          current_revenue 
 2024-04-01         53                    Spring_Prospecting_EU  175.80           146.15         1.202873      2.365170    -1.162297   Below Avg   1.576564    -0.373691     Decrease    -23.700000    
 ((211 rows affected))
 
-3) CAMPAIGNS
+
+4) CAMPAIGNS
 --=====================================
--- 3.3) BOFU Full-Funnel Contributers
+-- 4.3) BOFU Full-Funnel Contributers
 ========================================
 performance_month  last_touch_campaign  campaign_name          current_revenue  current_spend  current_roas  avg_roas    diff_avg    avg_change  pm_roas     diff_pm_roas  pm_change   mom_percentage
 -----------------  -------------------  ---------------------  ---------------  -------------  ------------  ----------  ----------  ----------  ----------  ------------  ----------  --------------
@@ -672,7 +866,7 @@ performance_month  last_touch_campaign  campaign_name          current_revenue  
 ((185 rows affected))
 
 
--- 3.4) TOP 10 MoM TOFU/Multi/BOFU 
+-- 4.4) TOP 10 MoM TOFU/Multi/BOFU 
 --========================================
 -- Top 10 MoM ROAS campaigns within funnel - ORDER BY diff_pm_roas DESC;
 ==========================================
@@ -768,198 +962,4 @@ performance_month  last_touch_campaign  campaign_name          current_revenue  
 2024-02-01         34                   Summer_Launch          1557.49          99.01          15.730633     8.200126    7.530507    Above Avg   5.032972    10.697661     Increase    212.550000    
 2024-02-01         38                   NULL                   1251.84          196.75         6.362592      3.815956    2.546636    Above Avg   2.414033    3.948559      Increase    163.570000    
 2024-04-01         19                   Holiday_Special        455.65           49.58          9.190197      6.629011    2.561186    Above Avg   3.548318    5.641879      Increase    159.000000    
-((10 rows affected))
-
-
-
-
-4) CHANNELS
---========================================
--- 4.1) MOFU Full-Funnel Contributers
-==========================================
-performance_month  channel         current_revenue  current_spend  current_roas  avg_roas    diff_avg    avg_change  pm_roas     diff_pm_roas  pm_change   mom_percentage
------------------  --------------  ---------------  -------------  ------------  ----------  ----------  ----------  ----------  ------------  ----------  --------------
-2024-01-01         Facebook Ads    5538.94          1279.96        4.327432      2.517311    1.810121    Above Avg   NULL        NULL          No Change   NULL          
-2024-02-01         Facebook Ads    10108.71         3711.52        2.723603      2.517311    0.206292    Above Avg   4.327432    -1.603829     Decrease    -37.060000    
-2024-03-01         Facebook Ads    7865.36          4532.54        1.735309      2.517311    -0.782002   Below Avg   2.723603    -0.988294     Decrease    -36.290000    
-2024-04-01         Facebook Ads    4580.82          3570.67        1.282902      2.517311    -1.234409   Below Avg   1.735309    -0.452407     Decrease    -26.070000    
-2024-01-01         Google Display  6803.24          1523.97        4.464156      2.557933    1.906223    Above Avg   NULL        NULL          No Change   NULL          
-2024-02-01         Google Display  10271.13         3866.80        2.656235      2.557933    0.098302    Above Avg   4.464156    -1.807921     Decrease    -40.500000    
-2024-03-01         Google Display  8394.65          4394.41        1.910301      2.557933    -0.647632   Below Avg   2.656235    -0.745934     Decrease    -28.080000    
-2024-04-01         Google Display  4686.54          3902.06        1.201042      2.557933    -1.356891   Below Avg   1.910301    -0.709259     Decrease    -37.130000    
-2024-01-01         Google Search   7310.72          1631.51        4.480953      2.506795    1.974158    Above Avg   NULL        NULL          No Change   NULL          
-2024-02-01         Google Search   11473.13         4009.27        2.861650      2.506795    0.354855    Above Avg   4.480953    -1.619303     Decrease    -36.140000    
-2024-03-01         Google Search   8456.93          5425.84        1.558639      2.506795    -0.948156   Below Avg   2.861650    -1.303011     Decrease    -45.530000    
-2024-04-01         Google Search   4843.04          4301.33        1.125940      2.506795    -1.380855   Below Avg   1.558639    -0.432699     Decrease    -27.760000    
-2024-01-01         Instagram Ads   7725.53          1807.55        4.274033      2.373926    1.900107    Above Avg   NULL        NULL          No Change   NULL          
-2024-02-01         Instagram Ads   8519.28          3654.58        2.331124      2.373926    -0.042802   Below Avg   4.274033    -1.942909     Decrease    -45.460000    
-2024-03-01         Instagram Ads   7859.29          4687.19        1.676759      2.373926    -0.697167   Below Avg   2.331124    -0.654365     Decrease    -28.070000    
-2024-04-01         Instagram Ads   4416.23          3638.38        1.213790      2.373926    -1.160136   Below Avg   1.676759    -0.462969     Decrease    -27.610000    
-2024-01-01         TikTok Ads      6606.22          1393.76        4.739854      2.580137    2.159717    Above Avg   NULL        NULL          No Change   NULL          
-2024-02-01         TikTok Ads      10035.77         3567.98        2.812731      2.580137    0.232594    Above Avg   4.739854    -1.927123     Decrease    -40.660000    
-2024-03-01         TikTok Ads      7656.04          4585.27        1.669703      2.580137    -0.910434   Below Avg   2.812731    -1.143028     Decrease    -40.640000    
-2024-04-01         TikTok Ads      4527.47          4122.39        1.098263      2.580137    -1.481874   Below Avg   1.669703    -0.571440     Decrease    -34.220000    
-((20 rows affected))
-
-
-4) CHANNELS
---========================================
--- 4.2) TOFU Full-Funnel Contributers
-==========================================
-performance_month  acquisition_channel  current_revenue  current_spend  current_roas  avg_roas    diff_avg    avg_change  pm_roas     diff_pm_roas  pm_change   mom_percentage
------------------  -------------------  ---------------  -------------  ------------  ----------  ----------  ----------  ----------  ------------  ----------  --------------
-2024-01-01         Facebook Ads         4282.47          847.93         5.050499      3.025569    2.024930    Above Avg   NULL        NULL          No Change   NULL          
-2024-02-01         Facebook Ads         4966.73          1488.50        3.336734      3.025569    0.311165    Above Avg   5.050499    -1.713765     Decrease    -33.930000    
-2024-03-01         Facebook Ads         3214.89          1382.66        2.325148      3.025569    -0.700421   Below Avg   3.336734    -1.011586     Decrease    -30.320000    
-2024-04-01         Facebook Ads         1623.19          1167.85        1.389895      3.025569    -1.635674   Below Avg   2.325148    -0.935253     Decrease    -40.220000    
-2024-01-01         Google Display       5183.51          975.70         5.312606      3.071398    2.241208    Above Avg   NULL        NULL          No Change   NULL          
-2024-02-01         Google Display       5109.06          1576.69        3.240370      3.071398    0.168972    Above Avg   5.312606    -2.072236     Decrease    -39.010000    
-2024-03-01         Google Display       3528.70          1467.06        2.405286      3.071398    -0.666112   Below Avg   3.240370    -0.835084     Decrease    -25.770000    
-2024-04-01         Google Display       1451.36          1093.44        1.327333      3.071398    -1.744065   Below Avg   2.405286    -1.077953     Decrease    -44.820000    
-2024-01-01         Google Search        5733.42          1259.96        4.550477      2.741370    1.809107    Above Avg   NULL        NULL          No Change   NULL          
-2024-02-01         Google Search        6260.46          1859.14        3.367395      2.741370    0.626025    Above Avg   4.550477    -1.183082     Decrease    -26.000000    
-2024-03-01         Google Search        3145.02          1746.05        1.801219      2.741370    -0.940151   Below Avg   3.367395    -1.566176     Decrease    -46.510000    
-2024-04-01         Google Search        1693.97          1359.10        1.246390      2.741370    -1.494980   Below Avg   1.801219    -0.554829     Decrease    -30.800000    
-2024-01-01         Instagram Ads        6067.25          1248.38        4.860098      2.833044    2.027054    Above Avg   NULL        NULL          No Change   NULL          
-2024-02-01         Instagram Ads        4512.58          1475.07        3.059231      2.833044    0.226187    Above Avg   4.860098    -1.800867     Decrease    -37.050000    
-2024-03-01         Instagram Ads        3077.84          1555.40        1.978809      2.833044    -0.854235   Below Avg   3.059231    -1.080422     Decrease    -35.320000    
-2024-04-01         Instagram Ads        1360.59          948.78         1.434041      2.833044    -1.399003   Below Avg   1.978809    -0.544768     Decrease    -27.530000    
-2024-01-01         TikTok Ads           5424.83          857.09         6.329358      3.255109    3.074249    Above Avg   NULL        NULL          No Change   NULL          
-2024-02-01         TikTok Ads           6228.52          1723.12        3.614675      3.255109    0.359566    Above Avg   6.329358    -2.714683     Decrease    -42.890000    
-2024-03-01         TikTok Ads           3159.11          1750.34        1.804855      3.255109    -1.450254   Below Avg   3.614675    -1.809820     Decrease    -50.070000    
-2024-04-01         TikTok Ads           1114.78          876.71         1.271549      3.255109    -1.983560   Below Avg   1.804855    -0.533306     Decrease    -29.550000    
-((20 rows affected))
-
-
-4) CHANNELS
---========================================
--- 4.3) BOFU Full-Funnel Contributers
-==========================================
-performance_month  last_touch_channel  current_revenue  current_spend  current_roas  avg_roas    diff_avg    avg_change  pm_roas     diff_pm_roas  pm_change   mom_percentage
------------------  ------------------  ---------------  -------------  ------------  ----------  ----------  ----------  ----------  ------------  ----------  --------------
-2024-01-01         Facebook Ads        5074.53          850.79         5.964491      5.091530    0.872961    Above Avg   NULL        NULL          No Change   NULL          
-2024-02-01         Facebook Ads        9376.48          1603.46        5.847654      5.091530    0.756124    Above Avg   5.964491    -0.116837     Decrease    -1.960000     
-2024-03-01         Facebook Ads        5844.12          1364.18        4.283980      5.091530    -0.807550   Below Avg   5.847654    -1.563674     Decrease    -26.740000    
-2024-04-01         Facebook Ads        2367.97          554.56         4.269997      5.091530    -0.821533   Below Avg   4.283980    -0.013983     Decrease    -0.330000     
-2024-01-01         Google Display      5167.71          1019.86        5.067077      4.993410    0.073667    Above Avg   NULL        NULL          No Change   NULL          
-2024-02-01         Google Display      10625.10         1690.54        6.285033      4.993410    1.291623    Above Avg   5.067077    1.217956      Increase    24.040000     
-2024-03-01         Google Display      7536.57          1323.20        5.695714      4.993410    0.702304    Above Avg   6.285033    -0.589319     Decrease    -9.380000     
-2024-04-01         Google Display      1415.95          483.95         2.925818      4.993410    -2.067592   Below Avg   5.695714    -2.769896     Decrease    -48.630000    
-2024-01-01         Google Search       7463.82          951.12         7.847400      5.067053    2.780347    Above Avg   NULL        NULL          No Change   NULL          
-2024-02-01         Google Search       10853.92         1696.88        6.396398      5.067053    1.329345    Above Avg   7.847400    -1.451002     Decrease    -18.490000    
-2024-03-01         Google Search       6566.68          1621.56        4.049606      5.067053    -1.017447   Below Avg   6.396398    -2.346792     Decrease    -36.690000    
-2024-04-01         Google Search       1033.28          523.23         1.974810      5.067053    -3.092243   Below Avg   4.049606    -2.074796     Decrease    -51.230000    
-2024-01-01         Instagram Ads       8465.45          1342.85        6.304092      4.746501    1.557591    Above Avg   NULL        NULL          No Change   NULL          
-2024-02-01         Instagram Ads       7682.28          1646.78        4.665031      4.746501    -0.081470   Below Avg   6.304092    -1.639061     Decrease    -26.000000    
-2024-03-01         Instagram Ads       4955.17          1295.11        3.826061      4.746501    -0.920440   Below Avg   4.665031    -0.838970     Decrease    -17.980000    
-2024-04-01         Instagram Ads       2014.99          480.81         4.190823      4.746501    -0.555678   Below Avg   3.826061    0.364762      Increase    9.530000      
-2024-01-01         TikTok Ads          7271.47          1100.23        6.609045      5.561276    1.047769    Above Avg   NULL        NULL          No Change   NULL          
-2024-02-01         TikTok Ads          10036.96         1750.34        5.734291      5.561276    0.173015    Above Avg   6.609045    -0.874754     Decrease    -13.240000    
-2024-03-01         TikTok Ads          6064.51          1137.04        5.333594      5.561276    -0.227682   Below Avg   5.734291    -0.400697     Decrease    -6.990000     
-2024-04-01         TikTok Ads          3010.61          659.04         4.568174      5.561276    -0.993102   Below Avg   5.333594    -0.765420     Decrease    -14.350000    
-((20 rows affected))
-
-
-
--- 4.4) TOP 10 MoM TOFU/Multi/BOFU 
---======================================
--- Top 10 MoM channels within funnel - ORDER BY diff_pm_roas DESC;
-========================================
-performance_month  channel         current_revenue  current_spend  current_roas  avg_roas    diff_avg    avg_change  pm_roas     diff_pm_roas  pm_change   mom_percentage
------------------  --------------  ---------------  -------------  ------------  ----------  ----------  ----------  ----------  ------------  ----------  --------------
-2024-04-01         Google Search   4843.04          4301.33        1.125940      2.506795    -1.380855   Below Avg   1.558639    -0.432699     Decrease    -27.760000    
-2024-04-01         Facebook Ads    4580.82          3570.67        1.282902      2.517311    -1.234409   Below Avg   1.735309    -0.452407     Decrease    -26.070000    
-2024-04-01         Instagram Ads   4416.23          3638.38        1.213790      2.373926    -1.160136   Below Avg   1.676759    -0.462969     Decrease    -27.610000    
-2024-04-01         TikTok Ads      4527.47          4122.39        1.098263      2.580137    -1.481874   Below Avg   1.669703    -0.571440     Decrease    -34.220000    
-2024-03-01         Instagram Ads   7859.29          4687.19        1.676759      2.373926    -0.697167   Below Avg   2.331124    -0.654365     Decrease    -28.070000    
-2024-04-01         Google Display  4686.54          3902.06        1.201042      2.557933    -1.356891   Below Avg   1.910301    -0.709259     Decrease    -37.130000    
-2024-03-01         Google Display  8394.65          4394.41        1.910301      2.557933    -0.647632   Below Avg   2.656235    -0.745934     Decrease    -28.080000    
-2024-03-01         Facebook Ads    7865.36          4532.54        1.735309      2.517311    -0.782002   Below Avg   2.723603    -0.988294     Decrease    -36.290000    
-2024-03-01         TikTok Ads      7656.04          4585.27        1.669703      2.580137    -0.910434   Below Avg   2.812731    -1.143028     Decrease    -40.640000    
-2024-03-01         Google Search   8456.93          5425.84        1.558639      2.506795    -0.948156   Below Avg   2.861650    -1.303011     Decrease    -45.530000    
-((10 rows affected))
-
-
--- Top 10 MoM channels within funnel - WHERE pm_roas > ORDER BY mom_percentage DESC;
-========================================
-performance_month  channel         current_revenue  current_spend  current_roas  avg_roas    diff_avg    avg_change  pm_roas     diff_pm_roas  pm_change   mom_percentage
------------------  --------------  ---------------  -------------  ------------  ----------  ----------  ----------  ----------  ------------  ----------  --------------
-2024-04-01         Facebook Ads    4580.82          3570.67        1.282902      2.517311    -1.234409   Below Avg   1.735309    -0.452407     Decrease    -26.070000    
-2024-04-01         Instagram Ads   4416.23          3638.38        1.213790      2.373926    -1.160136   Below Avg   1.676759    -0.462969     Decrease    -27.610000    
-2024-04-01         Google Search   4843.04          4301.33        1.125940      2.506795    -1.380855   Below Avg   1.558639    -0.432699     Decrease    -27.760000    
-2024-03-01         Instagram Ads   7859.29          4687.19        1.676759      2.373926    -0.697167   Below Avg   2.331124    -0.654365     Decrease    -28.070000    
-2024-03-01         Google Display  8394.65          4394.41        1.910301      2.557933    -0.647632   Below Avg   2.656235    -0.745934     Decrease    -28.080000    
-2024-04-01         TikTok Ads      4527.47          4122.39        1.098263      2.580137    -1.481874   Below Avg   1.669703    -0.571440     Decrease    -34.220000    
-2024-02-01         Google Search   11473.13         4009.27        2.861650      2.506795    0.354855    Above Avg   4.480953    -1.619303     Decrease    -36.140000    
-2024-03-01         Facebook Ads    7865.36          4532.54        1.735309      2.517311    -0.782002   Below Avg   2.723603    -0.988294     Decrease    -36.290000    
-2024-02-01         Facebook Ads    10108.71         3711.52        2.723603      2.517311    0.206292    Above Avg   4.327432    -1.603829     Decrease    -37.060000    
-2024-04-01         Google Display  4686.54          3902.06        1.201042      2.557933    -1.356891   Below Avg   1.910301    -0.709259     Decrease    -37.130000    
-((10 rows affected))
-
-
--- Top 10 MoM acquisition channels - ORDER BY diff_pm_roas DESC;
-========================================
-performance_month  acquisition_channel  current_revenue  current_spend  current_roas  avg_roas    diff_avg    avg_change  pm_roas     diff_pm_roas  pm_change   mom_percentage
------------------  -------------------  ---------------  -------------  ------------  ----------  ----------  ----------  ----------  ------------  ----------  --------------
-2024-04-01         TikTok Ads           1114.78          876.71         1.271549      3.255109    -1.983560   Below Avg   1.804855    -0.533306     Decrease    -29.550000    
-2024-04-01         Instagram Ads        1360.59          948.78         1.434041      2.833044    -1.399003   Below Avg   1.978809    -0.544768     Decrease    -27.530000    
-2024-04-01         Google Search        1693.97          1359.10        1.246390      2.741370    -1.494980   Below Avg   1.801219    -0.554829     Decrease    -30.800000    
-2024-03-01         Google Display       3528.70          1467.06        2.405286      3.071398    -0.666112   Below Avg   3.240370    -0.835084     Decrease    -25.770000    
-2024-04-01         Facebook Ads         1623.19          1167.85        1.389895      3.025569    -1.635674   Below Avg   2.325148    -0.935253     Decrease    -40.220000    
-2024-03-01         Facebook Ads         3214.89          1382.66        2.325148      3.025569    -0.700421   Below Avg   3.336734    -1.011586     Decrease    -30.320000    
-2024-04-01         Google Display       1451.36          1093.44        1.327333      3.071398    -1.744065   Below Avg   2.405286    -1.077953     Decrease    -44.820000    
-2024-03-01         Instagram Ads        3077.84          1555.40        1.978809      2.833044    -0.854235   Below Avg   3.059231    -1.080422     Decrease    -35.320000    
-2024-02-01         Google Search        6260.46          1859.14        3.367395      2.741370    0.626025    Above Avg   4.550477    -1.183082     Decrease    -26.000000    
-2024-03-01         Google Search        3145.02          1746.05        1.801219      2.741370    -0.940151   Below Avg   3.367395    -1.566176     Decrease    -46.510000    
-((10 rows affected))
-
-
--- Top 10 MoM acquisition channels - WHERE pm_roas > ORDER BY mom_percentage DESC;
-========================================
-performance_month  acquisition_channel  current_revenue  current_spend  current_roas  avg_roas    diff_avg    avg_change  pm_roas     diff_pm_roas  pm_change   mom_percentage
------------------  -------------------  ---------------  -------------  ------------  ----------  ----------  ----------  ----------  ------------  ----------  --------------
-2024-03-01         Google Display       3528.70          1467.06        2.405286      3.071398    -0.666112   Below Avg   3.240370    -0.835084     Decrease    -25.770000    
-2024-02-01         Google Search        6260.46          1859.14        3.367395      2.741370    0.626025    Above Avg   4.550477    -1.183082     Decrease    -26.000000    
-2024-04-01         Instagram Ads        1360.59          948.78         1.434041      2.833044    -1.399003   Below Avg   1.978809    -0.544768     Decrease    -27.530000    
-2024-04-01         TikTok Ads           1114.78          876.71         1.271549      3.255109    -1.983560   Below Avg   1.804855    -0.533306     Decrease    -29.550000    
-2024-03-01         Facebook Ads         3214.89          1382.66        2.325148      3.025569    -0.700421   Below Avg   3.336734    -1.011586     Decrease    -30.320000    
-2024-04-01         Google Search        1693.97          1359.10        1.246390      2.741370    -1.494980   Below Avg   1.801219    -0.554829     Decrease    -30.800000    
-2024-02-01         Facebook Ads         4966.73          1488.50        3.336734      3.025569    0.311165    Above Avg   5.050499    -1.713765     Decrease    -33.930000    
-2024-03-01         Instagram Ads        3077.84          1555.40        1.978809      2.833044    -0.854235   Below Avg   3.059231    -1.080422     Decrease    -35.320000    
-2024-02-01         Instagram Ads        4512.58          1475.07        3.059231      2.833044    0.226187    Above Avg   4.860098    -1.800867     Decrease    -37.050000    
-2024-02-01         Google Display       5109.06          1576.69        3.240370      3.071398    0.168972    Above Avg   5.312606    -2.072236     Decrease    -39.010000    
-((10 rows affected))
-
-
--- Top 10 MoM last-touch campaigns - ORDER BY diff_pm_roas DESC;
-========================================
-performance_month  last_touch_channel  current_revenue  current_spend  current_roas  avg_roas    diff_avg    avg_change  pm_roas     diff_pm_roas  pm_change   mom_percentage
------------------  ------------------  ---------------  -------------  ------------  ----------  ----------  ----------  ----------  ------------  ----------  --------------
-2024-02-01         Google Display      10625.10         1690.54        6.285033      4.993410    1.291623    Above Avg   5.067077    1.217956      Increase    24.040000     
-2024-04-01         Instagram Ads       2014.99          480.81         4.190823      4.746501    -0.555678   Below Avg   3.826061    0.364762      Increase    9.530000      
-2024-04-01         Facebook Ads        2367.97          554.56         4.269997      5.091530    -0.821533   Below Avg   4.283980    -0.013983     Decrease    -0.330000     
-2024-02-01         Facebook Ads        9376.48          1603.46        5.847654      5.091530    0.756124    Above Avg   5.964491    -0.116837     Decrease    -1.960000     
-2024-03-01         TikTok Ads          6064.51          1137.04        5.333594      5.561276    -0.227682   Below Avg   5.734291    -0.400697     Decrease    -6.990000     
-2024-03-01         Google Display      7536.57          1323.20        5.695714      4.993410    0.702304    Above Avg   6.285033    -0.589319     Decrease    -9.380000     
-2024-04-01         TikTok Ads          3010.61          659.04         4.568174      5.561276    -0.993102   Below Avg   5.333594    -0.765420     Decrease    -14.350000    
-2024-03-01         Instagram Ads       4955.17          1295.11        3.826061      4.746501    -0.920440   Below Avg   4.665031    -0.838970     Decrease    -17.980000    
-2024-02-01         TikTok Ads          10036.96         1750.34        5.734291      5.561276    0.173015    Above Avg   6.609045    -0.874754     Decrease    -13.240000    
-2024-02-01         Google Search       10853.92         1696.88        6.396398      5.067053    1.329345    Above Avg   7.847400    -1.451002     Decrease    -18.490000    
-((10 rows affected))
-
-
--- Top 10 MoM last-touch campaigns - WHERE pm_roas > ORDER BY mom_percentage DESC;
-========================================
-performance_month  last_touch_channel  current_revenue  current_spend  current_roas  avg_roas    diff_avg    avg_change  pm_roas     diff_pm_roas  pm_change   mom_percentage
------------------  ------------------  ---------------  -------------  ------------  ----------  ----------  ----------  ----------  ------------  ----------  --------------
-2024-02-01         Google Display      10625.10         1690.54        6.285033      4.993410    1.291623    Above Avg   5.067077    1.217956      Increase    24.040000     
-2024-04-01         Instagram Ads       2014.99          480.81         4.190823      4.746501    -0.555678   Below Avg   3.826061    0.364762      Increase    9.530000      
-2024-04-01         Facebook Ads        2367.97          554.56         4.269997      5.091530    -0.821533   Below Avg   4.283980    -0.013983     Decrease    -0.330000     
-2024-02-01         Facebook Ads        9376.48          1603.46        5.847654      5.091530    0.756124    Above Avg   5.964491    -0.116837     Decrease    -1.960000     
-2024-03-01         TikTok Ads          6064.51          1137.04        5.333594      5.561276    -0.227682   Below Avg   5.734291    -0.400697     Decrease    -6.990000     
-2024-03-01         Google Display      7536.57          1323.20        5.695714      4.993410    0.702304    Above Avg   6.285033    -0.589319     Decrease    -9.380000     
-2024-02-01         TikTok Ads          10036.96         1750.34        5.734291      5.561276    0.173015    Above Avg   6.609045    -0.874754     Decrease    -13.240000    
-2024-04-01         TikTok Ads          3010.61          659.04         4.568174      5.561276    -0.993102   Below Avg   5.333594    -0.765420     Decrease    -14.350000    
-2024-03-01         Instagram Ads       4955.17          1295.11        3.826061      4.746501    -0.920440   Below Avg   4.665031    -0.838970     Decrease    -17.980000    
-2024-02-01         Google Search       10853.92         1696.88        6.396398      5.067053    1.329345    Above Avg   7.847400    -1.451002     Decrease    -18.490000    
 ((10 rows affected))
