@@ -14,7 +14,7 @@
   </a>
 </p>
 
-<p>💡 Disclaimer: This is a demo project intended for skill demonstration and uses synthetically generated data.</p>
+<p>💡 Disclaimer: This demo project is intended to showcase skills and uses synthetically generated data.</p>
 
 <h3>1) Marketing Analysis</h3>
 
