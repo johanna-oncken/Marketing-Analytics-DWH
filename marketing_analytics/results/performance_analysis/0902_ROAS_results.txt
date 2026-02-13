@@ -1,0 +1,550 @@
+===============================================================================
+ROAS Performance Analysis – Query Results
+===============================================================================
+
+Queries: 
+    1) ROAS overall 
+    2) ROAS Performance monthly
+    3.1) Mid of Funnel (MOFU) Monthly ROAS Performance and MOM-Analysis by Channels
+    3.2) Top of Funnel (TOFU) Monthly ROAS Performance and MOM-Analysis by Channels
+    3.3) Bottom of Funnel (BOFU) Monthly ROAS Performance and MOM-Analysis by Channels
+    3.4) Top Ten MOM Channels by TOFU/MOFU/BOFU 
+    4.1) Mid of Funnel (MOFU) Monthly ROAS Performance and MOM-Analysis by Campaigns
+    4.2) Top of Funnel (TOFU) Monthly ROAS Performance and MOM-Analysis by Campaigns
+    4.3) Bottom of Funnel (BOFU) Monthly ROAS Performance and MOM-Analysis by Campaigns
+    4.4) Top Ten MOM Campaigns by TOFU/MOFU/BOFU 
+
+========================================
+1) ROAS Overall (120 Days)
+========================================
+
+-- Overall MOFU ROAS --
+
+total_revenue  total_spend  overall_mofu_roas
+-------------  -----------  -----------------
+147679.04      69606.98     2.121612         
+((1 row affected))
+
+-- Overall BOFU ROAS --
+
+total_revenue  total_spend  overall_bofu_roas
+-------------  -----------  -----------------
+122827.57      23095.53     5.318239         
+((1 row affected))
+
+
+
+========================================
+2) ROAS Performance Monthly
+========================================
+
+performance_month  current_revenue  current_spend  current_roas  avg_roas    diff_avg    avg_change  pm_roas     diff_pm_roas  pm_change   mom_percentage
+-----------------  ---------------  -------------  ------------  ----------  ----------  ----------  ----------  ------------  ----------  --------------
+2024-01-01         33984.65         7636.75        4.450145      2.503265    1.946880    Above Avg   NULL        NULL          No Change   NULL          
+2024-02-01         50408.02         18810.15       2.679830      2.503265    0.176565    Above Avg   4.450145    -1.770315     Decrease    -39.780000    
+2024-03-01         40232.27         23625.25       1.702935      2.503265    -0.800330   Below Avg   2.679830    -0.976895     Decrease    -36.450000    
+2024-04-01         23054.10         19534.83       1.180153      2.503265    -1.323112   Below Avg   1.702935    -0.522782     Decrease    -30.700000    
+((4 rows affected))
+
+
+
+========================================
+3.1) MOFU Full-Funnel Channel ROAS Performance (MoM)
+========================================
+
+performance_month  channel         current_revenue  current_spend  current_roas  avg_roas    diff_avg    avg_change  pm_roas     diff_pm_roas  pm_change   mom_percentage
+-----------------  --------------  ---------------  -------------  ------------  ----------  ----------  ----------  ----------  ------------  ----------  --------------
+2024-01-01         Facebook Ads    5538.94          1279.96        4.327432      2.517311    1.810121    Above Avg   NULL        NULL          No Change   NULL          
+2024-02-01         Facebook Ads    10108.71         3711.52        2.723603      2.517311    0.206292    Above Avg   4.327432    -1.603829     Decrease    -37.060000    
+2024-03-01         Facebook Ads    7865.36          4532.54        1.735309      2.517311    -0.782002   Below Avg   2.723603    -0.988294     Decrease    -36.290000    
+2024-04-01         Facebook Ads    4580.82          3570.67        1.282902      2.517311    -1.234409   Below Avg   1.735309    -0.452407     Decrease    -26.070000    
+2024-01-01         Google Display  6803.24          1523.97        4.464156      2.557933    1.906223    Above Avg   NULL        NULL          No Change   NULL          
+2024-02-01         Google Display  10271.13         3866.80        2.656235      2.557933    0.098302    Above Avg   4.464156    -1.807921     Decrease    -40.500000    
+2024-03-01         Google Display  8394.65          4394.41        1.910301      2.557933    -0.647632   Below Avg   2.656235    -0.745934     Decrease    -28.080000    
+2024-04-01         Google Display  4686.54          3902.06        1.201042      2.557933    -1.356891   Below Avg   1.910301    -0.709259     Decrease    -37.130000    
+2024-01-01         Google Search   7310.72          1631.51        4.480953      2.506795    1.974158    Above Avg   NULL        NULL          No Change   NULL          
+2024-02-01         Google Search   11473.13         4009.27        2.861650      2.506795    0.354855    Above Avg   4.480953    -1.619303     Decrease    -36.140000    
+2024-03-01         Google Search   8456.93          5425.84        1.558639      2.506795    -0.948156   Below Avg   2.861650    -1.303011     Decrease    -45.530000    
+2024-04-01         Google Search   4843.04          4301.33        1.125940      2.506795    -1.380855   Below Avg   1.558639    -0.432699     Decrease    -27.760000    
+2024-01-01         Instagram Ads   7725.53          1807.55        4.274033      2.373926    1.900107    Above Avg   NULL        NULL          No Change   NULL          
+2024-02-01         Instagram Ads   8519.28          3654.58        2.331124      2.373926    -0.042802   Below Avg   4.274033    -1.942909     Decrease    -45.460000    
+2024-03-01         Instagram Ads   7859.29          4687.19        1.676759      2.373926    -0.697167   Below Avg   2.331124    -0.654365     Decrease    -28.070000    
+2024-04-01         Instagram Ads   4416.23          3638.38        1.213790      2.373926    -1.160136   Below Avg   1.676759    -0.462969     Decrease    -27.610000    
+2024-01-01         TikTok Ads      6606.22          1393.76        4.739854      2.580137    2.159717    Above Avg   NULL        NULL          No Change   NULL          
+2024-02-01         TikTok Ads      10035.77         3567.98        2.812731      2.580137    0.232594    Above Avg   4.739854    -1.927123     Decrease    -40.660000    
+2024-03-01         TikTok Ads      7656.04          4585.27        1.669703      2.580137    -0.910434   Below Avg   2.812731    -1.143028     Decrease    -40.640000    
+2024-04-01         TikTok Ads      4527.47          4122.39        1.098263      2.580137    -1.481874   Below Avg   1.669703    -0.571440     Decrease    -34.220000    
+((20 rows affected))
+
+
+
+========================================
+3.2) TOFU Acquisition Channel ROAS Performance (MoM)
+========================================
+
+performance_month  acquisition_channel  current_revenue  current_spend  current_roas  avg_roas    diff_avg    avg_change  pm_roas     diff_pm_roas  pm_change   mom_percentage
+-----------------  -------------------  ---------------  -------------  ------------  ----------  ----------  ----------  ----------  ------------  ----------  --------------
+2024-01-01         Facebook Ads         4282.47          847.93         5.050499      3.025569    2.024930    Above Avg   NULL        NULL          No Change   NULL          
+2024-02-01         Facebook Ads         4966.73          1488.50        3.336734      3.025569    0.311165    Above Avg   5.050499    -1.713765     Decrease    -33.930000    
+2024-03-01         Facebook Ads         3214.89          1382.66        2.325148      3.025569    -0.700421   Below Avg   3.336734    -1.011586     Decrease    -30.320000    
+2024-04-01         Facebook Ads         1623.19          1167.85        1.389895      3.025569    -1.635674   Below Avg   2.325148    -0.935253     Decrease    -40.220000    
+2024-01-01         Google Display       5183.51          975.70         5.312606      3.071398    2.241208    Above Avg   NULL        NULL          No Change   NULL          
+2024-02-01         Google Display       5109.06          1576.69        3.240370      3.071398    0.168972    Above Avg   5.312606    -2.072236     Decrease    -39.010000    
+2024-03-01         Google Display       3528.70          1467.06        2.405286      3.071398    -0.666112   Below Avg   3.240370    -0.835084     Decrease    -25.770000    
+2024-04-01         Google Display       1451.36          1093.44        1.327333      3.071398    -1.744065   Below Avg   2.405286    -1.077953     Decrease    -44.820000    
+2024-01-01         Google Search        5733.42          1259.96        4.550477      2.741370    1.809107    Above Avg   NULL        NULL          No Change   NULL          
+2024-02-01         Google Search        6260.46          1859.14        3.367395      2.741370    0.626025    Above Avg   4.550477    -1.183082     Decrease    -26.000000    
+2024-03-01         Google Search        3145.02          1746.05        1.801219      2.741370    -0.940151   Below Avg   3.367395    -1.566176     Decrease    -46.510000    
+2024-04-01         Google Search        1693.97          1359.10        1.246390      2.741370    -1.494980   Below Avg   1.801219    -0.554829     Decrease    -30.800000    
+2024-01-01         Instagram Ads        6067.25          1248.38        4.860098      2.833044    2.027054    Above Avg   NULL        NULL          No Change   NULL          
+2024-02-01         Instagram Ads        4512.58          1475.07        3.059231      2.833044    0.226187    Above Avg   4.860098    -1.800867     Decrease    -37.050000    
+2024-03-01         Instagram Ads        3077.84          1555.40        1.978809      2.833044    -0.854235   Below Avg   3.059231    -1.080422     Decrease    -35.320000    
+2024-04-01         Instagram Ads        1360.59          948.78         1.434041      2.833044    -1.399003   Below Avg   1.978809    -0.544768     Decrease    -27.530000    
+2024-01-01         TikTok Ads           5424.83          857.09         6.329358      3.255109    3.074249    Above Avg   NULL        NULL          No Change   NULL          
+2024-02-01         TikTok Ads           6228.52          1723.12        3.614675      3.255109    0.359566    Above Avg   6.329358    -2.714683     Decrease    -42.890000    
+2024-03-01         TikTok Ads           3159.11          1750.34        1.804855      3.255109    -1.450254   Below Avg   3.614675    -1.809820     Decrease    -50.070000    
+2024-04-01         TikTok Ads           1114.78          876.71         1.271549      3.255109    -1.983560   Below Avg   1.804855    -0.533306     Decrease    -29.550000    
+((20 rows affected))
+
+
+
+========================================
+3.3) BOFU Last-Touch Channel ROAS Performance (MoM)
+========================================
+
+performance_month  last_touch_channel  current_revenue  current_spend  current_roas  avg_roas    diff_avg    avg_change  pm_roas     diff_pm_roas  pm_change   mom_percentage
+-----------------  ------------------  ---------------  -------------  ------------  ----------  ----------  ----------  ----------  ------------  ----------  --------------
+2024-01-01         Facebook Ads        5074.53          850.79         5.964491      5.091530    0.872961    Above Avg   NULL        NULL          No Change   NULL          
+2024-02-01         Facebook Ads        9376.48          1603.46        5.847654      5.091530    0.756124    Above Avg   5.964491    -0.116837     Decrease    -1.960000     
+2024-03-01         Facebook Ads        5844.12          1364.18        4.283980      5.091530    -0.807550   Below Avg   5.847654    -1.563674     Decrease    -26.740000    
+2024-04-01         Facebook Ads        2367.97          554.56         4.269997      5.091530    -0.821533   Below Avg   4.283980    -0.013983     Decrease    -0.330000     
+2024-01-01         Google Display      5167.71          1019.86        5.067077      4.993410    0.073667    Above Avg   NULL        NULL          No Change   NULL          
+2024-02-01         Google Display      10625.10         1690.54        6.285033      4.993410    1.291623    Above Avg   5.067077    1.217956      Increase    24.040000     
+2024-03-01         Google Display      7536.57          1323.20        5.695714      4.993410    0.702304    Above Avg   6.285033    -0.589319     Decrease    -9.380000     
+2024-04-01         Google Display      1415.95          483.95         2.925818      4.993410    -2.067592   Below Avg   5.695714    -2.769896     Decrease    -48.630000    
+2024-01-01         Google Search       7463.82          951.12         7.847400      5.067053    2.780347    Above Avg   NULL        NULL          No Change   NULL          
+2024-02-01         Google Search       10853.92         1696.88        6.396398      5.067053    1.329345    Above Avg   7.847400    -1.451002     Decrease    -18.490000    
+2024-03-01         Google Search       6566.68          1621.56        4.049606      5.067053    -1.017447   Below Avg   6.396398    -2.346792     Decrease    -36.690000    
+2024-04-01         Google Search       1033.28          523.23         1.974810      5.067053    -3.092243   Below Avg   4.049606    -2.074796     Decrease    -51.230000    
+2024-01-01         Instagram Ads       8465.45          1342.85        6.304092      4.746501    1.557591    Above Avg   NULL        NULL          No Change   NULL          
+2024-02-01         Instagram Ads       7682.28          1646.78        4.665031      4.746501    -0.081470   Below Avg   6.304092    -1.639061     Decrease    -26.000000    
+2024-03-01         Instagram Ads       4955.17          1295.11        3.826061      4.746501    -0.920440   Below Avg   4.665031    -0.838970     Decrease    -17.980000    
+2024-04-01         Instagram Ads       2014.99          480.81         4.190823      4.746501    -0.555678   Below Avg   3.826061    0.364762      Increase    9.530000      
+2024-01-01         TikTok Ads          7271.47          1100.23        6.609045      5.561276    1.047769    Above Avg   NULL        NULL          No Change   NULL          
+2024-02-01         TikTok Ads          10036.96         1750.34        5.734291      5.561276    0.173015    Above Avg   6.609045    -0.874754     Decrease    -13.240000    
+2024-03-01         TikTok Ads          6064.51          1137.04        5.333594      5.561276    -0.227682   Below Avg   5.734291    -0.400697     Decrease    -6.990000     
+2024-04-01         TikTok Ads          3010.61          659.04         4.568174      5.561276    -0.993102   Below Avg   5.333594    -0.765420     Decrease    -14.350000    
+((20 rows affected))
+
+
+
+========================================
+3.4a) Top 10 MoM MOFU Channels – by Absolute ROAS Growth (diff_pm_roas DESC)
+========================================
+
+performance_month  channel         current_revenue  current_spend  current_roas  avg_roas    diff_avg    avg_change  pm_roas     diff_pm_roas  pm_change   mom_percentage
+-----------------  --------------  ---------------  -------------  ------------  ----------  ----------  ----------  ----------  ------------  ----------  --------------
+2024-04-01         Google Search   4843.04          4301.33        1.125940      2.506795    -1.380855   Below Avg   1.558639    -0.432699     Decrease    -27.760000    
+2024-04-01         Facebook Ads    4580.82          3570.67        1.282902      2.517311    -1.234409   Below Avg   1.735309    -0.452407     Decrease    -26.070000    
+2024-04-01         Instagram Ads   4416.23          3638.38        1.213790      2.373926    -1.160136   Below Avg   1.676759    -0.462969     Decrease    -27.610000    
+2024-04-01         TikTok Ads      4527.47          4122.39        1.098263      2.580137    -1.481874   Below Avg   1.669703    -0.571440     Decrease    -34.220000    
+2024-03-01         Instagram Ads   7859.29          4687.19        1.676759      2.373926    -0.697167   Below Avg   2.331124    -0.654365     Decrease    -28.070000    
+2024-04-01         Google Display  4686.54          3902.06        1.201042      2.557933    -1.356891   Below Avg   1.910301    -0.709259     Decrease    -37.130000    
+2024-03-01         Google Display  8394.65          4394.41        1.910301      2.557933    -0.647632   Below Avg   2.656235    -0.745934     Decrease    -28.080000    
+2024-03-01         Facebook Ads    7865.36          4532.54        1.735309      2.517311    -0.782002   Below Avg   2.723603    -0.988294     Decrease    -36.290000    
+2024-03-01         TikTok Ads      7656.04          4585.27        1.669703      2.580137    -0.910434   Below Avg   2.812731    -1.143028     Decrease    -40.640000    
+2024-03-01         Google Search   8456.93          5425.84        1.558639      2.506795    -0.948156   Below Avg   2.861650    -1.303011     Decrease    -45.530000    
+((10 rows affected))
+
+
+
+========================================
+3.4b) Top 10 MoM MOFU Channels – by Percentage ROAS Growth (mom_percentage DESC)
+========================================
+
+performance_month  channel         current_revenue  current_spend  current_roas  avg_roas    diff_avg    avg_change  pm_roas     diff_pm_roas  pm_change   mom_percentage
+-----------------  --------------  ---------------  -------------  ------------  ----------  ----------  ----------  ----------  ------------  ----------  --------------
+2024-04-01         Facebook Ads    4580.82          3570.67        1.282902      2.517311    -1.234409   Below Avg   1.735309    -0.452407     Decrease    -26.070000    
+2024-04-01         Instagram Ads   4416.23          3638.38        1.213790      2.373926    -1.160136   Below Avg   1.676759    -0.462969     Decrease    -27.610000    
+2024-04-01         Google Search   4843.04          4301.33        1.125940      2.506795    -1.380855   Below Avg   1.558639    -0.432699     Decrease    -27.760000    
+2024-03-01         Instagram Ads   7859.29          4687.19        1.676759      2.373926    -0.697167   Below Avg   2.331124    -0.654365     Decrease    -28.070000    
+2024-03-01         Google Display  8394.65          4394.41        1.910301      2.557933    -0.647632   Below Avg   2.656235    -0.745934     Decrease    -28.080000    
+2024-04-01         TikTok Ads      4527.47          4122.39        1.098263      2.580137    -1.481874   Below Avg   1.669703    -0.571440     Decrease    -34.220000    
+2024-02-01         Google Search   11473.13         4009.27        2.861650      2.506795    0.354855    Above Avg   4.480953    -1.619303     Decrease    -36.140000    
+2024-03-01         Facebook Ads    7865.36          4532.54        1.735309      2.517311    -0.782002   Below Avg   2.723603    -0.988294     Decrease    -36.290000    
+2024-02-01         Facebook Ads    10108.71         3711.52        2.723603      2.517311    0.206292    Above Avg   4.327432    -1.603829     Decrease    -37.060000    
+2024-04-01         Google Display  4686.54          3902.06        1.201042      2.557933    -1.356891   Below Avg   1.910301    -0.709259     Decrease    -37.130000    
+((10 rows affected))
+
+
+
+========================================
+3.4c) Top 10 MoM TOFU Channels – by Absolute ROAS Growth (diff_pm_roas DESC)
+========================================
+
+performance_month  acquisition_channel  current_revenue  current_spend  current_roas  avg_roas    diff_avg    avg_change  pm_roas     diff_pm_roas  pm_change   mom_percentage
+-----------------  -------------------  ---------------  -------------  ------------  ----------  ----------  ----------  ----------  ------------  ----------  --------------
+2024-04-01         TikTok Ads           1114.78          876.71         1.271549      3.255109    -1.983560   Below Avg   1.804855    -0.533306     Decrease    -29.550000    
+2024-04-01         Instagram Ads        1360.59          948.78         1.434041      2.833044    -1.399003   Below Avg   1.978809    -0.544768     Decrease    -27.530000    
+2024-04-01         Google Search        1693.97          1359.10        1.246390      2.741370    -1.494980   Below Avg   1.801219    -0.554829     Decrease    -30.800000    
+2024-03-01         Google Display       3528.70          1467.06        2.405286      3.071398    -0.666112   Below Avg   3.240370    -0.835084     Decrease    -25.770000    
+2024-04-01         Facebook Ads         1623.19          1167.85        1.389895      3.025569    -1.635674   Below Avg   2.325148    -0.935253     Decrease    -40.220000    
+2024-03-01         Facebook Ads         3214.89          1382.66        2.325148      3.025569    -0.700421   Below Avg   3.336734    -1.011586     Decrease    -30.320000    
+2024-04-01         Google Display       1451.36          1093.44        1.327333      3.071398    -1.744065   Below Avg   2.405286    -1.077953     Decrease    -44.820000    
+2024-03-01         Instagram Ads        3077.84          1555.40        1.978809      2.833044    -0.854235   Below Avg   3.059231    -1.080422     Decrease    -35.320000    
+2024-02-01         Google Search        6260.46          1859.14        3.367395      2.741370    0.626025    Above Avg   4.550477    -1.183082     Decrease    -26.000000    
+2024-03-01         Google Search        3145.02          1746.05        1.801219      2.741370    -0.940151   Below Avg   3.367395    -1.566176     Decrease    -46.510000    
+((10 rows affected))
+
+
+
+========================================
+3.4d) Top 10 MoM TOFU Channels – by Percentage ROAS Growth (mom_percentage DESC)
+========================================
+
+performance_month  acquisition_channel  current_revenue  current_spend  current_roas  avg_roas    diff_avg    avg_change  pm_roas     diff_pm_roas  pm_change   mom_percentage
+-----------------  -------------------  ---------------  -------------  ------------  ----------  ----------  ----------  ----------  ------------  ----------  --------------
+2024-03-01         Google Display       3528.70          1467.06        2.405286      3.071398    -0.666112   Below Avg   3.240370    -0.835084     Decrease    -25.770000    
+2024-02-01         Google Search        6260.46          1859.14        3.367395      2.741370    0.626025    Above Avg   4.550477    -1.183082     Decrease    -26.000000    
+2024-04-01         Instagram Ads        1360.59          948.78         1.434041      2.833044    -1.399003   Below Avg   1.978809    -0.544768     Decrease    -27.530000    
+2024-04-01         TikTok Ads           1114.78          876.71         1.271549      3.255109    -1.983560   Below Avg   1.804855    -0.533306     Decrease    -29.550000    
+2024-03-01         Facebook Ads         3214.89          1382.66        2.325148      3.025569    -0.700421   Below Avg   3.336734    -1.011586     Decrease    -30.320000    
+2024-04-01         Google Search        1693.97          1359.10        1.246390      2.741370    -1.494980   Below Avg   1.801219    -0.554829     Decrease    -30.800000    
+2024-02-01         Facebook Ads         4966.73          1488.50        3.336734      3.025569    0.311165    Above Avg   5.050499    -1.713765     Decrease    -33.930000    
+2024-03-01         Instagram Ads        3077.84          1555.40        1.978809      2.833044    -0.854235   Below Avg   3.059231    -1.080422     Decrease    -35.320000    
+2024-02-01         Instagram Ads        4512.58          1475.07        3.059231      2.833044    0.226187    Above Avg   4.860098    -1.800867     Decrease    -37.050000    
+2024-02-01         Google Display       5109.06          1576.69        3.240370      3.071398    0.168972    Above Avg   5.312606    -2.072236     Decrease    -39.010000    
+((10 rows affected))
+
+
+
+========================================
+3.4e) Top 10 MoM BOFU Channels – by Absolute ROAS Growth (diff_pm_roas DESC)
+========================================
+
+performance_month  last_touch_channel  current_revenue  current_spend  current_roas  avg_roas    diff_avg    avg_change  pm_roas     diff_pm_roas  pm_change   mom_percentage
+-----------------  ------------------  ---------------  -------------  ------------  ----------  ----------  ----------  ----------  ------------  ----------  --------------
+2024-02-01         Google Display      10625.10         1690.54        6.285033      4.993410    1.291623    Above Avg   5.067077    1.217956      Increase    24.040000     
+2024-04-01         Instagram Ads       2014.99          480.81         4.190823      4.746501    -0.555678   Below Avg   3.826061    0.364762      Increase    9.530000      
+2024-04-01         Facebook Ads        2367.97          554.56         4.269997      5.091530    -0.821533   Below Avg   4.283980    -0.013983     Decrease    -0.330000     
+2024-02-01         Facebook Ads        9376.48          1603.46        5.847654      5.091530    0.756124    Above Avg   5.964491    -0.116837     Decrease    -1.960000     
+2024-03-01         TikTok Ads          6064.51          1137.04        5.333594      5.561276    -0.227682   Below Avg   5.734291    -0.400697     Decrease    -6.990000     
+2024-03-01         Google Display      7536.57          1323.20        5.695714      4.993410    0.702304    Above Avg   6.285033    -0.589319     Decrease    -9.380000     
+2024-04-01         TikTok Ads          3010.61          659.04         4.568174      5.561276    -0.993102   Below Avg   5.333594    -0.765420     Decrease    -14.350000    
+2024-03-01         Instagram Ads       4955.17          1295.11        3.826061      4.746501    -0.920440   Below Avg   4.665031    -0.838970     Decrease    -17.980000    
+2024-02-01         TikTok Ads          10036.96         1750.34        5.734291      5.561276    0.173015    Above Avg   6.609045    -0.874754     Decrease    -13.240000    
+2024-02-01         Google Search       10853.92         1696.88        6.396398      5.067053    1.329345    Above Avg   7.847400    -1.451002     Decrease    -18.490000    
+((10 rows affected))
+
+
+
+========================================
+3.4f) Top 10 MoM BOFU Channels – by Percentage ROAS Growth (mom_percentage DESC)
+========================================
+
+performance_month  last_touch_channel  current_revenue  current_spend  current_roas  avg_roas    diff_avg    avg_change  pm_roas     diff_pm_roas  pm_change   mom_percentage
+-----------------  ------------------  ---------------  -------------  ------------  ----------  ----------  ----------  ----------  ------------  ----------  --------------
+2024-02-01         Google Display      10625.10         1690.54        6.285033      4.993410    1.291623    Above Avg   5.067077    1.217956      Increase    24.040000     
+2024-04-01         Instagram Ads       2014.99          480.81         4.190823      4.746501    -0.555678   Below Avg   3.826061    0.364762      Increase    9.530000      
+2024-04-01         Facebook Ads        2367.97          554.56         4.269997      5.091530    -0.821533   Below Avg   4.283980    -0.013983     Decrease    -0.330000     
+2024-02-01         Facebook Ads        9376.48          1603.46        5.847654      5.091530    0.756124    Above Avg   5.964491    -0.116837     Decrease    -1.960000     
+2024-03-01         TikTok Ads          6064.51          1137.04        5.333594      5.561276    -0.227682   Below Avg   5.734291    -0.400697     Decrease    -6.990000     
+2024-03-01         Google Display      7536.57          1323.20        5.695714      4.993410    0.702304    Above Avg   6.285033    -0.589319     Decrease    -9.380000     
+2024-02-01         TikTok Ads          10036.96         1750.34        5.734291      5.561276    0.173015    Above Avg   6.609045    -0.874754     Decrease    -13.240000    
+2024-04-01         TikTok Ads          3010.61          659.04         4.568174      5.561276    -0.993102   Below Avg   5.333594    -0.765420     Decrease    -14.350000    
+2024-03-01         Instagram Ads       4955.17          1295.11        3.826061      4.746501    -0.920440   Below Avg   4.665031    -0.838970     Decrease    -17.980000    
+2024-02-01         Google Search       10853.92         1696.88        6.396398      5.067053    1.329345    Above Avg   7.847400    -1.451002     Decrease    -18.490000    
+((10 rows affected))
+
+
+
+========================================
+4.1) MOFU Full-Funnel Campaign ROAS Performance (MoM)
+========================================
+
+performance_month  campaign_id  campaign_name          current_revenue  current_spend  current_roas  avg_roas    diff_avg    avg_change  pm_roas     diff_pm_roas  pm_change   mom_percentage
+-----------------  -----------  ---------------------  ---------------  -------------  ------------  ----------  ----------  ----------  ----------  ------------  ----------  --------------
+2024-01-01         1            NULL                   672.75           211.10         3.186878      2.180300    1.006578    Above Avg   NULL        NULL          No Change   NULL          
+2024-02-01         1            NULL                   1183.52          466.59         2.536531      2.180300    0.356231    Above Avg   3.186878    -0.650347     Decrease    -20.410000    
+2024-03-01         1            NULL                   837.08           437.67         1.912582      2.180300    -0.267718   Below Avg   2.536531    -0.623949     Decrease    -24.600000    
+2024-04-01         1            NULL                   514.14           473.77         1.085210      2.180300    -1.095090   Below Avg   1.912582    -0.827372     Decrease    -43.260000    
+2024-01-01         2            Spring_Prospecting_EU  732.62           286.35         2.558477      2.384037    0.174440    Above Avg   NULL        NULL          No Change   NULL          
+2024-02-01         2            Spring_Prospecting_EU  1159.32          349.59         3.316227      2.384037    0.932190    Above Avg   2.558477    0.757750      Increase    29.620000     
+2024-03-01         2            Spring_Prospecting_EU  655.99           367.19         1.786513      2.384037    -0.597524   Below Avg   3.316227    -1.529714     Decrease    -46.130000    
+2024-04-01         2            Spring_Prospecting_EU  318.72           169.99         1.874933      2.384037    -0.509104   Below Avg   1.786513    0.088420      Increase    4.950000      
+2024-01-01         3            Summer_Launch          75.06            18.14          4.137816      2.323107    1.814709    Above Avg   NULL        NULL          No Change   NULL          
+2024-02-01         3            Summer_Launch          728.20           261.01         2.789931      2.323107    0.466824    Above Avg   4.137816    -1.347885     Decrease    -32.570000    
+2024-03-01         3            Summer_Launch          804.97           513.00         1.569142      2.323107    -0.753965   Below Avg   2.789931    -1.220789     Decrease    -43.760000    
+2024-04-01         3            Summer_Launch          421.55           529.89         0.795542      2.323107    -1.527565   Below Avg   1.569142    -0.773600     Decrease    -49.300000    
+2024-01-01         4            Lookalike_3pct_DE      319.83           144.58         2.212131      2.117185    0.094946    Above Avg   NULL        NULL          No Change   NULL          
+2024-02-01         4            Lookalike_3pct_DE      1504.07          463.33         3.246217      2.117185    1.129032    Above Avg   2.212131    1.034086      Increase    46.750000     
+2024-03-01         4            Lookalike_3pct_DE      691.68           440.06         1.571785      2.117185    -0.545400   Below Avg   3.246217    -1.674432     Decrease    -51.580000    
+2024-04-01         4            Lookalike_3pct_DE      432.10           300.36         1.438607      2.117185    -0.678578   Below Avg   1.571785    -0.133178     Decrease    -8.470000     
+2024-01-01         5            Holiday_Special        834.53           93.98          8.879868      3.652020    5.227848    Above Avg   NULL        NULL          No Change   NULL          
+2024-02-01         5            Holiday_Special        976.70           337.99         2.889730      3.652020    -0.762290   Below Avg   8.879868    -5.990138     Decrease    -67.460000    
+2024-03-01         5            Holiday_Special        797.28           459.45         1.735292      3.652020    -1.916728   Below Avg   2.889730    -1.154438     Decrease    -39.950000    
+2024-04-01         5            Holiday_Special        567.57           514.48         1.103191      3.652020    -2.548829   Below Avg   1.735292    -0.632101     Decrease    -36.430000    
+2024-01-01         6            SEO_Boost              964.33           206.18         4.677126      2.455166    2.221960    Above Avg   NULL        NULL          No Change   NULL          
+2024-02-01         6            SEO_Boost              776.83           452.55         1.716561      2.455166    -0.738605   Below Avg   4.677126    -2.960565     Decrease    -63.300000    
+2024-03-01         6            SEO_Boost              1020.53          461.26         2.212483      2.455166    -0.242683   Below Avg   1.716561    0.495922      Increase    28.890000     
+2024-04-01         6            SEO_Boost              585.86           482.39         1.214494      2.455166    -1.240672   Below Avg   2.212483    -0.997989     Decrease    -45.110000    
+2024-01-01         7            Retention_Push         435.15           110.98         3.920976      2.272208    1.648768    Above Avg   NULL        NULL          No Change   NULL          
+2024-02-01         7            Retention_Push         911.70           383.67         2.376260      2.272208    0.104052    Above Avg   3.920976    -1.544716     Decrease    -39.400000    
+2024-03-01         7            Retention_Push         526.53           374.51         1.405917      2.272208    -0.866291   Below Avg   2.376260    -0.970343     Decrease    -40.830000    
+2024-04-01         7            Retention_Push         527.64           380.78         1.385682      2.272208    -0.886526   Below Avg   1.405917    -0.020235     Decrease    -1.440000     
+2024-01-01         8            SEO_Boost              1029.82          136.07         7.568310      3.406520    4.161790    Above Avg   NULL        NULL          No Change   NULL          
+2024-02-01         8            SEO_Boost              1776.30          533.89         3.327089      3.406520    -0.079431   Below Avg   7.568310    -4.241221     Decrease    -56.040000    
+2024-03-01         8            SEO_Boost              1207.64          680.33         1.775079      3.406520    -1.631441   Below Avg   3.327089    -1.552010     Decrease    -46.650000    
+2024-04-01         8            SEO_Boost              216.10           226.14         0.955602      3.406520    -2.450918   Below Avg   1.775079    -0.819477     Decrease    -46.170000    
+2024-01-01         9            Brand_Awareness_Q1     520.72           366.20         1.421955      2.013357    -0.591402   Below Avg   NULL        NULL          No Change   NULL          
+2024-02-01         9            Brand_Awareness_Q1     1271.79          312.77         4.066214      2.013357    2.052857    Above Avg   1.421955    2.644259      Increase    185.960000    
+2024-03-01         9            Brand_Awareness_Q1     473.42           355.34         1.332301      2.013357    -0.681056   Below Avg   4.066214    -2.733913     Decrease    -67.230000    
+2024-04-01         9            Brand_Awareness_Q1     352.17           285.63         1.232958      2.013357    -0.780399   Below Avg   1.332301    -0.099343     Decrease    -7.460000     
+2024-01-01         10           SEO_Boost              766.25           217.04         3.530455      2.234661    1.295794    Above Avg   NULL        NULL          No Change   NULL          
+2024-02-01         10           SEO_Boost              576.44           246.61         2.337455      2.234661    0.102794    Above Avg   3.530455    -1.193000     Decrease    -33.790000    
+2024-03-01         10           SEO_Boost              760.69           349.87         2.174207      2.234661    -0.060454   Below Avg   2.337455    -0.163248     Decrease    -6.980000     
+2024-04-01         10           SEO_Boost              396.15           441.87         0.896530      2.234661    -1.338131   Below Avg   2.174207    -1.277677     Decrease    -58.770000    
+2024-01-01         11           Summer_Retargeting     579.05           256.16         2.260501      1.649446    0.611055    Above Avg   NULL        NULL          No Change   NULL          
+2024-02-01         11           Summer_Retargeting     451.87           270.88         1.668155      1.649446    0.018709    Above Avg   2.260501    -0.592346     Decrease    -26.200000    
+2024-03-01         11           Summer_Retargeting     776.99           414.67         1.873755      1.649446    0.224309    Above Avg   1.668155    0.205600      Increase    12.320000     
+2024-04-01         11           Summer_Retargeting     580.05           729.28         0.795373      1.649446    -0.854073   Below Avg   1.873755    -1.078382     Decrease    -57.550000    
+2024-01-01         12           Brand_Awareness_Q1     734.40           158.21         4.641931      2.903966    1.737965    Above Avg   NULL        NULL          No Change   NULL          
+2024-02-01         12           Brand_Awareness_Q1     1366.79          422.11         3.237994      2.903966    0.334028    Above Avg   4.641931    -1.403937     Decrease    -30.240000    
+2024-03-01         12           Brand_Awareness_Q1     959.43           437.01         2.195441      2.903966    -0.708525   Below Avg   3.237994    -1.042553     Decrease    -32.200000    
+2024-04-01         12           Brand_Awareness_Q1     607.65           394.45         1.540499      2.903966    -1.363467   Below Avg   2.195441    -0.654942     Decrease    -29.830000    
+...
+[Note: Campaigns 13–53 truncated here. Full results (212 rows) available via SQL query gold.funnel_campaigns_roas.]
+((212 rows affected))
+
+
+
+========================================
+4.2) TOFU Acquisition Campaign ROAS Performance (MoM)
+========================================
+
+performance_month  acquisition_campaign  campaign_name          current_revenue  current_spend  current_roas  avg_roas    diff_avg    avg_change  pm_roas     diff_pm_roas  pm_change   mom_percentage
+-----------------  --------------------  ---------------------  ---------------  -------------  ------------  ----------  ----------  ----------  ----------  ------------  ----------  --------------
+2024-01-01         1                     NULL                   428.43           102.38         4.184704      2.771026    1.413678    Above Avg   NULL        NULL          No Change   NULL          
+2024-02-01         1                     NULL                   679.59           218.85         3.105277      2.771026    0.334251    Above Avg   4.184704    -1.079427     Decrease    -25.790000    
+2024-03-01         1                     NULL                   246.65           78.27          3.151271      2.771026    0.380245    Above Avg   3.105277    0.045994      Increase    1.480000      
+2024-04-01         1                     NULL                   90.43            140.67         0.642852      2.771026    -2.128174   Below Avg   3.151271    -2.508419     Decrease    -79.600000    
+2024-01-01         2                     Spring_Prospecting_EU  671.79           279.70         2.401823      2.683932    -0.282109   Below Avg   NULL        NULL          No Change   NULL          
+2024-02-01         2                     Spring_Prospecting_EU  685.24           139.40         4.915638      2.683932    2.231706    Above Avg   2.401823    2.513815      Increase    104.660000    
+2024-03-01         2                     Spring_Prospecting_EU  223.96           152.10         1.472452      2.683932    -1.211480   Below Avg   4.915638    -3.443186     Decrease    -70.050000    
+2024-04-01         2                     Spring_Prospecting_EU  119.59           61.46          1.945818      2.683932    -0.738114   Below Avg   1.472452    0.473366      Increase    32.150000     
+2024-02-01         3                     Summer_Launch          365.32           99.20          3.682661      2.079302    1.603359    Above Avg   NULL        NULL          No Change   NULL          
+2024-03-01         3                     Summer_Launch          107.12           58.40          1.834246      2.079302    -0.245056   Below Avg   3.682661    -1.848415     Decrease    -50.190000    
+2024-04-01         3                     Summer_Launch          30.83            42.76          0.721000      2.079302    -1.358302   Below Avg   1.834246    -1.113246     Decrease    -60.690000    
+2024-01-01         4                     Lookalike_3pct_DE      280.16           123.71         2.264651      2.260005    0.004646    Above Avg   NULL        NULL          No Change   NULL          
+2024-02-01         4                     Lookalike_3pct_DE      1157.12          318.84         3.629155      2.260005    1.369150    Above Avg   2.264651    1.364504      Increase    60.250000     
+2024-03-01         4                     Lookalike_3pct_DE      254.32           153.62         1.655513      2.260005    -0.604492   Below Avg   3.629155    -1.973642     Decrease    -54.380000    
+2024-04-01         4                     Lookalike_3pct_DE      141.11           94.66          1.490703      2.260005    -0.769302   Below Avg   1.655513    -0.164810     Decrease    -9.960000     
+2024-01-01         5                     Holiday_Special        748.33           87.71          8.531866      3.545923    4.985943    Above Avg   NULL        NULL          No Change   NULL          
+2024-02-01         5                     Holiday_Special        477.72           173.53         2.752953      3.545923    -0.792970   Below Avg   8.531866    -5.778913     Decrease    -67.730000    
+2024-03-01         5                     Holiday_Special        370.20           254.90         1.452334      3.545923    -2.093589   Below Avg   2.752953    -1.300619     Decrease    -47.240000    
+2024-04-01         5                     Holiday_Special        327.83           226.63         1.446542      3.545923    -2.099381   Below Avg   1.452334    -0.005792     Decrease    -0.400000     
+2024-01-01         6                     SEO_Boost              716.21           90.42          7.920924      3.212165    4.708759    Above Avg   NULL        NULL          No Change   NULL          
+2024-02-01         6                     SEO_Boost              333.86           199.10         1.676845      3.212165    -1.535320   Below Avg   7.920924    -6.244079     Decrease    -78.830000    
+2024-03-01         6                     SEO_Boost              365.86           140.22         2.609185      3.212165    -0.602980   Below Avg   1.676845    0.932340      Increase    55.600000     
+2024-04-01         6                     SEO_Boost              77.91            121.41         0.641709      3.212165    -2.570456   Below Avg   2.609185    -1.967476     Decrease    -75.410000    
+2024-01-01         7                     Retention_Push         347.38           78.52          4.424095      2.923330    1.500765    Above Avg   NULL        NULL          No Change   NULL          
+2024-02-01         7                     Retention_Push         446.06           130.45         3.419394      2.923330    0.496064    Above Avg   4.424095    -1.004701     Decrease    -22.710000    
+2024-03-01         7                     Retention_Push         123.30           91.36          1.349605      2.923330    -1.573725   Below Avg   3.419394    -2.069789     Decrease    -60.530000    
+2024-04-01         7                     Retention_Push         164.84           65.93          2.500227      2.923330    -0.423103   Below Avg   1.349605    1.150622      Increase    85.260000     
+2024-01-01         8                     SEO_Boost              820.88           71.30          11.513043     4.662043    6.851000    Above Avg   NULL        NULL          No Change   NULL          
+2024-02-01         8                     SEO_Boost              1201.74          265.40         4.528033      4.662043    -0.134010   Below Avg   11.513043   -6.985010     Decrease    -60.670000    
+2024-03-01         8                     SEO_Boost              723.12           376.44         1.920943      4.662043    -2.741100   Below Avg   4.528033    -2.607090     Decrease    -57.580000    
+2024-04-01         8                     SEO_Boost              86.14            125.54         0.686155      4.662043    -3.975888   Below Avg   1.920943    -1.234788     Decrease    -64.280000    
+2024-01-01         9                     Brand_Awareness_Q1     187.86           154.41         1.216631      2.541086    -1.324455   Below Avg   NULL        NULL          No Change   NULL          
+2024-02-01         9                     Brand_Awareness_Q1     760.27           130.43         5.828950      2.541086    3.287864    Above Avg   1.216631    4.612319      Increase    379.110000    
+2024-03-01         9                     Brand_Awareness_Q1     154.87           89.21          1.736016      2.541086    -0.805070   Below Avg   5.828950    -4.092934     Decrease    -70.220000    
+2024-04-01         9                     Brand_Awareness_Q1     155.67           112.58         1.382750      2.541086    -1.158336   Below Avg   1.736016    -0.353266     Decrease    -20.350000    
+2024-01-01         10                    SEO_Boost              423.47           134.94         3.138209      2.269987    0.868222    Above Avg   NULL        NULL          No Change   NULL          
+2024-02-01         10                    SEO_Boost              384.93           138.67         2.775870      2.269987    0.505883    Above Avg   3.138209    -0.362339     Decrease    -11.550000    
+2024-03-01         10                    SEO_Boost              334.85           146.75         2.281771      2.269987    0.011784    Above Avg   2.775870    -0.494099     Decrease    -17.800000    
+2024-04-01         10                    SEO_Boost              107.71           121.83         0.884100      2.269987    -1.385887   Below Avg   2.281771    -1.397671     Decrease    -61.250000    
+2024-01-01         11                    Summer_Retargeting     410.60           154.32         2.660705      1.964649    0.696056    Above Avg   NULL        NULL          No Change   NULL          
+2024-02-01         11                    Summer_Retargeting     204.48           107.11         1.909065      1.964649    -0.055584   Below Avg   2.660705    -0.751640     Decrease    -28.250000    
+2024-03-01         11                    Summer_Retargeting     365.21           187.10         1.951950      1.964649    -0.012699   Below Avg   1.909065    0.042885      Increase    2.250000      
+2024-04-01         11                    Summer_Retargeting     105.60           78.99          1.336878      1.964649    -0.627771   Below Avg   1.951950    -0.615072     Decrease    -31.510000    
+2024-01-01         12                    Brand_Awareness_Q1     608.73           139.04         4.378092      3.352710    1.025382    Above Avg   NULL        NULL          No Change   NULL          
+2024-02-01         12                    Brand_Awareness_Q1     947.69           200.21         4.733479      3.352710    1.380769    Above Avg   4.378092    0.355387      Increase    8.120000      
+2024-03-01         12                    Brand_Awareness_Q1     473.26           187.87         2.519082      3.352710    -0.833628   Below Avg   4.733479    -2.214397     Decrease    -46.780000    
+2024-04-01         12                    Brand_Awareness_Q1     164.08           92.17          1.780188      3.352710    -1.572522   Below Avg   2.519082    -0.738894     Decrease    -29.330000    
+...
+[Note: Campaigns 13–53 truncated here. Full results (211 rows) available via SQL query gold.acquisition_campaigns_roas.]
+((211 rows affected))
+
+
+
+========================================
+4.3) BOFU Last-Touch Campaign ROAS Performance (MoM)
+========================================
+
+performance_month  last_touch_campaign  campaign_name          current_revenue  current_spend  current_roas  avg_roas    diff_avg    avg_change  pm_roas     diff_pm_roas  pm_change   mom_percentage
+-----------------  -------------------  ---------------------  ---------------  -------------  ------------  ----------  ----------  ----------  ----------  ------------  ----------  --------------
+2024-01-01         1                    NULL                   746.00           204.87         3.641333      5.302160    -1.660827   Below Avg   NULL        NULL          No Change   NULL          
+2024-02-01         1                    NULL                   1197.35          262.53         4.560812      5.302160    -0.741348   Below Avg   3.641333    0.919479      Increase    25.250000     
+2024-03-01         1                    NULL                   774.81           84.10          9.212960      5.302160    3.910800    Above Avg   4.560812    4.652148      Increase    102.000000    
+2024-04-01         1                    NULL                   234.82           61.90          3.793537      5.302160    -1.508623   Below Avg   9.212960    -5.419423     Decrease    -58.820000    
+2024-01-01         2                    Spring_Prospecting_EU  962.27           267.88         3.592168      4.907450    -1.315282   Below Avg   NULL        NULL          No Change   NULL          
+2024-02-01         2                    Spring_Prospecting_EU  1859.69          202.58         9.180027      4.907450    4.272577    Above Avg   3.592168    5.587859      Increase    155.560000    
+2024-03-01         2                    Spring_Prospecting_EU  166.68           85.47          1.950157      4.907450    -2.957293   Below Avg   9.180027    -7.229870     Decrease    -78.760000    
+2024-01-01         3                    Summer_Launch          150.12           18.14          8.275633      5.938293    2.337340    Above Avg   NULL        NULL          No Change   NULL          
+2024-02-01         3                    Summer_Launch          355.10           110.87         3.202850      5.938293    -2.735443   Below Avg   8.275633    -5.072783     Decrease    -61.300000    
+2024-03-01         3                    Summer_Launch          604.43           76.76          7.874283      5.938293    1.935990    Above Avg   3.202850    4.671433      Increase    145.850000    
+2024-04-01         3                    Summer_Launch          687.08           156.14         4.400409      5.938293    -1.537884   Below Avg   7.874283    -3.473874     Decrease    -44.120000    
+2024-01-01         4                    Lookalike_3pct_DE      243.81           93.17          2.616829      3.414666    -0.797837   Below Avg   NULL        NULL          No Change   NULL          
+2024-02-01         4                    Lookalike_3pct_DE      1565.44          297.84         5.255976      3.414666    1.841310    Above Avg   2.616829    2.639147      Increase    100.850000    
+2024-03-01         4                    Lookalike_3pct_DE      299.15           126.16         2.371195      3.414666    -1.043471   Below Avg   5.255976    -2.884781     Decrease    -54.890000    
+2024-01-01         5                    Holiday_Special        762.14           61.03          12.487956     7.148083    5.339873    Above Avg   NULL        NULL          No Change   NULL          
+2024-02-01         5                    Holiday_Special        929.42           178.73         5.200134      7.148083    -1.947949   Below Avg   12.487956   -7.287822     Decrease    -58.360000    
+2024-03-01         5                    Holiday_Special        1012.97          150.93         6.711521      7.148083    -0.436562   Below Avg   5.200134    1.511387      Increase    29.060000     
+2024-04-01         5                    Holiday_Special        50.69            12.09          4.192721      7.148083    -2.955362   Below Avg   6.711521    -2.518800     Decrease    -37.530000    
+2024-01-01         6                    SEO_Boost              916.23           150.51         6.087502      5.763029    0.324473    Above Avg   NULL        NULL          No Change   NULL          
+2024-02-01         6                    SEO_Boost              907.02           174.02         5.212159      5.763029    -0.550870   Below Avg   6.087502    -0.875343     Decrease    -14.380000    
+2024-03-01         6                    SEO_Boost              1025.27          171.18         5.989426      5.763029    0.226397    Above Avg   5.212159    0.777267      Increase    14.910000     
+2024-01-01         7                    Retention_Push         603.35           74.74          8.072651      4.803848    3.268803    Above Avg   NULL        NULL          No Change   NULL          
+2024-02-01         7                    Retention_Push         894.52           159.91         5.593896      4.803848    0.790048    Above Avg   8.072651    -2.478755     Decrease    -30.710000    
+2024-03-01         7                    Retention_Push         364.53           78.46          4.646061      4.803848    -0.157787   Below Avg   5.593896    -0.947835     Decrease    -16.940000    
+2024-04-01         7                    Retention_Push         52.47            58.12          0.902787      4.803848    -3.901061   Below Avg   4.646061    -3.743274     Decrease    -80.570000    
+2024-01-01         8                    SEO_Boost              784.79           88.64          8.853677      5.369746    3.483931    Above Avg   NULL        NULL          No Change   NULL          
+2024-02-01         8                    SEO_Boost              1452.09          248.56         5.842009      5.369746    0.472263    Above Avg   8.853677    -3.011668     Decrease    -34.020000    
+2024-03-01         8                    SEO_Boost              247.81           175.31         1.413553      5.369746    -3.956193   Below Avg   5.842009    -4.428456     Decrease    -75.800000    
+2024-01-01         9                    Brand_Awareness_Q1     683.11           183.79         3.716796      5.377976    -1.661180   Below Avg   NULL        NULL          No Change   NULL          
+2024-02-01         9                    Brand_Awareness_Q1     1516.76          171.37         8.850790      5.377976    3.472814    Above Avg   3.716796    5.133994      Increase    138.130000    
+2024-03-01         9                    Brand_Awareness_Q1     539.16           151.18         3.566344      5.377976    -1.811632   Below Avg   8.850790    -5.284446     Decrease    -59.710000    
+2024-01-01         10                   SEO_Boost              1017.42          179.00         5.683910      5.217954    0.465956    Above Avg   NULL        NULL          No Change   NULL          
+2024-02-01         10                   SEO_Boost              269.71           90.01          2.996444      5.217954    -2.221510   Below Avg   5.683910    -2.687466     Decrease    -47.280000    
+2024-03-01         10                   SEO_Boost              629.15           90.22          6.973509      5.217954    1.755555    Above Avg   2.996444    3.977065      Increase    132.730000    
+2024-01-01         11                   Summer_Retargeting     554.81           91.13          6.088115      4.585152    1.502963    Above Avg   NULL        NULL          No Change   NULL          
+2024-02-01         11                   Summer_Retargeting     374.89           69.47          5.396430      4.585152    0.811278    Above Avg   6.088115    -0.691685     Decrease    -11.360000    
+2024-03-01         11                   Summer_Retargeting     649.24           165.17         3.930738      4.585152    -0.654414   Below Avg   5.396430    -1.465692     Decrease    -27.160000    
+2024-04-01         11                   Summer_Retargeting     564.50           192.97         2.925325      4.585152    -1.659827   Below Avg   3.930738    -1.005413     Decrease    -25.580000    
+2024-01-01         12                   Brand_Awareness_Q1     534.32           100.24         5.330407      6.517857    -1.187450   Below Avg   NULL        NULL          No Change   NULL          
+2024-02-01         12                   Brand_Awareness_Q1     633.96           108.79         5.827373      6.517857    -0.690484   Below Avg   5.330407    0.496966      Increase    9.320000      
+2024-03-01         12                   Brand_Awareness_Q1     730.82           115.05         6.352194      6.517857    -0.165663   Below Avg   5.827373    0.524821      Increase    9.010000      
+2024-04-01         12                   Brand_Awareness_Q1     291.86           34.09          8.561454      6.517857    2.043597    Above Avg   6.352194    2.209260      Increase    34.780000     
+...
+[Note: Campaigns 13–53 truncated here. Full results (185 rows) available via SQL query gold.last_touch_campaigns_roas.]
+((185 rows affected))
+
+
+
+========================================
+4.4a) Top 10 MoM MOFU Campaigns – by Absolute ROAS Growth (diff_pm_roas DESC)
+========================================
+
+performance_month  campaign_id  campaign_name          current_revenue  current_spend  current_roas  avg_roas    diff_avg    avg_change  pm_roas     diff_pm_roas  pm_change   mom_percentage
+-----------------  -----------  ---------------------  ---------------  -------------  ------------  ----------  ----------  ----------  ----------  ------------  ----------  --------------
+2024-02-01         9            Brand_Awareness_Q1     1271.79          312.77         4.066214      2.013357    2.052857    Above Avg   1.421955    2.644259      Increase    185.960000    
+2024-02-01         39           Retention_Push         697.85           174.79         3.992505      2.220420    1.772085    Above Avg   2.078186    1.914319      Increase    92.110000     
+2024-02-01         38           NULL                   856.97           266.88         3.211068      2.112766    1.098302    Above Avg   1.949695    1.261373      Increase    64.700000     
+2024-02-01         4            Lookalike_3pct_DE      1504.07          463.33         3.246217      2.117185    1.129032    Above Avg   2.212131    1.034086      Increase    46.750000     
+2024-02-01         31           Brand_Awareness_Q1     969.79           289.98         3.344334      2.124399    1.219935    Above Avg   2.511124    0.833210      Increase    33.180000     
+2024-02-01         2            Spring_Prospecting_EU  1159.32          349.59         3.316227      2.384037    0.932190    Above Avg   2.558477    0.757750      Increase    29.620000     
+2024-03-01         6            SEO_Boost              1020.53          461.26         2.212483      2.455166    -0.242683   Below Avg   1.716561    0.495922      Increase    28.890000     
+2024-03-01         44           Flash_Sale_Weekend     487.32           276.57         1.762013      1.964193    -0.202180   Below Avg   1.391275    0.370738      Increase    26.650000     
+2024-03-01         35           Lookalike_3pct_DE      833.95           404.21         2.063160      2.369002    -0.305842   Below Avg   1.809782    0.253378      Increase    14.000000     
+2024-04-01         28           Lookalike_3pct_DE      468.35           252.19         1.857131      2.944271    -1.087140   Below Avg   1.611046    0.246085      Increase    15.270000     
+((10 rows affected))
+
+
+
+========================================
+4.4b) Top 10 MoM MOFU Campaigns – by Percentage ROAS Growth (mom_percentage DESC)
+========================================
+
+performance_month  campaign_id  campaign_name          current_revenue  current_spend  current_roas  avg_roas    diff_avg    avg_change  pm_roas     diff_pm_roas  pm_change   mom_percentage
+-----------------  -----------  ---------------------  ---------------  -------------  ------------  ----------  ----------  ----------  ----------  ------------  ----------  --------------
+2024-02-01         9            Brand_Awareness_Q1     1271.79          312.77         4.066214      2.013357    2.052857    Above Avg   1.421955    2.644259      Increase    185.960000    
+2024-02-01         39           Retention_Push         697.85           174.79         3.992505      2.220420    1.772085    Above Avg   2.078186    1.914319      Increase    92.110000     
+2024-02-01         38           NULL                   856.97           266.88         3.211068      2.112766    1.098302    Above Avg   1.949695    1.261373      Increase    64.700000     
+2024-02-01         4            Lookalike_3pct_DE      1504.07          463.33         3.246217      2.117185    1.129032    Above Avg   2.212131    1.034086      Increase    46.750000     
+2024-02-01         31           Brand_Awareness_Q1     969.79           289.98         3.344334      2.124399    1.219935    Above Avg   2.511124    0.833210      Increase    33.180000     
+2024-02-01         2            Spring_Prospecting_EU  1159.32          349.59         3.316227      2.384037    0.932190    Above Avg   2.558477    0.757750      Increase    29.620000     
+2024-03-01         6            SEO_Boost              1020.53          461.26         2.212483      2.455166    -0.242683   Below Avg   1.716561    0.495922      Increase    28.890000     
+2024-03-01         44           Flash_Sale_Weekend     487.32           276.57         1.762013      1.964193    -0.202180   Below Avg   1.391275    0.370738      Increase    26.650000     
+2024-04-01         28           Lookalike_3pct_DE      468.35           252.19         1.857131      2.944271    -1.087140   Below Avg   1.611046    0.246085      Increase    15.270000     
+2024-03-01         35           Lookalike_3pct_DE      833.95           404.21         2.063160      2.369002    -0.305842   Below Avg   1.809782    0.253378      Increase    14.000000     
+((10 rows affected))
+
+
+
+========================================
+4.4c) Top 10 MoM TOFU Campaigns – by Absolute ROAS Growth (diff_pm_roas DESC)
+========================================
+
+performance_month  acquisition_campaign  campaign_name          current_revenue  current_spend  current_roas  avg_roas    diff_avg    avg_change  pm_roas     diff_pm_roas  pm_change   mom_percentage
+-----------------  --------------------  ---------------------  ---------------  -------------  ------------  ----------  ----------  ----------  ----------  ------------  ----------  --------------
+2024-02-01         9                     Brand_Awareness_Q1     760.27           130.43         5.828950      2.541086    3.287864    Above Avg   1.216631    4.612319      Increase    379.110000    
+2024-02-01         39                    Retention_Push         272.32           53.03          5.135206      2.212597    2.922609    Above Avg   1.244623    3.890583      Increase    312.590000    
+2024-02-01         38                    NULL                   405.04           71.04          5.701576      3.322356    2.379220    Above Avg   3.159624    2.541952      Increase    80.450000     
+2024-02-01         2                     Spring_Prospecting_EU  685.24           139.40         4.915638      2.683932    2.231706    Above Avg   2.401823    2.513815      Increase    104.660000    
+2024-03-01         42                    Summer_Retargeting     351.63           76.41          4.601884      3.771423    0.830461    Above Avg   3.156318    1.445566      Increase    45.800000     
+2024-02-01         4                     Lookalike_3pct_DE      1157.12          318.84         3.629155      2.260005    1.369150    Above Avg   2.264651    1.364504      Increase    60.250000     
+2024-04-01         13                    NULL                   136.02           61.33          2.217837      2.390302    -0.172465   Below Avg   0.963540    1.254297      Increase    130.180000    
+2024-02-01         13                    NULL                   83.35            22.07          3.776619      2.390302    1.386317    Above Avg   2.603215    1.173404      Increase    45.080000     
+2024-02-01         49                    Spring_Prospecting_EU  488.10           95.73          5.098715      3.515200    1.583515    Above Avg   3.939088    1.159627      Increase    29.440000     
+2024-04-01         7                     Retention_Push         164.84           65.93          2.500227      2.923330    -0.423103   Below Avg   1.349605    1.150622      Increase    85.260000     
+((10 rows affected))
+
+
+
+========================================
+4.4d) Top 10 MoM TOFU Campaigns – by Percentage ROAS Growth (mom_percentage DESC)
+========================================
+
+performance_month  acquisition_campaign  campaign_name          current_revenue  current_spend  current_roas  avg_roas    diff_avg    avg_change  pm_roas     diff_pm_roas  pm_change   mom_percentage
+-----------------  --------------------  ---------------------  ---------------  -------------  ------------  ----------  ----------  ----------  ----------  ------------  ----------  --------------
+2024-02-01         9                     Brand_Awareness_Q1     760.27           130.43         5.828950      2.541086    3.287864    Above Avg   1.216631    4.612319      Increase    379.110000    
+2024-02-01         39                    Retention_Push         272.32           53.03          5.135206      2.212597    2.922609    Above Avg   1.244623    3.890583      Increase    312.590000    
+2024-03-01         35                    Lookalike_3pct_DE      135.92           135.81         1.000809      1.791297    -0.790488   Below Avg   0.390385    0.610424      Increase    156.360000    
+2024-04-01         13                    NULL                   136.02           61.33          2.217837      2.390302    -0.172465   Below Avg   0.963540    1.254297      Increase    130.180000    
+2024-04-01         26                    Holiday_Special        147.28           68.16          2.160798      4.039834    -1.879036   Below Avg   1.033604    1.127194      Increase    109.050000    
+2024-02-01         2                     Spring_Prospecting_EU  685.24           139.40         4.915638      2.683932    2.231706    Above Avg   2.401823    2.513815      Increase    104.660000    
+2024-04-01         7                     Retention_Push         164.84           65.93          2.500227      2.923330    -0.423103   Below Avg   1.349605    1.150622      Increase    85.260000     
+2024-02-01         38                    NULL                   405.04           71.04          5.701576      3.322356    2.379220    Above Avg   3.159624    2.541952      Increase    80.450000     
+2024-04-01         35                    Lookalike_3pct_DE      182.79           110.26         1.657808      1.791297    -0.133489   Below Avg   1.000809    0.656999      Increase    65.650000     
+2024-02-01         4                     Lookalike_3pct_DE      1157.12          318.84         3.629155      2.260005    1.369150    Above Avg   2.264651    1.364504      Increase    60.250000     
+((10 rows affected))
+
+
+
+========================================
+4.4e) Top 10 MoM BOFU Campaigns – by Absolute ROAS Growth (diff_pm_roas DESC)
+========================================
+
+performance_month  last_touch_campaign  campaign_name          current_revenue  current_spend  current_roas  avg_roas    diff_avg    avg_change  pm_roas     diff_pm_roas  pm_change   mom_percentage
+-----------------  -------------------  ---------------------  ---------------  -------------  ------------  ----------  ----------  ----------  ----------  ------------  ----------  --------------
+2024-02-01         30                   SEO_Boost              634.42           40.77          15.560951     6.697942    8.863009    Above Avg   2.419432    13.141519     Increase    543.170000    
+2024-02-01         34                   Summer_Launch          1557.49          99.01          15.730633     8.200126    7.530507    Above Avg   5.032972    10.697661     Increase    212.550000    
+2024-04-01         25                   Spring_Prospecting_EU  273.73           19.87          13.776044     5.064400    8.711644    Above Avg   3.275553    10.500491     Increase    320.570000    
+2024-03-01         44                   Flash_Sale_Weekend     563.22           54.89          10.260885     5.460573    4.800312    Above Avg   2.741498    7.519387      Increase    274.280000    
+2024-03-01         32                   SEO_Boost              422.17           28.24          14.949362     8.888820    6.060542    Above Avg   8.002353    6.947009      Increase    86.810000     
+2024-04-01         51                   Brand_Awareness_Q1     774.27           66.42          11.657181     5.642745    6.014436    Above Avg   5.530718    6.126463      Increase    110.770000    
+2024-04-01         17                   Flash_Sale_Weekend     185.99           25.65          7.251072      5.379354    1.871718    Above Avg   1.125093    6.125979      Increase    544.490000    
+2024-04-01         19                   Holiday_Special        455.65           49.58          9.190197      6.629011    2.561186    Above Avg   3.548318    5.641879      Increase    159.000000    
+2024-02-01         2                    Spring_Prospecting_EU  1859.69          202.58         9.180027      4.907450    4.272577    Above Avg   3.592168    5.587859      Increase    155.560000    
+2024-04-01         52                   SEO_Boost              713.50           120.23         5.934458      4.555382    1.379076    Above Avg   0.486206    5.448252      Increase    1120.560000   
+((10 rows affected))
+
+
+
+========================================
+4.4f) Top 10 MoM BOFU Campaigns – by Percentage ROAS Growth (mom_percentage DESC)
+========================================
+
+performance_month  last_touch_campaign  campaign_name          current_revenue  current_spend  current_roas  avg_roas    diff_avg    avg_change  pm_roas     diff_pm_roas  pm_change   mom_percentage
+-----------------  -------------------  ---------------------  ---------------  -------------  ------------  ----------  ----------  ----------  ----------  ------------  ----------  --------------
+2024-04-01         52                   SEO_Boost              713.50           120.23         5.934458      4.555382    1.379076    Above Avg   0.486206    5.448252      Increase    1120.560000   
+2024-04-01         17                   Flash_Sale_Weekend     185.99           25.65          7.251072      5.379354    1.871718    Above Avg   1.125093    6.125979      Increase    544.490000    
+2024-02-01         30                   SEO_Boost              634.42           40.77          15.560951     6.697942    8.863009    Above Avg   2.419432    13.141519     Increase    543.170000    
+2024-03-01         25                   Spring_Prospecting_EU  256.05           78.17          3.275553      5.064400    -1.788847   Below Avg   0.610210    2.665343      Increase    436.790000    
+2024-04-01         25                   Spring_Prospecting_EU  273.73           19.87          13.776044     5.064400    8.711644    Above Avg   3.275553    10.500491     Increase    320.570000    
+2024-03-01         44                   Flash_Sale_Weekend     563.22           54.89          10.260885     5.460573    4.800312    Above Avg   2.741498    7.519387      Increase    274.280000    
+2024-03-01         24                   Retention_Push         950.79           157.96         6.019182      5.239348    0.779834    Above Avg   1.650105    4.369077      Increase    264.780000    
+2024-02-01         34                   Summer_Launch          1557.49          99.01          15.730633     8.200126    7.530507    Above Avg   5.032972    10.697661     Increase    212.550000    
+2024-02-01         38                   NULL                   1251.84          196.75         6.362592      3.815956    2.546636    Above Avg   2.414033    3.948559      Increase    163.570000    
+2024-04-01         19                   Holiday_Special        455.65           49.58          9.190197      6.629011    2.561186    Above Avg   3.548318    5.641879      Increase    159.000000    
+((10 rows affected))
