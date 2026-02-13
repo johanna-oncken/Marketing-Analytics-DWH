@@ -1,0 +1,37 @@
+measure_name;measure_value
+1) Campaigns;
+Total Campaigns;53
+2) Channels;
+Total Channels;9
+Paid Channels;5
+Organic Channels;4
+3) Ad Spend;
+Total Ad Spend;72612.01
+Average Ad Spend;51.14
+4) Clicks;
+Total Clicks;70366.00
+Avg Clicks per Calendar Day;586.38
+Total Impressions;28826.00
+5) Sessions;
+Total Valid Sessions;27252.00
+Unique Visitors;8170.00
+6) Touchpoints;
+Total Touchpoints;87057.00
+Unique Users Touched;8557.00
+7) Purchases;
+Total Purchases;3531.00
+Total Revenue;401007.98
+Users Who Purchased;2890.00
+One-Time Customers;2338.00
+Multi-Time Customers;552.00
+8) Touchpath;
+Total Contributing Touchpoints;17425.00
+Average Touchpath Length;5.00
+9) Attribution Linear;
+Total Attributed Touchpoints;13814.00
+Customers With Touchpoints;2160.00
+Avg Revenue Share per Touchpoint;27.69
+Avg Revenue per Purchase;153.30
+10) Attribution Last Touch;
+Avg Revenue by Last Touch;134.82
+Avg Touchpoint Funnel Position;4.00
