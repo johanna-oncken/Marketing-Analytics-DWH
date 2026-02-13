@@ -1,5 +1,5 @@
 # Marketing-Analytics-DWH
-<h3>End-to-end data warehouse (Bronze/Silver/Gold) with multi-touch attribution and Tableau dashboards</h3>
+<h3>End-to-end Data Warehouse (Bronze/Silver/Gold) with Multi-Touch Attribution and Tableau Dashboards</h3>
 
  👉 Click the images to explore the interactive dashboards on **Tableau Public**.
 <p align="center">
@@ -13,6 +13,10 @@
     <img src="https://github.com/user-attachments/assets/67e6bea1-75c6-4f61-8891-8810d2bf830f" width="30%" alt="Customer Journey Dashboard"/>
   </a>
 </p>
+
+<h3>Marketing Analysis</h3>
+
+<h3>End-To-End Data Warehouse and ETL</h3>
 
 
 
