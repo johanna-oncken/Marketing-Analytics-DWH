@@ -15,14 +15,15 @@ SQL Functions Used:
 Queries:
     1) ARPU overall 
     2) ARPU Performances monthly 
-    3.1) Mid of Funnel (MOFU) Monthly ARPU Performance and MOM-Analysis by Campaigns
-    3.2) Top of Funnel (TOFU) Monthly ARPU Performance and MOM-Analysis by Campaigns
-    3.3) Bottom of Funnel (BOFU) Monthly ARPU Performance and MOM-Analysis by Campaigns
-    3.4) Top 10 Improvements/Declines MoM ARPU Campaigns
-    4.1) Mid of Funnel (MOFU) Monthly ARPU Performance and MOM-Analysis by Channels
-    4.2) Top of Funnel (TOFU) Monthly ARPU Performance and MOM-Analysis by Channels
-    4.3) Bottom of Funnel (BOFU) Monthly ARPU Performance and MOM-Analysis by Channels
-    4.4) Top 10 Improvements/Declines MoM ARPU Channels
+    3.1) Mid of Funnel (MOFU) Monthly ARPU Performance and MOM-Analysis by Channels
+    3.2) Top of Funnel (TOFU) Monthly ARPU Performance and MOM-Analysis by Channels
+    3.3) Bottom of Funnel (BOFU) Monthly ARPU Performance and MOM-Analysis by Channels
+    3.4) Top 10 Improvements/Declines MoM ARPU Channels
+    4.1) Mid of Funnel (MOFU) Monthly ARPU Performance and MOM-Analysis by Campaigns
+    4.2) Top of Funnel (TOFU) Monthly ARPU Performance and MOM-Analysis by Campaigns
+    4.3) Bottom of Funnel (BOFU) Monthly ARPU Performance and MOM-Analysis by Campaigns
+    4.4) Top 10 Improvements/Declines MoM ARPU Campaigns
+   
 
 ===============================================================================
 */
@@ -114,14 +115,285 @@ ORDER BY performance_month;
 GO
 
 
-
 /*
 ===============================================================================
-3) CAMPAIGNS
+3) CHANNELS
 ===============================================================================
 */
 --===================================
 -- 3.1) MOFU Full-Funnel Contributers
+--=================================== 
+-- MoM by Multi-Touch Revenue Shares and Active Users
+-- Analyze Month-over-Month ARPU performance of channels by comparing their ARPU to both the average ARPU performance of the channel and the previous month ARPU 
+DROP VIEW IF EXISTS gold.channels_arpu;
+GO
+
+CREATE VIEW gold.channels_arpu AS
+WITH monthly_revenue AS (
+SELECT
+    DATEFROMPARTS(YEAR(purchase_date), MONTH(purchase_date), 1) AS performance_month, 
+    channel,
+    SUM(revenue_share) AS current_revenue 
+FROM gold.fact_attribution_linear 
+WHERE channel IS NOT NULL
+GROUP BY DATEFROMPARTS(YEAR(purchase_date), MONTH(purchase_date), 1), channel
+), 
+monthly_users AS (
+SELECT 
+    DATEFROMPARTS(YEAR(p.purchase_date), MONTH(p.purchase_date), 1) AS performance_month,
+    f.channel, 
+    COUNT(DISTINCT p.user_id) AS current_users
+FROM gold.fact_attribution_linear f 
+LEFT JOIN gold.fact_purchases p 
+ON f.purchase_id = p.purchase_id
+WHERE f.channel IS NOT NULL 
+GROUP BY DATEFROMPARTS(YEAR(p.purchase_date), MONTH(p.purchase_date), 1), f.channel
+), 
+arpu_metrics AS (
+SELECT
+    COALESCE(r.performance_month, u.performance_month) AS performance_month,
+    r.channel,
+    r.current_revenue,
+    u.current_users,
+    r.current_revenue/NULLIF(u.current_users, 0) AS arpu
+FROM monthly_revenue r
+INNER JOIN monthly_users u
+ON r.performance_month = u.performance_month 
+    AND r.channel = u.channel
+
+)
+
+SELECT 
+    performance_month,
+    channel,
+    current_revenue,
+    current_users AS active_users,
+    arpu AS current_arpu,
+    AVG(arpu) OVER(PARTITION BY channel) AS avg_arpu,
+    (arpu) - AVG(arpu) OVER(PARTITION BY channel) AS diff_avg,
+    CASE 
+        WHEN (arpu) - AVG(arpu) OVER(PARTITION BY channel) > 0 THEN 'Above Avg'
+        WHEN (arpu) - AVG(arpu) OVER(PARTITION BY channel) < 0 THEN 'Below Avg' 
+        ELSE 'Equals Average'
+    END AS avg_change,
+    -- Month-over_Month Analysis 
+    LAG(arpu) OVER(PARTITION BY channel ORDER BY performance_month) AS pm_arpu, 
+    (arpu) - LAG(arpu) OVER(PARTITION BY channel ORDER BY performance_month) AS diff_pm_arpu,
+    CASE 
+        WHEN (arpu) - LAG(arpu) OVER(PARTITION BY channel ORDER BY performance_month) > 0 THEN 'Increase'
+        WHEN (arpu) - LAG(arpu) OVER(PARTITION BY channel ORDER BY performance_month) < 0 THEN 'Decrease'
+        ELSE 'No Change'
+    END AS pm_change,
+    ROUND(
+        CASE 
+            WHEN LAG(arpu) OVER(PARTITION BY channel ORDER BY performance_month) = 0 THEN NULL 
+            ELSE ((arpu) - LAG(arpu) OVER(PARTITION BY channel ORDER BY performance_month))/LAG(arpu) OVER(PARTITION BY channel ORDER BY performance_month)*100 
+        END
+    ,2) AS mom_percentage
+FROM arpu_metrics;
+GO
+
+SELECT *
+FROM gold.channels_arpu
+WHERE active_users > 0
+ORDER BY channel, performance_month;
+GO
+
+
+--=====================================
+-- 3.2) TOFU Top of Funnel Contributers
+--=====================================
+-- MoM by Full Purchase Revenues and Active Users
+-- Analyze Month-over-Month ARPU performance by acquisition channel to see the quality of new users
+DROP VIEW IF EXISTS gold.acquisition_channels_arpu;
+GO
+
+CREATE VIEW gold.acquisition_channels_arpu AS
+WITH monthly_revenue AS (
+SELECT
+    DATEFROMPARTS(YEAR(f.purchase_date), MONTH(f.purchase_date), 1) AS performance_month, 
+    p.acquisition_channel, 
+    SUM(f.revenue_share) AS current_revenue 
+FROM gold.fact_attribution_linear f
+LEFT JOIN gold.fact_purchases p 
+ON f.purchase_id = p.purchase_id
+WHERE p.acquisition_channel IS NOT NULL
+GROUP BY DATEFROMPARTS(YEAR(f.purchase_date), MONTH(f.purchase_date), 1), p.acquisition_channel
+), 
+monthly_users AS (
+SELECT 
+    DATEFROMPARTS(YEAR(purchase_date), MONTH(purchase_date), 1) AS performance_month,
+    acquisition_channel, 
+    COUNT(DISTINCT user_id) AS current_users
+FROM gold.fact_purchases 
+WHERE acquisition_channel IS NOT NULL 
+GROUP BY DATEFROMPARTS(YEAR(purchase_date), MONTH(purchase_date), 1), acquisition_channel
+),
+arpu_metrics AS (
+SELECT
+    COALESCE(r.performance_month, u.performance_month) AS performance_month,
+    r.acquisition_channel, 
+    r.current_revenue,
+    u.current_users,
+    r.current_revenue/NULLIF(u.current_users, 0) AS arpu
+FROM monthly_revenue r
+INNER JOIN monthly_users u
+ON r.performance_month = u.performance_month 
+    AND r.acquisition_channel = u.acquisition_channel
+)
+
+SELECT 
+    performance_month,
+    acquisition_channel, 
+    current_revenue,
+    current_users AS active_users,
+    arpu AS current_arpu,
+    AVG(arpu) OVER(PARTITION BY acquisition_channel) AS avg_arpu,
+    (arpu) - AVG(arpu) OVER(PARTITION BY acquisition_channel) AS diff_avg,
+    CASE 
+        WHEN (arpu) - AVG(arpu) OVER(PARTITION BY acquisition_channel) > 0 THEN 'Above Avg'
+        WHEN (arpu) - AVG(arpu) OVER(PARTITION BY acquisition_channel) < 0 THEN 'Below Avg' 
+        ELSE 'Equals Average'
+    END AS avg_change,
+    -- Month-over_Month Analysis 
+    LAG(arpu) OVER(PARTITION BY acquisition_channel ORDER BY performance_month) AS pm_arpu, 
+    (arpu) - LAG(arpu) OVER(PARTITION BY acquisition_channel ORDER BY performance_month) AS diff_pm_arpu,
+    CASE 
+        WHEN (arpu) - LAG(arpu) OVER(PARTITION BY acquisition_channel ORDER BY performance_month) > 0 THEN 'Increase'
+        WHEN (arpu) - LAG(arpu) OVER(PARTITION BY acquisition_channel ORDER BY performance_month) < 0 THEN 'Decrease'
+        ELSE 'No Change'
+    END AS pm_change,
+    ROUND(
+        CASE 
+            WHEN LAG(arpu) OVER(PARTITION BY acquisition_channel ORDER BY performance_month) = 0 THEN NULL 
+            ELSE ((arpu) - LAG(arpu) OVER(PARTITION BY acquisition_channel ORDER BY performance_month))/LAG(arpu) OVER(PARTITION BY acquisition_channel ORDER BY performance_month)*100 
+        END
+    ,2) AS mom_percentage
+FROM arpu_metrics;
+GO
+
+SELECT *
+FROM gold.acquisition_channels_arpu
+WHERE active_users > 0
+ORDER BY acquisition_channel, performance_month;
+GO
+
+
+--==============================================
+-- 3.3) BOFU Bottom of Funnel Conversion Drivers
+--==============================================
+-- MoM by Full Purchase Revenues and Active Users
+-- Analyze Month-over-Month ARPU performance by last-touch channels to see closing stage value
+DROP VIEW IF EXISTS gold.last_touch_channels_arpu;
+GO
+
+CREATE VIEW gold.last_touch_channels_arpu AS
+WITH monthly_revenue AS (
+SELECT
+    DATEFROMPARTS(YEAR(f.purchase_date), MONTH(f.purchase_date), 1) AS performance_month, 
+    f.last_touch_channel, 
+    SUM(f.revenue) AS current_revenue 
+FROM gold.fact_attribution_last_touch f
+WHERE f.last_touch_channel IS NOT NULL
+GROUP BY DATEFROMPARTS(YEAR(f.purchase_date), MONTH(f.purchase_date), 1), f.last_touch_channel
+), 
+monthly_users AS (
+SELECT 
+    DATEFROMPARTS(YEAR(p.purchase_date), MONTH(p.purchase_date), 1) AS performance_month,
+    f.last_touch_channel, 
+    COUNT(DISTINCT p.user_id) AS current_users
+FROM gold.fact_attribution_last_touch f
+LEFT JOIN gold.fact_purchases p 
+ON f.purchase_id = p.purchase_id
+WHERE f.last_touch_channel IS NOT NULL 
+GROUP BY DATEFROMPARTS(YEAR(p.purchase_date), MONTH(p.purchase_date), 1), f.last_touch_channel
+), 
+arpu_metrics AS (
+SELECT
+    COALESCE(r.performance_month, u.performance_month) AS performance_month,
+    r.last_touch_channel,
+    r.current_revenue,
+    u.current_users,
+    r.current_revenue/NULLIF(u.current_users, 0) AS arpu
+FROM monthly_revenue r
+INNER JOIN monthly_users u
+ON r.performance_month = u.performance_month 
+    AND r.last_touch_channel = u.last_touch_channel
+)
+
+SELECT 
+    performance_month,
+    last_touch_channel,
+    current_revenue,
+    current_users AS active_users,
+    arpu AS current_arpu,
+    AVG(arpu) OVER(PARTITION BY last_touch_channel) AS avg_arpu,
+    (arpu) - AVG(arpu) OVER(PARTITION BY last_touch_channel) AS diff_avg,
+    CASE 
+        WHEN (arpu) - AVG(arpu) OVER(PARTITION BY last_touch_channel) > 0 THEN 'Above Avg'
+        WHEN (arpu) - AVG(arpu) OVER(PARTITION BY last_touch_channel) < 0 THEN 'Below Avg' 
+        ELSE 'Equals Average'
+    END AS avg_change,
+
+    -- Month-over_Month Analysis 
+    LAG(arpu) OVER(PARTITION BY last_touch_channel ORDER BY performance_month) AS pm_arpu, 
+    (arpu) - LAG(arpu) OVER(PARTITION BY last_touch_channel ORDER BY performance_month) AS diff_pm_arpu,
+    CASE 
+        WHEN (arpu) - LAG(arpu) OVER(PARTITION BY last_touch_channel ORDER BY performance_month) > 0 THEN 'Increase'
+        WHEN (arpu) - LAG(arpu) OVER(PARTITION BY last_touch_channel ORDER BY performance_month) < 0 THEN 'Decrease'
+        ELSE 'No Change'
+    END AS pm_change,
+    ROUND(
+        CASE 
+            WHEN LAG(arpu) OVER(PARTITION BY last_touch_channel ORDER BY performance_month) = 0 THEN NULL 
+            ELSE ((arpu) - LAG(arpu) OVER(PARTITION BY last_touch_channel ORDER BY performance_month))/LAG(arpu) OVER(PARTITION BY last_touch_channel ORDER BY performance_month)*100 
+        END
+    ,2) AS mom_percentage
+FROM arpu_metrics;
+GO
+
+SELECT *
+FROM gold.last_touch_channels_arpu
+WHERE active_users > 0 
+ORDER BY last_touch_channel, performance_month;
+GO
+
+--====================================================
+-- 3.4) Top 10 Improvements/Declines MoM ARPU Channels
+--====================================================
+
+-- Top 10 improvements:
+SELECT TOP 10 *
+FROM gold.channels_arpu
+WHERE diff_pm_arpu IS NOT NULL
+ORDER BY diff_pm_arpu DESC; 
+
+SELECT TOP 10 *
+FROM gold.channels_arpu
+WHERE pm_arpu IS NOT NULL
+ORDER BY mom_percentage DESC;
+
+-- Top 10 declines:
+SELECT TOP 10 *
+FROM gold.channels_arpu
+WHERE diff_pm_arpu IS NOT NULL
+ORDER BY diff_pm_arpu ASC; 
+
+SELECT TOP 10 *
+FROM gold.channels_arpu
+WHERE pm_arpu IS NOT NULL
+ORDER BY mom_percentage ASC;
+
+
+
+
+/*
+===============================================================================
+4) CAMPAIGNS
+===============================================================================
+*/
+--===================================
+-- 4.1) MOFU Full-Funnel Contributers
 --=================================== 
 -- MoM by Multi-Touch Revenue Shares and Active Users
 -- Analyze Month-over-Month ARPU performance of campaigns by comparing their ARPU to both the average ARPU performance of the campaign and the previous month ARPU
@@ -206,7 +478,7 @@ GO
 
 
 --==================================
--- 3.2) TOFU Top of Funnel Contributers
+-- 4.2) TOFU Top of Funnel Contributers
 --=================================
 -- MoM by Full Purchase Revenues and Active Users
 -- Analyze Month-over-Month ARPU performance by acquisition campaign 
@@ -290,7 +562,7 @@ GO
 
 
 --==========================================
--- 3.3) BOFU Bottom of Funnel Conversion Drivers
+-- 4.3) BOFU Bottom of Funnel Conversion Drivers
 --==========================================
 -- MoM by Full Purchase Revenues and Active Users
 -- Analyze Month-over-Month ARPU performance by last-touch campaign 
@@ -374,9 +646,9 @@ GO
 
 
 --====================================================
--- 3.4) Top 10 Improvements/Declines MoM ARPU Campaigns
+-- 4.4) Top 10 Improvements/Declines MoM ARPU Campaigns
 --====================================================
-/*
+
 -- Top 10 improvements:
 SELECT TOP 10 *
 FROM gold.campaigns_arpu
@@ -398,275 +670,3 @@ SELECT TOP 10 *
 FROM gold.campaigns_arpu
 WHERE pm_arpu IS NOT NULL
 ORDER BY mom_percentage ASC;
-*/
-
-
-/*
-===============================================================================
-4) CHANNELS
-===============================================================================
-*/
---===================================
--- 4.1) MOFU Full-Funnel Contributers
---=================================== 
--- MoM by Multi-Touch Revenue Shares and Active Users
--- Analyze Month-over-Month ARPU performance of channels by comparing their ARPU to both the average ARPU performance of the channel and the previous month ARPU 
-DROP VIEW IF EXISTS gold.channels_arpu;
-GO
-
-CREATE VIEW gold.channels_arpu AS
-WITH monthly_revenue AS (
-SELECT
-    DATEFROMPARTS(YEAR(purchase_date), MONTH(purchase_date), 1) AS performance_month, 
-    channel,
-    SUM(revenue_share) AS current_revenue 
-FROM gold.fact_attribution_linear 
-WHERE channel IS NOT NULL
-GROUP BY DATEFROMPARTS(YEAR(purchase_date), MONTH(purchase_date), 1), channel
-), 
-monthly_users AS (
-SELECT 
-    DATEFROMPARTS(YEAR(p.purchase_date), MONTH(p.purchase_date), 1) AS performance_month,
-    f.channel, 
-    COUNT(DISTINCT p.user_id) AS current_users
-FROM gold.fact_attribution_linear f 
-LEFT JOIN gold.fact_purchases p 
-ON f.purchase_id = p.purchase_id
-WHERE f.channel IS NOT NULL 
-GROUP BY DATEFROMPARTS(YEAR(p.purchase_date), MONTH(p.purchase_date), 1), f.channel
-), 
-arpu_metrics AS (
-SELECT
-    COALESCE(r.performance_month, u.performance_month) AS performance_month,
-    r.channel,
-    r.current_revenue,
-    u.current_users,
-    r.current_revenue/NULLIF(u.current_users, 0) AS arpu
-FROM monthly_revenue r
-INNER JOIN monthly_users u
-ON r.performance_month = u.performance_month 
-    AND r.channel = u.channel
-
-)
-
-SELECT 
-    performance_month,
-    channel,
-    current_revenue,
-    current_users AS active_users,
-    arpu AS current_arpu,
-    AVG(arpu) OVER(PARTITION BY channel) AS avg_arpu,
-    (arpu) - AVG(arpu) OVER(PARTITION BY channel) AS diff_avg,
-    CASE 
-        WHEN (arpu) - AVG(arpu) OVER(PARTITION BY channel) > 0 THEN 'Above Avg'
-        WHEN (arpu) - AVG(arpu) OVER(PARTITION BY channel) < 0 THEN 'Below Avg' 
-        ELSE 'Equals Average'
-    END AS avg_change,
-    -- Month-over_Month Analysis 
-    LAG(arpu) OVER(PARTITION BY channel ORDER BY performance_month) AS pm_arpu, 
-    (arpu) - LAG(arpu) OVER(PARTITION BY channel ORDER BY performance_month) AS diff_pm_arpu,
-    CASE 
-        WHEN (arpu) - LAG(arpu) OVER(PARTITION BY channel ORDER BY performance_month) > 0 THEN 'Increase'
-        WHEN (arpu) - LAG(arpu) OVER(PARTITION BY channel ORDER BY performance_month) < 0 THEN 'Decrease'
-        ELSE 'No Change'
-    END AS pm_change,
-    ROUND(
-        CASE 
-            WHEN LAG(arpu) OVER(PARTITION BY channel ORDER BY performance_month) = 0 THEN NULL 
-            ELSE ((arpu) - LAG(arpu) OVER(PARTITION BY channel ORDER BY performance_month))/LAG(arpu) OVER(PARTITION BY channel ORDER BY performance_month)*100 
-        END
-    ,2) AS mom_percentage
-FROM arpu_metrics;
-GO
-
-SELECT *
-FROM gold.channels_arpu
-WHERE active_users > 0
-ORDER BY channel, performance_month;
-GO
-
-
---=====================================
--- 4.2) TOFU Top of Funnel Contributers
---=====================================
--- MoM by Full Purchase Revenues and Active Users
--- Analyze Month-over-Month ARPU performance by acquisition channel to see the quality of new users
-DROP VIEW IF EXISTS gold.acquisition_channels_arpu;
-GO
-
-CREATE VIEW gold.acquisition_channels_arpu AS
-WITH monthly_revenue AS (
-SELECT
-    DATEFROMPARTS(YEAR(f.purchase_date), MONTH(f.purchase_date), 1) AS performance_month, 
-    p.acquisition_channel, 
-    SUM(f.revenue_share) AS current_revenue 
-FROM gold.fact_attribution_linear f
-LEFT JOIN gold.fact_purchases p 
-ON f.purchase_id = p.purchase_id
-WHERE p.acquisition_channel IS NOT NULL
-GROUP BY DATEFROMPARTS(YEAR(f.purchase_date), MONTH(f.purchase_date), 1), p.acquisition_channel
-), 
-monthly_users AS (
-SELECT 
-    DATEFROMPARTS(YEAR(purchase_date), MONTH(purchase_date), 1) AS performance_month,
-    acquisition_channel, 
-    COUNT(DISTINCT user_id) AS current_users
-FROM gold.fact_purchases 
-WHERE acquisition_channel IS NOT NULL 
-GROUP BY DATEFROMPARTS(YEAR(purchase_date), MONTH(purchase_date), 1), acquisition_channel
-),
-arpu_metrics AS (
-SELECT
-    COALESCE(r.performance_month, u.performance_month) AS performance_month,
-    r.acquisition_channel, 
-    r.current_revenue,
-    u.current_users,
-    r.current_revenue/NULLIF(u.current_users, 0) AS arpu
-FROM monthly_revenue r
-INNER JOIN monthly_users u
-ON r.performance_month = u.performance_month 
-    AND r.acquisition_channel = u.acquisition_channel
-)
-
-SELECT 
-    performance_month,
-    acquisition_channel, 
-    current_revenue,
-    current_users AS active_users,
-    arpu AS current_arpu,
-    AVG(arpu) OVER(PARTITION BY acquisition_channel) AS avg_arpu,
-    (arpu) - AVG(arpu) OVER(PARTITION BY acquisition_channel) AS diff_avg,
-    CASE 
-        WHEN (arpu) - AVG(arpu) OVER(PARTITION BY acquisition_channel) > 0 THEN 'Above Avg'
-        WHEN (arpu) - AVG(arpu) OVER(PARTITION BY acquisition_channel) < 0 THEN 'Below Avg' 
-        ELSE 'Equals Average'
-    END AS avg_change,
-    -- Month-over_Month Analysis 
-    LAG(arpu) OVER(PARTITION BY acquisition_channel ORDER BY performance_month) AS pm_arpu, 
-    (arpu) - LAG(arpu) OVER(PARTITION BY acquisition_channel ORDER BY performance_month) AS diff_pm_arpu,
-    CASE 
-        WHEN (arpu) - LAG(arpu) OVER(PARTITION BY acquisition_channel ORDER BY performance_month) > 0 THEN 'Increase'
-        WHEN (arpu) - LAG(arpu) OVER(PARTITION BY acquisition_channel ORDER BY performance_month) < 0 THEN 'Decrease'
-        ELSE 'No Change'
-    END AS pm_change,
-    ROUND(
-        CASE 
-            WHEN LAG(arpu) OVER(PARTITION BY acquisition_channel ORDER BY performance_month) = 0 THEN NULL 
-            ELSE ((arpu) - LAG(arpu) OVER(PARTITION BY acquisition_channel ORDER BY performance_month))/LAG(arpu) OVER(PARTITION BY acquisition_channel ORDER BY performance_month)*100 
-        END
-    ,2) AS mom_percentage
-FROM arpu_metrics;
-GO
-
-SELECT *
-FROM gold.acquisition_channels_arpu
-WHERE active_users > 0
-ORDER BY acquisition_channel, performance_month;
-GO
-
-
---==============================================
--- 4.3) BOFU Bottom of Funnel Conversion Drivers
---==============================================
--- MoM by Full Purchase Revenues and Active Users
--- Analyze Month-over-Month ARPU performance by last-touch channels to see closing stage value
-DROP VIEW IF EXISTS gold.last_touch_channels_arpu;
-GO
-
-CREATE VIEW gold.last_touch_channels_arpu AS
-WITH monthly_revenue AS (
-SELECT
-    DATEFROMPARTS(YEAR(f.purchase_date), MONTH(f.purchase_date), 1) AS performance_month, 
-    f.last_touch_channel, 
-    SUM(f.revenue) AS current_revenue 
-FROM gold.fact_attribution_last_touch f
-WHERE f.last_touch_channel IS NOT NULL
-GROUP BY DATEFROMPARTS(YEAR(f.purchase_date), MONTH(f.purchase_date), 1), f.last_touch_channel
-), 
-monthly_users AS (
-SELECT 
-    DATEFROMPARTS(YEAR(p.purchase_date), MONTH(p.purchase_date), 1) AS performance_month,
-    f.last_touch_channel, 
-    COUNT(DISTINCT p.user_id) AS current_users
-FROM gold.fact_attribution_last_touch f
-LEFT JOIN gold.fact_purchases p 
-ON f.purchase_id = p.purchase_id
-WHERE f.last_touch_channel IS NOT NULL 
-GROUP BY DATEFROMPARTS(YEAR(p.purchase_date), MONTH(p.purchase_date), 1), f.last_touch_channel
-), 
-arpu_metrics AS (
-SELECT
-    COALESCE(r.performance_month, u.performance_month) AS performance_month,
-    r.last_touch_channel,
-    r.current_revenue,
-    u.current_users,
-    r.current_revenue/NULLIF(u.current_users, 0) AS arpu
-FROM monthly_revenue r
-INNER JOIN monthly_users u
-ON r.performance_month = u.performance_month 
-    AND r.last_touch_channel = u.last_touch_channel
-)
-
-SELECT 
-    performance_month,
-    last_touch_channel,
-    current_revenue,
-    current_users AS active_users,
-    arpu AS current_arpu,
-    AVG(arpu) OVER(PARTITION BY last_touch_channel) AS avg_arpu,
-    (arpu) - AVG(arpu) OVER(PARTITION BY last_touch_channel) AS diff_avg,
-    CASE 
-        WHEN (arpu) - AVG(arpu) OVER(PARTITION BY last_touch_channel) > 0 THEN 'Above Avg'
-        WHEN (arpu) - AVG(arpu) OVER(PARTITION BY last_touch_channel) < 0 THEN 'Below Avg' 
-        ELSE 'Equals Average'
-    END AS avg_change,
-
-    -- Month-over_Month Analysis 
-    LAG(arpu) OVER(PARTITION BY last_touch_channel ORDER BY performance_month) AS pm_arpu, 
-    (arpu) - LAG(arpu) OVER(PARTITION BY last_touch_channel ORDER BY performance_month) AS diff_pm_arpu,
-    CASE 
-        WHEN (arpu) - LAG(arpu) OVER(PARTITION BY last_touch_channel ORDER BY performance_month) > 0 THEN 'Increase'
-        WHEN (arpu) - LAG(arpu) OVER(PARTITION BY last_touch_channel ORDER BY performance_month) < 0 THEN 'Decrease'
-        ELSE 'No Change'
-    END AS pm_change,
-    ROUND(
-        CASE 
-            WHEN LAG(arpu) OVER(PARTITION BY last_touch_channel ORDER BY performance_month) = 0 THEN NULL 
-            ELSE ((arpu) - LAG(arpu) OVER(PARTITION BY last_touch_channel ORDER BY performance_month))/LAG(arpu) OVER(PARTITION BY last_touch_channel ORDER BY performance_month)*100 
-        END
-    ,2) AS mom_percentage
-FROM arpu_metrics;
-GO
-
-SELECT *
-FROM gold.last_touch_channels_arpu
-WHERE active_users > 0 
-ORDER BY last_touch_channel, performance_month;
-GO
-
---====================================================
--- 4.4) Top 10 Improvements/Declines MoM ARPU Channels
---====================================================
-/*
--- Top 10 improvements:
-SELECT TOP 10 *
-FROM gold.channels_arpu
-WHERE diff_pm_arpu IS NOT NULL
-ORDER BY diff_pm_arpu DESC; 
-
-SELECT TOP 10 *
-FROM gold.channels_arpu
-WHERE pm_arpu IS NOT NULL
-ORDER BY mom_percentage DESC;
-
--- Top 10 declines:
-SELECT TOP 10 *
-FROM gold.channels_arpu
-WHERE diff_pm_arpu IS NOT NULL
-ORDER BY diff_pm_arpu ASC; 
-
-SELECT TOP 10 *
-FROM gold.channels_arpu
-WHERE pm_arpu IS NOT NULL
-ORDER BY mom_percentage ASC;
-*/
