@@ -14,9 +14,9 @@
   </a>
 </p>
 
-<p>📍 About: This demo project is intended to <strong>showcase skills</strong> and uses <strong>synthetically generated data</strong>.</p>
-
-<h4>Repository Structure</h4>
+<h4>📍 About</h4>
+<p>This demo project is intended to <strong>showcase skills</strong> and uses <strong>synthetically generated data</strong>.</p>
+<p><strong>Repository Structure</strong></p>
 <pre>
 Marketing-Analytics-DWH/
 │
