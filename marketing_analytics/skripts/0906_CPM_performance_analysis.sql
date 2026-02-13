@@ -15,12 +15,12 @@ SQL Functions Used:
 Queries: 
     1) CPM overall 
     2) CPM Performance monthly
-    3.1) Monthly CPM Performance and MOM Analysis by Campaigns 
-    3.2) Top Ten Campaigns by Monthly CPM Improvements 
-    3.3) Top Ten Campaigns by Monthly CPM Declines 
-    4.1) Monthly CPM Performance and MOM Analysis by Channels 
-    4.2) Top Ten Channels by Monthly CPM Improvements 
-    4.3) Top Ten Channels by Monthly CPM Declines
+    3.1) Monthly CPM Performance and MOM Analysis by Channels 
+    3.2) Top Ten Channels by Monthly CPM Improvements 
+    3.3) Top Ten Channels by Monthly CPM Declines
+    4.1) Monthly CPM Performance and MOM Analysis by Campaigns 
+    4.2) Top Ten Campaigns by Monthly CPM Improvements 
+    4.3) Top Ten Campaigns by Monthly CPM Declines 
     5) CPM-to-CVR Efficiency Ratio by Channel
 
 Data Limitation:
@@ -122,10 +122,112 @@ GO
 
 /*
 ===============================================================================
-3) CAMPAIGNS
+3) CHANNELS
 ===============================================================================
 */
 -- 3.1) MoM by Monthly Ad Spend and Impressions
+--      Analyze Month-over-Month CPM channel performance 
+DROP VIEW IF EXISTS gold.channels_cpm;
+GO
+
+CREATE VIEW gold.channels_cpm AS
+WITH monthly_impressions AS (
+SELECT
+    DATEFROMPARTS(YEAR(touchpoint_time), MONTH(touchpoint_time), 1) AS performance_month, 
+    channel, 
+    COUNT(*) AS impressions
+FROM gold.fact_touchpoints
+WHERE interaction_type = 'Impression'
+    AND channel IS NOT NULL
+GROUP BY DATEFROMPARTS(YEAR(touchpoint_time), MONTH(touchpoint_time), 1), channel
+), 
+monthly_spend AS (
+SELECT 
+    DATEFROMPARTS(YEAR(spend_date), MONTH(spend_date), 1) AS performance_month,
+    channel, 
+    SUM(spend) AS current_spend 
+FROM gold.fact_spend 
+WHERE channel IS NOT NULL 
+GROUP BY DATEFROMPARTS(YEAR(spend_date), MONTH(spend_date), 1), channel
+), 
+cpm_metrics AS (
+SELECT
+    COALESCE(i.performance_month, s.performance_month) AS performance_month,
+    COALESCE(i.channel, s.channel) AS channel, 
+    i.impressions AS current_impressions,
+    s.current_spend,
+    s.current_spend/NULLIF(i.impressions, 0) * 1000 AS cpm
+FROM monthly_impressions i
+FULL JOIN monthly_spend s 
+ON i.performance_month = s.performance_month 
+    AND i.channel = s.channel
+)
+
+SELECT 
+    performance_month,
+    channel, 
+    current_spend,
+    current_impressions,
+    cpm AS current_cpm,
+    AVG(cpm) OVER(PARTITION BY channel) AS avg_cpm,
+    (cpm) - AVG(cpm) OVER(PARTITION BY channel) AS diff_avg,
+    CASE 
+        WHEN (cpm) - AVG(cpm) OVER(PARTITION BY channel) > 0 THEN 'Worsened (Above Avg)'
+        WHEN (cpm) - AVG(cpm) OVER(PARTITION BY channel) < 0 THEN 'Improved (Below Avg)' 
+        ELSE 'Equals Average'
+    END AS avg_change,
+    -- Month-over_Month Analysis 
+    LAG(cpm) OVER(PARTITION BY channel ORDER BY performance_month) AS pm_cpm, 
+    (cpm) - LAG(cpm) OVER(PARTITION BY channel ORDER BY performance_month) AS diff_pm_cpm,
+    CASE 
+        WHEN (cpm) - LAG(cpm) OVER(PARTITION BY channel ORDER BY performance_month) > 0 THEN 'Worsened (Higher)'
+        WHEN (cpm) - LAG(cpm) OVER(PARTITION BY channel ORDER BY performance_month) < 0 THEN 'Improved (Lower)'
+        ELSE 'No Change'
+    END AS pm_change,
+    ROUND(
+        CASE 
+            WHEN LAG(cpm) OVER(PARTITION BY channel ORDER BY performance_month) = 0 THEN NULL 
+            ELSE ((cpm) - LAG(cpm) OVER(PARTITION BY channel ORDER BY performance_month))/LAG(cpm) OVER(PARTITION BY channel ORDER BY performance_month)*100 
+        END
+    ,2) AS mom_percentage
+FROM cpm_metrics
+WHERE channel IS NOT NULL;
+GO
+
+SELECT *
+FROM gold.channels_cpm
+ORDER BY channel, performance_month;
+GO
+
+-- 3.2) Top 10 Improvements MoM CPM channels (lower CPM = better reach efficiency)
+SELECT TOP 10 *
+FROM gold.channels_cpm
+WHERE diff_pm_cpm IS NOT NULL
+ORDER BY diff_pm_cpm ASC; 
+
+SELECT TOP 10 *
+FROM gold.channels_cpm
+WHERE pm_cpm IS NOT NULL
+ORDER BY mom_percentage ASC;
+
+-- 3.3) Top 10 Declines MoM CPM channels (higher CPM = worse reach efficiency)
+SELECT TOP 10 *
+FROM gold.channels_cpm
+WHERE diff_pm_cpm IS NOT NULL
+ORDER BY diff_pm_cpm DESC; 
+
+SELECT TOP 10 *
+FROM gold.channels_cpm
+WHERE pm_cpm IS NOT NULL
+ORDER BY mom_percentage DESC;
+
+
+/*
+===============================================================================
+4) CAMPAIGNS
+===============================================================================
+*/
+-- 4.1) MoM by Monthly Ad Spend and Impressions
 --      Analyze Month-over-Month CPM campaign performance 
 DROP VIEW IF EXISTS gold.campaigns_cpm;
 GO
@@ -204,7 +306,7 @@ FROM gold.campaigns_cpm
 ORDER BY campaign_id, performance_month;
 GO
 
--- 3.2) Top 10 Improvements MoM CPM campaigns (lower CPM = better reach efficiency)
+-- 4.2) Top 10 Improvements MoM CPM campaigns (lower CPM = better reach efficiency)
 SELECT TOP 10 *
 FROM gold.campaigns_cpm
 WHERE diff_pm_cpm IS NOT NULL
@@ -215,7 +317,7 @@ FROM gold.campaigns_cpm
 WHERE pm_cpm IS NOT NULL
 ORDER BY mom_percentage ASC;
 
--- 3.3) Top 10 Declines MoM CPM campaigns (higher CPM = worse reach efficiency)
+-- 4.3) Top 10 Declines MoM CPM campaigns (higher CPM = worse reach efficiency)
 SELECT TOP 10 *
 FROM gold.campaigns_cpm
 WHERE diff_pm_cpm IS NOT NULL
@@ -223,108 +325,6 @@ ORDER BY diff_pm_cpm DESC;
 
 SELECT TOP 10 *
 FROM gold.campaigns_cpm
-WHERE pm_cpm IS NOT NULL
-ORDER BY mom_percentage DESC;
-
-
-/*
-===============================================================================
-4) CHANNELS
-===============================================================================
-*/
--- 4.1) MoM by Monthly Ad Spend and Impressions
---      Analyze Month-over-Month CPM channel performance 
-DROP VIEW IF EXISTS gold.channels_cpm;
-GO
-
-CREATE VIEW gold.channels_cpm AS
-WITH monthly_impressions AS (
-SELECT
-    DATEFROMPARTS(YEAR(touchpoint_time), MONTH(touchpoint_time), 1) AS performance_month, 
-    channel, 
-    COUNT(*) AS impressions
-FROM gold.fact_touchpoints
-WHERE interaction_type = 'Impression'
-    AND channel IS NOT NULL
-GROUP BY DATEFROMPARTS(YEAR(touchpoint_time), MONTH(touchpoint_time), 1), channel
-), 
-monthly_spend AS (
-SELECT 
-    DATEFROMPARTS(YEAR(spend_date), MONTH(spend_date), 1) AS performance_month,
-    channel, 
-    SUM(spend) AS current_spend 
-FROM gold.fact_spend 
-WHERE channel IS NOT NULL 
-GROUP BY DATEFROMPARTS(YEAR(spend_date), MONTH(spend_date), 1), channel
-), 
-cpm_metrics AS (
-SELECT
-    COALESCE(i.performance_month, s.performance_month) AS performance_month,
-    COALESCE(i.channel, s.channel) AS channel, 
-    i.impressions AS current_impressions,
-    s.current_spend,
-    s.current_spend/NULLIF(i.impressions, 0) * 1000 AS cpm
-FROM monthly_impressions i
-FULL JOIN monthly_spend s 
-ON i.performance_month = s.performance_month 
-    AND i.channel = s.channel
-)
-
-SELECT 
-    performance_month,
-    channel, 
-    current_spend,
-    current_impressions,
-    cpm AS current_cpm,
-    AVG(cpm) OVER(PARTITION BY channel) AS avg_cpm,
-    (cpm) - AVG(cpm) OVER(PARTITION BY channel) AS diff_avg,
-    CASE 
-        WHEN (cpm) - AVG(cpm) OVER(PARTITION BY channel) > 0 THEN 'Worsened (Above Avg)'
-        WHEN (cpm) - AVG(cpm) OVER(PARTITION BY channel) < 0 THEN 'Improved (Below Avg)' 
-        ELSE 'Equals Average'
-    END AS avg_change,
-    -- Month-over_Month Analysis 
-    LAG(cpm) OVER(PARTITION BY channel ORDER BY performance_month) AS pm_cpm, 
-    (cpm) - LAG(cpm) OVER(PARTITION BY channel ORDER BY performance_month) AS diff_pm_cpm,
-    CASE 
-        WHEN (cpm) - LAG(cpm) OVER(PARTITION BY channel ORDER BY performance_month) > 0 THEN 'Worsened (Higher)'
-        WHEN (cpm) - LAG(cpm) OVER(PARTITION BY channel ORDER BY performance_month) < 0 THEN 'Improved (Lower)'
-        ELSE 'No Change'
-    END AS pm_change,
-    ROUND(
-        CASE 
-            WHEN LAG(cpm) OVER(PARTITION BY channel ORDER BY performance_month) = 0 THEN NULL 
-            ELSE ((cpm) - LAG(cpm) OVER(PARTITION BY channel ORDER BY performance_month))/LAG(cpm) OVER(PARTITION BY channel ORDER BY performance_month)*100 
-        END
-    ,2) AS mom_percentage
-FROM cpm_metrics
-WHERE channel IS NOT NULL;
-GO
-
-SELECT *
-FROM gold.channels_cpm
-ORDER BY channel, performance_month;
-GO
-
--- 4.2) Top 10 Improvements MoM CPM channels (lower CPM = better reach efficiency)
-SELECT TOP 10 *
-FROM gold.channels_cpm
-WHERE diff_pm_cpm IS NOT NULL
-ORDER BY diff_pm_cpm ASC; 
-
-SELECT TOP 10 *
-FROM gold.channels_cpm
-WHERE pm_cpm IS NOT NULL
-ORDER BY mom_percentage ASC;
-
--- 4.3) Top 10 Declines MoM CPM channels (higher CPM = worse reach efficiency)
-SELECT TOP 10 *
-FROM gold.channels_cpm
-WHERE diff_pm_cpm IS NOT NULL
-ORDER BY diff_pm_cpm DESC; 
-
-SELECT TOP 10 *
-FROM gold.channels_cpm
 WHERE pm_cpm IS NOT NULL
 ORDER BY mom_percentage DESC;
 
@@ -396,3 +396,4 @@ FROM channel_cpm cpm
 INNER JOIN channel_cvr cvr
     ON cpm.channel = cvr.channel
 ORDER BY cpm_cvr_ratio;
+
