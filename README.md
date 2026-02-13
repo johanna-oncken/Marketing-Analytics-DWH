@@ -67,87 +67,47 @@
 
 <h4>2.3) Table Inventory</h4>
 
-<h4>2.4.1) Bronze (8 Tables)</h4>
+<p>The warehouse contains 8 Bronze tables (raw ingestion), 8 Silver tables (cleaned and standardized), 4 Gold dimension tables, and 9 Gold fact tables. The table below summarizes all layers. For detailed column-level documentation of the Gold layer (data types, descriptions, grain), see the <a href="https://github.com/johanna-oncken/Marketing-Analytics-DWH/blob/main/data_warehouse/docs/data_catalog.md?plain=1">Data Catalog</a>.</p>
 
 <table>
   <thead>
     <tr>
-      <th>Table</th>
-      <th>Source</th>
-      <th>Granularity</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr><td><code>bronze.mrkt_raw_ad_spend</code></td><td>marketing_platform/raw_ad_spend.csv</td><td>Channel × Day</td></tr>
-    <tr><td><code>bronze.mrkt_raw_campaigns</code></td><td>marketing_platform/raw_campaigns.csv</td><td>Campaign</td></tr>
-    <tr><td><code>bronze.mrkt_raw_clicks</code></td><td>marketing_platform/raw_clicks.csv</td><td>Click event</td></tr>
-    <tr><td><code>bronze.web_raw_sessions</code></td><td>web_analytics/raw_sessions.csv</td><td>Session</td></tr>
-    <tr><td><code>bronze.web_raw_touchpoints</code></td><td>web_analytics/raw_touchpoints.csv</td><td>Touchpoint event</td></tr>
-    <tr><td><code>bronze.crm_raw_channels</code></td><td>crm_system/raw_channels.csv</td><td>Channel</td></tr>
-    <tr><td><code>bronze.crm_raw_purchases</code></td><td>crm_system/raw_purchases.csv</td><td>Purchase</td></tr>
-    <tr><td><code>bronze.crm_raw_user_acquisitions</code></td><td>crm_system/raw_user_acquisitions.csv</td><td>User</td></tr>
-  </tbody>
-</table>
-
-<h4>2.4.2) Silver (8 Tables)</h4>
-
-<table>
-  <thead>
-    <tr>
-      <th>Table</th>
-      <th>Source</th>
-      <th>Key Transformations</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr><td><code>silver.mrkt_ad_spend</code></td><td><code>mrkt_raw_ad_spend</code></td><td>Date parsing, channel standardization, spend cleaning (remove USD/quotes/hyphens)</td></tr>
-    <tr><td><code>silver.mrkt_campaigns</code></td><td><code>mrkt_raw_campaigns</code></td><td>Campaign name corrections (seasonal mislabeling), objective normalization</td></tr>
-    <tr><td><code>silver.mrkt_clicks</code></td><td><code>mrkt_raw_clicks</code></td><td>Timestamp format unification (DD/MM/YYYY HH:MM → DATETIME2), channel standardization</td></tr>
-    <tr><td><code>silver.web_sessions</code></td><td><code>web_raw_sessions</code></td><td>Type casting, channel standardization</td></tr>
-    <tr><td><code>silver.web_touchpoints</code></td><td><code>web_raw_touchpoints</code></td><td>Interaction type normalization (<code>"impressions"</code> → <code>"Impression"</code>), channel standardization</td></tr>
-    <tr><td><code>silver.crm_channels</code></td><td><code>crm_raw_channels</code></td><td>Trim and validate</td></tr>
-    <tr><td><code>silver.crm_purchases</code></td><td><code>crm_raw_purchases</code></td><td>Revenue type casting, last-touch channel cleaning</td></tr>
-    <tr><td><code>silver.crm_user_acquisitions</code></td><td><code>crm_raw_user_acquisitions</code></td><td>Date parsing, channel standardization</td></tr>
-  </tbody>
-</table>
-
-<h4>2.4.3.1) Gold — Dimensions (4 Tables)</h4>
-
-<table>
-  <thead>
-    <tr>
-      <th>Table</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr><td><code>gold.dim_date</code></td><td>Calendar dimension (2023–2024), generated via recursive CTE. Surrogate key: <code>date_key</code> (YYYYMMDD format).</td></tr>
-    <tr><td><code>gold.dim_user</code></td><td>User dimension, union of all user IDs across silver tables. Surrogate key: <code>user_key</code>.</td></tr>
-    <tr><td><code>gold.dim_campaign</code></td><td>Campaign dimension from <code>silver.mrkt_campaigns</code>. 53 campaigns across 5 paid channels.</td></tr>
-    <tr><td><code>gold.dim_channel</code></td><td>Channel dimension from <code>silver.crm_channels</code>. 9 channels in 2 categories (Paid, Organic).</td></tr>
-  </tbody>
-</table>
-
-<h4>2.4.3.2) Gold — Fact Tables (9 Tables)</h4>
-
-<table>
-  <thead>
-    <tr>
+      <th>Layer</th>
       <th>Table</th>
       <th>Granularity</th>
-      <th>Description</th>
+      <th>Key Transformations / Description</th>
     </tr>
   </thead>
   <tbody>
-    <tr><td><code>gold.fact_spend</code></td><td>Campaign × Day</td><td>Ad spend enriched with campaign metadata (name, objective)</td></tr>
-    <tr><td><code>gold.fact_clicks</code></td><td>Click event</td><td>Click events enriched with acquisition channel (first-touch)</td></tr>
-    <tr><td><code>gold.fact_sessions</code></td><td>Session</td><td>Sessions enriched with acquisition channel</td></tr>
-    <tr><td><code>gold.fact_touchpoints</code></td><td>Touchpoint event</td><td>All touchpoint interactions enriched with campaign name</td></tr>
-    <tr><td><code>gold.fact_purchases</code></td><td>Purchase</td><td>Purchases enriched with acquisition channel, date, and campaign</td></tr>
-    <tr><td><code>gold.fact_touchpath</code></td><td>Touchpoint × Purchase</td><td>Ordered touchpoint sequences per converting user journey</td></tr>
-    <tr><td><code>gold.fact_attribution_linear</code></td><td>Touchpoint × Purchase</td><td>Linear (equal-weight) revenue attribution across all touchpoints</td></tr>
-    <tr><td><code>gold.fact_attribution_last_touch</code></td><td>Purchase</td><td>Last-touch attribution — full revenue assigned to final touchpoint</td></tr>
-    <tr><td><code>gold.fact_attribution_linear_with_costs</code></td><td>Touchpoint × Purchase</td><td>Linear attribution with proportional cost allocation (paid channels only)</td></tr>
+    <tr><td rowspan="8"><b>Bronze</b></td><td><code>mrkt_raw_ad_spend</code></td><td>Channel × Day</td><td>Raw CSV ingestion, all NVARCHAR</td></tr>
+    <tr><td><code>mrkt_raw_campaigns</code></td><td>Campaign</td><td>Raw CSV ingestion, all NVARCHAR</td></tr>
+    <tr><td><code>mrkt_raw_clicks</code></td><td>Click event</td><td>Raw CSV ingestion, all NVARCHAR</td></tr>
+    <tr><td><code>web_raw_sessions</code></td><td>Session</td><td>Raw CSV ingestion, all NVARCHAR</td></tr>
+    <tr><td><code>web_raw_touchpoints</code></td><td>Touchpoint event</td><td>Raw CSV ingestion, all NVARCHAR</td></tr>
+    <tr><td><code>crm_raw_channels</code></td><td>Channel</td><td>Raw CSV ingestion, all NVARCHAR</td></tr>
+    <tr><td><code>crm_raw_purchases</code></td><td>Purchase</td><td>Raw CSV ingestion, all NVARCHAR</td></tr>
+    <tr><td><code>crm_raw_user_acquisitions</code></td><td>User</td><td>Raw CSV ingestion, all NVARCHAR</td></tr>
+    <tr><td rowspan="8"><b>Silver</b></td><td><code>mrkt_ad_spend</code></td><td>Channel × Day</td><td>Date parsing, channel standardization, spend cleaning</td></tr>
+    <tr><td><code>mrkt_campaigns</code></td><td>Campaign</td><td>Campaign name corrections, objective normalization</td></tr>
+    <tr><td><code>mrkt_clicks</code></td><td>Click event</td><td>Timestamp unification, channel standardization</td></tr>
+    <tr><td><code>web_sessions</code></td><td>Session</td><td>Type casting, channel standardization</td></tr>
+    <tr><td><code>web_touchpoints</code></td><td>Touchpoint event</td><td>Interaction type normalization, channel standardization</td></tr>
+    <tr><td><code>crm_channels</code></td><td>Channel</td><td>Trim and validate</td></tr>
+    <tr><td><code>crm_purchases</code></td><td>Purchase</td><td>Revenue type casting, last-touch channel cleaning</td></tr>
+    <tr><td><code>crm_user_acquisitions</code></td><td>User</td><td>Date parsing, channel standardization</td></tr>
+    <tr><td rowspan="4"><b>Gold Dim</b></td><td><code>dim_date</code></td><td>Calendar date</td><td>Generated via recursive CTE (2023–2024)</td></tr>
+    <tr><td><code>dim_user</code></td><td>User</td><td>Union of all user IDs across silver tables</td></tr>
+    <tr><td><code>dim_campaign</code></td><td>Campaign</td><td>53 campaigns across 5 paid channels</td></tr>
+    <tr><td><code>dim_channel</code></td><td>Channel</td><td>9 channels in 2 categories (Paid, Organic)</td></tr>
+    <tr><td rowspan="9"><b>Gold Fact</b></td><td><code>fact_spend</code></td><td>Campaign × Day</td><td>Ad spend enriched with campaign metadata</td></tr>
+    <tr><td><code>fact_clicks</code></td><td>Click event</td><td>Clicks enriched with acquisition channel (first-touch)</td></tr>
+    <tr><td><code>fact_sessions</code></td><td>Session</td><td>Sessions enriched with acquisition channel</td></tr>
+    <tr><td><code>fact_touchpoints</code></td><td>Touchpoint event</td><td>All touchpoint interactions enriched with campaign name</td></tr>
+    <tr><td><code>fact_purchases</code></td><td>Purchase</td><td>Purchases enriched with acquisition data</td></tr>
+    <tr><td><code>fact_touchpath</code></td><td>Touchpoint × Purchase</td><td>Ordered touchpoint sequences per converting journey</td></tr>
+    <tr><td><code>fact_attribution_linear</code></td><td>Touchpoint × Purchase</td><td>Linear (equal-weight) revenue attribution</td></tr>
+    <tr><td><code>fact_attribution_last_touch</code></td><td>Purchase</td><td>Last-touch attribution (100% to final touchpoint)</td></tr>
+    <tr><td><code>fact_attribution_linear_with_costs</code></td><td>Touchpoint × Purchase</td><td>Linear attribution with proportional cost allocation (paid only)</td></tr>
   </tbody>
 </table>
 
