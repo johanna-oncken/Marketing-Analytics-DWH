@@ -41,6 +41,8 @@
 
 <h4>2.2) Data Sources</h4>
 
+<p>The raw source data was intentionally generated with messy, inconsistent, and partially erroneous records to demonstrate realistic ETL/ELT data cleansing scenarios. This includes misspelled channel names, mixed date formats, invalid IDs, non-numeric values in numeric fields, and placeholder strings like "not_available". The raw tables contain <strong>up to 104,773 rows to simulate a realistic data ingestion volume</strong>.</p>
+
 <table>
   <thead>
     <tr>
