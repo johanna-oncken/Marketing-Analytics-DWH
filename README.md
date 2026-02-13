@@ -1,5 +1,5 @@
 # Marketing-Analytics-DWH
-<h4>End-to-end Data Warehouse (Bronze/Silver/Gold) with Multi-Touch Attribution and Tableau Dashboards</h4>
+<h3>End-to-end Data Warehouse (Bronze/Silver/Gold) with Multi-Touch Attribution and Tableau Dashboards</h3>
 
  👉 Click the images to explore the interactive dashboards on **Tableau Public**.
 <p align="center">
@@ -14,7 +14,7 @@
   </a>
 </p>
 
-<p>💡 Disclaimer: This demo project is intended to showcase skills and uses synthetically generated data.</p>
+<p>💡 Disclaimer: This demo project is intended to **showcase skills** and uses **synthetically generated data**.</p>
 
 <h2>1) Marketing Analysis</h3>
 
