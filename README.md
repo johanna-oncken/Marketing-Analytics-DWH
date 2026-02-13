@@ -25,11 +25,12 @@
 <h4>2.1)Architecture</h4>
 <p>The warehouse follows a three-layer medallion architecture:</p>
 <img width="1009" height="647" alt="Bildschirmfoto 2026-02-13 um 12 17 03" src="https://github.com/user-attachments/assets/bf7bdb92-56c5-4dd5-a72a-375d4bc0d7de" />
-**Bronze Layer** — Raw ingestion from CSV source files via `BULK INSERT`. All columns are stored as `NVARCHAR` to preserve the original data as-is. No transformations are applied. Load method: truncate and full reload.
 
-**Silver Layer** — Cleaned, standardized, and type-cast data. Transformations include data cleansing (e.g., fixing misspelled channel names like `"gogle search"` → `"Google Search"`), date format normalization (DD.MM.YYYY → ISO), invalid value handling (out-of-range IDs, `"not_available"` placeholders), and derived columns. Each silver table includes a `dwh_create_date` audit column.
+<p><b>Bronze Layer</b> — Raw ingestion from CSV source files via <code>BULK INSERT</code>. All columns are stored as <code>NVARCHAR</code> to preserve the original data as-is. No transformations are applied. Load method: truncate and full reload.</p>
 
-**Gold Layer** — Business-ready tables following a star schema with dimension tables (`dim_date`, `dim_user`, `dim_campaign`, `dim_channel`) and granular atomic fact tables. The Gold layer applies data integration (joining across source systems), enrichment (e.g., adding acquisition channel to click and session facts), and business logic (attribution modeling, touchpoint path construction).
+<p><b>Silver Layer</b> — Cleaned, standardized, and type-cast data. Transformations include data cleansing (e.g., fixing misspelled channel names like <code>"gogle search"</code> → <code>"Google Search"</code>), date format normalization (DD.MM.YYYY → ISO), invalid value handling (out-of-range IDs, <code>"not_available"</code> placeholders), and derived columns. Each silver table includes a <code>dwh_create_date</code> audit column.</p>
+
+<p><b>Gold Layer</b> — Business-ready tables following a star schema with dimension tables (<code>dim_date</code>, <code>dim_user</code>, <code>dim_campaign</code>, <code>dim_channel</code>) and granular atomic fact tables. The Gold layer applies data integration (joining across source systems), enrichment (e.g., adding acquisition channel to click and session facts), and business logic (attribution modeling, touchpoint path construction).</p>
 
 
 
