@@ -15,12 +15,12 @@ SQL Functions Used:
 Queries: 
     1) CTR overall 
     2) CTR Performance monthly
-    3.1) Monthly CTR Performance and MOM Analysis by Campaigns 
-    3.2) Top Ten Campaigns by Monthly CTR Improvements 
-    3.3) Top Ten Campaigns by Monthly CTR Declines 
-    4.1) Monthly CTR Performance and MOM Analysis by Channels 
-    4.2) Top Ten Channels by Monthly CTR Improvements 
-    4.3) Top Ten Channels by Monthly CTR Declines
+    3.1) Monthly CTR Performance and MOM Analysis by Channels 
+    3.2) Top Ten Channels by Monthly CTR Improvements 
+    3.3) Top Ten Channels by Monthly CTR Declines
+    4.1) Monthly CTR Performance and MOM Analysis by Campaigns 
+    4.2) Top Ten Campaigns by Monthly CTR Improvements 
+    4.3) Top Ten Campaigns by Monthly CTR Declines 
 
 💡 Disclaimer: 
     Due to synthetic data, there are a lot more clicks than there are impressions, resulting in a CTR > 100% .
@@ -120,10 +120,113 @@ GO
 
 /*
 ===============================================================================
-3) CAMPAIGNS
+3) CHANNELS
 ===============================================================================
 */
 -- 3.1) MoM by Monthly Clicks and Impressions
+--      Analyze Month-over-Month CTR channel performance 
+DROP VIEW IF EXISTS gold.channels_ctr;
+GO
+
+CREATE VIEW gold.channels_ctr AS
+WITH monthly_clicks AS (
+SELECT
+    DATEFROMPARTS(d.year, d.month, 1) AS performance_month, 
+    f.click_channel,
+    COUNT(f.click_id) AS clicks
+FROM gold.fact_clicks f
+LEFT JOIN gold.dim_date d 
+ON f.date_key = d.date_key
+WHERE f.click_channel IS NOT NULL
+GROUP BY DATEFROMPARTS(d.year, d.month, 1), f.click_channel
+), 
+monthly_impressions AS ( 
+SELECT 
+    DATEFROMPARTS(YEAR(f.touchpoint_time), MONTH(f.touchpoint_time), 1) AS performance_month,
+    f.channel,
+    COUNT(f.interaction_type) AS current_impressions
+FROM gold.fact_touchpoints f 
+WHERE f.interaction_type = 'Impression' AND f.channel IS NOT NULL --filter for impressions
+GROUP BY DATEFROMPARTS(YEAR(f.touchpoint_time), MONTH(f.touchpoint_time), 1), f.channel
+), 
+ctr_metrics AS (
+SELECT
+    COALESCE(c.performance_month, i.performance_month) AS performance_month,
+    COALESCE(i.channel, c.click_channel) AS channel,
+    c.clicks AS current_clicks,
+    i.current_impressions,
+    c.clicks * 1.0 /NULLIF(i.current_impressions, 0) AS ctr
+FROM monthly_clicks c
+FULL JOIN monthly_impressions i 
+ON c.performance_month = i.performance_month 
+    AND c.click_channel = i.channel
+)
+
+SELECT 
+    performance_month,
+    channel,
+    current_clicks,
+    current_impressions,
+    ctr AS current_ctr,
+    AVG(ctr) OVER(PARTITION BY channel) AS avg_ctr,
+    (ctr) - AVG(ctr) OVER(PARTITION BY channel) AS diff_avg,
+    CASE 
+        WHEN (ctr) - AVG(ctr) OVER(PARTITION BY channel) > 0 THEN 'Above Avg'
+        WHEN (ctr) - AVG(ctr) OVER(PARTITION BY channel) < 0 THEN 'Below Avg' 
+        ELSE 'Equals Average'
+    END AS avg_change,
+    -- Month-over_Month Analysis 
+    LAG(ctr) OVER(PARTITION BY channel ORDER BY performance_month) AS pm_ctr, 
+    (ctr) - LAG(ctr) OVER(PARTITION BY channel ORDER BY performance_month) AS diff_pm_ctr,
+    CASE 
+        WHEN (ctr) - LAG(ctr) OVER(PARTITION BY channel ORDER BY performance_month) > 0 THEN 'Improved'
+        WHEN (ctr) - LAG(ctr) OVER(PARTITION BY channel ORDER BY performance_month) < 0 THEN 'Decreased'
+        ELSE 'No Change'
+    END AS pm_change,
+    ROUND(
+        CASE 
+            WHEN LAG(ctr) OVER(PARTITION BY channel ORDER BY performance_month) = 0 THEN NULL 
+            ELSE ((ctr) - LAG(ctr) OVER(PARTITION BY channel ORDER BY performance_month))/LAG(ctr) OVER(PARTITION BY channel ORDER BY performance_month)*100 
+        END
+    ,2) AS mom_percentage
+FROM ctr_metrics
+WHERE channel IS NOT NULL;
+GO
+
+SELECT *
+FROM gold.channels_ctr
+ORDER BY channel, performance_month;
+GO
+
+-- 3.2) Top 10 Improvements MoM CTR channels
+SELECT TOP 10 *
+FROM gold.channels_ctr
+WHERE diff_pm_ctr IS NOT NULL
+ORDER BY diff_pm_ctr DESC; 
+
+SELECT TOP 10 *
+FROM gold.channels_ctr
+WHERE pm_ctr IS NOT NULL
+ORDER BY mom_percentage DESC;
+
+-- 3.3) Top 10 Declines MoM CTR channels
+SELECT TOP 10 *
+FROM gold.channels_ctr
+WHERE diff_pm_ctr IS NOT NULL
+ORDER BY diff_pm_ctr ASC; 
+
+SELECT TOP 10 *
+FROM gold.channels_ctr
+WHERE pm_ctr IS NOT NULL
+ORDER BY mom_percentage ASC;
+
+
+/*
+===============================================================================
+4) CAMPAIGNS
+===============================================================================
+*/
+-- 4.1) MoM by Monthly Clicks and Impressions
 --    Analyze Month-over-Month CTR campaign performance 
 DROP VIEW IF EXISTS gold.campaigns_ctr;
 GO
@@ -206,7 +309,7 @@ FROM gold.campaigns_ctr
 ORDER BY campaign_id, performance_month;
 GO
 
--- 3.2) Top 10 Improvements MoM CTR campaigns
+-- 4.2) Top 10 Improvements MoM CTR campaigns
 SELECT TOP 10 *
 FROM gold.campaigns_ctr
 WHERE diff_pm_ctr IS NOT NULL
@@ -217,7 +320,7 @@ FROM gold.campaigns_ctr
 WHERE pm_ctr IS NOT NULL
 ORDER BY mom_percentage DESC;
 
--- 3.3) Top 10 Declines MoM CTR campaigns
+-- 4.3) Top 10 Declines MoM CTR campaigns
 SELECT TOP 10 *
 FROM gold.campaigns_ctr
 WHERE diff_pm_ctr IS NOT NULL
@@ -229,104 +332,3 @@ WHERE pm_ctr IS NOT NULL
 ORDER BY mom_percentage ASC;
 
 
-/*
-===============================================================================
-4) CHANNELS
-===============================================================================
-*/
--- 4.1) MoM by Monthly Clicks and Impressions
---      Analyze Month-over-Month CTR channel performance 
-DROP VIEW IF EXISTS gold.channels_ctr;
-GO
-
-CREATE VIEW gold.channels_ctr AS
-WITH monthly_clicks AS (
-SELECT
-    DATEFROMPARTS(d.year, d.month, 1) AS performance_month, 
-    f.click_channel,
-    COUNT(f.click_id) AS clicks
-FROM gold.fact_clicks f
-LEFT JOIN gold.dim_date d 
-ON f.date_key = d.date_key
-WHERE f.click_channel IS NOT NULL
-GROUP BY DATEFROMPARTS(d.year, d.month, 1), f.click_channel
-), 
-monthly_impressions AS ( 
-SELECT 
-    DATEFROMPARTS(YEAR(f.touchpoint_time), MONTH(f.touchpoint_time), 1) AS performance_month,
-    f.channel,
-    COUNT(f.interaction_type) AS current_impressions
-FROM gold.fact_touchpoints f 
-WHERE f.interaction_type = 'Impression' AND f.channel IS NOT NULL --filter for impressions
-GROUP BY DATEFROMPARTS(YEAR(f.touchpoint_time), MONTH(f.touchpoint_time), 1), f.channel
-), 
-ctr_metrics AS (
-SELECT
-    COALESCE(c.performance_month, i.performance_month) AS performance_month,
-    COALESCE(i.channel, c.click_channel) AS channel,
-    c.clicks AS current_clicks,
-    i.current_impressions,
-    c.clicks * 1.0 /NULLIF(i.current_impressions, 0) AS ctr
-FROM monthly_clicks c
-FULL JOIN monthly_impressions i 
-ON c.performance_month = i.performance_month 
-    AND c.click_channel = i.channel
-)
-
-SELECT 
-    performance_month,
-    channel,
-    current_clicks,
-    current_impressions,
-    ctr AS current_ctr,
-    AVG(ctr) OVER(PARTITION BY channel) AS avg_ctr,
-    (ctr) - AVG(ctr) OVER(PARTITION BY channel) AS diff_avg,
-    CASE 
-        WHEN (ctr) - AVG(ctr) OVER(PARTITION BY channel) > 0 THEN 'Above Avg'
-        WHEN (ctr) - AVG(ctr) OVER(PARTITION BY channel) < 0 THEN 'Below Avg' 
-        ELSE 'Equals Average'
-    END AS avg_change,
-    -- Month-over_Month Analysis 
-    LAG(ctr) OVER(PARTITION BY channel ORDER BY performance_month) AS pm_ctr, 
-    (ctr) - LAG(ctr) OVER(PARTITION BY channel ORDER BY performance_month) AS diff_pm_ctr,
-    CASE 
-        WHEN (ctr) - LAG(ctr) OVER(PARTITION BY channel ORDER BY performance_month) > 0 THEN 'Improved'
-        WHEN (ctr) - LAG(ctr) OVER(PARTITION BY channel ORDER BY performance_month) < 0 THEN 'Decreased'
-        ELSE 'No Change'
-    END AS pm_change,
-    ROUND(
-        CASE 
-            WHEN LAG(ctr) OVER(PARTITION BY channel ORDER BY performance_month) = 0 THEN NULL 
-            ELSE ((ctr) - LAG(ctr) OVER(PARTITION BY channel ORDER BY performance_month))/LAG(ctr) OVER(PARTITION BY channel ORDER BY performance_month)*100 
-        END
-    ,2) AS mom_percentage
-FROM ctr_metrics
-WHERE channel IS NOT NULL;
-GO
-
-SELECT *
-FROM gold.channels_ctr
-ORDER BY channel, performance_month;
-GO
-
--- 4.2) Top 10 Improvements MoM CTR channels
-SELECT TOP 10 *
-FROM gold.channels_ctr
-WHERE diff_pm_ctr IS NOT NULL
-ORDER BY diff_pm_ctr DESC; 
-
-SELECT TOP 10 *
-FROM gold.channels_ctr
-WHERE pm_ctr IS NOT NULL
-ORDER BY mom_percentage DESC;
-
--- 4.3) Top 10 Declines MoM CTR channels
-SELECT TOP 10 *
-FROM gold.channels_ctr
-WHERE diff_pm_ctr IS NOT NULL
-ORDER BY diff_pm_ctr ASC; 
-
-SELECT TOP 10 *
-FROM gold.channels_ctr
-WHERE pm_ctr IS NOT NULL
-ORDER BY mom_percentage ASC;
