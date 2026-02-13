@@ -16,9 +16,10 @@
 
 <p>📍 About: This demo project is intended to <strong>showcase skills</strong> and uses <strong>synthetically generated data</strong>.</p>
 
-<h2>1) Marketing Analysis</h3>
-
-<h2>2) End-To-End Data Warehouse and ETL</h3>
+<h2>1) Marketing Analysis</h2>
+<h4>1.1) Project Brief</h4>
+<p>tasked with analyzing ad data from January to April 2024.</p>
+<h2>2) End-To-End Data Warehouse and ETL</h2>
 
 
 
