@@ -32,11 +32,9 @@
 
 <p><b>Gold Layer</b> — Business-ready tables following a star schema with dimension tables (<code>dim_date</code>, <code>dim_user</code>, <code>dim_campaign</code>, <code>dim_channel</code>) and granular atomic fact tables. The Gold layer applies data integration (joining across source systems), enrichment (e.g., adding acquisition channel to click and session facts), and business logic (attribution modeling, touchpoint path construction).</p>
 
-<img width="847" height="696" alt="Data model" src="https://github.com/user-attachments/assets/4e1d7917-fc2a-42d9-9bea-ab54effc50f1" />
-
 <hr>
 
-<h2>Data Sources</h2>
+<h4>2.2) Data Sources</h4>
 
 <table>
   <thead>
@@ -67,9 +65,9 @@
 
 <hr>
 
-<h2>Table Inventory</h2>
+<h4>2.3) Table Inventory</h4>
 
-<h3>Bronze (8 Tables)</h3>
+<h4>2.4.1) Bronze (8 Tables)</h4>
 
 <table>
   <thead>
@@ -91,7 +89,7 @@
   </tbody>
 </table>
 
-<h3>Silver (8 Tables)</h3>
+<h4>2.4.2) Silver (8 Tables)</h4>
 
 <table>
   <thead>
@@ -113,7 +111,7 @@
   </tbody>
 </table>
 
-<h3>Gold — Dimensions (4 Tables)</h3>
+<h4>2.4.3.1) Gold — Dimensions (4 Tables)</h4>
 
 <table>
   <thead>
@@ -130,7 +128,7 @@
   </tbody>
 </table>
 
-<h3>Gold — Fact Tables (9 Tables)</h3>
+<h4>2.4.3.2) Gold — Fact Tables (9 Tables)</h4>
 
 <table>
   <thead>
@@ -155,7 +153,7 @@
 
 <hr>
 
-<h2>Data Model</h2>
+<h4>2.5) Data Model</h4>
 
 <p>The Gold layer follows a <b>star schema</b> for core marketing analytics (spend, clicks, sessions, touchpoints, purchases), combined with a <b>fact constellation</b> for attribution modeling.</p>
 
@@ -163,11 +161,13 @@
 
 <p>The analytical fact tables (<code>fact_touchpath</code>, <code>fact_attribution_linear</code>, <code>fact_attribution_last_touch</code>, <code>fact_attribution_linear_with_costs</code>) form a fact constellation that references <code>fact_purchases</code> through the natural key <code>purchase_id</code> to enable multi-touch attribution analysis.</p>
 
+<img width="847" height="696" alt="Data model" src="https://github.com/user-attachments/assets/4e1d7917-fc2a-42d9-9bea-ab54effc50f1" />
+
 <hr>
 
-<h2>Why <code>fact_attribution_linear_with_costs</code> Exists</h2>
+<h4>2.6) Why <code>fact_attribution_linear_with_costs</code> Exists</h4>
 
-<h3>The Problem</h3>
+<h5>2.6.1) The Problem</h5>
 
 <p>The original <code>fact_attribution_linear</code> table distributes <b>revenue</b> equally across all touchpoints in a converting user journey. This enables questions like "How much revenue does each channel contribute?" However, it cannot answer efficiency questions like "What is the true ROI per channel?" — because <b>costs remain at the campaign/day level</b> in <code>fact_spend</code>, while revenue is distributed at the touchpoint level in the attribution table.</p>
 
@@ -175,7 +175,7 @@
 
 <p>This is a common structural problem in marketing attribution: revenue attribution is well-established, but cost attribution is often left as an afterthought, forcing analysts to compare touchpoint-level revenue against aggregate-level spend in separate queries — which breaks down when trying to evaluate channel or campaign efficiency at the touchpoint level.</p>
 
-<h3>The Solution</h3>
+<h5>2.6.1) The Solution</h5>
 
 <p><code>fact_attribution_linear_with_costs</code> solves this by applying <b>proportional cost allocation</b> alongside revenue attribution. For each touchpoint in a converting journey, the table includes both a <code>revenue_share</code> (from the original linear model) and a <code>cost_share</code> calculated as:</p>
 
@@ -183,11 +183,11 @@
 
 <p>This means if Campaign 5 spent €100 on January 15 and had 20 attributed touchpoints that day, each touchpoint receives a <code>cost_share</code> of €5. Revenue and cost are now at the same granularity, enabling accurate per-touchpoint ROI and ROAS calculations.</p>
 
-<h3>Scope</h3>
+<h4>2.6.2) Scope</h4>
 
 <p>The cost-enhanced table is restricted to <b>paid marketing channels only</b> (Facebook Ads, Google Display, Google Search, Instagram Ads, TikTok Ads). Organic channels (Direct, Email, Organic Search, Referral) are excluded because they carry no media cost — including them would distort efficiency metrics. For full customer journey analysis including organic channels, the original <code>fact_attribution_linear</code> table remains available.</p>
 
-<h3>Usage</h3>
+<h4>2.6.3) Usage</h4>
 
 <pre><code>-- Channel-level ROI with attributed costs
 SELECT
@@ -201,7 +201,7 @@ GROUP BY channel;</code></pre>
 
 <hr>
 
-<h2>Data Quality</h2>
+<h4>2.7) Data Quality</h4>
 
 <p>Quality assurance is applied at every layer:</p>
 
@@ -217,7 +217,7 @@ GROUP BY channel;</code></pre>
 
 <hr>
 
-<h2>Execution Order</h2>
+<h4>2.8) Execution Order</h4>
 
 <table>
   <thead>
@@ -247,7 +247,7 @@ GROUP BY channel;</code></pre>
 
 <hr>
 
-<h2>Technical Environment</h2>
+<h4>2.9) Technical Environment</h4>
 
 <table>
   <thead>
