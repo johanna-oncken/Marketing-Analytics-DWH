@@ -671,9 +671,11 @@ performance_month  last_touch_campaign  campaign_name          current_revenue  
 2024-04-01         53                   Spring_Prospecting_EU  293.41           68.79          4.265300      6.630627    -2.365327   Below Avg   9.097019    -4.831719     Decrease    -53.110000    
 ((185 rows affected))
 
-Result Set 12-1
-========================================
 
+-- 3.4) TOP 10 MoM TOFU/Multi/BOFU 
+--========================================
+-- Top 10 MoM ROAS campaigns within funnel - ORDER BY diff_pm_roas DESC;
+==========================================
 performance_month  campaign_id  campaign_name          current_revenue  current_spend  current_roas  avg_roas    diff_avg    avg_change  pm_roas     diff_pm_roas  pm_change   mom_percentage
 -----------------  -----------  ---------------------  ---------------  -------------  ------------  ----------  ----------  ----------  ----------  ------------  ----------  --------------
 2024-02-01         9            Brand_Awareness_Q1     1271.79          312.77         4.066214      2.013357    2.052857    Above Avg   1.421955    2.644259      Increase    185.960000    
@@ -688,9 +690,8 @@ performance_month  campaign_id  campaign_name          current_revenue  current_
 2024-04-01         28           Lookalike_3pct_DE      468.35           252.19         1.857131      2.944271    -1.087140   Below Avg   1.611046    0.246085      Increase    15.270000     
 ((10 rows affected))
 
-Result Set 12-2
-========================================
-
+-- Top 10 MoM ROAS campaigns within funnel - WHERE pm_roas > 0 ORDER BY mom_percentage DESC;
+==========================================
 performance_month  campaign_id  campaign_name          current_revenue  current_spend  current_roas  avg_roas    diff_avg    avg_change  pm_roas     diff_pm_roas  pm_change   mom_percentage
 -----------------  -----------  ---------------------  ---------------  -------------  ------------  ----------  ----------  ----------  ----------  ------------  ----------  --------------
 2024-02-01         9            Brand_Awareness_Q1     1271.79          312.77         4.066214      2.013357    2.052857    Above Avg   1.421955    2.644259      Increase    185.960000    
@@ -705,9 +706,8 @@ performance_month  campaign_id  campaign_name          current_revenue  current_
 2024-03-01         35           Lookalike_3pct_DE      833.95           404.21         2.063160      2.369002    -0.305842   Below Avg   1.809782    0.253378      Increase    14.000000     
 ((10 rows affected))
 
-Result Set 12-3
-========================================
-
+-- Top 10 MoM ROAS acquisition campaigns - ORDER BY diff_pm_roas DESC;
+===========================================
 performance_month  acquisition_campaign  campaign_name          current_revenue  current_spend  current_roas  avg_roas    diff_avg    avg_change  pm_roas     diff_pm_roas  pm_change   mom_percentage
 -----------------  --------------------  ---------------------  ---------------  -------------  ------------  ----------  ----------  ----------  ----------  ------------  ----------  --------------
 2024-02-01         9                     Brand_Awareness_Q1     760.27           130.43         5.828950      2.541086    3.287864    Above Avg   1.216631    4.612319      Increase    379.110000    
@@ -722,9 +722,8 @@ performance_month  acquisition_campaign  campaign_name          current_revenue 
 2024-04-01         7                     Retention_Push         164.84           65.93          2.500227      2.923330    -0.423103   Below Avg   1.349605    1.150622      Increase    85.260000     
 ((10 rows affected))
 
-Result Set 12-4
-========================================
-
+-- Top 10 MoM ROAS acquisition campaigns - WHERE pm_roas > 0 ORDER BY mom_percentage DESC;
+===========================================
 performance_month  acquisition_campaign  campaign_name          current_revenue  current_spend  current_roas  avg_roas    diff_avg    avg_change  pm_roas     diff_pm_roas  pm_change   mom_percentage
 -----------------  --------------------  ---------------------  ---------------  -------------  ------------  ----------  ----------  ----------  ----------  ------------  ----------  --------------
 2024-02-01         9                     Brand_Awareness_Q1     760.27           130.43         5.828950      2.541086    3.287864    Above Avg   1.216631    4.612319      Increase    379.110000    
@@ -739,9 +738,8 @@ performance_month  acquisition_campaign  campaign_name          current_revenue 
 2024-02-01         4                     Lookalike_3pct_DE      1157.12          318.84         3.629155      2.260005    1.369150    Above Avg   2.264651    1.364504      Increase    60.250000     
 ((10 rows affected))
 
-Result Set 12-5
-========================================
-
+-- Top 10 MoM  ROAS last-touch campaigns - ORDER BY diff_pm_roas DESC;
+===========================================
 performance_month  last_touch_campaign  campaign_name          current_revenue  current_spend  current_roas  avg_roas    diff_avg    avg_change  pm_roas     diff_pm_roas  pm_change   mom_percentage
 -----------------  -------------------  ---------------------  ---------------  -------------  ------------  ----------  ----------  ----------  ----------  ------------  ----------  --------------
 2024-02-01         30                   SEO_Boost              634.42           40.77          15.560951     6.697942    8.863009    Above Avg   2.419432    13.141519     Increase    543.170000    
@@ -756,9 +754,8 @@ performance_month  last_touch_campaign  campaign_name          current_revenue  
 2024-04-01         52                   SEO_Boost              713.50           120.23         5.934458      4.555382    1.379076    Above Avg   0.486206    5.448252      Increase    1120.560000   
 ((10 rows affected))
 
-Result Set 12-6
-========================================
-
+-- Top 10 MoM  ROAS last-touch campaigns - WHERE pm_roas > 0 ORDER BY mom_percentage DESC;
+===========================================
 performance_month  last_touch_campaign  campaign_name          current_revenue  current_spend  current_roas  avg_roas    diff_avg    avg_change  pm_roas     diff_pm_roas  pm_change   mom_percentage
 -----------------  -------------------  ---------------------  ---------------  -------------  ------------  ----------  ----------  ----------  ----------  ------------  ----------  --------------
 2024-04-01         52                   SEO_Boost              713.50           120.23         5.934458      4.555382    1.379076    Above Avg   0.486206    5.448252      Increase    1120.560000   
@@ -773,9 +770,13 @@ performance_month  last_touch_campaign  campaign_name          current_revenue  
 2024-04-01         19                   Holiday_Special        455.65           49.58          9.190197      6.629011    2.561186    Above Avg   3.548318    5.641879      Increase    159.000000    
 ((10 rows affected))
 
-Result Set 14-0
-========================================
 
+
+
+4) CHANNELS
+--========================================
+-- 4.1) MOFU Full-Funnel Contributers
+==========================================
 performance_month  channel         current_revenue  current_spend  current_roas  avg_roas    diff_avg    avg_change  pm_roas     diff_pm_roas  pm_change   mom_percentage
 -----------------  --------------  ---------------  -------------  ------------  ----------  ----------  ----------  ----------  ------------  ----------  --------------
 2024-01-01         Facebook Ads    5538.94          1279.96        4.327432      2.517311    1.810121    Above Avg   NULL        NULL          No Change   NULL          
@@ -800,9 +801,11 @@ performance_month  channel         current_revenue  current_spend  current_roas 
 2024-04-01         TikTok Ads      4527.47          4122.39        1.098263      2.580137    -1.481874   Below Avg   1.669703    -0.571440     Decrease    -34.220000    
 ((20 rows affected))
 
-Result Set 17-0
-========================================
 
+4) CHANNELS
+--========================================
+-- 4.2) TOFU Full-Funnel Contributers
+==========================================
 performance_month  acquisition_channel  current_revenue  current_spend  current_roas  avg_roas    diff_avg    avg_change  pm_roas     diff_pm_roas  pm_change   mom_percentage
 -----------------  -------------------  ---------------  -------------  ------------  ----------  ----------  ----------  ----------  ------------  ----------  --------------
 2024-01-01         Facebook Ads         4282.47          847.93         5.050499      3.025569    2.024930    Above Avg   NULL        NULL          No Change   NULL          
@@ -827,9 +830,11 @@ performance_month  acquisition_channel  current_revenue  current_spend  current_
 2024-04-01         TikTok Ads           1114.78          876.71         1.271549      3.255109    -1.983560   Below Avg   1.804855    -0.533306     Decrease    -29.550000    
 ((20 rows affected))
 
-Result Set 20-0
-========================================
 
+4) CHANNELS
+--========================================
+-- 4.3) BOFU Full-Funnel Contributers
+==========================================
 performance_month  last_touch_channel  current_revenue  current_spend  current_roas  avg_roas    diff_avg    avg_change  pm_roas     diff_pm_roas  pm_change   mom_percentage
 -----------------  ------------------  ---------------  -------------  ------------  ----------  ----------  ----------  ----------  ------------  ----------  --------------
 2024-01-01         Facebook Ads        5074.53          850.79         5.964491      5.091530    0.872961    Above Avg   NULL        NULL          No Change   NULL          
@@ -854,9 +859,12 @@ performance_month  last_touch_channel  current_revenue  current_spend  current_r
 2024-04-01         TikTok Ads          3010.61          659.04         4.568174      5.561276    -0.993102   Below Avg   5.333594    -0.765420     Decrease    -14.350000    
 ((20 rows affected))
 
-Result Set 20-1
-========================================
 
+
+-- 4.4) TOP 10 MoM TOFU/Multi/BOFU 
+--======================================
+-- Top 10 MoM channels within funnel - ORDER BY diff_pm_roas DESC;
+========================================
 performance_month  channel         current_revenue  current_spend  current_roas  avg_roas    diff_avg    avg_change  pm_roas     diff_pm_roas  pm_change   mom_percentage
 -----------------  --------------  ---------------  -------------  ------------  ----------  ----------  ----------  ----------  ------------  ----------  --------------
 2024-04-01         Google Search   4843.04          4301.33        1.125940      2.506795    -1.380855   Below Avg   1.558639    -0.432699     Decrease    -27.760000    
@@ -871,9 +879,9 @@ performance_month  channel         current_revenue  current_spend  current_roas 
 2024-03-01         Google Search   8456.93          5425.84        1.558639      2.506795    -0.948156   Below Avg   2.861650    -1.303011     Decrease    -45.530000    
 ((10 rows affected))
 
-Result Set 20-2
-========================================
 
+-- Top 10 MoM channels within funnel - WHERE pm_roas > ORDER BY mom_percentage DESC;
+========================================
 performance_month  channel         current_revenue  current_spend  current_roas  avg_roas    diff_avg    avg_change  pm_roas     diff_pm_roas  pm_change   mom_percentage
 -----------------  --------------  ---------------  -------------  ------------  ----------  ----------  ----------  ----------  ------------  ----------  --------------
 2024-04-01         Facebook Ads    4580.82          3570.67        1.282902      2.517311    -1.234409   Below Avg   1.735309    -0.452407     Decrease    -26.070000    
@@ -888,9 +896,9 @@ performance_month  channel         current_revenue  current_spend  current_roas 
 2024-04-01         Google Display  4686.54          3902.06        1.201042      2.557933    -1.356891   Below Avg   1.910301    -0.709259     Decrease    -37.130000    
 ((10 rows affected))
 
-Result Set 20-3
-========================================
 
+-- Top 10 MoM acquisition channels - ORDER BY diff_pm_roas DESC;
+========================================
 performance_month  acquisition_channel  current_revenue  current_spend  current_roas  avg_roas    diff_avg    avg_change  pm_roas     diff_pm_roas  pm_change   mom_percentage
 -----------------  -------------------  ---------------  -------------  ------------  ----------  ----------  ----------  ----------  ------------  ----------  --------------
 2024-04-01         TikTok Ads           1114.78          876.71         1.271549      3.255109    -1.983560   Below Avg   1.804855    -0.533306     Decrease    -29.550000    
@@ -905,9 +913,9 @@ performance_month  acquisition_channel  current_revenue  current_spend  current_
 2024-03-01         Google Search        3145.02          1746.05        1.801219      2.741370    -0.940151   Below Avg   3.367395    -1.566176     Decrease    -46.510000    
 ((10 rows affected))
 
-Result Set 20-4
-========================================
 
+-- Top 10 MoM acquisition channels - WHERE pm_roas > ORDER BY mom_percentage DESC;
+========================================
 performance_month  acquisition_channel  current_revenue  current_spend  current_roas  avg_roas    diff_avg    avg_change  pm_roas     diff_pm_roas  pm_change   mom_percentage
 -----------------  -------------------  ---------------  -------------  ------------  ----------  ----------  ----------  ----------  ------------  ----------  --------------
 2024-03-01         Google Display       3528.70          1467.06        2.405286      3.071398    -0.666112   Below Avg   3.240370    -0.835084     Decrease    -25.770000    
@@ -922,9 +930,9 @@ performance_month  acquisition_channel  current_revenue  current_spend  current_
 2024-02-01         Google Display       5109.06          1576.69        3.240370      3.071398    0.168972    Above Avg   5.312606    -2.072236     Decrease    -39.010000    
 ((10 rows affected))
 
-Result Set 20-5
-========================================
 
+-- Top 10 MoM last-touch campaigns - ORDER BY diff_pm_roas DESC;
+========================================
 performance_month  last_touch_channel  current_revenue  current_spend  current_roas  avg_roas    diff_avg    avg_change  pm_roas     diff_pm_roas  pm_change   mom_percentage
 -----------------  ------------------  ---------------  -------------  ------------  ----------  ----------  ----------  ----------  ------------  ----------  --------------
 2024-02-01         Google Display      10625.10         1690.54        6.285033      4.993410    1.291623    Above Avg   5.067077    1.217956      Increase    24.040000     
@@ -939,9 +947,9 @@ performance_month  last_touch_channel  current_revenue  current_spend  current_r
 2024-02-01         Google Search       10853.92         1696.88        6.396398      5.067053    1.329345    Above Avg   7.847400    -1.451002     Decrease    -18.490000    
 ((10 rows affected))
 
-Result Set 20-6
-========================================
 
+-- Top 10 MoM last-touch campaigns - WHERE pm_roas > ORDER BY mom_percentage DESC;
+========================================
 performance_month  last_touch_channel  current_revenue  current_spend  current_roas  avg_roas    diff_avg    avg_change  pm_roas     diff_pm_roas  pm_change   mom_percentage
 -----------------  ------------------  ---------------  -------------  ------------  ----------  ----------  ----------  ----------  ------------  ----------  --------------
 2024-02-01         Google Display      10625.10         1690.54        6.285033      4.993410    1.291623    Above Avg   5.067077    1.217956      Increase    24.040000     
