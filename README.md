@@ -76,7 +76,7 @@
 
 <h4>2.3) Table Inventory</h4>
 
-<p>The warehouse contains 8 Bronze tables (raw ingestion), 8 Silver tables (cleaned and standardized), 4 Gold dimension tables, and 9 Gold fact tables. The table below summarizes all layers. For detailed column-level documentation of the Gold layer (data types, descriptions, grain), see the <a href="https://github.com/johanna-oncken/Marketing-Analytics-DWH/blob/main/data_warehouse/docs/data_catalog.md?plain=1">Data Catalog</a>.</p>
+<p>The warehouse contains 8 Bronze tables (raw ingestion), 8 Silver tables (cleaned and standardized), 4 Gold dimension tables, and 9 Gold fact tables. The table below summarizes all layers. For detailed column-level documentation of the Gold layer (data types, descriptions, grain), see the <a href="https://github.com/johanna-oncken/Marketing-Analytics-DWH/blob/main/data_warehouse/docs/data_catalog.md">Data Catalog</a>.</p>
 
 <table>
   <thead>
