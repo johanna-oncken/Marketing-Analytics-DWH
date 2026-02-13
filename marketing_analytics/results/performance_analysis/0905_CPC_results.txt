@@ -1,0 +1,286 @@
+===============================================================================
+CPC Cost per Click Performance Analysis – Query Results
+===============================================================================
+
+Queries: 
+    1) CPC overall 
+    2) CPC Performance monthly
+    3.1) Monthly CPC Performance and MOM Analysis by Channels 
+    3.2) Top Ten Channels by Monthly CPC Improvements 
+    3.3) Top Ten Channels by Monthly CPC Declines
+    4.1) Monthly CPC Performance and MOM Analysis by Campaigns 
+    4.2) Top Ten Campaigns by Monthly CPC Improvements 
+    4.3) Top Ten Campaigns by Monthly CPC Declines 
+
+========================================
+1) CPC Overall
+========================================
+
+spend       clicks      cpc       
+----------  ----------  ----------
+72612.01    70366       1.031918  
+((1 row affected))
+
+
+
+========================================
+2) CPC Performance Monthly
+========================================
+
+performance_month  current_spend  current_clicks  current_cpc  avg_cpc     diff_avg    avg_change            pm_cpc      diff_pm_cpc  pm_change         mom_percentage
+-----------------  -------------  --------------  -----------  ----------  ----------  --------------------  ----------  -----------  ----------------  --------------
+2024-01-01         41540.56       18280           2.272459     1.018391    1.254068    Worsened (Above Avg)  NULL        NULL         No Change         NULL          
+2024-02-01         21738.21       16890           1.287046     1.018391    0.268655    Worsened (Above Avg)  2.272459    -0.985413    Improved (Lower)  -43.360000    
+2024-03-01         8199.15        18354           0.446722     1.018391    -0.571669   Improved (Below Avg)  1.287046    -0.840324    Improved (Lower)  -65.290000    
+2024-04-01         1134.09        16842           0.067337     1.018391    -0.951054   Improved (Below Avg)  0.446722    -0.379385    Improved (Lower)  -84.930000    
+((4 rows affected))
+
+
+
+========================================
+3.1) Monthly CPC Performance and MoM-Analysis by Channels
+========================================
+
+performance_month  click_channel   current_spend  current_clicks  current_cpc  avg_cpc     diff_avg    avg_change            pm_cpc      diff_pm_cpc  pm_change         mom_percentage
+-----------------  --------------  -------------  --------------  -----------  ----------  ----------  --------------------  ----------  -----------  ----------------  --------------
+2024-01-01         Facebook Ads    8496.79        3730            2.277959     1.039671    1.238288    Worsened (Above Avg)  NULL        NULL         No Change         NULL          
+2024-02-01         Facebook Ads    4615.51        3393            1.360303     1.039671    0.320632    Worsened (Above Avg)  2.277959    -0.917656    Improved (Lower)  -40.280000    
+2024-03-01         Facebook Ads    1542.88        3657            0.421897     1.039671    -0.617774   Improved (Below Avg)  1.360303    -0.938406    Improved (Lower)  -68.990000    
+2024-04-01         Facebook Ads    325.33         3302            0.098525     1.039671    -0.941146   Improved (Below Avg)  0.421897    -0.323372    Improved (Lower)  -76.650000    
+2024-01-01         Google Display  7493.95        3657            2.049207     0.981179    1.068028    Worsened (Above Avg)  NULL        NULL         No Change         NULL          
+2024-02-01         Google Display  4328.37        3347            1.293208     0.981179    0.312029    Worsened (Above Avg)  2.049207    -0.755999    Improved (Lower)  -36.890000    
+2024-03-01         Google Display  1742.40        3621            0.481193     0.981179    -0.499986   Improved (Below Avg)  1.293208    -0.812015    Improved (Lower)  -62.790000    
+2024-04-01         Google Display  335.18         3315            0.101110     0.981179    -0.880069   Improved (Below Avg)  0.481193    -0.380083    Improved (Lower)  -78.990000    
+2024-01-01         Google Search   9648.56        3618            2.666821     1.151003    1.515818    Worsened (Above Avg)  NULL        NULL         No Change         NULL          
+2024-02-01         Google Search   5023.61        3372            1.489801     1.151003    0.338798    Worsened (Above Avg)  2.666821    -1.177020    Improved (Lower)  -44.140000    
+2024-03-01         Google Search   1474.89        3734            0.394989     1.151003    -0.756014   Improved (Below Avg)  1.489801    -1.094812    Improved (Lower)  -73.490000    
+2024-04-01         Google Search   181.31         3460            0.052401     1.151003    -1.098602   Improved (Below Avg)  0.394989    -0.342588    Improved (Lower)  -86.730000    
+2024-01-01         Instagram Ads   7579.47        3679            2.060198     0.893532    1.166666    Worsened (Above Avg)  NULL        NULL         No Change         NULL          
+2024-02-01         Instagram Ads   3517.75        3404            1.033416     0.893532    0.139884    Worsened (Above Avg)  2.060198    -1.026782    Improved (Lower)  -49.840000    
+2024-03-01         Instagram Ads   1605.93        3585            0.447958     0.893532    -0.445574   Improved (Below Avg)  1.033416    -0.585458    Improved (Lower)  -56.650000    
+2024-04-01         Instagram Ads   111.12         3413            0.032557     0.893532    -0.860975   Improved (Below Avg)  0.447958    -0.415401    Improved (Lower)  -92.730000    
+2024-01-01         TikTok Ads      7564.06        3596            2.103464     0.936823    1.166641    Worsened (Above Avg)  NULL        NULL         No Change         NULL          
+2024-02-01         TikTok Ads      3859.26        3374            1.143823     0.936823    0.207000    Worsened (Above Avg)  2.103464    -0.959641    Improved (Lower)  -45.620000    
+2024-03-01         TikTok Ads      1675.49        3757            0.445964     0.936823    -0.490859   Improved (Below Avg)  1.143823    -0.697859    Improved (Lower)  -61.010000    
+2024-04-01         TikTok Ads      181.15         3352            0.054042     0.936823    -0.882781   Improved (Below Avg)  0.445964    -0.391922    Improved (Lower)  -87.880000    
+((20 rows affected))
+
+
+
+========================================
+3.2a) Top 10 Channel CPC Improvements – by Absolute CPC Reduction (diff_pm_cpc ASC)
+========================================
+
+performance_month  click_channel   current_spend  current_clicks  current_cpc  avg_cpc     diff_avg    avg_change            pm_cpc      diff_pm_cpc  pm_change         mom_percentage
+-----------------  --------------  -------------  --------------  -----------  ----------  ----------  --------------------  ----------  -----------  ----------------  --------------
+2024-02-01         Google Search   5023.61        3372            1.489801     1.151003    0.338798    Worsened (Above Avg)  2.666821    -1.177020    Improved (Lower)  -44.140000    
+2024-03-01         Google Search   1474.89        3734            0.394989     1.151003    -0.756014   Improved (Below Avg)  1.489801    -1.094812    Improved (Lower)  -73.490000    
+2024-02-01         Instagram Ads   3517.75        3404            1.033416     0.893532    0.139884    Worsened (Above Avg)  2.060198    -1.026782    Improved (Lower)  -49.840000    
+2024-02-01         TikTok Ads      3859.26        3374            1.143823     0.936823    0.207000    Worsened (Above Avg)  2.103464    -0.959641    Improved (Lower)  -45.620000    
+2024-03-01         Facebook Ads    1542.88        3657            0.421897     1.039671    -0.617774   Improved (Below Avg)  1.360303    -0.938406    Improved (Lower)  -68.990000    
+2024-02-01         Facebook Ads    4615.51        3393            1.360303     1.039671    0.320632    Worsened (Above Avg)  2.277959    -0.917656    Improved (Lower)  -40.280000    
+2024-03-01         Google Display  1742.40        3621            0.481193     0.981179    -0.499986   Improved (Below Avg)  1.293208    -0.812015    Improved (Lower)  -62.790000    
+2024-02-01         Google Display  4328.37        3347            1.293208     0.981179    0.312029    Worsened (Above Avg)  2.049207    -0.755999    Improved (Lower)  -36.890000    
+2024-03-01         TikTok Ads      1675.49        3757            0.445964     0.936823    -0.490859   Improved (Below Avg)  1.143823    -0.697859    Improved (Lower)  -61.010000    
+2024-03-01         Instagram Ads   1605.93        3585            0.447958     0.893532    -0.445574   Improved (Below Avg)  1.033416    -0.585458    Improved (Lower)  -56.650000    
+((10 rows affected))
+
+
+
+========================================
+3.2b) Top 10 Channel CPC Improvements – by Percentage CPC Reduction (mom_percentage ASC)
+========================================
+
+performance_month  click_channel   current_spend  current_clicks  current_cpc  avg_cpc     diff_avg    avg_change            pm_cpc      diff_pm_cpc  pm_change         mom_percentage
+-----------------  --------------  -------------  --------------  -----------  ----------  ----------  --------------------  ----------  -----------  ----------------  --------------
+2024-04-01         Instagram Ads   111.12         3413            0.032557     0.893532    -0.860975   Improved (Below Avg)  0.447958    -0.415401    Improved (Lower)  -92.730000    
+2024-04-01         TikTok Ads      181.15         3352            0.054042     0.936823    -0.882781   Improved (Below Avg)  0.445964    -0.391922    Improved (Lower)  -87.880000    
+2024-04-01         Google Search   181.31         3460            0.052401     1.151003    -1.098602   Improved (Below Avg)  0.394989    -0.342588    Improved (Lower)  -86.730000    
+2024-04-01         Google Display  335.18         3315            0.101110     0.981179    -0.880069   Improved (Below Avg)  0.481193    -0.380083    Improved (Lower)  -78.990000    
+2024-04-01         Facebook Ads    325.33         3302            0.098525     1.039671    -0.941146   Improved (Below Avg)  0.421897    -0.323372    Improved (Lower)  -76.650000    
+2024-03-01         Google Search   1474.89        3734            0.394989     1.151003    -0.756014   Improved (Below Avg)  1.489801    -1.094812    Improved (Lower)  -73.490000    
+2024-03-01         Facebook Ads    1542.88        3657            0.421897     1.039671    -0.617774   Improved (Below Avg)  1.360303    -0.938406    Improved (Lower)  -68.990000    
+2024-03-01         Google Display  1742.40        3621            0.481193     0.981179    -0.499986   Improved (Below Avg)  1.293208    -0.812015    Improved (Lower)  -62.790000    
+2024-03-01         TikTok Ads      1675.49        3757            0.445964     0.936823    -0.490859   Improved (Below Avg)  1.143823    -0.697859    Improved (Lower)  -61.010000    
+2024-03-01         Instagram Ads   1605.93        3585            0.447958     0.893532    -0.445574   Improved (Below Avg)  1.033416    -0.585458    Improved (Lower)  -56.650000    
+((10 rows affected))
+
+
+
+========================================
+3.3a) Top 10 Channel CPC Declines – by Absolute CPC Increase (diff_pm_cpc DESC)
+========================================
+
+performance_month  click_channel   current_spend  current_clicks  current_cpc  avg_cpc     diff_avg    avg_change            pm_cpc      diff_pm_cpc  pm_change         mom_percentage
+-----------------  --------------  -------------  --------------  -----------  ----------  ----------  --------------------  ----------  -----------  ----------------  --------------
+2024-04-01         Facebook Ads    325.33         3302            0.098525     1.039671    -0.941146   Improved (Below Avg)  0.421897    -0.323372    Improved (Lower)  -76.650000    
+2024-04-01         Google Search   181.31         3460            0.052401     1.151003    -1.098602   Improved (Below Avg)  0.394989    -0.342588    Improved (Lower)  -86.730000    
+2024-04-01         Google Display  335.18         3315            0.101110     0.981179    -0.880069   Improved (Below Avg)  0.481193    -0.380083    Improved (Lower)  -78.990000    
+2024-04-01         TikTok Ads      181.15         3352            0.054042     0.936823    -0.882781   Improved (Below Avg)  0.445964    -0.391922    Improved (Lower)  -87.880000    
+2024-04-01         Instagram Ads   111.12         3413            0.032557     0.893532    -0.860975   Improved (Below Avg)  0.447958    -0.415401    Improved (Lower)  -92.730000    
+2024-03-01         Instagram Ads   1605.93        3585            0.447958     0.893532    -0.445574   Improved (Below Avg)  1.033416    -0.585458    Improved (Lower)  -56.650000    
+2024-03-01         TikTok Ads      1675.49        3757            0.445964     0.936823    -0.490859   Improved (Below Avg)  1.143823    -0.697859    Improved (Lower)  -61.010000    
+2024-02-01         Google Display  4328.37        3347            1.293208     0.981179    0.312029    Worsened (Above Avg)  2.049207    -0.755999    Improved (Lower)  -36.890000    
+2024-03-01         Google Display  1742.40        3621            0.481193     0.981179    -0.499986   Improved (Below Avg)  1.293208    -0.812015    Improved (Lower)  -62.790000    
+2024-02-01         Facebook Ads    4615.51        3393            1.360303     1.039671    0.320632    Worsened (Above Avg)  2.277959    -0.917656    Improved (Lower)  -40.280000    
+((10 rows affected))
+
+
+
+========================================
+3.3b) Top 10 Channel CPC Declines – by Percentage CPC Increase (mom_percentage DESC)
+========================================
+
+performance_month  click_channel   current_spend  current_clicks  current_cpc  avg_cpc     diff_avg    avg_change            pm_cpc      diff_pm_cpc  pm_change         mom_percentage
+-----------------  --------------  -------------  --------------  -----------  ----------  ----------  --------------------  ----------  -----------  ----------------  --------------
+2024-02-01         Google Display  4328.37        3347            1.293208     0.981179    0.312029    Worsened (Above Avg)  2.049207    -0.755999    Improved (Lower)  -36.890000    
+2024-02-01         Facebook Ads    4615.51        3393            1.360303     1.039671    0.320632    Worsened (Above Avg)  2.277959    -0.917656    Improved (Lower)  -40.280000    
+2024-02-01         Google Search   5023.61        3372            1.489801     1.151003    0.338798    Worsened (Above Avg)  2.666821    -1.177020    Improved (Lower)  -44.140000    
+2024-02-01         TikTok Ads      3859.26        3374            1.143823     0.936823    0.207000    Worsened (Above Avg)  2.103464    -0.959641    Improved (Lower)  -45.620000    
+2024-02-01         Instagram Ads   3517.75        3404            1.033416     0.893532    0.139884    Worsened (Above Avg)  2.060198    -1.026782    Improved (Lower)  -49.840000    
+2024-03-01         Instagram Ads   1605.93        3585            0.447958     0.893532    -0.445574   Improved (Below Avg)  1.033416    -0.585458    Improved (Lower)  -56.650000    
+2024-03-01         TikTok Ads      1675.49        3757            0.445964     0.936823    -0.490859   Improved (Below Avg)  1.143823    -0.697859    Improved (Lower)  -61.010000    
+2024-03-01         Google Display  1742.40        3621            0.481193     0.981179    -0.499986   Improved (Below Avg)  1.293208    -0.812015    Improved (Lower)  -62.790000    
+2024-03-01         Facebook Ads    1542.88        3657            0.421897     1.039671    -0.617774   Improved (Below Avg)  1.360303    -0.938406    Improved (Lower)  -68.990000    
+2024-03-01         Google Search   1474.89        3734            0.394989     1.151003    -0.756014   Improved (Below Avg)  1.489801    -1.094812    Improved (Lower)  -73.490000    
+((10 rows affected))
+
+
+
+========================================
+4.1) Monthly CPC Performance and MoM-Analysis by Campaigns
+========================================
+
+performance_month  campaign_id  campaign_name          current_spend  current_clicks  current_cpc  avg_cpc     diff_avg    avg_change            pm_cpc      diff_pm_cpc  pm_change          mom_percentage
+-----------------  -----------  ---------------------  -------------  --------------  -----------  ----------  ----------  --------------------  ----------  -----------  -----------------  --------------
+2024-01-01         1            NULL                   863.51         322             2.681708     1.639012    1.042696    Worsened (Above Avg)  NULL        NULL         No Change          NULL          
+2024-02-01         1            NULL                   519.73         324             1.604104     1.639012    -0.034908   Improved (Below Avg)  2.681708    -1.077604    Improved (Lower)   -40.180000    
+2024-03-01         1            NULL                   205.78         326             0.631226     1.639012    -1.007786   Improved (Below Avg)  1.604104    -0.972878    Improved (Lower)   -60.650000    
+2024-04-01         1            NULL                   NULL           350             NULL         1.639012    NULL        Equals Average        0.631226    NULL         No Change          NULL          
+2024-01-01         2            Spring_Prospecting_EU  783.45         299             2.620234     1.280291    1.339943    Worsened (Above Avg)  NULL        NULL         No Change          NULL          
+2024-02-01         2            Spring_Prospecting_EU  350.25         319             1.097962     1.280291    -0.182329   Improved (Below Avg)  2.620234    -1.522272    Improved (Lower)   -58.100000    
+2024-03-01         2            Spring_Prospecting_EU  39.38          321             0.122679     1.280291    -1.157612   Improved (Below Avg)  1.097962    -0.975283    Improved (Lower)   -88.830000    
+2024-04-01         2            Spring_Prospecting_EU  NULL           313             NULL         1.280291    NULL        Equals Average        0.122679    NULL         No Change          NULL          
+2024-01-01         3            Summer_Launch          584.15         344             1.698110     1.015940    0.682170    Worsened (Above Avg)  NULL        NULL         No Change          NULL          
+2024-02-01         3            Summer_Launch          440.11         312             1.410608     1.015940    0.394668    Worsened (Above Avg)  1.698110    -0.287502    Improved (Lower)   -16.930000    
+2024-03-01         3            Summer_Launch          238.80         320             0.746250     1.015940    -0.269690   Improved (Below Avg)  1.410608    -0.664358    Improved (Lower)   -47.100000    
+2024-04-01         3            Summer_Launch          58.88          282             0.208794     1.015940    -0.807146   Improved (Below Avg)  0.746250    -0.537456    Improved (Lower)   -72.020000    
+2024-01-01         4            Lookalike_3pct_DE      879.91         327             2.690856     1.373176    1.317680    Worsened (Above Avg)  NULL        NULL         No Change          NULL          
+2024-02-01         4            Lookalike_3pct_DE      413.16         323             1.279133     1.373176    -0.094043   Improved (Below Avg)  2.690856    -1.411723    Improved (Lower)   -52.460000    
+2024-03-01         4            Lookalike_3pct_DE      55.18          369             0.149539     1.373176    -1.223637   Improved (Below Avg)  1.279133    -1.129594    Improved (Lower)   -88.310000    
+2024-04-01         4            Lookalike_3pct_DE      NULL           310             NULL         1.373176    NULL        Equals Average        0.149539    NULL         No Change          NULL          
+2024-01-01         5            Holiday_Special        796.07         327             2.434464     1.404642    1.029822    Worsened (Above Avg)  NULL        NULL         No Change          NULL          
+2024-02-01         5            Holiday_Special        444.60         339             1.311504     1.404642    -0.093138   Improved (Below Avg)  2.434464    -1.122960    Improved (Lower)   -46.130000    
+2024-03-01         5            Holiday_Special        165.19         353             0.467960     1.404642    -0.936682   Improved (Below Avg)  1.311504    -0.843544    Improved (Lower)   -64.320000    
+2024-04-01         5            Holiday_Special        NULL           312             NULL         1.404642    NULL        Equals Average        0.467960    NULL         No Change          NULL          
+2024-01-01         6            SEO_Boost              806.02         303             2.660132     1.674806    0.985326    Worsened (Above Avg)  NULL        NULL         No Change          NULL          
+2024-02-01         6            SEO_Boost              755.04         337             2.240474     1.674806    0.565668    Worsened (Above Avg)  2.660132    -0.419658    Improved (Lower)   -15.780000    
+2024-03-01         6            SEO_Boost              41.23          333             0.123813     1.674806    -1.550993   Improved (Below Avg)  2.240474    -2.116661    Improved (Lower)   -94.470000    
+2024-04-01         6            SEO_Boost              NULL           306             NULL         1.674806    NULL        Equals Average        0.123813    NULL         No Change          NULL          
+2024-01-01         7            Retention_Push         694.43         321             2.163333     1.314440    0.848893    Worsened (Above Avg)  NULL        NULL         No Change          NULL          
+2024-02-01         7            Retention_Push         366.40         289             1.267820     1.314440    -0.046620   Improved (Below Avg)  2.163333    -0.895513    Improved (Lower)   -41.400000    
+2024-03-01         7            Retention_Push         188.99         369             0.512168     1.314440    -0.802272   Improved (Below Avg)  1.267820    -0.755652    Improved (Lower)   -59.600000    
+2024-04-01         7            Retention_Push         NULL           344             NULL         1.314440    NULL        Equals Average        0.512168    NULL         No Change          NULL          
+2024-01-01         8            SEO_Boost              1037.47        380             2.730184     1.485933    1.244251    Worsened (Above Avg)  NULL        NULL         No Change          NULL          
+2024-02-01         8            SEO_Boost              405.68         306             1.325751     1.485933    -0.160182   Improved (Below Avg)  2.730184    -1.404433    Improved (Lower)   -51.440000    
+2024-03-01         8            SEO_Boost              148.69         370             0.401864     1.485933    -1.084069   Improved (Below Avg)  1.325751    -0.923887    Improved (Lower)   -69.690000    
+2024-04-01         8            SEO_Boost              NULL           330             NULL         1.485933    NULL        Equals Average        0.401864    NULL         No Change          NULL          
+2024-01-01         9            Brand_Awareness_Q1     1006.58        325             3.097169     1.377664    1.719505    Worsened (Above Avg)  NULL        NULL         No Change          NULL          
+2024-02-01         9            Brand_Awareness_Q1     165.38         346             0.477976     1.377664    -0.899688   Improved (Below Avg)  3.097169    -2.619193    Improved (Lower)   -84.570000    
+2024-03-01         9            Brand_Awareness_Q1     184.09         330             0.557848     1.377664    -0.819816   Improved (Below Avg)  0.477976    0.079872     Worsened (Higher)  16.710000     
+2024-04-01         9            Brand_Awareness_Q1     NULL           302             NULL         1.377664    NULL        Equals Average        0.557848    NULL         No Change          NULL          
+2024-01-01         10           SEO_Boost              816.94         359             2.275598     1.928774    0.346824    Worsened (Above Avg)  NULL        NULL         No Change          NULL          
+2024-02-01         10           SEO_Boost              510.97         323             1.581950     1.928774    -0.346824   Improved (Below Avg)  2.275598    -0.693648    Improved (Lower)   -30.480000    
+2024-03-01         10           SEO_Boost              NULL           344             NULL         1.928774    NULL        Equals Average        1.581950    NULL         No Change          NULL          
+2024-04-01         10           SEO_Boost              NULL           309             NULL         1.928774    NULL        Equals Average        NULL        NULL         No Change          NULL          
+2024-01-01         11           Summer_Retargeting     771.00         319             2.416927     1.324682    1.092245    Worsened (Above Avg)  NULL        NULL         No Change          NULL          
+2024-02-01         11           Summer_Retargeting     510.93         327             1.562477     1.324682    0.237795    Worsened (Above Avg)  2.416927    -0.854450    Improved (Lower)   -35.350000    
+2024-03-01         11           Summer_Retargeting     427.14         353             1.210028     1.324682    -0.114654   Improved (Below Avg)  1.562477    -0.352449    Improved (Lower)   -22.560000    
+2024-04-01         11           Summer_Retargeting     35.85          328             0.109298     1.324682    -1.215384   Improved (Below Avg)  1.210028    -1.100730    Improved (Lower)   -90.970000    
+2024-01-01         12           Brand_Awareness_Q1     738.15         350             2.109000     1.122386    0.986614    Worsened (Above Avg)  NULL        NULL         No Change          NULL          
+2024-02-01         12           Brand_Awareness_Q1     613.50         294             2.086734     1.122386    0.964348    Worsened (Above Avg)  2.109000    -0.022266    Improved (Lower)   -1.060000     
+2024-03-01         12           Brand_Awareness_Q1     55.17          351             0.157179     1.122386    -0.965207   Improved (Below Avg)  2.086734    -1.929555    Improved (Lower)   -92.470000    
+2024-04-01         12           Brand_Awareness_Q1     42.63          312             0.136634     1.122386    -0.985752   Improved (Below Avg)  0.157179    -0.020545    Improved (Lower)   -13.070000    
+...
+[Note: Campaigns 13–53 truncated here. Full results (212 rows) available via SQL query gold.campaigns_cpc.]
+((212 rows affected))
+
+
+
+========================================
+4.2a) Top 10 Campaign CPC Improvements – by Absolute CPC Reduction (diff_pm_cpc ASC)
+========================================
+
+performance_month  campaign_id  campaign_name       current_spend  current_clicks  current_cpc  avg_cpc     diff_avg    avg_change            pm_cpc      diff_pm_cpc  pm_change         mom_percentage
+-----------------  -----------  ------------------  -------------  --------------  -----------  ----------  ----------  --------------------  ----------  -----------  ----------------  --------------
+2024-02-01         9            Brand_Awareness_Q1  165.38         346             0.477976     1.377664    -0.899688   Improved (Below Avg)  3.097169    -2.619193    Improved (Lower)  -84.570000    
+2024-02-01         43           Brand_Awareness_Q1  142.28         327             0.435107     1.312214    -0.877107   Improved (Below Avg)  2.634244    -2.199137    Improved (Lower)  -83.480000    
+2024-02-01         44           Flash_Sale_Weekend  190.91         336             0.568184     1.212738    -0.644554   Improved (Below Avg)  2.759289    -2.191105    Improved (Lower)  -79.410000    
+2024-03-01         6            SEO_Boost           41.23          333             0.123813     1.674806    -1.550993   Improved (Below Avg)  2.240474    -2.116661    Improved (Lower)  -94.470000    
+2024-03-01         12           Brand_Awareness_Q1  55.17          351             0.157179     1.122386    -0.965207   Improved (Below Avg)  2.086734    -1.929555    Improved (Lower)  -92.470000    
+2024-02-01         23           SEO_Boost           268.30         329             0.815501     1.331638    -0.516137   Improved (Below Avg)  2.671300    -1.855799    Improved (Lower)  -69.470000    
+2024-02-01         30           SEO_Boost           205.45         330             0.622575     0.916501    -0.293926   Improved (Below Avg)  2.466541    -1.843966    Improved (Lower)  -74.760000    
+2024-02-01         37           Brand_Awareness_Q1  347.70         315             1.103809     1.376483    -0.272674   Improved (Below Avg)  2.915082    -1.811273    Improved (Lower)  -62.130000    
+2024-02-01         47           SEO_Boost           234.43         346             0.677543     1.292018    -0.614475   Improved (Below Avg)  2.478457    -1.800914    Improved (Lower)  -72.660000    
+2024-03-01         52           SEO_Boost           18.62          339             0.054926     1.150070    -1.095144   Improved (Below Avg)  1.853440    -1.798514    Improved (Lower)  -97.040000    
+((10 rows affected))
+
+
+
+========================================
+4.2b) Top 10 Campaign CPC Improvements – by Percentage CPC Reduction (mom_percentage ASC)
+========================================
+
+performance_month  campaign_id  campaign_name       current_spend  current_clicks  current_cpc  avg_cpc     diff_avg    avg_change      pm_cpc      diff_pm_cpc  pm_change   mom_percentage
+-----------------  -----------  ------------------  -------------  --------------  -----------  ----------  ----------  --------------  ----------  -----------  ----------  --------------
+2024-04-01         32           SEO_Boost           NULL           328             NULL         1.244173    NULL        Equals Average  0.335400    NULL         No Change   NULL          
+2024-04-01         31           Brand_Awareness_Q1  NULL           311             NULL         1.204398    NULL        Equals Average  0.331951    NULL         No Change   NULL          
+2024-04-01         23           SEO_Boost           NULL           299             NULL         1.331638    NULL        Equals Average  0.508114    NULL         No Change   NULL          
+2024-04-01         7            Retention_Push      NULL           344             NULL         1.314440    NULL        Equals Average  0.512168    NULL         No Change   NULL          
+2024-04-01         26           Holiday_Special     NULL           306             NULL         1.194789    NULL        Equals Average  0.625686    NULL         No Change   NULL          
+2024-04-01         1            NULL                NULL           350             NULL         1.639012    NULL        Equals Average  0.631226    NULL         No Change   NULL          
+2024-04-01         20           Lookalike_3pct_DE   NULL           335             NULL         1.204709    NULL        Equals Average  0.418792    NULL         No Change   NULL          
+2024-04-01         18           SEO_Boost           NULL           303             NULL         1.776027    NULL        Equals Average  0.494472    NULL         No Change   NULL          
+2024-04-01         47           SEO_Boost           NULL           307             NULL         1.292018    NULL        Equals Average  0.720056    NULL         No Change   NULL          
+2024-04-01         16           New_Year_Launch     NULL           323             NULL         1.466223    NULL        Equals Average  0.585203    NULL         No Change   NULL          
+((10 rows affected))
+
+
+
+========================================
+4.3a) Top 10 Campaign CPC Declines – by Absolute CPC Increase (diff_pm_cpc DESC)
+========================================
+
+performance_month  campaign_id  campaign_name       current_spend  current_clicks  current_cpc  avg_cpc     diff_avg    avg_change            pm_cpc      diff_pm_cpc  pm_change          mom_percentage
+-----------------  -----------  ------------------  -------------  --------------  -----------  ----------  ----------  --------------------  ----------  -----------  -----------------  --------------
+2024-02-01         38           NULL                645.19         303             2.129339     1.389163    0.740176    Worsened (Above Avg)  1.313571    0.815768     Worsened (Higher)  62.100000     
+2024-04-01         52           SEO_Boost           151.29         290             0.521689     1.150070    -0.628381   Improved (Below Avg)  0.054926    0.466763     Worsened (Higher)  849.800000    
+2024-03-01         43           Brand_Awareness_Q1  291.41         336             0.867291     1.312214    -0.444923   Improved (Below Avg)  0.435107    0.432184     Worsened (Higher)  99.330000     
+2024-04-01         15           NULL                122.43         325             0.376707     1.099357    -0.722650   Improved (Below Avg)  0.060463    0.316244     Worsened (Higher)  523.040000    
+2024-04-01         21           Winter_Sale_2024    149.53         317             0.471703     0.865597    -0.393894   Improved (Below Avg)  0.184672    0.287031     Worsened (Higher)  155.430000    
+2024-03-01         28           Lookalike_3pct_DE   267.88         337             0.794896     0.829551    -0.034655   Improved (Below Avg)  0.518874    0.276022     Worsened (Higher)  53.200000     
+2024-02-01         21           Winter_Sale_2024    471.53         309             1.525987     0.865597    0.660390    Worsened (Above Avg)  1.280029    0.245958     Worsened (Higher)  19.220000     
+2024-02-01         45           Lookalike_3pct_DE   524.59         306             1.714346     1.299672    0.414674    Worsened (Above Avg)  1.501320    0.213026     Worsened (Higher)  14.190000     
+2024-02-01         13           NULL                511.31         318             1.607893     1.051968    0.555925    Worsened (Above Avg)  1.473025    0.134868     Worsened (Higher)  9.160000      
+2024-04-01         41           Brand_Awareness_Q1  129.20         306             0.422222     1.024277    -0.602055   Improved (Below Avg)  0.294893    0.127329     Worsened (Higher)  43.180000     
+((10 rows affected))
+
+
+
+========================================
+4.3b) Top 10 Campaign CPC Declines – by Percentage CPC Increase (mom_percentage DESC)
+========================================
+
+performance_month  campaign_id  campaign_name       current_spend  current_clicks  current_cpc  avg_cpc     diff_avg    avg_change            pm_cpc      diff_pm_cpc  pm_change          mom_percentage
+-----------------  -----------  ------------------  -------------  --------------  -----------  ----------  ----------  --------------------  ----------  -----------  -----------------  --------------
+2024-04-01         52           SEO_Boost           151.29         290             0.521689     1.150070    -0.628381   Improved (Below Avg)  0.054926    0.466763     Worsened (Higher)  849.800000    
+2024-04-01         15           NULL                122.43         325             0.376707     1.099357    -0.722650   Improved (Below Avg)  0.060463    0.316244     Worsened (Higher)  523.040000    
+2024-04-01         21           Winter_Sale_2024    149.53         317             0.471703     0.865597    -0.393894   Improved (Below Avg)  0.184672    0.287031     Worsened (Higher)  155.430000    
+2024-03-01         43           Brand_Awareness_Q1  291.41         336             0.867291     1.312214    -0.444923   Improved (Below Avg)  0.435107    0.432184     Worsened (Higher)  99.330000     
+2024-02-01         38           NULL                645.19         303             2.129339     1.389163    0.740176    Worsened (Above Avg)  1.313571    0.815768     Worsened (Higher)  62.100000     
+2024-03-01         28           Lookalike_3pct_DE   267.88         337             0.794896     0.829551    -0.034655   Improved (Below Avg)  0.518874    0.276022     Worsened (Higher)  53.200000     
+2024-04-01         41           Brand_Awareness_Q1  129.20         306             0.422222     1.024277    -0.602055   Improved (Below Avg)  0.294893    0.127329     Worsened (Higher)  43.180000     
+2024-02-01         21           Winter_Sale_2024    471.53         309             1.525987     0.865597    0.660390    Worsened (Above Avg)  1.280029    0.245958     Worsened (Higher)  19.220000     
+2024-03-01         9            Brand_Awareness_Q1  184.09         330             0.557848     1.377664    -0.819816   Improved (Below Avg)  0.477976    0.079872     Worsened (Higher)  16.710000     
+2024-02-01         45           Lookalike_3pct_DE   524.59         306             1.714346     1.299672    0.414674    Worsened (Above Avg)  1.501320    0.213026     Worsened (Higher)  14.190000     
+((10 rows affected))
