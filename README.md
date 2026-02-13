@@ -22,7 +22,7 @@
 
 <h2>2) End-To-End Data Warehouse and ETL</h2>
 <p>A SQL Server data warehouse for marketing analytics, built on a Bronze → Silver → Gold medallion architecture. The warehouse, named <strong>marketing_dw</strong>, integrates data from three source systems (marketing platform, web analytics, crm systems) and models it into a star schema with a fact constellation for multi-touch attribution.</p>
-<h4>2.1)Architecture</h4>
+<h4>2.1) Architecture</h4>
 <p>The warehouse follows a three-layer medallion architecture:</p>
 <img width="1009" height="647" alt="High Level Architecture" src="https://github.com/user-attachments/assets/bf7bdb92-56c5-4dd5-a72a-375d4bc0d7de" />
 
