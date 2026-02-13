@@ -2,6 +2,18 @@
 Revenue Performance Analysis (Month-over-Month) – Ergebnisse
 ===============================================================================
 
+Queries: 
+    1) Revenue Performance monthly
+    2.1) Mid of Funnel (MOFU) Monthly Revenue Performance and MOM-Analysis by Channels
+    2.2) Top of Funnel (TOFU) Monthly Revenue Performance and MOM-Analysis by Channels
+    2.3) Bottom of Funnel (BOFU) Monthly Revenue Performance and MOM-Analysis by Channels
+    2.4) Top Ten MOM Channels by TOFU/MOFU/BOFU 
+    3.1) Mid of Funnel (MOFU) Monthly Revenue Performance and MOM-Analysis by Campaigns
+    3.2) Top of Funnel (TOFU) Monthly Revenue Performance and MOM-Analysis by Campaigns
+    3.3) Bottom of Funnel (BOFU) Monthly Revenue Performance and MOM-Analysis by Campaigns
+    3.4) Top Ten MOM Campaigns by TOFU/MOFU/BOFU 
+    4.1) Mid of Funnel (MOFU) Monthly Revenue Performance and MOM-Analysis by Interaction Type
+    4.2) Top Ten MOM Interaction Types by MUFO
 
 ========================================
 1) Revenue Performance Monthly
