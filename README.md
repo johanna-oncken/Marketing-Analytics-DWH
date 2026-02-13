@@ -32,6 +32,11 @@
 
 <p><b>Gold Layer</b> — Business-ready tables following a star schema with dimension tables (<code>dim_date</code>, <code>dim_user</code>, <code>dim_campaign</code>, <code>dim_channel</code>) and granular atomic fact tables. The Gold layer applies data integration (joining across source systems), enrichment (e.g., adding acquisition channel to click and session facts), and business logic (attribution modeling, touchpoint path construction).</p>
 
+<p>Example Visualisation in case of the gold.fact_attribution_linear_with_costs table (to see the Full Data Flow Document, click on the image:</p>
+ <a href="https://github.com/johanna-oncken/Marketing-Analytics-DWH/blob/main/data_warehouse/docs/data_flow.pdf">
+  <img width="1220" height="291" alt="Bildschirmfoto 2026-02-13 um 15 22 35" src="https://github.com/user-attachments/assets/7c561e49-d21a-49ea-99c3-a37d59933b9c" />
+ </a>
+
 <hr>
 
 <h4>2.2) Data Sources</h4>
