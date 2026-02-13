@@ -1,1 +1,92 @@
+===============================================================================
+Channel Efficiency Scorecard (Cross-Dimensional Analysis) – Query Results
+===============================================================================
 
+Queries:
+    1) Channel Efficiency Scorecard View (Channel × Month)
+    2) Summary: Engagement vs. Conversion (which channels generate attention vs. close?)
+    3) Summary: Acquisition Efficiency (cheap users vs. valuable users?)
+    4) Summary: BOFU Scale vs. Efficiency (closing well vs. scaling?)
+
+================================================================================
+1) Channel Efficiency Scorecard (Channel x Month)
+================================================================================
+
+performance_month  channel         impressions  total_clicks  click_intensity  bofu_conversions  bofu_revenue  bofu_cvr  tofu_conversions  tofu_revenue  total_spend  bofu_roas  tofu_roas  users_acquired  cac     cumulative_ltv  ltv_cac_ratio
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2024-01-01         Direct          878          NULL          NULL             55                7414.96       NULL      95                9573.24       NULL         NULL       NULL       884             NULL    43.66           NULL         
+2024-02-01         Direct          792          NULL          NULL             86                12443.73      NULL      93                11388.57      NULL         NULL       NULL       55              NULL    54.07           NULL         
+2024-03-01         Direct          852          NULL          NULL             78                11589.41      NULL      92                9294.62       NULL         NULL       NULL       6               NULL    96.47           NULL         
+2024-04-01         Direct          800          NULL          NULL             64                9426.45       NULL      86                7879.07       NULL         NULL       NULL       NULL            NULL    NULL            NULL         
+2024-01-01         Email           822          NULL          NULL             53                7702.31       NULL      96                11681.38      NULL         NULL       NULL       860             NULL    48.38           NULL         
+2024-02-01         Email           739          NULL          NULL             76                10573.31      NULL      92                12616.87      NULL         NULL       NULL       72              NULL    30.97           NULL         
+2024-03-01         Email           801          NULL          NULL             87                10841.04      NULL      93                11131.81      NULL         NULL       NULL       7               NULL    NULL            NULL         
+2024-04-01         Email           769          NULL          NULL             69                8512.15       NULL      78                7836.47       NULL         NULL       NULL       NULL            NULL    NULL            NULL         
+2024-01-01         Facebook Ads    868          3730          4.2972           50                5971.33       0.0134    81                10082.69      8496.79      0.70       1.19       904             9.40    43.54           4.76         
+2024-02-01         Facebook Ads    713          3393          4.7588           89                11329.13      0.0262    117               12139.69      4615.51      2.45       2.63       66              69.93   52.61           0.77         
+2024-03-01         Facebook Ads    860          3657          4.2523           85                10620.08      0.0232    89                10989.06      1542.88      6.88       7.12       7               220.41  21.44           0.10         
+2024-04-01         Facebook Ads    758          3302          4.3562           83                10037.35      0.0251    85                8923.83       325.33       30.85      27.43      NULL            NULL    NULL            NULL         
+2024-01-01         Google Display  830          3657          4.4060           42                5527.63       0.0115    97                12156.00      7493.95      0.74       1.62       885             8.47    48.61           6.01         
+2024-02-01         Google Display  776          3347          4.3131           97                13345.06      0.0290    94                10524.02      4328.37      3.08       2.43       60              72.14   54.18           0.75         
+2024-03-01         Google Display  848          3621          4.2700           94                12561.22      0.0260    93                9645.25       1742.40      7.21       5.54       6               290.40  NULL            NULL         
+2024-04-01         Google Display  786          3315          4.2176           75                11128.18      0.0226    70                7794.24       335.18       33.20      23.25      NULL            NULL    NULL            NULL         
+2024-01-01         Google Search   819          3618          4.4176           56                8368.39       0.0155    87                11478.17      9648.56      0.87       1.19       873             11.05   53.97           5.09         
+2024-02-01         Google Search   790          3372          4.2684           89                13773.17      0.0264    95                11730.01      5023.61      2.74       2.33       85              59.10   31.27           0.53         
+2024-03-01         Google Search   816          3734          4.5760           98                11917.70      0.0262    113               12819.30      1474.89      8.08       8.69       4               368.72  NULL            NULL         
+2024-04-01         Google Search   766          3460          4.5170           77                9459.04       0.0223    77                7687.82       181.31       52.17      42.40      NULL            NULL    NULL            NULL         
+2024-01-01         Instagram Ads   811          3679          4.5364           60                9038.24       0.0163    93                10016.58      7579.47      1.19       1.32       868             8.73    44.20           5.25         
+2024-02-01         Instagram Ads   751          3404          4.5326           81                9363.57       0.0238    110               12563.49      3517.75      2.66       3.57       59              59.62   21.72           0.37         
+2024-03-01         Instagram Ads   826          3585          4.3402           71                9915.90       0.0198    96                9076.82       1605.93      6.17       5.65       4               401.48  30.91           0.08         
+2024-04-01         Instagram Ads   773          3413          4.4153           87                12881.52      0.0255    99                11520.76      111.12       115.92     103.68     NULL            NULL    NULL            NULL         
+2024-01-01         Organic Search  841          NULL          NULL             53                6400.53       NULL      99                10586.71      NULL         NULL       NULL       891             NULL    49.59           NULL         
+2024-02-01         Organic Search  737          NULL          NULL             65                10411.90      NULL      89                11552.46      NULL         NULL       NULL       66              NULL    16.65           NULL         
+2024-03-01         Organic Search  836          NULL          NULL             89                11968.77      NULL      95                11721.58      NULL         NULL       NULL       6               NULL    NULL            NULL         
+2024-04-01         Organic Search  790          NULL          NULL             81                8858.07       NULL      82                10532.83      NULL         NULL       NULL       NULL            NULL    NULL            NULL         
+2024-01-01         Referral        773          NULL          NULL             47                7394.74       NULL      109               12846.65      NULL         NULL       NULL       891             NULL    50.39           NULL         
+2024-02-01         Referral        741          NULL          NULL             78                10693.63      NULL      87                10650.62      NULL         NULL       NULL       59              NULL    19.11           NULL         
+2024-03-01         Referral        848          NULL          NULL             79                11488.53      NULL      88                9748.54       NULL         NULL       NULL       3               NULL    94.31           NULL         
+2024-04-01         Referral        801          NULL          NULL             66                7692.96       NULL      87                8777.58       NULL         NULL       NULL       NULL            NULL    NULL            NULL         
+2024-01-01         TikTok Ads      780          3596          4.6103           54                6767.26       0.0150    103               10934.26      7564.06      0.89       1.45       875             8.64    42.03           4.91         
+2024-02-01         TikTok Ads      798          3374          4.2281           82                12619.96      0.0243    95                10762.91      3859.26      3.27       2.79       58              66.54   19.14           0.29         
+2024-03-01         TikTok Ads      842          3757          4.4620           92                10757.31      0.0245    90                11256.53      1675.49      6.42       6.72       2               837.75  NULL            NULL         
+2024-04-01         TikTok Ads      795          3352          4.2164           68                9290.89       0.0203    105               11702.05      181.15       51.29      64.60      1               181.15  NULL            NULL         
+
+================================================================================
+2) Engagement vs. Conversion
+================================================================================
+
+channel         avg_click_intensity  avg_bofu_cvr  engagement_conversion_profile  
+----------------------------------------------------------------------------------
+Facebook Ads    4.416125             0.021975      High Engagement, Low Conversion
+Google Display  4.301675             0.022275      High Engagement, Low Conversion
+Google Search   4.444750             0.022600      High Engagement, Low Conversion
+Instagram Ads   4.456125             0.021350      High Engagement, Low Conversion
+TikTok Ads      4.379200             0.021025      High Engagement, Low Conversion
+
+================================================================================
+3) Acquisition Efficiency
+================================================================================
+
+channel         avg_cac     avg_ltv_120d  avg_ltv_cac_ratio  acquisition_efficiency
+-----------------------------------------------------------------------------------
+Direct          NULL        64.733333     NULL               Organic (No CAC)      
+Email           NULL        39.675000     NULL               Organic (No CAC)      
+Facebook Ads    99.913333   39.196666     1.876666           Approaching Break-Even
+Google Display  123.670000  51.395000     3.380000           Efficient             
+Google Search   146.290000  42.620000     2.810000           Approaching Break-Even
+Instagram Ads   156.610000  32.276666     1.900000           Approaching Break-Even
+Organic Search  NULL        33.120000     NULL               Organic (No CAC)      
+Referral        NULL        54.603333     NULL               Organic (No CAC)      
+TikTok Ads      273.520000  30.585000     2.600000           Approaching Break-Even
+
+================================================================================
+4) BOFU Scale vs. Efficiency
+================================================================================
+
+channel         avg_bofu_cvr  total_bofu_conversions  total_bofu_revenue  scale_efficiency_profile
+--------------------------------------------------------------------------------------------------
+Facebook Ads    0.021975      307                     37957.89            Scalable, Low Efficiency
+Google Display  0.022275      308                     42562.09            Scalable, Low Efficiency
+Google Search   0.022600      320                     43518.30            Scalable, Low Efficiency
+Instagram Ads   0.021350      299                     41199.23            Scalable, Low Efficiency
+TikTok Ads      0.021025      296                     39435.42            Scalable, Low Efficiency
