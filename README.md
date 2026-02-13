@@ -19,10 +19,15 @@
 <h2>1) Marketing Analysis</h2>
 <h4>1.1) Project Brief</h4>
 <p>Tasked with analyzing ad data from January to April 2024, I will start by addressing stakeholder communication and presenting the analysis results. In Section 2, I will then cover the data overview, the ETL pipeline, and the data warehouse build process.</p>
+
 <h2>2) End-To-End Data Warehouse and ETL</h2>
-<h4>2.1) 📂 Repository Structure</h4>
-
-
+<p>A SQL Server data warehouse for marketing analytics, built on a Bronze → Silver → Gold medallion architecture. The warehouse integrates data from three source systems (marketing platform, web analytics, crm systems) and models it into a star schema with a fact constellation for multi-touch attribution.</p>
+<h4>2.1)Architecture</h4>
+<p>The warehouse follows a three-layer medallion architecture:</p>
 <img width="1037" height="691" alt="Bildschirmfoto 2026-02-13 um 12 17 03" src="https://github.com/user-attachments/assets/45c62603-db58-4ba2-aa9a-760a78bb8eab" />
+<p>Bronze Layer — Raw ingestion from CSV source files via BULK INSERT. All columns are stored as NVARCHAR to preserve the original data as-is. No transformations are applied. Load method: truncate and full reload.
+Silver Layer — Cleaned, standardized, and type-cast data. Transformations include data cleansing (e.g., fixing misspelled channel names like "gogle search" → "Google Search"), date format normalization (DD.MM.YYYY → ISO), invalid value handling (out-of-range IDs, "not_available" placeholders), and derived columns. Each silver table includes a dwh_create_date audit column.
+Gold Layer — Business-ready tables following a star schema with dimension tables (dim_date, dim_user, dim_campaign, dim_channel) and granular atomic fact tables. The Gold layer applies data integration (joining across source systems), enrichment (e.g., adding acquisition channel to click and session facts), and business logic (attribution modeling, touchpoint path construction).
+Data movement between layers is controlled by stored procedures (bronze.load_bronze, silver.load_silver). Gold tables are populated via DDL scripts with inline INSERT...SELECT statements.</p>
 
-
+<h4>2.1) 📂 Repository Structure</h4>
