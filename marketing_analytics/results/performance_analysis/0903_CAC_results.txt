@@ -1,27 +1,32 @@
-** CAC PERFORMANCE RESULTS **
+===============================================================================
+CAC Customer Acquisition Cost Performance Analysis – Query Results
+===============================================================================
 
 Queries: 
     1) CAC overall 
     2) CAC Performance monthly
     3.1) Monthly CAC Performance and MOM-Analysis by Channels
     3.2) Top Ten Channels by CAC Monthly Improvements 
-    3.3) Top Ten Channels by CAC Monthly Declines
+    3.3) Top Ten Channels by CAC Monthly Declinse
     4.1) Monthly CAC Performance and MOM-Analysis by Campaigns
     4.2) Top Ten Campaigns by CAC Monthly Improvements 
     4.3) Top Ten Campaigns by CAC Monthly Declines 
 
-
-
-1) CAC overall 
 ========================================
+1) CAC Overall
+========================================
+
 new_customers  current_spend  cac       
 -------------  -------------  ----------
 2890           72612.01       25.125262 
+((1 row affected))
 
 
 
-2) CAC Performance monthly
 ========================================
+2) CAC Performance Monthly
+========================================
+
 performance_month  current_spend  current_new_customers  current_cac  avg_cac     diff_avg    avg_change            pm_cac      diff_pm_cac  pm_change         mom_percentage
 -----------------  -------------  ---------------------  -----------  ----------  ----------  --------------------  ----------  -----------  ----------------  --------------
 2024-01-01         41540.56       868                    47.857788    20.958244   26.899544   Worsened (Above Avg)  NULL        NULL         No Change         NULL          
@@ -32,10 +37,10 @@ performance_month  current_spend  current_new_customers  current_cac  avg_cac   
 
 
 
-3) CHANNELS
 ========================================
--- 3.1) MoM by Monthly Ad Spend and Newly Acquired Customers
+3.1) Monthly CAC Performance and MoM-Analysis by Channels
 ========================================
+
 performance_month  acquisition_channel  current_spend  current_new_customers  current_cac  avg_cac     diff_avg    avg_change            pm_cac      diff_pm_cac  pm_change         mom_percentage
 -----------------  -------------------  -------------  ---------------------  -----------  ----------  ----------  --------------------  ----------  -----------  ----------------  --------------
 2024-01-01         Direct               NULL           89                     NULL         NULL        NULL        Equals Average        NULL        NULL         No Change         NULL          
@@ -77,8 +82,11 @@ performance_month  acquisition_channel  current_spend  current_new_customers  cu
 ((36 rows affected))
 
 
--- 3.2) Top Ten Channels by CAC Monthly Improvements - WHERE diff_pm_cac IS NOT NULL ORDER BY diff_pm_cac ASC; 
+
 ========================================
+3.2a) Top 10 Channel CAC Improvements – by Absolute CAC Reduction (diff_pm_cac ASC)
+========================================
+
 performance_month  acquisition_channel  current_spend  current_new_customers  current_cac  avg_cac     diff_avg    avg_change            pm_cac      diff_pm_cac  pm_change         mom_percentage
 -----------------  -------------------  -------------  ---------------------  -----------  ----------  ----------  --------------------  ----------  -----------  ----------------  --------------
 2024-02-01         Facebook Ads         4615.51        110                    41.959181    43.217831   -1.258650   Improved (Below Avg)  108.933205  -66.974024   Improved (Lower)  -61.480000    
@@ -94,8 +102,11 @@ performance_month  acquisition_channel  current_spend  current_new_customers  cu
 ((10 rows affected))
 
 
--- 3.2) Top Ten Channels by CAC Monthly Improvements - WHERE pm_cac IS NOT NULL ORDER BY mom_percentage ASC;
+
 ========================================
+3.2b) Top 10 Channel CAC Improvements – by Percentage CAC Reduction (mom_percentage ASC)
+========================================
+
 performance_month  acquisition_channel  current_spend  current_new_customers  current_cac  avg_cac     diff_avg    avg_change            pm_cac      diff_pm_cac  pm_change         mom_percentage
 -----------------  -------------------  -------------  ---------------------  -----------  ----------  ----------  --------------------  ----------  -----------  ----------------  --------------
 2024-04-01         Instagram Ads        111.12         90                     1.234666     35.589156   -34.354490  Improved (Below Avg)  17.455760   -16.221094   Improved (Lower)  -92.930000    
@@ -111,8 +122,11 @@ performance_month  acquisition_channel  current_spend  current_new_customers  cu
 ((10 rows affected))
 
 
-3.3) Top Ten Channels by CAC Monthly Declines - WHERE diff_pm_cac IS NOT NULL ORDER BY diff_pm_cac DESC; 
+
 ========================================
+3.3a) Top 10 Channel CAC Declines – by Absolute CAC Increase (diff_pm_cac DESC)
+========================================
+
 performance_month  acquisition_channel  current_spend  current_new_customers  current_cac  avg_cac     diff_avg    avg_change            pm_cac      diff_pm_cac  pm_change         mom_percentage
 -----------------  -------------------  -------------  ---------------------  -----------  ----------  ----------  --------------------  ----------  -----------  ----------------  --------------
 2024-04-01         Google Search        181.31         74                     2.450135     45.847001   -43.396866  Improved (Below Avg)  13.408090   -10.957955   Improved (Lower)  -81.730000    
@@ -128,8 +142,11 @@ performance_month  acquisition_channel  current_spend  current_new_customers  cu
 ((10 rows affected))
 
 
-3.3) Top Ten Channels by CAC Monthly Declines - WHERE pm_cac IS NOT NULL ORDER BY mom_percentage DESC; 
+
 ========================================
+3.3b) Top 10 Channel CAC Declines – by Percentage CAC Increase (mom_percentage DESC)
+========================================
+
 performance_month  acquisition_channel  current_spend  current_new_customers  current_cac  avg_cac     diff_avg    avg_change            pm_cac      diff_pm_cac  pm_change         mom_percentage
 -----------------  -------------------  -------------  ---------------------  -----------  ----------  ----------  --------------------  ----------  -----------  ----------------  --------------
 2024-02-01         Google Display       4328.37        89                     48.633370    38.253480   10.379890   Worsened (Above Avg)  79.722872   -31.089502   Improved (Lower)  -39.000000    
@@ -146,10 +163,10 @@ performance_month  acquisition_channel  current_spend  current_new_customers  cu
 
 
 
-4) CAMPAIGNS
 ========================================
--- 4.1) MoM by Monthly Ad Spend and Newly Acquired Customers
+4.1) Monthly CAC Performance and MoM-Analysis by Campaigns
 ========================================
+
 performance_month  acquisition_campaign  campaign_name          current_spend  current_new_customers  current_cac  avg_cac     diff_avg    avg_change            pm_cac      diff_pm_cac  pm_change          mom_percentage
 -----------------  --------------------  ---------------------  -------------  ---------------------  -----------  ----------  ----------  --------------------  ----------  -----------  -----------------  --------------
 2024-01-01         1                     NULL                   863.51         14                     61.679285    35.920057   25.759228   Worsened (Above Avg)  NULL        NULL         No Change          NULL          
@@ -200,176 +217,16 @@ performance_month  acquisition_campaign  campaign_name          current_spend  c
 2024-02-01         12                    Brand_Awareness_Q1     613.50         13                     47.192307    28.788292   18.404015   Worsened (Above Avg)  61.512500   -14.320193   Improved (Lower)   -23.280000    
 2024-03-01         12                    Brand_Awareness_Q1     55.17          14                     3.940714     28.788292   -24.847578  Improved (Below Avg)  47.192307   -43.251593   Improved (Lower)   -91.650000    
 2024-04-01         12                    Brand_Awareness_Q1     42.63          17                     2.507647     28.788292   -26.280645  Improved (Below Avg)  3.940714    -1.433067    Improved (Lower)   -36.370000    
-2024-01-01         13                    NULL                   511.14         15                     34.076000    19.062193   15.013807   Worsened (Above Avg)  NULL        NULL         No Change          NULL          
-2024-02-01         13                    NULL                   511.31         26                     19.665769    19.062193   0.603576    Worsened (Above Avg)  34.076000   -14.410231   Improved (Lower)   -42.290000    
-2024-03-01         13                    NULL                   271.00         19                     14.263157    19.062193   -4.799036   Improved (Below Avg)  19.665769   -5.402612    Improved (Lower)   -27.470000    
-2024-04-01         13                    NULL                   107.17         13                     8.243846     19.062193   -10.818347  Improved (Below Avg)  14.263157   -6.019311    Improved (Lower)   -42.200000    
-2024-01-01         14                    Spring_Prospecting_EU  946.11         15                     63.074000    40.748555   22.325445   Worsened (Above Avg)  NULL        NULL         No Change          NULL          
-2024-02-01         14                    Spring_Prospecting_EU  511.82         12                     42.651666    40.748555   1.903111    Worsened (Above Avg)  63.074000   -20.422334   Improved (Lower)   -32.380000    
-2024-03-01         14                    Spring_Prospecting_EU  132.16         8                      16.520000    40.748555   -24.228555  Improved (Below Avg)  42.651666   -26.131666   Improved (Lower)   -61.270000    
-2024-04-01         14                    Spring_Prospecting_EU  NULL           10                     NULL         40.748555   NULL        Equals Average        16.520000   NULL         No Change          NULL          
-2024-01-01         15                    NULL                   812.74         17                     47.808235    26.005481   21.802754   Worsened (Above Avg)  NULL        NULL         No Change          NULL          
-2024-02-01         15                    NULL                   559.19         12                     46.599166    26.005481   20.593685   Worsened (Above Avg)  47.808235   -1.209069    Improved (Lower)   -2.530000     
-2024-03-01         15                    NULL                   18.26          21                     0.869523     26.005481   -25.135958  Improved (Below Avg)  46.599166   -45.729643   Improved (Lower)   -98.130000    
-2024-04-01         15                    NULL                   122.43         14                     8.745000     26.005481   -17.260481  Improved (Below Avg)  0.869523    7.875477     Worsened (Higher)  905.720000    
-2024-01-01         16                    New_Year_Launch        854.00         18                     47.444444    28.666648   18.777796   Worsened (Above Avg)  NULL        NULL         No Change          NULL          
-2024-02-01         16                    New_Year_Launch        427.35         15                     28.490000    28.666648   -0.176648   Improved (Below Avg)  47.444444   -18.954444   Improved (Lower)   -39.950000    
-2024-03-01         16                    New_Year_Launch        201.31         20                     10.065500    28.666648   -18.601148  Improved (Below Avg)  28.490000   -18.424500   Improved (Lower)   -64.670000    
-2024-04-01         16                    New_Year_Launch        NULL           20                     NULL         28.666648   NULL        Equals Average        10.065500   NULL         No Change          NULL          
-2024-01-01         17                    Flash_Sale_Weekend     711.03         14                     50.787857    27.273806   23.514051   Worsened (Above Avg)  NULL        NULL         No Change          NULL          
-2024-02-01         17                    Flash_Sale_Weekend     515.38         22                     23.426363    27.273806   -3.847443   Improved (Below Avg)  50.787857   -27.361494   Improved (Lower)   -53.870000    
-2024-03-01         17                    Flash_Sale_Weekend     190.18         25                     7.607200     27.273806   -19.666606  Improved (Below Avg)  23.426363   -15.819163   Improved (Lower)   -67.530000    
-2024-04-01         17                    Flash_Sale_Weekend     NULL           9                      NULL         27.273806   NULL        Equals Average        7.607200    NULL         No Change          NULL          
-2024-01-01         18                    SEO_Boost              1060.46        12                     88.371666    47.482684   40.888982   Worsened (Above Avg)  NULL        NULL         No Change          NULL          
-2024-02-01         18                    SEO_Boost              542.77         12                     45.230833    47.482684   -2.251851   Improved (Below Avg)  88.371666   -43.140833   Improved (Lower)   -48.820000    
-2024-03-01         18                    SEO_Boost              159.22         18                     8.845555     47.482684   -38.637129  Improved (Below Avg)  45.230833   -36.385278   Improved (Lower)   -80.440000    
-2024-04-01         18                    SEO_Boost              NULL           11                     NULL         47.482684   NULL        Equals Average        8.845555    NULL         No Change          NULL          
-2024-01-01         19                    Holiday_Special        751.58         17                     44.210588    18.682331   25.528257   Worsened (Above Avg)  NULL        NULL         No Change          NULL          
-2024-02-01         19                    Holiday_Special        237.16         21                     11.293333    18.682331   -7.388998   Improved (Below Avg)  44.210588   -32.917255   Improved (Lower)   -74.460000    
-2024-03-01         19                    Holiday_Special        189.63         11                     17.239090    18.682331   -1.443241   Improved (Below Avg)  11.293333   5.945757     Worsened (Higher)  52.650000     
-2024-04-01         19                    Holiday_Special        37.74          19                     1.986315     18.682331   -16.696016  Improved (Below Avg)  17.239090   -15.252775   Improved (Lower)   -88.480000    
-2024-01-01         20                    Lookalike_3pct_DE      631.96         22                     28.725454    29.152305   -0.426851   Improved (Below Avg)  NULL        NULL         No Change          NULL          
-2024-02-01         20                    Lookalike_3pct_DE      472.63         10                     47.263000    29.152305   18.110695   Worsened (Above Avg)  28.725454   18.537546    Worsened (Higher)  64.530000     
-2024-03-01         20                    Lookalike_3pct_DE      149.09         13                     11.468461    29.152305   -17.683844  Improved (Below Avg)  47.263000   -35.794539   Improved (Lower)   -75.730000    
-2024-04-01         20                    Lookalike_3pct_DE      NULL           15                     NULL         29.152305   NULL        Equals Average        11.468461   NULL         No Change          NULL          
-2024-01-01         21                    Winter_Sale_2024       427.53         16                     26.720625    18.276371   8.444254    Worsened (Above Avg)  NULL        NULL         No Change          NULL          
-2024-02-01         21                    Winter_Sale_2024       471.53         15                     31.435333    18.276371   13.158962   Worsened (Above Avg)  26.720625   4.714708     Worsened (Higher)  17.640000     
-2024-03-01         21                    Winter_Sale_2024       62.05          18                     3.447222     18.276371   -14.829149  Improved (Below Avg)  31.435333   -27.988111   Improved (Lower)   -89.030000    
-2024-04-01         21                    Winter_Sale_2024       149.53         13                     11.502307    18.276371   -6.774064   Improved (Below Avg)  3.447222    8.055085     Worsened (Higher)  233.670000    
-2024-01-01         22                    Winter_Sale_2024       570.92         9                      63.435555    30.766851   32.668704   Worsened (Above Avg)  NULL        NULL         No Change          NULL          
-2024-02-01         22                    Winter_Sale_2024       392.41         26                     15.092692    30.766851   -15.674159  Improved (Below Avg)  63.435555   -48.342863   Improved (Lower)   -76.210000    
-2024-03-01         22                    Winter_Sale_2024       179.04         13                     13.772307    30.766851   -16.994544  Improved (Below Avg)  15.092692   -1.320385    Improved (Lower)   -8.750000     
-2024-04-01         22                    Winter_Sale_2024       NULL           14                     NULL         30.766851   NULL        Equals Average        13.772307   NULL         No Change          NULL          
-2024-01-01         23                    SEO_Boost              924.27         12                     77.022500    35.123447   41.899053   Worsened (Above Avg)  NULL        NULL         No Change          NULL          
-2024-02-01         23                    SEO_Boost              268.30         15                     17.886666    35.123447   -17.236781  Improved (Below Avg)  77.022500   -59.135834   Improved (Lower)   -76.780000    
-2024-03-01         23                    SEO_Boost              177.84         17                     10.461176    35.123447   -24.662271  Improved (Below Avg)  17.886666   -7.425490    Improved (Lower)   -41.510000    
-2024-04-01         23                    SEO_Boost              NULL           13                     NULL         35.123447   NULL        Equals Average        10.461176   NULL         No Change          NULL          
-2024-01-01         24                    Retention_Push         616.86         13                     47.450769    28.282230   19.168539   Worsened (Above Avg)  NULL        NULL         No Change          NULL          
-2024-02-01         24                    Retention_Push         304.16         19                     16.008421    28.282230   -12.273809  Improved (Below Avg)  47.450769   -31.442348   Improved (Lower)   -66.260000    
-2024-03-01         24                    Retention_Push         256.65         12                     21.387500    28.282230   -6.894730   Improved (Below Avg)  16.008421   5.379079     Worsened (Higher)  33.600000     
-2024-04-01         24                    Retention_Push         NULL           16                     NULL         28.282230   NULL        Equals Average        21.387500   NULL         No Change          NULL          
-2024-01-01         25                    Spring_Prospecting_EU  802.89         19                     42.257368    20.867543   21.389825   Worsened (Above Avg)  NULL        NULL         No Change          NULL          
-2024-02-01         25                    Spring_Prospecting_EU  239.64         19                     12.612631    20.867543   -8.254912   Improved (Below Avg)  42.257368   -29.644737   Improved (Lower)   -70.150000    
-2024-03-01         25                    Spring_Prospecting_EU  146.92         19                     7.732631     20.867543   -13.134912  Improved (Below Avg)  12.612631   -4.880000    Improved (Lower)   -38.690000    
-2024-04-01         25                    Spring_Prospecting_EU  NULL           13                     NULL         20.867543   NULL        Equals Average        7.732631    NULL         No Change          NULL          
-2024-01-01         26                    Holiday_Special        667.18         9                      74.131111    37.756370   36.374741   Worsened (Above Avg)  NULL        NULL         No Change          NULL          
-2024-02-01         26                    Holiday_Special        363.70         15                     24.246666    37.756370   -13.509704  Improved (Below Avg)  74.131111   -49.884445   Improved (Lower)   -67.290000    
-2024-03-01         26                    Holiday_Special        223.37         15                     14.891333    37.756370   -22.865037  Improved (Below Avg)  24.246666   -9.355333    Improved (Lower)   -38.580000    
-2024-04-01         26                    Holiday_Special        NULL           13                     NULL         37.756370   NULL        Equals Average        14.891333   NULL         No Change          NULL          
-2024-01-01         27                    Summer_Retargeting     686.28         14                     49.020000    30.877944   18.142056   Worsened (Above Avg)  NULL        NULL         No Change          NULL          
-2024-02-01         27                    Summer_Retargeting     487.52         15                     32.501333    30.877944   1.623389    Worsened (Above Avg)  49.020000   -16.518667   Improved (Lower)   -33.700000    
-2024-03-01         27                    Summer_Retargeting     133.35         12                     11.112500    30.877944   -19.765444  Improved (Below Avg)  32.501333   -21.388833   Improved (Lower)   -65.810000    
-2024-04-01         27                    Summer_Retargeting     NULL           12                     NULL         30.877944   NULL        Equals Average        11.112500   NULL         No Change          NULL          
-2024-01-01         28                    Lookalike_3pct_DE      710.87         21                     33.850952    17.492092   16.358860   Worsened (Above Avg)  NULL        NULL         No Change          NULL          
-2024-02-01         28                    Lookalike_3pct_DE      156.70         10                     15.670000    17.492092   -1.822092   Improved (Below Avg)  33.850952   -18.180952   Improved (Lower)   -53.710000    
-2024-03-01         28                    Lookalike_3pct_DE      267.88         15                     17.858666    17.492092   0.366574    Worsened (Above Avg)  15.670000   2.188666     Worsened (Higher)  13.970000     
-2024-04-01         28                    Lookalike_3pct_DE      20.71          8                      2.588750     17.492092   -14.903342  Improved (Below Avg)  17.858666   -15.269916   Improved (Lower)   -85.500000    
-2024-01-01         29                    New_Year_Launch        643.29         14                     45.949285    31.926428   14.022857   Worsened (Above Avg)  NULL        NULL         No Change          NULL          
-2024-02-01         29                    New_Year_Launch        302.72         11                     27.520000    31.926428   -4.406428   Improved (Below Avg)  45.949285   -18.429285   Improved (Lower)   -40.110000    
-2024-03-01         29                    New_Year_Launch        356.96         16                     22.310000    31.926428   -9.616428   Improved (Below Avg)  27.520000   -5.210000    Improved (Lower)   -18.930000    
-2024-04-01         29                    New_Year_Launch        NULL           21                     NULL         31.926428   NULL        Equals Average        22.310000   NULL         No Change          NULL          
-2024-01-01         30                    SEO_Boost              855.89         24                     35.662083    14.039687   21.622396   Worsened (Above Avg)  NULL        NULL         No Change          NULL          
-2024-02-01         30                    SEO_Boost              205.45         19                     10.813157    14.039687   -3.226530   Improved (Below Avg)  35.662083   -24.848926   Improved (Lower)   -69.680000    
-2024-03-01         30                    SEO_Boost              159.74         21                     7.606666     14.039687   -6.433021   Improved (Below Avg)  10.813157   -3.206491    Improved (Lower)   -29.650000    
-2024-04-01         30                    SEO_Boost              39.46          19                     2.076842     14.039687   -11.962845  Improved (Below Avg)  7.606666    -5.529824    Improved (Lower)   -72.700000    
-2024-01-01         31                    Brand_Awareness_Q1     803.52         11                     73.047272    33.066590   39.980682   Worsened (Above Avg)  NULL        NULL         No Change          NULL          
-2024-02-01         31                    Brand_Awareness_Q1     319.12         16                     19.945000    33.066590   -13.121590  Improved (Below Avg)  73.047272   -53.102272   Improved (Lower)   -72.700000    
-2024-03-01         31                    Brand_Awareness_Q1     124.15         20                     6.207500     33.066590   -26.859090  Improved (Below Avg)  19.945000   -13.737500   Improved (Lower)   -68.880000    
-2024-04-01         31                    Brand_Awareness_Q1     NULL           14                     NULL         33.066590   NULL        Equals Average        6.207500    NULL         No Change          NULL          
-2024-01-01         32                    SEO_Boost              652.93         20                     32.646500    22.483196   10.163304   Worsened (Above Avg)  NULL        NULL         No Change          NULL          
-2024-02-01         32                    SEO_Boost              425.35         17                     25.020588    22.483196   2.537392    Worsened (Above Avg)  32.646500   -7.625912    Improved (Lower)   -23.360000    
-2024-03-01         32                    SEO_Boost              117.39         12                     9.782500     22.483196   -12.700696  Improved (Below Avg)  25.020588   -15.238088   Improved (Lower)   -60.900000    
-2024-04-01         32                    SEO_Boost              NULL           14                     NULL         22.483196   NULL        Equals Average        9.782500    NULL         No Change          NULL          
-2024-01-01         33                    Holiday_Special        695.20         17                     40.894117    23.993394   16.900723   Worsened (Above Avg)  NULL        NULL         No Change          NULL          
-2024-02-01         33                    Holiday_Special        340.85         16                     21.303125    23.993394   -2.690269   Improved (Below Avg)  40.894117   -19.590992   Improved (Lower)   -47.910000    
-2024-03-01         33                    Holiday_Special        166.31         17                     9.782941     23.993394   -14.210453  Improved (Below Avg)  21.303125   -11.520184   Improved (Lower)   -54.080000    
-2024-04-01         33                    Holiday_Special        NULL           13                     NULL         23.993394   NULL        Equals Average        9.782941    NULL         No Change          NULL          
-2024-01-01         34                    Summer_Launch          757.04         10                     75.704000    32.641111   43.062889   Worsened (Above Avg)  NULL        NULL         No Change          NULL          
-2024-02-01         34                    Summer_Launch          276.95         15                     18.463333    32.641111   -14.177778  Improved (Below Avg)  75.704000   -57.240667   Improved (Lower)   -75.610000    
-2024-03-01         34                    Summer_Launch          37.56          10                     3.756000     32.641111   -28.885111  Improved (Below Avg)  18.463333   -14.707333   Improved (Lower)   -79.660000    
-2024-04-01         34                    Summer_Launch          NULL           15                     NULL         32.641111   NULL        Equals Average        3.756000    NULL         No Change          NULL          
-2024-01-01         35                    Lookalike_3pct_DE      756.74         17                     44.514117    27.448834   17.065283   Worsened (Above Avg)  NULL        NULL         No Change          NULL          
-2024-02-01         35                    Lookalike_3pct_DE      550.38         16                     34.398750    27.448834   6.949916    Worsened (Above Avg)  44.514117   -10.115367   Improved (Lower)   -22.720000    
-2024-03-01         35                    Lookalike_3pct_DE      37.77          11                     3.433636     27.448834   -24.015198  Improved (Below Avg)  34.398750   -30.965114   Improved (Lower)   -90.020000    
-2024-04-01         35                    Lookalike_3pct_DE      NULL           11                     NULL         27.448834   NULL        Equals Average        3.433636    NULL         No Change          NULL          
-2024-01-01         36                    Lookalike_3pct_DE      824.57         16                     51.535625    27.409208   24.126417   Worsened (Above Avg)  NULL        NULL         No Change          NULL          
-2024-02-01         36                    Lookalike_3pct_DE      241.86         20                     12.093000    27.409208   -15.316208  Improved (Below Avg)  51.535625   -39.442625   Improved (Lower)   -76.530000    
-2024-03-01         36                    Lookalike_3pct_DE      185.99         10                     18.599000    27.409208   -8.810208   Improved (Below Avg)  12.093000   6.506000     Worsened (Higher)  53.800000     
-2024-04-01         36                    Lookalike_3pct_DE      NULL           17                     NULL         27.409208   NULL        Equals Average        18.599000   NULL         No Change          NULL          
-2024-01-01         37                    Brand_Awareness_Q1     1055.26        17                     62.074117    31.599039   30.475078   Worsened (Above Avg)  NULL        NULL         No Change          NULL          
-2024-02-01         37                    Brand_Awareness_Q1     347.70         12                     28.975000    31.599039   -2.624039   Improved (Below Avg)  62.074117   -33.099117   Improved (Lower)   -53.320000    
-2024-03-01         37                    Brand_Awareness_Q1     37.48          10                     3.748000     31.599039   -27.851039  Improved (Below Avg)  28.975000   -25.227000   Improved (Lower)   -87.060000    
-2024-04-01         37                    Brand_Awareness_Q1     NULL           14                     NULL         31.599039   NULL        Equals Average        3.748000    NULL         No Change          NULL          
-2024-01-01         38                    NULL                   496.53         12                     41.377500    31.118944   10.258556   Worsened (Above Avg)  NULL        NULL         No Change          NULL          
-2024-02-01         38                    NULL                   645.19         15                     43.012666    31.118944   11.893722   Worsened (Above Avg)  41.377500   1.635166     Worsened (Higher)  3.950000      
-2024-03-01         38                    NULL                   215.20         24                     8.966666     31.118944   -22.152278  Improved (Below Avg)  43.012666   -34.046000   Improved (Lower)   -79.150000    
-2024-04-01         38                    NULL                   NULL           17                     NULL         31.118944   NULL        Equals Average        8.966666    NULL         No Change          NULL          
-2024-01-01         39                    Retention_Push         645.81         12                     53.817500    25.365509   28.451991   Worsened (Above Avg)  NULL        NULL         No Change          NULL          
-2024-02-01         39                    Retention_Push         305.37         19                     16.072105    25.365509   -9.293404   Improved (Below Avg)  53.817500   -37.745395   Improved (Lower)   -70.140000    
-2024-03-01         39                    Retention_Push         80.69          13                     6.206923     25.365509   -19.158586  Improved (Below Avg)  16.072105   -9.865182    Improved (Lower)   -61.380000    
-2024-04-01         39                    Retention_Push         NULL           9                      NULL         25.365509   NULL        Equals Average        6.206923    NULL         No Change          NULL          
-2024-01-01         40                    SEO_Boost              718.47         8                      89.808750    43.251408   46.557342   Worsened (Above Avg)  NULL        NULL         No Change          NULL          
-2024-02-01         40                    SEO_Boost              342.33         14                     24.452142    43.251408   -18.799266  Improved (Below Avg)  89.808750   -65.356608   Improved (Lower)   -72.770000    
-2024-03-01         40                    SEO_Boost              232.40         15                     15.493333    43.251408   -27.758075  Improved (Below Avg)  24.452142   -8.958809    Improved (Lower)   -36.640000    
-2024-04-01         40                    SEO_Boost              NULL           16                     NULL         43.251408   NULL        Equals Average        15.493333   NULL         No Change          NULL          
-2024-01-01         41                    Brand_Awareness_Q1     622.62         18                     34.590000    20.906590   13.683410   Worsened (Above Avg)  NULL        NULL         No Change          NULL          
-2024-02-01         41                    Brand_Awareness_Q1     547.57         17                     32.210000    20.906590   11.303410   Worsened (Above Avg)  34.590000   -2.380000    Improved (Lower)   -6.880000     
-2024-03-01         41                    Brand_Awareness_Q1     110.29         11                     10.026363    20.906590   -10.880227  Improved (Below Avg)  32.210000   -22.183637   Improved (Lower)   -68.870000    
-2024-04-01         41                    Brand_Awareness_Q1     129.20         19                     6.800000     20.906590   -14.106590  Improved (Below Avg)  10.026363   -3.226363    Improved (Lower)   -32.180000    
-2024-01-01         42                    Summer_Retargeting     686.48         24                     28.603333    27.885841   0.717492    Worsened (Above Avg)  NULL        NULL         No Change          NULL          
-2024-02-01         42                    Summer_Retargeting     463.82         9                      51.535555    27.885841   23.649714   Worsened (Above Avg)  28.603333   22.932222    Worsened (Higher)  80.170000     
-2024-03-01         42                    Summer_Retargeting     77.41          22                     3.518636     27.885841   -24.367205  Improved (Below Avg)  51.535555   -48.016919   Improved (Lower)   -93.170000    
-2024-04-01         42                    Summer_Retargeting     NULL           13                     NULL         27.885841   NULL        Equals Average        3.518636    NULL         No Change          NULL          
-2024-01-01         43                    Brand_Awareness_Q1     906.18         14                     64.727142    31.646547   33.080595   Worsened (Above Avg)  NULL        NULL         No Change          NULL          
-2024-02-01         43                    Brand_Awareness_Q1     142.28         24                     5.928333     31.646547   -25.718214  Improved (Below Avg)  64.727142   -58.798809   Improved (Lower)   -90.840000    
-2024-03-01         43                    Brand_Awareness_Q1     291.41         12                     24.284166    31.646547   -7.362381   Improved (Below Avg)  5.928333    18.355833    Worsened (Higher)  309.630000    
-2024-04-01         43                    Brand_Awareness_Q1     NULL           11                     NULL         31.646547   NULL        Equals Average        24.284166   NULL         No Change          NULL          
-2024-01-01         44                    Flash_Sale_Weekend     1009.90        17                     59.405882    26.947088   32.458794   Worsened (Above Avg)  NULL        NULL         No Change          NULL          
-2024-02-01         44                    Flash_Sale_Weekend     190.91         13                     14.685384    26.947088   -12.261704  Improved (Below Avg)  59.405882   -44.720498   Improved (Lower)   -75.280000    
-2024-03-01         44                    Flash_Sale_Weekend     121.50         18                     6.750000     26.947088   -20.197088  Improved (Below Avg)  14.685384   -7.935384    Improved (Lower)   -54.040000    
-2024-04-01         44                    Flash_Sale_Weekend     NULL           13                     NULL         26.947088   NULL        Equals Average        6.750000    NULL         No Change          NULL          
-2024-01-01         45                    Lookalike_3pct_DE      477.42         14                     34.101428    30.496501   3.604927    Worsened (Above Avg)  NULL        NULL         No Change          NULL          
-2024-02-01         45                    Lookalike_3pct_DE      524.59         13                     40.353076    30.496501   9.856575    Worsened (Above Avg)  34.101428   6.251648     Worsened (Higher)  18.330000     
-2024-03-01         45                    Lookalike_3pct_DE      238.49         14                     17.035000    30.496501   -13.461501  Improved (Below Avg)  40.353076   -23.318076   Improved (Lower)   -57.790000    
-2024-04-01         45                    Lookalike_3pct_DE      NULL           17                     NULL         30.496501   NULL        Equals Average        17.035000   NULL         No Change          NULL          
-2024-01-01         46                    Lookalike_3pct_DE      826.80         15                     55.120000    28.670043   26.449957   Worsened (Above Avg)  NULL        NULL         No Change          NULL          
-2024-02-01         46                    Lookalike_3pct_DE      242.41         11                     22.037272    28.670043   -6.632771   Improved (Below Avg)  55.120000   -33.082728   Improved (Lower)   -60.020000    
-2024-03-01         46                    Lookalike_3pct_DE      185.91         21                     8.852857     28.670043   -19.817186  Improved (Below Avg)  22.037272   -13.184415   Improved (Lower)   -59.830000    
-2024-04-01         46                    Lookalike_3pct_DE      NULL           11                     NULL         28.670043   NULL        Equals Average        8.852857    NULL         No Change          NULL          
-2024-01-01         47                    SEO_Boost              867.46         18                     48.192222    26.782136   21.410086   Worsened (Above Avg)  NULL        NULL         No Change          NULL          
-2024-02-01         47                    SEO_Boost              234.43         13                     18.033076    26.782136   -8.749060   Improved (Below Avg)  48.192222   -30.159146   Improved (Lower)   -62.580000    
-2024-03-01         47                    SEO_Boost              254.18         18                     14.121111    26.782136   -12.661025  Improved (Below Avg)  18.033076   -3.911965    Improved (Lower)   -21.690000    
-2024-04-01         47                    SEO_Boost              NULL           15                     NULL         26.782136   NULL        Equals Average        14.121111   NULL         No Change          NULL          
-2024-01-01         48                    Summer_Launch          605.59         22                     27.526818    16.983104   10.543714   Worsened (Above Avg)  NULL        NULL         No Change          NULL          
-2024-02-01         48                    Summer_Launch          485.89         23                     21.125652    16.983104   4.142548    Worsened (Above Avg)  27.526818   -6.401166    Improved (Lower)   -23.250000    
-2024-03-01         48                    Summer_Launch          43.64          19                     2.296842     16.983104   -14.686262  Improved (Below Avg)  21.125652   -18.828810   Improved (Lower)   -89.130000    
-2024-04-01         48                    Summer_Launch          NULL           14                     NULL         16.983104   NULL        Equals Average        2.296842    NULL         No Change          NULL          
-2024-01-01         49                    Spring_Prospecting_EU  663.14         22                     30.142727    15.496122   14.646605   Worsened (Above Avg)  NULL        NULL         No Change          NULL          
-2024-02-01         49                    Spring_Prospecting_EU  280.48         17                     16.498823    15.496122   1.002701    Worsened (Above Avg)  30.142727   -13.643904   Improved (Lower)   -45.260000    
-2024-03-01         49                    Spring_Prospecting_EU  163.95         15                     10.930000    15.496122   -4.566122   Improved (Below Avg)  16.498823   -5.568823    Improved (Lower)   -33.750000    
-2024-04-01         49                    Spring_Prospecting_EU  75.02          17                     4.412941     15.496122   -11.083181  Improved (Below Avg)  10.930000   -6.517059    Improved (Lower)   -59.630000    
-2024-01-01         50                    Lookalike_3pct_DE      839.24         14                     59.945714    34.924126   25.021588   Worsened (Above Avg)  NULL        NULL         No Change          NULL          
-2024-02-01         50                    Lookalike_3pct_DE      482.70         12                     40.225000    34.924126   5.300874    Worsened (Above Avg)  59.945714   -19.720714   Improved (Lower)   -32.900000    
-2024-03-01         50                    Lookalike_3pct_DE      82.83          18                     4.601666     34.924126   -30.322460  Improved (Below Avg)  40.225000   -35.623334   Improved (Lower)   -88.560000    
-2024-04-01         50                    Lookalike_3pct_DE      NULL           20                     NULL         34.924126   NULL        Equals Average        4.601666    NULL         No Change          NULL          
-2024-01-01         51                    Brand_Awareness_Q1     818.16         23                     35.572173    21.722025   13.850148   Worsened (Above Avg)  NULL        NULL         No Change          NULL          
-2024-02-01         51                    Brand_Awareness_Q1     623.02         17                     36.648235    21.722025   14.926210   Worsened (Above Avg)  35.572173   1.076062     Worsened (Higher)  3.030000      
-2024-03-01         51                    Brand_Awareness_Q1     122.29         13                     9.406923     21.722025   -12.315102  Improved (Below Avg)  36.648235   -27.241312   Improved (Lower)   -74.330000    
-2024-04-01         51                    Brand_Awareness_Q1     68.39          13                     5.260769     21.722025   -16.461256  Improved (Below Avg)  9.406923    -4.146154    Improved (Lower)   -44.080000    
-2024-01-01         52                    SEO_Boost              759.58         10                     75.958000    31.479785   44.478215   Worsened (Above Avg)  NULL        NULL         No Change          NULL          
-2024-02-01         52                    SEO_Boost              517.11         21                     24.624285    31.479785   -6.855500   Improved (Below Avg)  75.958000   -51.333715   Improved (Lower)   -67.580000    
-2024-03-01         52                    SEO_Boost              18.62          5                      3.724000     31.479785   -27.755785  Improved (Below Avg)  24.624285   -20.900285   Improved (Lower)   -84.880000    
-2024-04-01         52                    SEO_Boost              151.29         7                      21.612857    31.479785   -9.866928   Improved (Below Avg)  3.724000    17.888857    Worsened (Higher)  480.370000    
-2024-01-01         53                    Spring_Prospecting_EU  779.71         21                     37.129047    23.978187   13.150860   Worsened (Above Avg)  NULL        NULL         No Change          NULL          
-2024-02-01         53                    Spring_Prospecting_EU  476.18         11                     43.289090    23.978187   19.310903   Worsened (Above Avg)  37.129047   6.160043     Worsened (Higher)  16.590000     
-2024-03-01         53                    Spring_Prospecting_EU  156.59         13                     12.045384    23.978187   -11.932803  Improved (Below Avg)  43.289090   -31.243706   Improved (Lower)   -72.170000    
-2024-04-01         53                    Spring_Prospecting_EU  44.84          13                     3.449230     23.978187   -20.528957  Improved (Below Avg)  12.045384   -8.596154    Improved (Lower)   -71.360000    
+...
+[Note: Campaigns 13–53 truncated here. Full results (212 rows) available via SQL query gold.campaigns_cac.]
 ((212 rows affected))
 
 
 
--- 4.2) Top Ten Campaigns by CAC Monthly Improvements - WHERE diff_pm_cac IS NOT NULL ORDER BY diff_pm_cac ASC;
 ========================================
+4.2a) Top 10 Campaign CAC Improvements – by Absolute CAC Reduction (diff_pm_cac ASC)
+========================================
+
 performance_month  acquisition_campaign  campaign_name       current_spend  current_new_customers  current_cac  avg_cac     diff_avg    avg_change            pm_cac      diff_pm_cac  pm_change         mom_percentage
 -----------------  --------------------  ------------------  -------------  ---------------------  -----------  ----------  ----------  --------------------  ----------  -----------  ----------------  --------------
 2024-02-01         8                     SEO_Boost           405.68         20                     20.284000    39.120182   -18.836182  Improved (Below Avg)  86.455833   -66.171833   Improved (Lower)  -76.540000    
@@ -385,8 +242,11 @@ performance_month  acquisition_campaign  campaign_name       current_spend  curr
 ((10 rows affected))
 
 
--- 4.2) Top Ten Campaigns by CAC Monthly Improvements - WHERE pm_cac IS NOT NULL ORDER BY mom_percentage ASC;
+
 ========================================
+4.2b) Top 10 Campaign CAC Improvements – by Percentage CAC Reduction (mom_percentage ASC)
+========================================
+
 performance_month  acquisition_campaign  campaign_name          current_spend  current_new_customers  current_cac  avg_cac     diff_avg    avg_change      pm_cac      diff_pm_cac  pm_change   mom_percentage
 -----------------  --------------------  ---------------------  -------------  ---------------------  -----------  ----------  ----------  --------------  ----------  -----------  ----------  --------------
 2024-04-01         1                     NULL                   NULL           10                     NULL         35.920057   NULL        Equals Average  11.432222   NULL         No Change   NULL          
@@ -402,8 +262,11 @@ performance_month  acquisition_campaign  campaign_name          current_spend  c
 ((10 rows affected))
 
 
--- 4.3) Top Ten Campaigns by CAC Monthly Declines - WHERE diff_pm_cac IS NOT NULL ORDER BY diff_pm_cac DESC;
+
 ========================================
+4.3a) Top 10 Campaign CAC Declines – by Absolute CAC Increase (diff_pm_cac DESC)
+========================================
+
 performance_month  acquisition_campaign  campaign_name          current_spend  current_new_customers  current_cac  avg_cac     diff_avg    avg_change            pm_cac      diff_pm_cac  pm_change          mom_percentage
 -----------------  --------------------  ---------------------  -------------  ---------------------  -----------  ----------  ----------  --------------------  ----------  -----------  -----------------  --------------
 2024-02-01         42                    Summer_Retargeting     463.82         9                      51.535555    27.885841   23.649714   Worsened (Above Avg)  28.603333   22.932222    Worsened (Higher)  80.170000     
@@ -419,8 +282,11 @@ performance_month  acquisition_campaign  campaign_name          current_spend  c
 ((10 rows affected))
 
 
--- 4.3) Top Ten Campaigns by CAC Monthly Declines - WHERE pm_cac IS NOT NULL ORDER BY mom_percentage DESC;
+
 ========================================
+4.3b) Top 10 Campaign CAC Declines – by Percentage CAC Increase (mom_percentage DESC)
+========================================
+
 performance_month  acquisition_campaign  campaign_name       current_spend  current_new_customers  current_cac  avg_cac     diff_avg    avg_change            pm_cac      diff_pm_cac  pm_change          mom_percentage
 -----------------  --------------------  ------------------  -------------  ---------------------  -----------  ----------  ----------  --------------------  ----------  -----------  -----------------  --------------
 2024-04-01         15                    NULL                122.43         14                     8.745000     26.005481   -17.260481  Improved (Below Avg)  0.869523    7.875477     Worsened (Higher)  905.720000    
