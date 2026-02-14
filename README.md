@@ -19,8 +19,8 @@
 <p>📂 Repository Structure:</p>
 <pre>
 Marketing-Analytics-DWH/
-├── datasets/               · marketing_platform/ · web_analytics/ · crm_system/
-│ 
+├── datasets/                · marketing_platform/ · web_analytics/ · crm_system/
+│             
 ├── data_warehouse/
 │   ├── scripts/
 │   │   ├────────── bronze/
@@ -31,10 +31,10 @@ Marketing-Analytics-DWH/
 │   └── docs/
 │ 
 └── marketing_analytics/
-    ├────────────── scripts/ 01-04 (exploration), 
-    │                        05-08 (preliminary analysis),
-    │                        0901-0911 (performance analysis),
-    │                        10 (path length), 11 (channel efficiency)
+    ├────────────── scripts/  01-04 (exploration), 
+    │                         05-08 (preliminary analysis),
+    │                         0901-0911 (performance analysis),
+    │                         10 (path length), 11 (channel efficiency)
     │
     └────────────── results/ · performance_analysis/ · path_length_and_channel_efficiency/
 </pre>
