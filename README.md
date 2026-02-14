@@ -212,12 +212,12 @@ Based on 18 KPI dimensions across revenue, cost, engagement, conversion, lifetim
 
 | Channel | Role | Key Strength | Key Weakness |
 |---|---|---|---|
-| **Google Display** | The Quiet Investor | Highest LTV:CAC (6.01), highest AOV | Weakest engagement (CTR, CVR in decline) |
-| **Instagram Ads** | The Full-Funnel Channel | #1 or #2 across all 18 KPIs | No clear weakness |
-| **Google Search** | The Premium Performer | Highest absolute LTV (€53.97) | Highest CAC, steepest April erosion |
-| **TikTok Ads** | The Volume Engine | Only channel growing customers in April | Lowest LTV (€42.03), worst closing rate |
-| **Facebook Ads** | The Underperformer | Moderate closing efficiency | Last in LTV:CAC, CPM-to-CVR, overall LTV |
-| **Email** | The Retention Champion | Most efficient closer, only LTV rebound | Not a scalable acquisition channel |
+| **Google Display** | High value, low engagement | Highest LTV:CAC (6.01), highest AOV | Weakest engagement (CTR, CVR in decline) |
+| **Instagram Ads** | Consistent full-funnel performer | #1 or #2 across all 18 KPIs | No clear weakness |
+| **Google Search** | Premium acquisition, premium cost | Highest absolute LTV (€53.97) | Highest CAC, steepest April erosion |
+| **TikTok Ads** | Top-of-funnel volume driver | Only channel growing customers in April | Lowest LTV (€42.03), worst closing rate |
+| **Facebook Ads** | Weak across all dimensions | Moderate closing efficiency | Last in LTV:CAC, CPM-to-CVR, overall LTV |
+| **Email** | Retention and closing lever | Most efficient closer, only LTV rebound | Not a scalable acquisition channel |
 
 ---
 
@@ -289,6 +289,7 @@ Building this project taught me where the analytical boundaries are — and wher
 **Longer LTV window and retention modeling.** The current 120-day LTV captures early repeat behavior, but true customer lifetime value requires 12–24 months of data. With a longer time horizon, I'd build customer segmentation based on purchase recency, frequency, and monetary value (RFM analysis) to identify which user segments deserve the most retention investment. The 81% one-time buyer rate is the most obvious starting point — understanding _why_ these users don't return is worth more than optimizing which channel acquires them.
 
 **Moving from batch to real-time.** The current warehouse uses a full-load, truncate-and-insert pattern. That's appropriate for a demo project, but in production, I'd want incremental loading (only new or changed records), automated quality checks on each load, and alerting when key metrics move outside expected ranges. The goal: detecting a saturation pattern like the one in this data in February, not after four months of batch analysis.
+
 
 <hr>
 
