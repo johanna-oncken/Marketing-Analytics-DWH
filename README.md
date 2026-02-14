@@ -406,7 +406,10 @@ Building this project taught me where the analytical boundaries are — and wher
 
 <p>See the <a href="https://github.com/johanna-oncken/Marketing-Analytics-DWH/blob/main/data_warehouse/docs/data_model.pdf"><strong>Data Model Document</strong></a></p>
 
-<img width="847" height="696" style="display:block; margin: 0 auto;" alt="Data model" src="https://github.com/user-attachments/assets/4e1d7917-fc2a-42d9-9bea-ab54effc50f1" />
+<p align="center">
+   <img width="847" height="696" style="display:block; margin: 0 auto;" alt="Data model" src="https://github.com/user-attachments/assets/4e1d7917-fc2a-42d9-9bea-ab54effc50f1" />
+</p>
+
 
 <hr>
 
