@@ -177,11 +177,11 @@ Marketing-Analytics-DWH/
 
 <p>This means if Campaign 5 spent €100 on January 15 and had 20 attributed touchpoints that day, each touchpoint receives a <code>cost_share</code> of €5. Revenue and cost are now at the same granularity, enabling accurate per-touchpoint ROI and ROAS calculations.</p>
 
-<h4>2.5.3) Scope</h4>
+<h5>2.5.3) Scope</h5>
 
 <p>The cost-enhanced table is restricted to <b>paid marketing channels only</b> (Facebook Ads, Google Display, Google Search, Instagram Ads, TikTok Ads). Organic channels (Direct, Email, Organic Search, Referral) are excluded because they carry no media cost — including them would distort efficiency metrics. For full customer journey analysis including organic channels, the original <code>fact_attribution_linear</code> table remains available.</p>
 
-<h4>2.5.4) Usage example</h4>
+<h5>2.5.4) Usage example</h5>
 
 <pre><code>-- Channel-level ROAS with attributed costs
 SELECT
