@@ -214,7 +214,8 @@ GROUP BY channel;</code></pre>
        78.0        Out of range (>53)  3          
        99.0        Out of range (>53)  1          
         1.0        Valid               3          
-       11.0        Valid               1          
+       11.0        Valid               1
+      ... (truncated)
    </code>
 </pre>
 
