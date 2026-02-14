@@ -3,22 +3,22 @@
 DDL Script: Create Gold Attribution Tables WITH Cost Attribution
 ===============================================================================
 Script Purpose:
-    This script creates IMPROVED attribution fact tables that include 
+    This script creates an improved attribution fact table that includes
     proportional cost attribution alongside revenue attribution.
     
     This addresses a critical limitation in the original attribution model:
     - Original: Revenue was distributed across touchpoints, but costs remained 
-      at campaign/day level, leading to distorted ROI/ROAS calculations.
+      at channel/campaign/day level, leading to distorted ROI/ROAS calculations.
     - Improved: Both revenue AND costs are proportionally attributed to 
       touchpoints, enabling accurate efficiency metrics.
 
 Key Improvements:
     1. Cost Attribution: Daily campaign costs are distributed proportionally 
        across all touchpoints for that campaign on that day.
-    2. Accurate KPIs: ROI and ROAS can now be calculated correctly at the 
-       touchpoint level.
-    3. Backward Compatible: Original tables remain unchanged; these are 
-       enhanced versions.
+    2. Accurate KPIs: ROI, ROAS and other revenue-related KPIs can now be 
+       calculated correctly at the touchpoint level.
+    3. Backward Compatible: Original table remains unchanged; this is an 
+       enhanced version.
 
 This attribution model focuses on PAID MARKETING channels only.
     Excluded Channels (Free/Organic):
@@ -27,59 +27,24 @@ This attribution model focuses on PAID MARKETING channels only.
     - Organic Search (SEO, no media cost)
     - Referral (earned traffic, no media cost)
     Rationale:
-    - ROAS/ROI calculations require media costs
     - Including free channels would distort efficiency metrics
-    - Standard practice in paid marketing attribution
     For full customer journey analysis including organic channels,
     use fact_attribution_linear (original table without costs).
 
-Tables Created:
-    - gold.fact_attribution_linear_with_costs
-    
-Dependencies:
-    - gold.fact_spend (campaign daily costs)
-    - gold.fact_touchpath (touchpoint journey data)
-    - gold.fact_attribution_linear (original revenue attribution)
-    
-Usage Example:
-    -- Correct ROI calculation with attributed costs:
-    SELECT 
-        channel,
-        SUM(revenue_share) AS attributed_revenue,
-        SUM(cost_share) AS attributed_costs,
-        (SUM(revenue_share) - SUM(cost_share)) / NULLIF(SUM(cost_share), 0) AS roi
-    FROM gold.fact_attribution_linear_with_costs
-    GROUP BY channel;
-
 Limitations:
-  Touchpoints with NULL campaign_id receive cost_share = 0 because 
-  NULL = NULL evaluates to FALSE in SQL joins. A channel-level fallback 
-  for unattributed spend could improve cost coverage but was not 
-  implemented to maintain attribution precision.
+    Touchpoints with NULL campaign_id receive cost_share = 0 because 
+    NULL = NULL evaluates to FALSE in SQL joins. A channel-level fallback 
+    for unattributed spend could improve cost coverage but was not 
+    implemented to maintain attribution precision.
 
+Granularity: One row per touchpoint in a converting journey (same as original)
+Additional Column: cost_share (Proportionally attributed cost for this touchpoint)
+   
 ===============================================================================
 */
 
 USE marketing_dw;
 GO
-
-/*
-===============================================================================
-Create Table: gold.fact_attribution_linear_with_costs
-===============================================================================
-Purpose: 
-    Enhanced version of fact_attribution_linear that includes proportional
-    cost attribution alongside revenue attribution.
-
-Granularity: 
-    One row per touchpoint in a converting journey (same as original)
-
-New Columns:
-    - cost_share: Proportionally attributed cost for this touchpoint
-    - roi_attributed: (revenue_share - cost_share) / cost_share
-    - roas_attributed: revenue_share / cost_share
-===============================================================================
-*/
 
 IF OBJECT_ID('gold.fact_attribution_linear_with_costs', 'U') IS NOT NULL
     DROP TABLE gold.fact_attribution_linear_with_costs;
@@ -94,39 +59,15 @@ CREATE TABLE gold.fact_attribution_linear_with_costs (
     campaign_id            INT           NULL,
     interaction_type       NVARCHAR(50)  NOT NULL,
     touchpoint_time        DATETIME2     NOT NULL,
-    
     -- Revenue Attribution (from original table)
     revenue_share          DECIMAL(12,2) NOT NULL,
     total_revenue          DECIMAL(12,2) NOT NULL,
     touchpoints_in_path    INT           NOT NULL,
     purchase_date          DATE          NOT NULL,
-    
-    -- Cost Attribution (NEW! - The only new column)
+    -- Cost Attribution (new column)
     cost_share             DECIMAL(12,2) NULL  -- Can be NULL if no campaign_id or no spend data
 );
 GO
-
-/*
-===============================================================================
-Load Logic: Populate fact_attribution_linear_with_costs
-===============================================================================
-Strategy:
-    1. Start with original attribution data (revenue already distributed)
-    2. Calculate cost per touchpoint:
-       - For each campaign+day: total spend ÷ number of touchpoints
-       - Assign this cost_share to each touchpoint
-    3. Calculate derived KPIs (ROI, ROAS)
-
-Cost Attribution Formula:
-    cost_share = (campaign_daily_spend) / (touchpoints_for_that_campaign_on_that_day)
-
-Example:
-    Campaign 5 on 2024-01-15:
-    - Total spend: €100
-    - Touchpoints on that day: 20
-    - Each touchpoint gets: €100 / 20 = €5 cost_share
-===============================================================================
-*/
 
 -- Step 1: Calculate touchpoint counts per campaign per day
 IF OBJECT_ID('tempdb..#touchpoint_counts', 'U') IS NOT NULL
@@ -172,7 +113,6 @@ LEFT JOIN #touchpoint_counts tc
     ON s.campaign_id = tc.campaign_id
     AND s.spend_date = tc.touchpoint_date;
 
--- Step 3: Insert into final table with cost attribution
 -- Step 3: Insert into final table with cost attribution
 INSERT INTO gold.fact_attribution_linear_with_costs (
     user_id,
@@ -220,9 +160,6 @@ Quality Checks
 */
 
 -- 1) Row count comparison
-PRINT '========================================';
-PRINT 'Quality Check 1: Row Count Comparison';
-PRINT '========================================';
 SELECT 
     'Original' AS table_name,
     COUNT(*) AS row_count
@@ -234,10 +171,6 @@ SELECT
 FROM gold.fact_attribution_linear_with_costs;
 
 -- 2) Cost attribution coverage
-PRINT '';
-PRINT '========================================';
-PRINT 'Quality Check 2: Cost Attribution Coverage';
-PRINT '========================================';
 SELECT
     COUNT(*) AS total_rows,
     SUM(CASE WHEN cost_share > 0 THEN 1 ELSE 0 END) AS rows_with_costs,
@@ -245,11 +178,7 @@ SELECT
     CAST(SUM(CASE WHEN cost_share > 0 THEN 1 ELSE 0 END) * 100.0 / COUNT(*) AS DECIMAL(5,2)) AS pct_with_costs
 FROM gold.fact_attribution_linear_with_costs;
 
--- 3) Revenue vs Cost totals
-PRINT '';
-PRINT '========================================';
-PRINT 'Quality Check 3: Total Revenue vs Total Costs';
-PRINT '========================================';
+-- 3) Total Revenue vs Cost totals
 SELECT
     SUM(revenue_share) AS total_attributed_revenue,
     SUM(cost_share) AS total_attributed_costs,
@@ -258,10 +187,6 @@ SELECT
 FROM gold.fact_attribution_linear_with_costs;
 
 -- 4) Cost attribution by channel
-PRINT '';
-PRINT '========================================';
-PRINT 'Quality Check 4: Cost Attribution by Channel';
-PRINT '========================================';
 SELECT
     channel,
     COUNT(*) AS touchpoints,
@@ -272,10 +197,3 @@ SELECT
 FROM gold.fact_attribution_linear_with_costs
 GROUP BY channel
 ORDER BY attributed_revenue DESC;
-
-
-PRINT '';
-PRINT '========================================';
-PRINT 'Table Created and Loaded Successfully!';
-PRINT '========================================';
-GO
