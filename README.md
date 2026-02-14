@@ -131,7 +131,7 @@ Marketing-Analytics-DWH/
     <tr><td><code>dim_user</code></td><td>User</td><td>Union of all user IDs across silver tables</td></tr>
     <tr><td><code>dim_campaign</code></td><td>Campaign</td><td>53 campaigns across 5 paid channels</td></tr>
     <tr><td><code>dim_channel</code></td><td>Channel</td><td>9 channels in 2 categories (Paid, Organic)</td></tr>
-    <tr><td rowspan="9"><b>Gold Fact</b></td><td><code>fact_spend</code></td><td>Campaign × Day</td><td>Ad spend enriched with campaign metadata</td></tr>
+    <tr><td rowspan="9"><b>Gold Fact</b></td><td><code>fact_spend</code></td><td>Channel x Campaign × Day</td><td>Ad spend enriched with campaign metadata</td></tr>
     <tr><td><code>fact_clicks</code></td><td>Click event</td><td>Clicks enriched with acquisition channel (first-touch)</td></tr>
     <tr><td><code>fact_sessions</code></td><td>Session</td><td>Sessions enriched with acquisition channel</td></tr>
     <tr><td><code>fact_touchpoints</code></td><td>Touchpoint event</td><td>All touchpoint interactions enriched with campaign name</td></tr>
