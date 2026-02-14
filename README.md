@@ -485,65 +485,6 @@ Building this project taught me where the analytical boundaries are — and wher
 
 **Moving from batch to real-time.** The current warehouse uses a full-load, truncate-and-insert pattern. That's appropriate for a demo project, but in production, I'd want incremental loading (only new or changed records), automated quality checks on each load, and alerting when key metrics move outside expected ranges. The goal: detecting a saturation pattern like the one in this data in February, not after four months of batch analysis.
 
-
----
-
-### 1.6) Limitations & Assumptions
-
-**Synthetic data:** All findings are based on synthetically generated data with intentional quality issues for ETL demonstration. Channel engagement volumes are unrealistically uniform (clicks, impressions, and touchpoints are near-identical across channels), limiting the differentiation potential that real data would provide.
-
-**Monthly spend distribution:** Raw spend collapses from €41,541 (January) to €1,134 (April) — a 97.3% decline. This is a data generation artifact, not a real budget decision. Monthly cost-based trends (ROAS, CAC, CPA, CPC, CPM) are affected by this artifact. Cross-channel and cross-campaign relative comparisons within the same time period, as well as total-period aggregates, remain valid.
-
-**Cohort imbalance:** 93% of users are acquired in January. February and March cohorts are too small for statistically reliable cross-cohort comparisons. Within-January analysis is robust.
-
-**Attribution coverage:** 75% of purchases are matched to touchpoint paths. 25% of purchases have no attributable touchpoints (likely direct purchases or touchpoints outside the attribution window).
-
-**CPM limitation:** CPM values are unrealistically high (~€2,519 vs. typical €5–30) due to low synthetic impression volumes. Absolute CPM values are not benchmarkable; the CPM-to-CVR ratio aggregates across months and is not affected.
-
-**Linear attribution model:** Equal-weight distribution is a simplification. Time-decay or data-driven models could reveal additional insights. The linear model was chosen for transparency and interpretability, and the three complementary perspectives (first-touch, linear, last-touch) mitigate single-model bias.
-
----
-
-### 1.7) Tactical Drill-Down (Dashboards)
-
-While strategic conclusions are drawn at the channel level in this README, campaign-level KPIs are available in the interactive Tableau dashboards for tactical optimization and drill-down.
-
-<p align="center">
-  <a href="https://public.tableau.com/views/Multi-TouchMarketingDashboard/Overall?:language=de-DE&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link">
-    <img src="https://github.com/user-attachments/assets/374a6cf6-2f55-4d5a-a97c-fd4636b1c662" width="30%" alt="Budget Allocation Dashboard"/>
-  </a>
-  <a href="https://public.tableau.com/views/Multi-TouchMarketingDashboard/Overall2?:language=de-DE&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link">
-    <img src="https://github.com/user-attachments/assets/da7e4af0-ce2a-44c6-8f08-ae042cbd7ad4" width="30%" alt="LTV Cohort Dashboard"/>
-  </a>
-  <a href="https://public.tableau.com/views/Multi-TouchMarketingDashboard/Overall3?:language=de-DE&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link">
-    <img src="https://github.com/user-attachments/assets/67e6bea1-75c6-4f61-8891-8810d2bf830f" width="30%" alt="Customer Journey Dashboard"/>
-  </a>
-</p>
-
-The dashboards enable:
-
-- **Campaign ranking and filtering** — sort by ROAS, CAC, CVR, and LTV:CAC across all 53 campaigns
-- **Attribution model comparison** — side-by-side first-touch, linear, and last-touch views per campaign
-- **Funnel-stage breakdown** — TOFU/MOFU/BOFU performance with correct cost attribution at each stage
-- **Trend monitoring** — monthly performance tracking to identify saturation and intervention signals
-
-Campaign-level analysis is positioned as a tactical tool, not a parallel narrative. Where individual campaigns illustrate strategic patterns (e.g., Winter_Sale_2024 #21 as the top LTV:CAC performer, or the divergent trajectories of Flash_Sale_Weekend #44 vs. #17), they are referenced in the analysis above as supporting evidence.
-
----
-
-### 1.8) What I Would Do Next
-
-Building this project taught me where the analytical boundaries are — and where the natural extensions would be. These are the directions I would explore with real production data and a longer time horizon.
-
-**Additional attribution models.** The linear model distributes credit equally, which is a deliberate simplification. The next step would be implementing time-decay attribution (weighting recent touchpoints higher) and position-based attribution (emphasizing the first and last touch). Comparing all models side-by-side for the same data would show where they agree (robust findings) and where they diverge (areas that need closer investigation). I'd also want to understand when linear attribution is "good enough" versus when a more complex model would change real budget decisions.
-
-**Testing for causation, not just correlation.** Multi-touch attribution shows which channels _appear_ alongside conversions — but it cannot prove that a channel actually _caused_ the conversion. A user who clicks a Google Search ad might have bought anyway. The way to test this is through holdout experiments: suppress ads for a random user group and compare their conversion rate against the exposed group. This is something I haven't built yet, but it's the logical next question after attribution — and it's the question I'd want to answer first in a real marketing team.
-
-**Longer LTV window and retention modeling.** The current 120-day LTV captures early repeat behavior, but true customer lifetime value requires 12–24 months of data. With a longer time horizon, I'd build customer segmentation based on purchase recency, frequency, and monetary value (RFM analysis) to identify which user segments deserve the most retention investment. The 81% one-time buyer rate is the most obvious starting point — understanding _why_ these users don't return is worth more than optimizing which channel acquires them.
-
-**Moving from batch to real-time.** The current warehouse uses a full-load, truncate-and-insert pattern. That's appropriate for a demo project, but in production, I'd want incremental loading (only new or changed records), automated quality checks on each load, and alerting when key metrics move outside expected ranges. The goal: detecting a saturation pattern like the one in this data in February, not after four months of batch analysis.
-
-
 <hr>
 
 <h2>2) End-To-End Data Warehouse and ETL</h2>
