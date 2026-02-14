@@ -41,7 +41,7 @@ Marketing-Analytics-DWH/
 
 <h2>1) Marketing Analysis</h2>
 <h4>1.1) Project Brief</h4>
-<p>Tasked with analyzing ad data from January to April 2024, I will start by addressing stakeholder communication and presenting the analysis results. In Section 2, I will then cover the data overview, the ETL pipeline, and the data warehouse build process.</p>
+<p>Tasked with analyzing ad data from January to April 2024, I will start by addressing stakeholder communication and presenting the analysis results. Section 2 covers the data overview, ETL pipeline, and data warehouse build.</p>
 
 <hr>
 
@@ -145,7 +145,7 @@ Marketing-Analytics-DWH/
 
 <hr>
 
-<h4>2.5) Data Model</h4>
+<h4>2.4) Data Model</h4>
 
 <p>The Gold layer follows a <b>star schema</b> for core marketing analytics (spend, clicks, sessions, touchpoints, purchases), combined with a <b>fact constellation</b> for attribution modeling.</p>
 
@@ -159,9 +159,9 @@ Marketing-Analytics-DWH/
 
 <hr>
 
-<h4>2.6) Why <code>fact_attribution_linear_with_costs</code> exists</h4>
+<h4>2.5) Why <code>fact_attribution_linear_with_costs</code> exists</h4>
 
-<h5>2.6.1) The Problem</h5>
+<h5>2.5.1) The Problem</h5>
 
 <p>The original <code>fact_attribution_linear</code> table distributes <b>revenue</b> equally across all touchpoints in a converting user journey. This enables questions like "How much revenue does each channel contribute?" However, it cannot answer efficiency questions like "What is the true ROI per channel?" — because <b>costs remain at the spend-record level (channel × campaign × day)</b> in <code>fact_spend</code>, while revenue is distributed at the touchpoint level in the attribution table.</p>
 
@@ -169,7 +169,7 @@ Marketing-Analytics-DWH/
 
 <p>This is a common structural problem in marketing attribution: revenue attribution is well-established, but cost attribution is often left as an afterthought, forcing analysts to compare touchpoint-level revenue against aggregate-level spend in separate queries — which breaks down when trying to evaluate channel or campaign efficiency at the touchpoint level.</p>
 
-<h5>2.6.1) The Solution</h5>
+<h5>2.5.2) The Solution</h5>
 
 <p><code>fact_attribution_linear_with_costs</code> solves this by applying <b>proportional cost allocation</b> alongside revenue attribution. For each touchpoint in a converting journey, the table includes both a <code>revenue_share</code> (from the original linear model) and a <code>cost_share</code> calculated as:</p>
 
@@ -177,11 +177,11 @@ Marketing-Analytics-DWH/
 
 <p>This means if Campaign 5 spent €100 on January 15 and had 20 attributed touchpoints that day, each touchpoint receives a <code>cost_share</code> of €5. Revenue and cost are now at the same granularity, enabling accurate per-touchpoint ROI and ROAS calculations.</p>
 
-<h4>2.6.2) Scope</h4>
+<h4>2.5.3) Scope</h4>
 
 <p>The cost-enhanced table is restricted to <b>paid marketing channels only</b> (Facebook Ads, Google Display, Google Search, Instagram Ads, TikTok Ads). Organic channels (Direct, Email, Organic Search, Referral) are excluded because they carry no media cost — including them would distort efficiency metrics. For full customer journey analysis including organic channels, the original <code>fact_attribution_linear</code> table remains available.</p>
 
-<h4>2.6.3) Usage example</h4>
+<h4>2.5.4) Usage example</h4>
 
 <pre><code>-- Channel-level ROAS with attributed costs
 SELECT
@@ -194,7 +194,7 @@ GROUP BY channel;</code></pre>
 
 <hr>
 
-<h4>2.7) Data Quality</h4>
+<h4>2.6) Data Quality</h4>
 
 <p>Quality assurance is applied at every layer:</p>
 
@@ -228,7 +228,7 @@ GROUP BY channel;</code></pre>
 
 <hr>
 
-<h4>2.8) Execution Order</h4>
+<h4>2.7) Execution Order</h4>
 
 <table>
   <thead>
@@ -258,7 +258,7 @@ GROUP BY channel;</code></pre>
 
 <hr>
 
-<h4>2.9) Technical Environment</h4>
+<h4>2.8) Technical Environment</h4>
 
 <table>
   <thead>
