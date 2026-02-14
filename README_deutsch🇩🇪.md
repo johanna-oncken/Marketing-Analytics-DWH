@@ -46,7 +46,7 @@ Marketing-Analytics-DWH/
 <hr>
 
 <h2>2) End-To-End Data Warehouse und ETL</h2>
-<p>Ein SQL Server Data Warehouse für Marketing-Analytics, aufgebaut nach einer Bronze → Silver → Gold Medallion-Architektur. Das Warehouse <strong>marketing_dw</strong> integriert Daten aus drei Quellsystemen (Marketing-Plattform, Web Analytics, CRM-System) und modelliert sie in ein Star Schema mit einer Fact Constellation für Multi-Touch Attribution.</p>
+<p>Grundlage ist ein SQL Server Data Warehouse für Marketing-Analytics, aufgebaut nach einer Bronze → Silver → Gold Medallion-Architektur. Das Warehouse <strong>marketing_dw</strong> integriert Daten aus drei Quellsystemen (Marketing-Plattform, Web Analytics, CRM-System) und modelliert sie in ein Star Schema mit einer Fact Constellation für Multi-Touch Attribution.</p>
 
 <h4>2.1) Architektur</h4>
 <p>Das Warehouse folgt einer dreischichtigen Medallion-Architektur:</p>
