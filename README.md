@@ -371,7 +371,7 @@ Campaign-level analysis is positioned as a tactical tool, not a parallel narrati
 
 <p>See the <a href="https://github.com/johanna-oncken/Marketing-Analytics-DWH/blob/main/data_warehouse/docs/data_model.pdf"><strong>Data Model Document</strong></a></p>
 
-<img width="847" height="696" alt="Data model" src="https://github.com/user-attachments/assets/4e1d7917-fc2a-42d9-9bea-ab54effc50f1" />
+<img width="847" height="696" align="center" alt="Data model" src="https://github.com/user-attachments/assets/4e1d7917-fc2a-42d9-9bea-ab54effc50f1" />
 
 <hr>
 
