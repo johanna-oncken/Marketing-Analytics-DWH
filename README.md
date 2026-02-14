@@ -163,7 +163,7 @@ Marketing-Analytics-DWH/
 
 <h5>2.6.1) The Problem</h5>
 
-<p>The original <code>fact_attribution_linear</code> table distributes <b>revenue</b> equally across all touchpoints in a converting user journey. This enables questions like "How much revenue does each channel contribute?" However, it cannot answer efficiency questions like "What is the true ROI per channel?" — because <b>costs remain at the campaign/day level</b> in <code>fact_spend</code>, while revenue is distributed at the touchpoint level in the attribution table.</p>
+<p>The original <code>fact_attribution_linear</code> table distributes <b>revenue</b> equally across all touchpoints in a converting user journey. This enables questions like "How much revenue does each channel contribute?" However, it cannot answer efficiency questions like "What is the true ROI per channel?" — because <b>costs remain at the spend-record level (channel × campaign × day)</b> in <code>fact_spend</code>, while revenue is distributed at the touchpoint level in the attribution table.</p>
 
 <p>Joining these two tables directly would produce distorted ROAS and ROI values, since the granularity mismatch causes costs to be either duplicated or lost depending on the join logic.</p>
 
