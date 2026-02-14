@@ -119,7 +119,7 @@ Marketing-Analytics-DWH/
     <tr><td><code>crm_raw_channels</code></td><td>Channel</td><td>Raw CSV ingestion, all NVARCHAR</td></tr>
     <tr><td><code>crm_raw_purchases</code></td><td>Purchase</td><td>Raw CSV ingestion, all NVARCHAR</td></tr>
     <tr><td><code>crm_raw_user_acquisitions</code></td><td>User</td><td>Raw CSV ingestion, all NVARCHAR</td></tr>
-    <tr><td rowspan="8"><b>Silver</b></td><td><code>mrkt_ad_spend</code></td><td>Channel × Day</td><td>Date parsing, channel standardization, spend cleaning</td></tr>
+    <tr><td rowspan="8"><b>Silver</b></td><td><code>mrkt_ad_spend</code></td><td>Channel × Campaign x Day</td><td>Date parsing, channel standardization, spend cleaning</td></tr>
     <tr><td><code>mrkt_campaigns</code></td><td>Campaign</td><td>Campaign name corrections, objective normalization</td></tr>
     <tr><td><code>mrkt_clicks</code></td><td>Click event</td><td>Timestamp unification, channel standardization</td></tr>
     <tr><td><code>web_sessions</code></td><td>Session</td><td>Type casting, channel standardization</td></tr>
@@ -131,7 +131,7 @@ Marketing-Analytics-DWH/
     <tr><td><code>dim_user</code></td><td>User</td><td>Union of all user IDs across silver tables</td></tr>
     <tr><td><code>dim_campaign</code></td><td>Campaign</td><td>53 campaigns across 5 paid channels</td></tr>
     <tr><td><code>dim_channel</code></td><td>Channel</td><td>9 channels in 2 categories (Paid, Organic)</td></tr>
-    <tr><td rowspan="9"><b>Gold Fact</b></td><td><code>fact_spend</code></td><td>Channel x Campaign × Day</td><td>Ad spend enriched with campaign metadata</td></tr>
+    <tr><td rowspan="9"><b>Gold Fact</b></td><td><code>fact_spend</code></td><td>Spend record (Date × Channel × Campaign)</td><td>Ad spend enriched with campaign metadata</td></tr>
     <tr><td><code>fact_clicks</code></td><td>Click event</td><td>Clicks enriched with acquisition channel (first-touch)</td></tr>
     <tr><td><code>fact_sessions</code></td><td>Session</td><td>Sessions enriched with acquisition channel</td></tr>
     <tr><td><code>fact_touchpoints</code></td><td>Touchpoint event</td><td>All touchpoint interactions enriched with campaign name</td></tr>
