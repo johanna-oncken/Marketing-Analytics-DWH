@@ -201,7 +201,7 @@ GROUP BY channel;</code></pre>
 <p><b>Bronze → Silver (Profiling &amp; Cleaning):</b> Each source table has a dedicated profiling script (<code>profile_clean_*.sql</code>) that documents row counts, duplicate checks, column-level quality assessments with categorized status flags (<code>Valid</code>, <code>Missing</code>, <code>Invalid</code>, <code>Out of range</code>), and cleaned column previews. Findings from profiling directly inform the transformation logic in <code>proc_load_silver</code>.</p>
 
 <pre>
--- Excerpt from <code>profile_clean_mrk_ad_spend.sql</code> running Campaign ID Quality Check:
+-- Excerpt from <code>profile_clean_mrkt_ad_spend.sql</code> running Campaign ID Quality Check:
    <code>
       campaign_id  id_status           occurrences
       -----------  ------------------  -----------
