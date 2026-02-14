@@ -18,7 +18,7 @@ GO
 
 Source: bronze.mrkt_raw_ad_spend
 Purpose: Cleaned and standardized ad spend data.
-Granularity: One row per channel per day.
+Granularity: One row per channel per campaign per day.
 */
 IF OBJECT_ID('silver.mrkt_ad_spend', 'U') IS NOT NULL
     DROP TABLE silver.mrkt_ad_spend;
