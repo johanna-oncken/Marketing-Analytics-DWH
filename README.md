@@ -181,15 +181,14 @@ Marketing-Analytics-DWH/
 
 <p>The cost-enhanced table is restricted to <b>paid marketing channels only</b> (Facebook Ads, Google Display, Google Search, Instagram Ads, TikTok Ads). Organic channels (Direct, Email, Organic Search, Referral) are excluded because they carry no media cost — including them would distort efficiency metrics. For full customer journey analysis including organic channels, the original <code>fact_attribution_linear</code> table remains available.</p>
 
-<h4>2.6.3) Usage</h4>
+<h4>2.6.3) Usage example</h4>
 
-<pre><code>-- Channel-level ROI with attributed costs
+<pre><code>-- Channel-level ROAS with attributed costs
 SELECT
     channel,
     SUM(revenue_share)  AS attributed_revenue,
     SUM(cost_share)     AS attributed_costs,
-    SUM(revenue_share) / NULLIF(SUM(cost_share), 0) AS roas,
-    (SUM(revenue_share) - SUM(cost_share)) / NULLIF(SUM(cost_share), 0) AS roi
+    SUM(revenue_share) / NULLIF(SUM(cost_share), 0) AS roas
 FROM gold.fact_attribution_linear_with_costs
 GROUP BY channel;</code></pre>
 
