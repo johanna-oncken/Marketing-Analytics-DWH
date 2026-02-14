@@ -1,7 +1,7 @@
 # Marketing-Analytics-DWH
 <h3>End-to-end Data Warehouse (Bronze/Silver/Gold) mit Multi-Touch Attribution und Tableau Dashboards</h3>
 <p>
-   📍 Über dieses Projekt: Dieses Demo-Projekt dient der <strong>Präsentation von Fachkenntnissen</strong> und verwendet <strong>synthetisch generierte Daten</strong>.<br>
+   📍 Über dieses Projekt: Dieses Demo-Projekt dient der <strong>Präsentation von Fähigkeiten</strong> und verwendet <strong>synthetisch generierte Daten</strong>.<br>
    👉 Klicke auf die Bilder, um die interaktiven Dashboards auf <strong>Tableau Public</strong> zu erkunden.
 </p>
 <p align="center">
