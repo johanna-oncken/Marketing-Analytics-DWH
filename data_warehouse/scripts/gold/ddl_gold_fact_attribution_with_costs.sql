@@ -51,8 +51,12 @@ Usage Example:
     FROM gold.fact_attribution_linear_with_costs
     GROUP BY channel;
 
-Author: [Your Name]
-Created: 2025-01-21
+Limitations:
+  Touchpoints with NULL campaign_id receive cost_share = 0 because 
+  NULL = NULL evaluates to FALSE in SQL joins. A channel-level fallback 
+  for unattributed spend could improve cost coverage but was not 
+  implemented to maintain attribution precision.
+
 ===============================================================================
 */
 
