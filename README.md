@@ -111,7 +111,7 @@ Marketing-Analytics-DWH/
     </tr>
   </thead>
   <tbody>
-    <tr><td rowspan="8"><b>Bronze</b></td><td><code>mrkt_raw_ad_spend</code></td><td>Channel × Day</td><td>Raw CSV ingestion, all NVARCHAR</td></tr>
+    <tr><td rowspan="8"><b>Bronze</b></td><td><code>mrkt_raw_ad_spend</code></td><td>Channel × Campaign x Day</td><td>Raw CSV ingestion, all NVARCHAR</td></tr>
     <tr><td><code>mrkt_raw_campaigns</code></td><td>Campaign</td><td>Raw CSV ingestion, all NVARCHAR</td></tr>
     <tr><td><code>mrkt_raw_clicks</code></td><td>Click event</td><td>Raw CSV ingestion, all NVARCHAR</td></tr>
     <tr><td><code>web_raw_sessions</code></td><td>Session</td><td>Raw CSV ingestion, all NVARCHAR</td></tr>
