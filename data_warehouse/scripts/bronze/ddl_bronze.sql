@@ -17,7 +17,7 @@ GO
 
 Source: marketing_platform/raw_ad_spend.csv
 Purpose: Stores raw ad spend from marketing channels.
-Granularity: One row per channel per day.
+Granularity: One row per channel per campaign per day.
 */
 IF OBJECT_ID('bronze.mrkt_raw_ad_spend', 'U') IS NOT NULL
     DROP TABLE bronze.mrkt_raw_ad_spend;
