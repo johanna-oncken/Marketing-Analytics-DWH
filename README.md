@@ -217,7 +217,29 @@ Based on 18 KPI dimensions across revenue, cost, engagement, conversion, lifetim
 
 ---
 
-### 1.5) Limitations & Assumptions
+### 1.5) Strategic Recommendations
+
+Based on the consolidated channel profiles and funnel analysis, the following budget and operational actions would be recommended to a marketing team facing this data in a real scenario.
+
+**Budget Reallocation:**
+
+Shift budget from Facebook Ads toward Instagram Ads and Google Display. Facebook is the weakest paid channel across all efficiency dimensions (last in LTV:CAC, CPM-to-CVR, and overall LTV), while Instagram delivers consistent top-2 performance across all 18 KPIs and Google Display produces the highest return per acquisition euro. The expected impact: higher LTV:CAC at comparable or lower total spend, particularly when Instagram's full-funnel capability (acquiring _and_ closing) replaces Facebook's narrower closing-only contribution.
+
+**Counter Audience Saturation:**
+
+The 90%+ ROAS decline from January to April signals urgent creative and targeting fatigue. Recommended interventions include creative refresh (new ad formats, messaging, and visuals — especially for Google Display, which shows three consecutive months of declining engagement), audience expansion through new lookalike segments and geographic targeting, and weekly performance reviews with defined ROAS thresholds for campaign pause/scale decisions. The data shows several campaigns falling below 1.0x ROAS in April (Summer_Launch #3 at 0.80x, Flash_Sale_Weekend #44 at 0.79x) — in a live environment, these would be immediate candidates for budget freeze with root-cause analysis.
+
+**Leverage the Channel Ecosystem:**
+
+The analysis reveals that channels work together, not in isolation. TikTok generates the most new customers at the top of the funnel, but these users convert through Instagram, Email, and Google Search further down the journey. Cutting TikTok spend based on last-touch ROAS alone would starve the funnel of new users. Instead, evaluate TikTok on acquisition volume and assisted conversions, while measuring Instagram and Email on closing efficiency and retention impact.
+
+**Invest in Email and Retention:**
+
+Email is the most efficient closer (lowest path length at last-touch) and the only channel showing a Month-3 LTV rebound in cohort analysis. With 81% of customers being one-time buyers, the largest single growth lever is converting existing customers into repeat purchasers. Investment in email personalization, post-purchase sequences, and re-engagement campaigns has the highest marginal ROI in the current mix — it costs no media spend and targets users who have already demonstrated purchase intent.
+
+---
+
+### 1.6) Limitations & Assumptions
 
 **Synthetic data:** All findings are based on synthetically generated data with intentional quality issues for ETL demonstration. Channel engagement volumes are unrealistically uniform (clicks, impressions, and touchpoints are near-identical across channels), limiting the differentiation potential that real data would provide.
 
@@ -233,7 +255,7 @@ Based on 18 KPI dimensions across revenue, cost, engagement, conversion, lifetim
 
 ---
 
-### 1.6) Tactical Drill-Down (Dashboards)
+### 1.7) Tactical Drill-Down (Dashboards)
 
 While strategic conclusions are drawn at the channel level in this README, campaign-level KPIs are available in the interactive Tableau dashboards for tactical optimization and drill-down.
 
@@ -257,6 +279,22 @@ The dashboards enable:
 - **Trend monitoring** — monthly performance tracking to identify saturation and intervention signals
 
 Campaign-level analysis is positioned as a tactical tool, not a parallel narrative. Where individual campaigns illustrate strategic patterns (e.g., Winter_Sale_2024 #21 as the top LTV:CAC performer, or the divergent trajectories of Flash_Sale_Weekend #44 vs. #17), they are referenced in the analysis above as supporting evidence.
+
+---
+
+### 1.8) Next Steps
+
+If this were a production environment with real data and a longer time horizon, these are the analytical extensions I would pursue:
+
+**Advanced Attribution Models:** The linear model distributes credit equally, which is a deliberate simplification. Implementing time-decay attribution (weighting recent touchpoints higher) and position-based attribution (emphasizing first and last touch) would provide additional perspectives. With sufficient conversion volume, a data-driven attribution model using logistic regression or Shapley values could learn actual touchpoint contribution weights from observed behavior rather than imposing them by assumption.
+
+**Incrementality Testing:** Attribution models — including multi-touch — measure _correlation_ between touchpoints and conversions, not causation. To determine whether a channel truly _causes_ additional conversions (rather than capturing users who would have converted anyway), I would design holdout experiments: suppress ads for a randomized user segment and compare conversion rates against the exposed group. This is particularly relevant for Google Search and Referral, where high last-touch ROAS may partly reflect existing purchase intent rather than genuine channel impact.
+
+**Deeper Retention Analysis:** The current 120-day LTV window captures early repeat behavior, but true customer lifetime value requires 12–24 months of data. With a longer time horizon, I would build RFM segmentation (Recency, Frequency, Monetary) to identify high-value customer segments, model churn probability using survival analysis, and calculate predicted LTV using probabilistic models (BG/NBD for purchase frequency, Gamma-Gamma for monetary value). The 81% one-time buyer rate identified in this analysis would be the primary target metric for retention interventions.
+
+**Real-Time Monitoring Pipeline:** The current warehouse uses a full-load, truncate-and-insert pattern suitable for batch analysis. In production, I would add incremental loading (CDC or timestamp-based delta loads), automated data quality checks triggered on each load, and an alerting layer that flags anomalies — such as ROAS dropping below a defined threshold or a campaign's CAC exceeding its historical average by more than two standard deviations. The goal: detecting the January → April saturation pattern _in February_, not after four months of data collection.
+
+**Cross-Device and Offline Attribution:** The current model assumes one device per user and purely online touchpoints. Real customer journeys cross devices (mobile discovery → desktop purchase) and include offline interactions (store visits, phone calls). Integrating cross-device identity resolution and offline conversion tracking would close the 25% attribution gap identified in this analysis and provide a more complete picture of channel contribution.
 
 
 <hr>
