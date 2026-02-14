@@ -69,7 +69,7 @@ The Gold Layer is the business-level data representation, structured to support 
 
 ### 5. **gold.fact_spend**
 - **Purpose:** Tracks daily marketing spend per campaign and channel to support ROI, budget, and attribution analysis.
-- **Grain:**   One row per daily spend record 
+- **Grain:**   One row per daily spend record (date × channel × campaign) 
 - **Columns:**
 
 | Column Name         | Data Type     | Description                                                                                   |
