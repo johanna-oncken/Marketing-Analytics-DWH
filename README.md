@@ -53,7 +53,7 @@ Analysis of multi-touch marketing data across 9 channels, 53 campaigns, ~8,500 u
 
 **3. Google Search justifies its premium cost.** Highest absolute LTV (€53.2), strongest revenue ranking across attribution models (twice #1, twice #2), and best lead quality in the January cohort. Its LTV:CAC of 3.2 lies close behind Google Display (3.4) and Instagram (3.3) — but at higher absolute revenue per user. Google Search is the most expensive channel to acquire through, but it delivers the most valuable customers.
 
-**4. TikTok Ads drives volume, not value.** The only channel with growing new customer counts in April (+3% vs. January while all others decline). But lowest absolute LTV (€41.7) and weakest closing efficiency. TikTok fills the top of the funnel but needs closing partners downstream.
+**4. TikTok Ads drives new user acquisition, not lifetime value.** Lowest absolute LTV (€41.70) but fastest closing paths (1.76 avg touchpoints) and the lowest BOFU conversion rate (2.03% in April). TikTok converts quickly when it converts — but it converts rarely, and the users it brings are the least valuable long-term.
 
 **5. Facebook Ads is the consistent underperformer** — last or near-last in LTV:CAC, CPM-to-CVR efficiency, and absolute LTV. Its only justification is moderate closing efficiency at the end of the funnel.
 
