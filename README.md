@@ -36,7 +36,9 @@ Marketing-Analytics-DWH/
     │                         0901-0911 (performance analysis),
     │                         10 (path length), 11 (channel efficiency)
     │
-    └────────────── results/ · performance_analysis/ · path_length_and_channel_efficiency/
+    ├────────────── results/ · performance_analysis/ · path_length_and_channel_efficiency/
+    │
+    └────────────── dashboard_views/
 </pre>
 
 <h2>1) Marketing Analysis</h2>
