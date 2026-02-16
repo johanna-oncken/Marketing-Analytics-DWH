@@ -104,7 +104,7 @@ The CPM-to-CVR Efficiency Ratio combines reach cost with conversion quality, pro
 
 **Goal:** Turn attention into intent and conversions through the full customer journey.
 
-**Key finding:** The average converting user interacts with 5 touchpoints before purchasing — and repeat buyers need roughly half the touchpoints of first-time buyers, validating the trust effect. The linear attribution model distributes €147,679 in revenue across 13,814 attributed touchpoints, with 75% attribution coverage (2,160 of 2,890 purchasers matched to touchpoint paths).
+**Key finding:** The average converting user interacts with 5 touchpoints before purchasing — and repeat buyers need roughly 30% fewer touchpoints than first-time buyers, validating the trust effect. The linear attribution model distributes €147,679 in revenue across 13,814 attributed touchpoints, with 75% attribution coverage (2,160 of 2,890 purchasers matched to touchpoint paths).
 
 **Overall Linear ROAS:** 2.12x (€147,679 revenue / €69,607 attributed cost)
 
