@@ -50,7 +50,7 @@ Analysis of multi-touch marketing data across 9 channels, 53 campaigns, ~8,500 u
 
 **2. Instagram Ads is the most consistent performer across all metrics.** Lowest CPC (€0.89), lowest CPM, best CPM-to-CVR efficiency ratio, strongest April BOFU closing rate (+28.7% MoM), and fastest repeat-purchase conversion paths. Instagram is the only channel that both acquires and closes effectively.
 
-**3. Google Search justifies its premium cost.** Highest absolute LTV (€53.97), strongest revenue ranking across attribution models (twice #1, twice #2), and best lead quality in the January cohort. Its LTV:CAC of 3.2 lies close behind Google Display (3.4) and Instagram (3.3) — but at higher absolute revenue per user. Google Search is the most expensive channel to acquire through, but it delivers the most valuable customers.
+**3. Google Search justifies its premium cost.** Highest absolute LTV (€53.2), strongest revenue ranking across attribution models (twice #1, twice #2), and best lead quality in the January cohort. Its LTV:CAC of 3.2 lies close behind Google Display (3.4) and Instagram (3.3) — but at higher absolute revenue per user. Google Search is the most expensive channel to acquire through, but it delivers the most valuable customers.
 
 **4. TikTok Ads drives volume, not value.** The only channel with growing new customer counts in April (+3% vs. January while all others decline). But lowest absolute LTV (€42.03) and weakest closing efficiency. TikTok fills the top of the funnel but needs closing partners downstream.
 
