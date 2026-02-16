@@ -96,7 +96,7 @@ The CPM-to-CVR Efficiency Ratio combines reach cost with conversion quality, pro
 
 **TikTok's acquisition signal:** TikTok is the only paid channel that increased its new customer count in April (102 vs. 99 in January). All other channels lost customers, with Google Display declining the most (94 → 69, −26.6%). TikTok's path length analysis confirms this — it produces the fastest first-purchase conversions (8.36 touchpoints in April vs. 9.23 for Instagram), indicating impulsive, quick-converting audiences at the top of the funnel.
 
-> _Note: CTR values exceed 100% due to synthetic data (clicks > impressions) and should be read as click intensity. Relative channel comparisons remain valid, though differentiation is minimal (3.5% total spread). Monthly CAC/CPC/CPM improvement trends are artifacts of declining synthetic spend data with stable engagement volumes; cross-channel comparisons are not affected._
+> _Note: CTR values exceed 100% due to synthetic data (clicks > impressions) and should be read as click intensity. Relative channel comparisons remain valid, though differentiation is minimal (3.5% total spread). Monthly CAC/CPC/CPM improvement trends are artifacts of declining synthetic spend data while click and impression volumes remain stable; cross-channel comparisons are not affected._
 
 ---
 
