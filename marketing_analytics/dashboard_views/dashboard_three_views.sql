@@ -4,18 +4,11 @@ Dashboard 3: Customer Journey Analysis — CSV-Export Views (German Locale)
 ===============================================================================
 Purpose:
     - Tableau-ready views for CSV export with German decimal formatting.
-    - Covers all 6 visuals in Dashboard 3.
 
 Dependencies:
     - gold.fact_conversion_paths (from Script 10)
     - gold.channel_scorecard (from Script 11)
 
-Views Created:
-    1) gold.dashboard_journey_kpi — KPI row (Hero + 3 cards)
-    2) gold.dashboard_path_length_distribution — Histogram: touchpoints to conversion
-    3) gold.dashboard_first_vs_repeat — Bar Chart: avg touchpoints comparison
-    4) gold.dashboard_engagement_conversion — Table: Scorecard Query 2
-    5) gold.dashboard_bofu_scale — Scatter + Table: Scorecard Query 4
 ===============================================================================
 */
 USE marketing_dw;
@@ -26,12 +19,6 @@ GO
 ===============================================================================
 1) KPI Row: Repeat Buyer Efficiency, Avg Touchpoints, Total Conversions
 ===============================================================================
-Single row with:
-    - avg_touchpoints_first: Avg path length for first-time buyers
-    - avg_touchpoints_repeat: Avg path length for repeat buyers
-    - delta_pct: % difference (negative = repeat is more efficient)
-    - total_conversions: Total purchase count
-*/
 DROP VIEW IF EXISTS gold.dashboard_journey_kpi;
 GO
 
