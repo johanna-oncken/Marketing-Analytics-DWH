@@ -127,7 +127,7 @@ The three attribution perspectives complement each other. Linear ROAS is the mos
 
 **Path length and the trust effect:** Repeat purchases consistently require ~30% fewer touchpoints than first purchases across all months (e.g., April: 4.31 avg touchpoints for 250 repeat purchases vs. 8.90 for 555 first purchases). The share of repeat purchases grows from 4.4% in January to 31.1% in April, building a stable repeat-purchase engine even as total purchase volume declines (908 → 805).
 
-> _Note: Monthly MOFU CVR and AOV trends show uniform growth/decline curves across all channels — this is an attribution artifact where `fact_attribution_linear` progressively assigns more touchpoint-channel combinations per purchase over time. As touchpoints accumulate, CVR rises mechanically (more attributed conversions per click) and AOV falls mechanically (same revenue spread across more attributed orders). These trends do not reflect genuine funnel improvement or declining order values. Within-month comparisons remain valid._
+> _Note: Note: Monthly MOFU CVR and AOV trends show uniform growth/decline curves across all channels. This is a synthetic data artifact — the generated data produces near-identical engagement volumes across channels, resulting in parallel trend lines that would diverge with real-world data. Within-month comparisons remain valid._
 
 ---
 
