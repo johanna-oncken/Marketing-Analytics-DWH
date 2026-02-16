@@ -94,7 +94,7 @@ The analysis is structured around three funnel stages, each evaluated using a de
 
 The CPM-to-CVR Efficiency Ratio combines reach cost with conversion quality, providing a composite metric that is not affected by the monthly spend distribution artifact. Instagram wins both dimensions — cheapest reach and strong conversion quality — while Facebook pays more for reach with weaker follow-through.
 
-**TikTok's acquisition signal:** TikTok is the only paid channel that increased its new customer count in April (102 vs. 99 in January). All other channels lost customers, with Google Display declining the most (94 → 69, −26.6%). TikTok's path length analysis confirms this — it produces the fastest first-purchase conversions (8.36 touchpoints in April vs. 9.23 for Instagram), indicating impulsive, quick-converting audiences at the top of the funnel.
+**TikTok's acquisition signal:** TikTok-acquired users show the shortest first-purchase paths across all months (8.36 avg touchpoints in April vs. 9.23 for Instagram), indicating audiences with high immediate purchase intent. However, this speed comes at a cost — TikTok's LTV is the lowest among paid channels (€41.70), suggesting that fast converters are not necessarily valuable long-term customers.
 
 > _Note: CTR values exceed 100% due to synthetic data (clicks > impressions) and should be read as click intensity. Relative channel comparisons remain valid, though differentiation is minimal (3.5% total spread). Monthly CAC/CPC/CPM trends reflect declining synthetic spend, not real efficiency gains. Cross-channel comparisons remain valid._
 
