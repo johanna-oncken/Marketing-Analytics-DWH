@@ -123,7 +123,7 @@ The CPM-to-CVR Efficiency Ratio combines reach cost with conversion quality, pro
 
 The three attribution perspectives complement each other: MOFU-ROAS values are the most conservative because costs are distributed across all contributing touchpoints. A MOFU-ROAS of 2.0 means that every euro invested across the entire customer journey generates €2 in revenue — that is profitable. BOFU-ROAS values appear higher because last-touch attribution concentrates credit on a single touchpoint, while TOFU (first-touch) reflects acquisition efficiency.
 
-**Path length and the trust effect:** Repeat purchases consistently require ~50% fewer touchpoints than first purchases across all months (e.g., April: 4.31 vs. 8.90 touchpoints). The share of repeat purchases grows from 4.4% in January to 31.1% in April, building a stable repeat-purchase engine even as total purchase volume declines (908 → 805).
+**Path length and the trust effect:** Repeat purchases consistently require ~30% fewer touchpoints than first purchases across all months (e.g., April: 4.31 times 250 vs. 8.90 times 555 touchpoints). The share of repeat purchases grows from 4.4% in January to 31.1% in April, building a stable repeat-purchase engine even as total purchase volume declines (908 → 805).
 
 **Channel cooperation — who initiates vs. who closes:**
 
