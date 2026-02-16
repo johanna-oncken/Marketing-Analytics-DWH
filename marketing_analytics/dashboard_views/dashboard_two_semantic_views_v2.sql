@@ -13,7 +13,7 @@ Dependencies:
     - gold.fact_spend
 
 Views Created:
-    1) gold.dashboard_ltv_channel_summary — Scatter Plot & Efficiency Table
+    1) gold.dashboard_ltv_channel_summary — Efficiency Table
     2) gold.dashboard_ltv_cohort_heatmap — Cohort Heatmap (based on fact_ltv_cohort)
 ===============================================================================
 */
@@ -23,7 +23,7 @@ GO
 
 /*
 ===============================================================================
-1) Channel Summary: Scatter Plot & Efficiency Table
+1) Channel Summary: Efficiency Table
 ===============================================================================
 One row per acquisition channel.
 - Scatter Plot: X=CAC, Y=LTV, Color=Ratio Band, Size=Users
@@ -109,10 +109,6 @@ GO
 ===============================================================================
 2) Cohort Heatmap (based on gold.fact_ltv_cohort)
 ===============================================================================
-Re-exposes fact_ltv_cohort with German decimal formatting for CSV export.
-- Rows = acquisition_month (Cohort)
-- Columns = month_number (Months Since Acquisition)
-- Values = monthly_revenue, cumulative_ltv, purchase_rate_pct, etc.
 */
 DROP VIEW IF EXISTS gold.dashboard_ltv_cohort_heatmap;
 GO
