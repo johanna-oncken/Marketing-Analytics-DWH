@@ -5,6 +5,11 @@ Dashboard 2: LTV & Cohort Analysis — Semantic Views
 Purpose:
     - To provide Tableau-ready data sources for Dashboard 2.
 
+Dependencies:
+    - gold.fact_user_acquisition (from 0911 script, Query 1)
+    - gold.fact_ltv_cohort_channel (from 0911 script, Query 4)
+    - gold.fact_purchases
+    - gold.fact_spend
 
 ===============================================================================
 */
