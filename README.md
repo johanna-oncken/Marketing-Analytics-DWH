@@ -102,30 +102,32 @@ The CPM-to-CVR Efficiency Ratio combines reach cost with conversion quality, pro
 
 #### 1.2.2) Intent & Conversion Efficiency (MOFU)
 
-**Goal:** Turn attention into intent and conversions through the full customer journey.
+**Goal:** Evaluate the full customer journey — how efficiently do touchpoints convert attention into revenue?
 
-**Key finding:** The average converting user interacts with 5 touchpoints before purchasing — and repeat buyers need roughly 30% fewer touchpoints than first-time buyers, validating the trust effect.
+**Key finding:** The average converting user interacts with 5 touchpoints before purchasing at an average order value of €153.30 — and repeat buyers need roughly 30% fewer touchpoints than first-time buyers, validating the trust effect. This analysis relies on `fact_attribution_linear_with_costs`, which distributes both revenue *and* costs equally across all touchpoints in a converting journey — a table I built after discovering that the standard linear model left costs unattributed at the funnel-stage level (see [Section 1.3](#13-attribution-insights)).
 
 **Overall Linear ROAS:** 2.12x (€147,679 revenue / €69,607 attributed cost)
 
+**Attribution model comparison by channel (January–April 2024):**
+
 <table>
   <thead>
-    <tr><th>Channel</th><th>TOFU ROAS</th><th>MOFU ROAS</th><th>BOFU ROAS</th><th>Profile</th></tr>
+    <tr><th>Channel</th><th>First-Touch ROAS</th><th>Linear ROAS</th><th>Last-Touch ROAS</th><th>Profile</th></tr>
   </thead>
   <tbody>
     <tr><td>Google Search</td><td>7.31</td><td>6.19</td><td>9.21</td><td>Strong across all stages</td></tr>
-    <tr><td>TikTok Ads</td><td>5.72</td><td>4.45</td><td>5.69</td><td>Balanced TOFU & BOFU</td></tr>
-    <tr><td>Facebook Ads</td><td>4.62</td><td>3.62</td><td>5.64</td><td>BOFU > TOFU > MOFU</td></tr>
+    <tr><td>TikTok Ads</td><td>5.72</td><td>4.45</td><td>5.69</td><td>Balanced acquisition & closing</td></tr>
+    <tr><td>Facebook Ads</td><td>4.62</td><td>3.62</td><td>5.64</td><td>Closing > acquisition</td></tr>
     <tr><td>Instagram Ads</td><td>2.44</td><td>2.54</td><td>3.27</td><td>Moderate, consistent</td></tr>
-    <tr><td>Google Display</td><td>3.28</td><td>3.28</td><td>4.08</td><td>TOFU = MOFU, mild BOFU lift</td></tr>
+    <tr><td>Google Display</td><td>3.28</td><td>3.28</td><td>4.08</td><td>Acquisition = journey, mild closing lift</td></tr>
   </tbody>
 </table>
 
-The three attribution perspectives complement each other: MOFU-ROAS values are the most conservative because costs are distributed across all contributing touchpoints. A MOFU-ROAS of 2.0 means that every euro invested across the entire customer journey generates €2 in revenue — that is profitable. BOFU-ROAS values appear higher because last-touch attribution concentrates credit on a single touchpoint, while TOFU (first-touch) reflects acquisition efficiency.
+The three attribution perspectives complement each other. Linear ROAS is the most conservative estimate because costs are distributed across all contributing touchpoints — a Linear ROAS of 2.0 means every euro invested across the entire journey generates €2 in revenue. First-Touch and Last-Touch ROAS appear higher because they concentrate credit on a single touchpoint. The gap between them reveals channel roles: Google Search shows a large First-to-Last-Touch gap (7.31 → 9.21), meaning it captures even more value as a closer than as an initiator. Instagram shows the smallest gap (2.44 → 3.27), confirming its consistent full-funnel profile.
 
-**Path length and the trust effect:** Repeat purchases consistently require ~30% fewer touchpoints than first purchases across all months (e.g., April: 4.31 times 250 vs. 8.90 times 555 touchpoints). The share of repeat purchases grows from 4.4% in January to 31.1% in April, building a stable repeat-purchase engine even as total purchase volume declines (908 → 805).
+**Path length and the trust effect:** Repeat purchases consistently require ~30% fewer touchpoints than first purchases across all months (e.g., April: 4.31 avg touchpoints for 250 repeat purchases vs. 8.90 for 555 first purchases). The share of repeat purchases grows from 4.4% in January to 31.1% in April, building a stable repeat-purchase engine even as total purchase volume declines (908 → 805).
 
-> _Note: Monthly MOFU CVR trends show uniform ~5x growth curves across all channels — this is an attribution artifact where the `fact_attribution_linear` table progressively assigns more touchpoint-channel combinations per purchase over time, not a genuine funnel improvement. Within-month comparisons remain valid. The overall MOFU-ROAS of 0.70 when including organic channels reflects a limitation of the synthetic test data (organic touchpoints receive revenue share without corresponding costs); in production data, paid touchpoints would generate 60–80% of attributed revenue, yielding ROAS values of 1.5–3.0._
+> _Note: Monthly MOFU CVR and AOV trends show uniform growth/decline curves across all channels — this is an attribution artifact where `fact_attribution_linear` progressively assigns more touchpoint-channel combinations per purchase over time. As touchpoints accumulate, CVR rises mechanically (more attributed conversions per click) and AOV falls mechanically (same revenue spread across more attributed orders). These trends do not reflect genuine funnel improvement or declining order values. Within-month comparisons remain valid._
 
 ---
 
