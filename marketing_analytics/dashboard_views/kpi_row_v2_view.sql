@@ -5,15 +5,6 @@ KPI ROW - MONTHLY TOTALS FOR DASHBOARD HEADER
 Purpose: Aggregated monthly KPIs without Channel/Campaign breakdown
          For the top KPI row in Dashboard 1
 
-KPIs: Revenue, Spend, ROAS, CAC, CVR (each with MoM)
-
-Source Views:
-    - gold.revenue (total revenue)
-    - gold.fact_spend (actual spend by spend_date)
-    - gold.roas (for ROAS metric only, not for spend)
-    - gold.cac (uses actual spend internally)
-    - gold.cvr
-
 Note on Spend:
     - KPI Row shows ACTUAL SPEND (when money was spent) from gold.fact_spend
     - gold.roas shows ATTRIBUTED SPEND (spend linked to conversions) - different concept!
@@ -130,7 +121,5 @@ FROM gold.cvr
 ;
 GO
 
--- =============================================================================
--- TEST QUERY
--- =============================================================================
+--------------------------------------------------------------------------------
 SELECT * FROM gold.kpi_row ORDER BY kpi_name, month_date;
