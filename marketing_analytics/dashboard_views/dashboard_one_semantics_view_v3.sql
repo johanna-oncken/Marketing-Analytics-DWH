@@ -6,7 +6,8 @@ Purpose: Long-format unified view for Tableau Dashboard 1 (Budget Allocation)
 
 KPI Structure:
     TOFU/MOFU/BOFU: Revenue, ROAS, Spend, CVR, MoM_Revenue
-    ALL:            CAC, CPC, CTR
+    ALL:            CAC, CPC, CTR, 
+                    CPA (** new **)
 
 German decimal format: Comma as separator (for Tableau Public DE locale)
 ================================================================================
