@@ -125,10 +125,6 @@ The three attribution perspectives complement each other: MOFU-ROAS values are t
 
 **Path length and the trust effect:** Repeat purchases consistently require ~30% fewer touchpoints than first purchases across all months (e.g., April: 4.31 times 250 vs. 8.90 times 555 touchpoints). The share of repeat purchases grows from 4.4% in January to 31.1% in April, building a stable repeat-purchase engine even as total purchase volume declines (908 → 805).
 
-**Channel cooperation — who initiates vs. who closes:**
-
-Email is the most efficient closer across both first and repeat purchases (lowest path length at last-touch position). TikTok shows a paradox: worst first-purchase closer (9.52 touchpoints) but second-best repeat-purchase closer (3.50) — once converted, TikTok users respond quickly. Instagram displays the inverse: slowest first-purchase paths (9.23) but fastest repeat conversion (3.67), confirming its loyalty-building role.
-
 > _Note: Monthly MOFU CVR trends show uniform ~5x growth curves across all channels — this is an attribution artifact where the `fact_attribution_linear` table progressively assigns more touchpoint-channel combinations per purchase over time, not a genuine funnel improvement. Within-month comparisons remain valid. The overall MOFU-ROAS of 0.70 when including organic channels reflects a limitation of the synthetic test data (organic touchpoints receive revenue share without corresponding costs); in production data, paid touchpoints would generate 60–80% of attributed revenue, yielding ROAS values of 1.5–3.0._
 
 ---
