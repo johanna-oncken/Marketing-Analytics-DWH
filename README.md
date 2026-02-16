@@ -55,7 +55,7 @@ Analysis of multi-touch marketing data across 9 channels, 53 campaigns, ~8,500 u
 
 **4. TikTok Ads drives new user acquisition, not lifetime value.** Lowest absolute LTV (€41.70) but fastest closing paths (1.76 avg touchpoints) and the lowest BOFU conversion rate (2.03% in April). TikTok converts quickly when it converts — but it converts rarely, and the users it brings are the least valuable long-term.
 
-**5. Facebook Ads is the consistent underperformer** — last or near-last in LTV:CAC, CPM-to-CVR efficiency, and absolute LTV. Its only justification is moderate closing efficiency at the end of the funnel.
+**5. Facebook Ads is the consistent underperformer.** Last or near-last in revenue ranking across all attribution models (3x last, 1x second-to-last), worst lead quality, and worst closing efficiency among paid channels. Its CAC of €15 is the second-highest, but unlike Google Search (€15 CAC, €53.20 LTV), Facebook does not compensate with higher lifetime value (€44.20). Facebook costs nearly as much as the premium channel but delivers the weakest revenue performance.
 
 > _Note: This analysis uses synthetically generated data. Absolute values serve as a demonstration framework; relative comparisons between channels and campaigns are analytically valid. Specific data limitations are noted inline throughout the analysis._
 
