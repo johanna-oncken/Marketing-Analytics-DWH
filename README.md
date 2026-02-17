@@ -115,18 +115,7 @@ This analysis relies on `fact_attribution_linear_with_costs`, which distributes 
 
 <p align="center"><img src="https://github.com/user-attachments/assets/b67ddb37-44e6-4ae2-80a3-0a16bac1cb09" alt="MOFU ROAS by Channel" width="700"></p>
 
-<table>
-  <thead>
-    <tr><th>Channel</th><th>Jan</th><th>Feb</th><th>Mar</th><th>Apr</th><th>120-Day</th></tr>
-  </thead>
-  <tbody>
-    <tr><td>Google Display</td><td>4.46x</td><td>2.66x</td><td>1.91x</td><td>1.20x</td><td>2.20x</td></tr>
-    <tr><td>TikTok Ads</td><td>4.74x</td><td>2.81x</td><td>1.67x</td><td>1.10x</td><td>2.11x</td></tr>
-    <tr><td>Facebook Ads</td><td>4.33x</td><td>2.72x</td><td>1.74x</td><td>1.28x</td><td>2.15x</td></tr>
-    <tr><td>Google Search</td><td>4.48x</td><td>2.86x</td><td>1.56x</td><td>1.13x</td><td>2.09x</td></tr>
-    <tr><td>Instagram Ads</td><td>4.27x</td><td>2.33x</td><td>1.68x</td><td>1.21x</td><td>2.07x</td></tr>
-  </tbody>
-</table>
+**120-Day MOFU ROAS values (desc.):** Google Display 2.20x, Facebook Ads 2.15x, TikTok Ads 2.11x, Google Search 2.09x, Instagram Ads 2.07x
 
 March is the tipping point: Google Search (1.56x) and TikTok Ads (1.67x) already cross below the 1.5x threshold, while the remaining channels follow in April. Facebook Ads shows the most resilient April performance (1.28x) — still unprofitable, but the slowest to deteriorate. The 120-day aggregates (2.07–2.20x) remain above threshold because strong January and February performance masks the April collapse.
 
