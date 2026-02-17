@@ -272,8 +272,6 @@ Based on the analysis results, the data suggests the following actions for a mar
 
 **Attribution coverage:** 75% of purchases are matched to touchpoint paths. 25% of purchases have no attributable touchpoints (likely direct purchases or touchpoints outside the attribution window).
 
-**CPM limitation:** CPM values are unrealistically high (~€2,519 vs. typical €5–30) due to low synthetic impression volumes. Absolute CPM values are not benchmarkable; the CPM-to-CVR ratio aggregates across months and is not affected.
-
 **Linear attribution model:** Equal-weight distribution is a simplification. Time-decay or data-driven models could reveal additional insights. The linear model was chosen for transparency and interpretability, and the three complementary perspectives (first-touch, linear, last-touch) mitigate single-model bias.
 
 ---
@@ -307,7 +305,7 @@ Campaign-level analysis is positioned as a tactical tool, not a parallel narrati
 
 ---
 
-### 1.8) What I Would Do Next
+### 1.7) What I Would Do Next
 
 Building this project taught me where the analytical boundaries are — and where the natural extensions would be. These are the directions I would explore with real production data and a longer time horizon.
 
