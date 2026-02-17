@@ -170,16 +170,25 @@ BOFU ROAS values are higher than MOFU because last-touch attribution concentrate
 **120-Day LTV by Channel (All Cohorts, Dashboard Aggregates):**
 
 <table>
-  <thead>
-    <tr><th>Channel</th><th>LTV (120d)</th><th>CAC</th><th>LTV:CAC</th><th>Ratio Band</th></tr>
-  </thead>
-  <tbody>
-    <tr><td>Google Display</td><td>€48.95</td><td>€14.26</td><td>3.43</td><td>Healthy (3–5x)</td></tr>
-    <tr><td>Instagram Ads</td><td>€43.55</td><td>€13.36</td><td>3.26</td><td>Healthy (3–5x)</td></tr>
-    <tr><td>Google Search</td><td>€53.19</td><td>€16.48</td><td>3.23</td><td>Healthy (3–5x)</td></tr>
-    <tr><td>TikTok Ads</td><td>€41.66</td><td>€14.02</td><td>2.97</td><td>Monitor (2–3x)</td></tr>
-    <tr><td>Facebook Ads</td><td>€44.24</td><td>€14.97</td><td>2.95</td><td>Monitor (2–3x)</td></tr>
-  </tbody>
+  <tr>
+    <td>
+      <table>
+        <thead>
+          <tr><th>Channel</th><th>LTV (120d)</th><th>CAC</th><th>LTV:CAC</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Google Display</td><td>€48.95</td><td>€14.26</td><td>3.43</td></tr>
+          <tr><td>Instagram Ads</td><td>€43.55</td><td>€13.36</td><td>3.26</td></tr>
+          <tr><td>Google Search</td><td>€53.19</td><td>€16.48</td><td>3.23</td></tr>
+          <tr><td>TikTok Ads</td><td>€41.66</td><td>€14.02</td><td>2.97</td></tr>
+          <tr><td>Facebook Ads</td><td>€44.24</td><td>€14.97</td><td>2.95</td></tr>
+        </tbody>
+      </table>
+    </td>
+    <td>
+      <img src="https://github.com/user-attachments/assets/9cc49b57-6129-411f-9c23-ba1d9bead2c0" alt="LTV vs. CAC by Channel" width="450">
+    </td>
+  </tr>
 </table>
 
 Google Display, Instagram Ads, and Google Search all operate in the healthy 3–5x band. Google Search justifies the highest CAC (€16.48) with the highest absolute LTV (€53.19) — it acquires the most valuable customers. Google Display achieves the best ratio (3.43) through the lowest CAC (€14.26) rather than the highest revenue per user. TikTok and Facebook sit in the Monitor band: not unprofitable, but their per-user value does not justify aggressive scaling.
