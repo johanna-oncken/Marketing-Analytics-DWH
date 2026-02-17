@@ -123,6 +123,19 @@ The CPM-to-CVR Efficiency Ratio combines reach cost with conversion quality, pro
   </tbody>
 </table>
 
+<table>
+  <thead>
+    <tr><th>Channel</th><th>First-Touch ROAS</th><th>Linear ROAS</th><th>Last-Touch ROAS</th><th>Profile</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>TikTok Ads</td><td>3.06</td><td>2.11</td><td>5.68</td><td>Strongest closer, large TOFU-BOFU gap</td></tr>
+    <tr><td>Google Display</td><td>2.99</td><td>2.20</td><td>5.48</td><td>Highest linear ROAS, strong closer</td></tr>
+    <tr><td>Google Search</td><td>2.70</td><td>2.09</td><td>5.41</td><td>Weakest acquirer, strong closer</td></tr>
+    <tr><td>Facebook Ads</td><td>2.88</td><td>2.15</td><td>5.18</td><td>Mid-range across all stages</td></tr>
+    <tr><td>Instagram Ads</td><td>2.87</td><td>2.07</td><td>4.85</td><td>Lowest BOFU, smallest TOFU-BOFU gap</td></tr>
+  </tbody>
+</table>
+
 The three attribution perspectives complement each other. Linear ROAS is the most conservative estimate because costs are distributed across all contributing touchpoints — a Linear ROAS of 2.0 means every euro invested across the entire journey generates €2 in revenue. First-Touch and Last-Touch ROAS appear higher because they concentrate credit on a single touchpoint. The gap between them reveals channel roles: Google Search shows a large First-to-Last-Touch gap (7.31 → 9.21), meaning it captures even more value as a closer than as an initiator. Instagram shows the smallest gap (2.44 → 3.27), confirming its consistent full-funnel profile.
 
 **Path length and the trust effect:** Repeat purchases consistently require ~30% fewer touchpoints than first purchases across all months (e.g., April: 4.31 avg touchpoints for 250 repeat purchases vs. 8.90 for 555 first purchases). The share of repeat purchases grows from 4.4% in January to 31.1% in April, building a stable repeat-purchase engine even as total purchase volume declines (908 → 805).
