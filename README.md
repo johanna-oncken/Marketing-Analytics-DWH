@@ -115,11 +115,11 @@ The CPM-to-CVR Efficiency Ratio combines reach cost with conversion quality, pro
     <tr><th>Channel</th><th>First-Touch ROAS</th><th>Linear ROAS</th><th>Last-Touch ROAS</th><th>Profile</th></tr>
   </thead>
   <tbody>
-    <tr><td>Google Search</td><td>7.31</td><td>6.19</td><td>9.21</td><td>Strong across all stages</td></tr>
-    <tr><td>TikTok Ads</td><td>5.72</td><td>4.45</td><td>5.69</td><td>Balanced acquisition & closing</td></tr>
-    <tr><td>Facebook Ads</td><td>4.62</td><td>3.62</td><td>5.64</td><td>Closing > acquisition</td></tr>
-    <tr><td>Instagram Ads</td><td>2.44</td><td>2.54</td><td>3.27</td><td>Moderate, consistent</td></tr>
-    <tr><td>Google Display</td><td>3.28</td><td>3.28</td><td>4.08</td><td>Acquisition = journey, mild closing lift</td></tr>
+    <tr><td>TikTok Ads</td><td>3.06</td><td>2.11</td><td>5.68</td><td>Strongest closer, large TOFU-BOFU gap</td></tr>
+    <tr><td>Google Display</td><td>2.99</td><td>2.20</td><td>5.48</td><td>Highest linear ROAS, strong closer</td></tr>
+    <tr><td>Google Search</td><td>2.70</td><td>2.09</td><td>5.41</td><td>Weakest acquirer, strong closer</td></tr>
+    <tr><td>Facebook Ads</td><td>2.88</td><td>2.15</td><td>5.18</td><td>Mid-range across all stages</td></tr>
+    <tr><td>Instagram Ads</td><td>2.87</td><td>2.07</td><td>4.85</td><td>Lowest BOFU, smallest TOFU-BOFU gap</td></tr>
   </tbody>
 </table>
 
@@ -137,7 +137,7 @@ The three attribution perspectives complement each other. Linear ROAS is the mos
 
 **Key finding:** All channels show a realistic Launch → Saturation → Decline pattern. January performance was excellent (ROAS 3–6x), but April collapsed to 0.3–0.4x. The 120-day LTV analysis reveals that January investments were highly profitable, while Google Display's combination of moderate LTV and lowest CAC produces the best efficiency among paid channels.
 
-**Monthly ROAS Decline (Linear Attribution, Paid Channels):**
+**Monthly BOFU ROAS Decline (Linear Attribution, Paid Channels):**
 
 <table>
   <thead>
