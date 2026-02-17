@@ -123,6 +123,32 @@ The CPM-to-CVR Efficiency Ratio combines reach cost with conversion quality, pro
   </tbody>
 </table>
 
+<table>
+  <thead>
+    <tr><th>Channel</th><th>First-Touch AOV</th><th>Linear AOV</th><th>Last-Touch AOV</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Google Search</td><td>€162.69</td><td>€40.42</td><td>€135.99</td></tr>
+    <tr><td>Google Display</td><td>€159.74</td><td>€39.39</td><td>€138.19</td></tr>
+    <tr><td>TikTok Ads</td><td>€157.28</td><td>€38.72</td><td>€133.23</td></tr>
+    <tr><td>Facebook Ads</td><td>€152.23</td><td>€37.69</td><td>€123.64</td></tr>
+    <tr><td>Instagram Ads</td><td>€145.90</td><td>€38.95</td><td>€137.79</td></tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr><th>Channel</th><th>TOFU CVR</th><th>MOFU CVR</th><th>BOFU CVR</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Google Search</td><td>4.44</td><td>8.28%</td><td>2.26%</td></tr>
+    <tr><td>Google Display</td><td>4.30</td><td>8.01%</td><td>2.21%</td></tr>
+    <tr><td>TikTok Ads</td><td>4.38</td><td>7.76%</td><td>2.10%</td></tr>
+    <tr><td>Facebook Ads</td><td>4.40</td><td>7.72%</td><td>2.18%</td></tr>
+    <tr><td>Instagram Ads</td><td>4.46</td><td>7.70%</td><td>2.12%</td></tr>
+  </tbody>
+</table>
+
 The three attribution perspectives complement each other. Linear ROAS is the most conservative estimate because costs are distributed across all contributing touchpoints — a Linear ROAS of 2.0 means every euro invested across the entire journey generates €2 in revenue. First-Touch and Last-Touch ROAS appear higher because they concentrate credit on a single touchpoint. The gap between them reveals channel roles: Google Search shows a large First-to-Last-Touch gap (7.31 → 9.21), meaning it captures even more value as a closer than as an initiator. Instagram shows the smallest gap (2.44 → 3.27), confirming its consistent full-funnel profile.
 
 **Path length and the trust effect:** Repeat purchases consistently require ~30% fewer touchpoints than first purchases across all months (e.g., April: 4.31 avg touchpoints for 250 repeat purchases vs. 8.90 for 555 first purchases). The share of repeat purchases grows from 4.4% in January to 31.1% in April, building a stable repeat-purchase engine even as total purchase volume declines (908 → 805).
