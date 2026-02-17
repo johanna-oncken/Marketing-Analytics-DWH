@@ -47,13 +47,13 @@ Marketing-Analytics-DWH/
 
 Analysis of multi-touch marketing data across 9 channels, 53 campaigns, ~8,500 users, and 87,000+ touchpoints (January–April 2024) reveals five key findings:
 
-**1. All paid channels follow a Launch → Saturation pattern.** January ROAS ranged from 4.3x to 6.6x; by April, all channels had dropped below 1.4x for mid and top of funnel — up to 77%+ decline. This points to audience saturation, declining ad effectiveness, and rising competition. Critically, this decline could not have been correctly analyzed per funnel stage without the cost attribution fix I built during development (see [Section 2.5](#25-why-fact_attribution_linear_with_costs-exists)).  
+**1. All paid channels follow a Launch → Saturation pattern.** January ROAS ranged from 4.3x to 6.6x; by April, all channels had dropped below 1.4x for mid and top of funnel — up to 77% decline. This points to audience saturation, declining ad effectiveness, and rising competition. Critically, this decline could not have been correctly analyzed per funnel stage without the cost attribution fix I built during development (see [Section 2.5](#25-why-fact_attribution_linear_with_costs-exists)).  
 
-**2. Instagram Ads is the most consistent performer across all metrics.** Lowest CPM, best CPM-to-CVR efficiency ratio and strongest April BOFU closing rate (+28.7% CVR MoM). LTV:CAC of 3.3 places it in the top tier alongside Google Search (3.2) and Google Display (3.4). Instagram is the only paid channel that performs in the top tier across cost efficiency, closing, retention, and LTV:CAC ratio — though at lower volume than other channels.
+**2. Instagram Ads is the most consistent performer across all metrics.** Lowest CPM, best CPM-to-CVR efficiency ratio and strongest April BOFU closing improvement (+28.7% CVR MoM). LTV:CAC of 3.3 places it in the top tier alongside Google Search (3.2) and Google Display (3.4). Instagram is the only paid channel that performs in the top tier across cost efficiency, closing, retention, and LTV:CAC ratio — though at lower volume than other channels.
 
 **3. Google Search (the premium channel) and Google Display justify their cost through different strengths.** Google Search has the highest absolute LTV (€53.20), strongest revenue ranking across attribution models (twice #1, twice #2), and best lead quality. Google Display leads in LTV:CAC (3.4) despite the weakest engagement metrics (lowest click-through rate) — it closes conversions that other channels initiate — the only paid channel with a positive TOFU-BOFU revenue gap (+€2.4K).
 
-**4. TikTok Ads drives new user acquisition, not lifetime value.** Lowest absolute LTV (€41.7) but fastest closing paths (1.76 avg touchpoints) and the lowest April BOFU conversion rate (2.03%). TikTok converts quickly when it converts — but it converts rarely, and the users it brings are the least valuable long-term.
+**4. TikTok Ads drives new user acquisition, not lifetime value.** Lowest absolute LTV (€41.7) shortest last-touch paths (1.76 avg touchpoints), and the lowest April BOFU conversion rate (2.03%). TikTok converts quickly when it converts — but it converts rarely, and the users it brings are the least valuable long-term.
 
 **5. Facebook Ads is the consistent underperformer.** Last or near-last in revenue ranking across all attribution models (3x last, 1x second-to-last), worst lead quality, and worst closing efficiency among paid channels. Its CAC of €15.0 is the second-highest, but unlike Google Search (€16.5 CAC, €53.2 LTV), Facebook does not compensate with higher lifetime value (€44.2). Facebook costs nearly as much as the premium channel but delivers the weakest revenue performance.
 
@@ -276,7 +276,7 @@ Based on the analysis results, the data suggests the following actions for a mar
 
 ### 1.6) Tactical Drill-Down (Dashboards)
 
-While strategic conclusions are drawn at the channel level in this README, campaign-level KPIs are available in the interactive Budget Allocation dashboard for tactical optimization and drill-down (click the image to take a closer look on **Tabelau Publics** website).
+While strategic conclusions are drawn at the channel level in this README, campaign-level KPIs are available in the interactive Budget Allocation dashboard for tactical optimization and drill-down (click the image to take a closer look on **Tabelau Public's** website).
 
 <p align="center">
   <a href="https://public.tableau.com/views/Multi-TouchMarketingDashboard/Overall?:language=de-DE&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link">
