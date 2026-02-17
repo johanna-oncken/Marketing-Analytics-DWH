@@ -110,6 +110,9 @@ The CPM-to-CVR Efficiency Ratio combines reach cost with conversion quality, pro
 
 **Attribution model comparison by channel (January–April 2024):**
 
+<img width="1977" height="1177" alt="mofu_roas_by_channel (1)" src="https://github.com/user-attachments/assets/23cc031f-4609-48a5-a372-dc0f8a6908d3" />
+
+
 <table>
   <thead>
     <tr><th>Channel</th><th>Jan</th><th>Feb</th><th>Mar</th><th>Apr</th><th>120-Day</th></tr>
