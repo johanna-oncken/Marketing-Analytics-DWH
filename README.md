@@ -144,11 +144,11 @@ The three attribution perspectives complement each other. Linear ROAS is the mos
     <tr><th>Channel</th><th>Jan</th><th>Feb</th><th>Mar</th><th>Apr</th></tr>
   </thead>
   <tbody>
-    <tr><td>Google Search</td><td>4.48x</td><td>—</td><td>—</td><td>1.13x</td></tr>
-    <tr><td>TikTok Ads</td><td>4.74x</td><td>—</td><td>—</td><td>1.10x</td></tr>
-    <tr><td>Instagram Ads</td><td>4.27x</td><td>—</td><td>—</td><td>1.21x</td></tr>
-    <tr><td>Facebook Ads</td><td>3.62x</td><td>—</td><td>—</td><td>1.02x</td></tr>
-    <tr><td>Google Display</td><td>3.28x</td><td>—</td><td>—</td><td>0.89x</td></tr>
+    <tr><td>Google Search</td><td>7.85x</td><td>6.40x</td><td>4.05x</td><td>1.97x</td></tr>
+    <tr><td>TikTok Ads</td><td>6.61x</td><td>5.73x</td><td>5.33x</td><td>4.57x</td></tr>
+    <tr><td>Instagram Ads</td><td>6.30x</td><td>4.67x</td><td>3.83x</td><td>4.19x</td></tr>
+    <tr><td>Facebook Ads</td><td>5.96x</td><td>5.85x</td><td>4.28x</td><td>4.27x</td></tr>
+    <tr><td>Google Display</td><td>5.07x</td><td>6.29x</td><td>5.70x</td><td>2.93x</td></tr>
   </tbody>
 </table>
 
