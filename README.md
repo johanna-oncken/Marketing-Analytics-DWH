@@ -303,6 +303,8 @@ The dashboards enable:
 
 Campaign-level analysis is positioned as a tactical tool, not a parallel narrative. Where individual campaigns illustrate strategic patterns (e.g., Winter_Sale_2024 #21 as the top LTV:CAC performer, or the divergent trajectories of Flash_Sale_Weekend #44 vs. #17), they are referenced in the analysis above as supporting evidence.
 
+> _Note on Spend: KPI Row shows ACTUAL SPEND (when money was spent) from gold.fact_spend. gold.roas shows ATTRIBUTED SPEND (spend linked to conversions) - different concept!"_
+
 ---
 
 ### 1.8) What I Would Do Next
