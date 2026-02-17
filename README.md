@@ -126,11 +126,11 @@ The CPM-to-CVR Efficiency Ratio combines reach cost with conversion quality, pro
   </tbody>
 </table>
 
-The three attribution perspectives complement each other. Linear ROAS is the most conservative estimate because costs are distributed across all contributing touchpoints — a Linear ROAS of 2.0 means every euro invested across the entire journey generates €2 in revenue. First-Touch and Last-Touch ROAS appear higher because they concentrate credit on a single touchpoint. The gap between them reveals channel roles: Google Search shows a large First-to-Last-Touch gap (7.31 → 9.21), meaning it captures even more value as a closer than as an initiator. Instagram shows the smallest gap (2.44 → 3.27), confirming its consistent full-funnel profile.
+All channels follow the same saturation pattern — MOFU ROAS drops by 70–77% from January to April as audience pools are exhausted. The 120-day spread across channels is narrow (2.07–2.20x), but two patterns stand out: Google Display maintains the highest full-journey efficiency (2.20x) despite the weakest engagement metrics in TOFU, confirming that it acquires users who convert profitably through other channels. Facebook Ads shows the most resilient April performance (1.28x, highest among all channels), suggesting it retains efficiency longer into saturation — though from a lower starting point than TikTok or Google Search.
 
 **Path length and the trust effect:** Repeat purchases consistently require ~30% fewer touchpoints than first purchases across all months (e.g., April: 4.31 avg touchpoints for 250 repeat purchases vs. 8.90 for 555 first purchases). The share of repeat purchases grows from 4.4% in January to 31.1% in April, building a stable repeat-purchase engine even as total purchase volume declines (908 → 805).
 
-> _Note: Monthly MOFU CVR and AOV trends show uniform growth/decline curves across all channels — this is an attribution artifact where `fact_attribution_linear` progressively assigns more touchpoint-channel combinations per purchase over time. As touchpoints accumulate, CVR rises mechanically (more attributed conversions per click) and AOV falls mechanically (same revenue spread across more attributed orders). These trends do not reflect genuine funnel improvement or declining order values. Within-month comparisons remain valid._
+> _Note: Monthly MOFU CVR and AOV trends show uniform growth/decline curves across all channels. This is a synthetic data artifact — the generated data produces near-identical engagement volumes across channels, resulting in parallel trend lines that would diverge with real-world data. Within-month comparisons remain valid._
 
 ---
 
