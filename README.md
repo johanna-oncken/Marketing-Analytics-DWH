@@ -104,14 +104,16 @@ The CPM-to-CVR Efficiency Ratio combines reach cost with conversion quality, pro
 
 **Goal:** Evaluate the full customer journey — how efficiently do touchpoints convert attention into revenue?
 
-**Key finding:** The average converting user interacts with 5 touchpoints before purchasing at an average order value of €153.30 — and repeat buyers need roughly 30% fewer touchpoints than first-time buyers, validating the trust effect. This analysis relies on `fact_attribution_linear_with_costs`, which distributes both revenue *and* costs equally across all touchpoints in a converting journey — a table I built after discovering that the standard linear model left costs unattributed at the funnel-stage level (see [Section 1.3](#13-attribution-insights)).
 
-**Overall Linear ROAS:** 2.12x (€147,679 revenue / €69,607 attributed cost)
+**Key finding:** By April, every paid channel falls below the 1.5x profitability threshold when evaluated across the full customer journey. All channels start profitably in January (4.3–4.7x) but lose 70–77% of their MOFU ROAS within four months — confirming audience saturation not just at the top of the funnel, but across the entire conversion path. This is the strongest signal in the data that continued spend at current levels is unsustainable without new audience strategies or channel diversification.
 
-**Attribution model comparison by channel (January–April 2024):**
+This analysis relies on `fact_attribution_linear_with_costs`, which distributes both revenue *and* costs equally across all touchpoints in a converting journey — a table I built after discovering that the standard linear model left costs unattributed at the funnel-stage level (see [Section 1.3](#13-attribution-insights)).
 
-<img width="1977" height="1177" alt="mofu_roas_by_channel (1)" src="https://github.com/user-attachments/assets/23cc031f-4609-48a5-a372-dc0f8a6908d3" />
+**Overall MOFU ROAS:** 2.12x (€147,679 revenue / €69,607 attributed cost)
 
+**MOFU ROAS by channel (January–April 2024):**
+
+<p align="center"><img src="https://github.com/user-attachments/assets/b67ddb37-44e6-4ae2-80a3-0a16bac1cb09" alt="MOFU ROAS by Channel" width="700"></p>
 
 <table>
   <thead>
@@ -126,9 +128,9 @@ The CPM-to-CVR Efficiency Ratio combines reach cost with conversion quality, pro
   </tbody>
 </table>
 
-All channels follow the same saturation pattern — MOFU ROAS drops by 70–77% from January to April as audience pools are exhausted. The 120-day spread across channels is narrow (2.07–2.20x), but two patterns stand out: Google Display maintains the highest full-journey efficiency (2.20x) despite the weakest engagement metrics in TOFU, confirming that it acquires users who convert profitably through other channels. Facebook Ads shows the most resilient April performance (1.28x, highest among all channels), suggesting it retains efficiency longer into saturation — though from a lower starting point than TikTok or Google Search.
+March is the tipping point: Google Search (1.56x) and TikTok Ads (1.67x) already cross below the 1.5x threshold, while the remaining channels follow in April. Facebook Ads shows the most resilient April performance (1.28x) — still unprofitable, but the slowest to deteriorate. The 120-day aggregates (2.07–2.20x) remain above threshold because strong January and February performance masks the April collapse.
 
-**Path length and the trust effect:** Repeat purchases consistently require ~30% fewer touchpoints than first purchases across all months (e.g., April: 4.31 avg touchpoints for 250 repeat purchases vs. 8.90 for 555 first purchases). The share of repeat purchases grows from 4.4% in January to 31.1% in April, building a stable repeat-purchase engine even as total purchase volume declines (908 → 805).
+**Path length and the trust effect:** The average converting user interacts with 5 touchpoints before purchasing at an average order value of €153.30. Repeat buyers need roughly 30% fewer touchpoints than first-time buyers across all months (e.g., April: 4.31 avg touchpoints for 250 repeat purchases vs. 8.90 for 555 first purchases), validating the trust effect. The share of repeat purchases grows from 4.4% in January to 31.1% in April, building a stable repeat-purchase engine even as total purchase volume declines (908 → 805).
 
 > _Note: Monthly MOFU CVR and AOV trends show uniform growth/decline curves across all channels. This is a synthetic data artifact — the generated data produces near-identical engagement volumes across channels, resulting in parallel trend lines that would diverge with real-world data. Within-month comparisons remain valid._
 
