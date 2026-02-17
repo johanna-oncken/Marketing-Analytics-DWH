@@ -278,34 +278,9 @@ Based on the analysis results, the data suggests the following actions for a mar
 
 While strategic conclusions are drawn at the channel level in this README, campaign-level KPIs are available in the interactive Tableau dashboards for tactical optimization and drill-down.
 
-<table>
-  <tr>
-    <td>
-      <a href="https://public.tableau.com/views/Multi-TouchMarketingDashboard/Overall?:language=de-            DE&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link">
-          <img src="https://github.com/user-attachments/assets/374a6cf6-2f55-4d5a-a97c-fd4636b1c662"           width="10%" alt="Budget Allocation Dashboard"/>
-     </a>
-    </td>
-    <td>
-      <p>
-         The dashboards enable: <br>
-         - **Campaign ranking and filtering** — sort by ROAS, CAC, CVR, and LTV:CAC across all 53             campaigns <br>
-         - **Attribution model comparison** — side-by-side first-touch, linear, and last-touch views          per campaign <br>
-         - **Funnel-stage breakdown** — TOFU/MOFU/BOFU performance with correct cost attribution at           each stage <br>
-         - **Trend monitoring** — monthly performance tracking to identify saturation and             intervention signals <br>
-      </p>
-    </td>
-  </tr>
-</table>
-
 <p align="center">
   <a href="https://public.tableau.com/views/Multi-TouchMarketingDashboard/Overall?:language=de-DE&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link">
     <img src="https://github.com/user-attachments/assets/374a6cf6-2f55-4d5a-a97c-fd4636b1c662" width="30%" alt="Budget Allocation Dashboard"/>
-  </a>
-  <a href="https://public.tableau.com/views/Multi-TouchMarketingDashboard/Overall2?:language=de-DE&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link">
-    <img src="https://github.com/user-attachments/assets/da7e4af0-ce2a-44c6-8f08-ae042cbd7ad4" width="30%" alt="LTV Cohort Dashboard"/>
-  </a>
-  <a href="https://public.tableau.com/views/Multi-TouchMarketingDashboard/Overall3?:language=de-DE&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link">
-    <img src="https://github.com/user-attachments/assets/67e6bea1-75c6-4f61-8891-8810d2bf830f" width="30%" alt="Customer Journey Dashboard"/>
   </a>
 </p>
 
