@@ -47,7 +47,7 @@ Marketing-Analytics-DWH/
 
 Analysis of multi-touch marketing data across 9 channels, 53 campaigns, ~8,500 users, and 87,000+ touchpoints (January–April 2024) reveals five key findings:
 
-**1. All paid channels follow a Launch → Saturation pattern.** January ROAS ranged from 4.3x to 6.6x; by April, all channels had dropped below 1.4x for mid and top of funnel — a 79%+ decline. This points to audience saturation, declining ad effectiveness, and rising competition. Critically, this decline could not have been correctly analyzed per funnel stage without the cost attribution fix I built during development (see [Section 2.5](#25-why-fact_attribution_linear_with_costs-exists)).  
+**1. All paid channels follow a Launch → Saturation pattern.** January ROAS ranged from 4.3x to 6.6x; by April, all channels had dropped below 1.4x for mid and top of funnel — up to 77%+ decline. This points to audience saturation, declining ad effectiveness, and rising competition. Critically, this decline could not have been correctly analyzed per funnel stage without the cost attribution fix I built during development (see [Section 2.5](#25-why-fact_attribution_linear_with_costs-exists)).  
 
 **2. Instagram Ads is the most consistent performer across all metrics.** Lowest CPM, best CPM-to-CVR efficiency ratio and strongest April BOFU closing rate (+28.7% CVR MoM). LTV:CAC of 3.3 places it in the top tier alongside Google Search (3.2) and Google Display (3.4). Instagram is the only paid channel that performs in the top tier across cost efficiency, closing, retention, and LTV:CAC ratio — though at lower volume than other channels.
 
