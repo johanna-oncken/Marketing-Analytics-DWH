@@ -186,7 +186,7 @@ BOFU ROAS values are higher than MOFU because last-touch attribution concentrate
       </table>
     </td>
     <td>
-      <img src="https://github.com/user-attachments/assets/9cc49b57-6129-411f-9c23-ba1d9bead2c0" alt="LTV vs. CAC by Channel" width="450">
+      <img src="https://github.com/user-attachments/assets/9cc49b57-6129-411f-9c23-ba1d9bead2c0" alt="LTV vs. CAC by Channel" width="600">
     </td>
   </tr>
 </table>
