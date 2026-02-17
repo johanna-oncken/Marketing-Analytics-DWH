@@ -140,9 +140,12 @@ March is the tipping point: Google Search (1.56x) and TikTok Ads (1.67x) already
 
 **Goal:** Maximize revenue and drive sustainable, profitable growth.
 
-**Key finding:** All channels show a realistic Launch → Saturation → Decline pattern. January performance was excellent (ROAS 3–6x), but April collapsed to 0.3–0.4x. The 120-day LTV analysis reveals that January investments were highly profitable, while Google Display's combination of moderate LTV and lowest CAC produces the best efficiency among paid channels.
 
-**Monthly BOFU ROAS Decline (Linear Attribution, Paid Channels):**
+**Goal:** Maximize revenue and drive sustainable, profitable growth.
+
+**Key finding:** While MOFU ROAS collapses below the profitability threshold by April, BOFU tells a different story: the closing machine still works. BOFU ROAS remains above 1.5x for most channels even in April, and BOFU CVR stabilizes at ~2.3% after an initial ramp-up — the problem is not conversion efficiency, but audience exhaustion further up the funnel. The 120-day LTV analysis confirms that three of five paid channels operate in the healthy 3–5x LTV:CAC band, with Google Search delivering the highest absolute lifetime value (€53.19) and Google Display the best efficiency ratio (3.43).
+
+**Monthly BOFU ROAS (Last-Touch Attribution, Paid Channels):**
 
 <table>
   <thead>
@@ -157,32 +160,30 @@ March is the tipping point: Google Search (1.56x) and TikTok Ads (1.67x) already
   </tbody>
 </table>
 
-This decline is a mix of genuine saturation dynamics and the synthetic spend artifact (monthly ROAS decline reflects cost attribution redistribution of synthetic spend data). Channel-level ROAS comparisons remain analytically valid.
+BOFU ROAS values are higher than MOFU because last-touch attribution concentrates all credit on the final converting touchpoint. The decline pattern differs by channel: Google Search drops the most (7.85x → 1.97x, −75%), while TikTok Ads (4.57x) and Facebook Ads (4.27x) show the strongest April resilience. Instagram is the only channel with an April rebound (3.83x → 4.19x, +9.5%).
 
-**120-Day LTV & Cohort Analysis (January Cohort, n = 7,931 users):**
+**BOFU CVR stabilization:** Across all paid channels, BOFU CVR jumps from 1.43% in January to 2.59% in February, then stabilizes around 2.3–2.4% through March and April. This plateau signals that closing efficiency is not deteriorating — the funnel converts at a consistent rate once users reach the bottom. The revenue decline visible in BOFU ROAS is driven by fewer users entering the funnel, not by worsening conversion at the exit.
 
-The January cohort — representing 93% of all acquired users — reaches break-even immediately in Month 0 (LTV:CAC 2.43) and grows to a cumulative LTV of €47.15 with LTV:CAC of 9.29 by Month 3. The purchase rate is remarkably stable (~10% per month over four months), indicating strong retention for a non-subscription e-commerce model.
+**120-Day LTV by Channel (All Cohorts, Dashboard Aggregates):**
 
 <table>
   <thead>
-    <tr><th>Channel</th><th>Cum. LTV (120d)</th><th>CAC</th><th>LTV:CAC</th><th>Profile</th></tr>
+    <tr><th>Channel</th><th>LTV (120d)</th><th>CAC</th><th>LTV:CAC</th><th>Ratio Band</th></tr>
   </thead>
   <tbody>
-    <tr><td>Google Display</td><td>€48.61</td><td>€8.09</td><td><b>6.01</b></td><td>Most efficient investment</td></tr>
-    <tr><td>Instagram Ads</td><td>€44.20</td><td>€8.42</td><td>5.25</td><td>Balanced efficiency</td></tr>
-    <tr><td>Google Search</td><td>€53.97</td><td>€10.60</td><td>5.09</td><td>Highest absolute LTV</td></tr>
-    <tr><td>TikTok Ads</td><td>€42.03</td><td>€8.55</td><td>4.91</td><td>Volume, lower per-user value</td></tr>
-    <tr><td>Facebook Ads</td><td>€43.54</td><td>€9.14</td><td>4.76</td><td>Weakest paid channel</td></tr>
+    <tr><td>Google Display</td><td>€48.95</td><td>€14.26</td><td>3.43</td><td>Healthy (3–5x)</td></tr>
+    <tr><td>Instagram Ads</td><td>€43.55</td><td>€13.36</td><td>3.26</td><td>Healthy (3–5x)</td></tr>
+    <tr><td>Google Search</td><td>€53.19</td><td>€16.48</td><td>3.23</td><td>Healthy (3–5x)</td></tr>
+    <tr><td>TikTok Ads</td><td>€41.66</td><td>€14.02</td><td>2.97</td><td>Monitor (2–3x)</td></tr>
+    <tr><td>Facebook Ads</td><td>€44.24</td><td>€14.97</td><td>2.95</td><td>Monitor (2–3x)</td></tr>
   </tbody>
 </table>
 
-**The Google Display paradox:** Despite weak engagement metrics (lowest CTR, declining clicks), Google Display achieves the best LTV:CAC ratio through a combination of the lowest CAC (€8.09) and solid LTV. Display acquires high-value users (highest Acquisition AOV at €165.38) who convert through other channels — a "quality over quantity" profile.
+Google Display, Instagram Ads, and Google Search all operate in the healthy 3–5x band. Google Search justifies the highest CAC (€16.48) with the highest absolute LTV (€53.19) — it acquires the most valuable customers. Google Display achieves the best ratio (3.43) through the lowest CAC (€14.26) rather than the highest revenue per user. TikTok and Facebook sit in the Monitor band: not unprofitable, but their per-user value does not justify aggressive scaling.
 
-**Instagram's April dominance:** In the last month of the analysis period, Instagram stands alone. It is the only channel with increasing AOV across all three attribution models, the only channel where BOFU CVR improves in April (+28.7% MoM, rising from last to first place among paid channels), and the only channel showing positive Last-Touch revenue growth in April (+29.9% MoM) while every other channel declines.
+**Instagram's April signal:** Instagram is the only paid channel where BOFU CVR improves in April (+28.7% MoM, rising from 1.98% to 2.55%). Combined with its April BOFU ROAS rebound (+9.5%), Instagram shows counter-cyclical closing strength — it performs better as other channels deteriorate, suggesting its audience is less saturated or more responsive in late-cycle conditions.
 
-**Campaign-level highlights:** Winter_Sale_2024 (#21) achieves the highest campaign-level LTV:CAC at 20.06 (cum. LTV €57.55, CAC €2.87). Brand_Awareness_Q1 (#12) produces the highest absolute cumulative LTV at €61.23. Flash_Sale campaigns show systematically weaker long-term value — discount-driven acquisition appears to lead to lower repeat behavior. Multiple February-cohort campaigns show negative monthly revenue in April, indicating concentrated returns/refunds among later-acquired users.
-
-> _Note: 120-day LTV cohort sizes are heavily skewed (Jan: 93%, Feb: 6.8%, Mar: 0.5%) due to the synthetic data generation. Cross-cohort comparisons are not interpretable; within-January analysis is robust. February/March cohorts have not reached break-even (LTV:CAC 0.89 and 0.14), driven by the synthetic spend artifact inflating later-cohort CAC, not by genuine acquisition inefficiency._
+> _Note: 120-day LTV cohort sizes are heavily skewed (Jan: 93%, Feb: 6.8%, Mar: 0.5%) due to the synthetic data generation. Cross-cohort comparisons are not interpretable; the LTV table above uses all-cohort aggregates to avoid this limitation. The January cohort's purchase rate remains stable at ~10% per month over four months, indicating strong retention for a non-subscription e-commerce model._
 
 ---
 
