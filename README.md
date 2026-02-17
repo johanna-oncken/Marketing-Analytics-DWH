@@ -208,6 +208,33 @@ My solution was `fact_attribution_linear_with_costs` — a new table that distri
 
 The correlation between path length and purchase revenue is effectively zero (r = −0.00028). Short paths (1–3 touchpoints) and long paths (8+ touchpoints) produce nearly identical average order values (~€135 vs. ~€133). This challenges the assumption that "more touchpoints = higher basket size" and suggests that efficient, targeted journey design matters more than maximizing touchpoint volume.
 
+<pre>
+   <code>
+      -- 05_magnitude_analysis.sql - 10.14) Does the touchpoint number (position in the journey) correlate with revenue?
+SELECT 
+    (SUM(aabb))/(SQRT(SUM(a_2))*SQRT(SUM(b_2))) as r_correlation
+FROM (
+SELECT 
+    touchpoint_number,
+    revenue,
+    (touchpoint_number - avg_tp)*(revenue - avg_revenue) AS aabb,
+    POWER(touchpoint_number - avg_tp, 2) AS a_2,
+    POWER(revenue - avg_revenue, 2) AS b_2 
+FROM (
+    SELECT
+        touchpoint_number,
+        revenue, 
+        AVG(touchpoint_number) OVER()AS avg_tp,
+        AVG(revenue) OVER() AS avg_revenue 
+    FROM gold.fact_attribution_last_touch
+) t ) b;
+
+r_correlation          
+-----------------------
+-0,00027886619616565117
+   </code>
+</pre>
+
 ---
 
 ### 1.4) Channel Profiles (Consolidated)
