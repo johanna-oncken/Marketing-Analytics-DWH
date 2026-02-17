@@ -181,7 +181,7 @@ Google Display, Instagram Ads, and Google Search all operate in the healthy 3–
 
 **Instagram's April signal:** Instagram is the only paid channel where BOFU CVR improves in April (+28.7% MoM, rising from 1.98% to 2.55%). Combined with its April BOFU ROAS rebound (+9.5%), Instagram shows counter-cyclical closing strength — it performs better as other channels deteriorate, suggesting its audience is less saturated or more responsive in late-cycle conditions.
 
-> _Note: 120-day LTV cohort sizes are heavily skewed (Jan: 93%, Feb: 6.8%, Mar: 0.5%) due to the synthetic data generation. Cross-cohort comparisons are not interpretable; the LTV table above uses all-cohort aggregates to avoid this limitation. The January cohort's purchase rate remains stable at ~10% per month over four months, indicating strong retention for a non-subscription e-commerce model._
+> _Note: For visualization purposes I build a LTV & Cohort Analysis Dashboard, which you can see <a href="https://public.tableau.com/views/Multi-TouchMarketingDashboard/Overall2?:language=de-DE&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link" >here</a>. 120-day LTV cohort sizes are heavily skewed (Jan: 93%, Feb: 6.8%, Mar: 0.5%) due to the synthetic data generation. Cross-cohort comparisons are not interpretable; the LTV table above uses all-cohort aggregates to avoid this limitation. The January cohort's purchase rate remains stable at ~10% per month over four months, indicating strong retention for a non-subscription e-commerce model._
 
 ---
 
