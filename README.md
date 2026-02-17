@@ -191,7 +191,7 @@ Multi-touch attribution reveals channel dynamics that single-touch models cannot
 
 #### Assisting vs. Closing Roles
 
-Google Display shows the largest gap between first-touch and last-touch attributed revenue (+€6,628 in January, 2.2x ratio) — it initiates journeys but rarely closes them. Instagram shows near-parity (gap of only €979), making it the most self-sufficient channel. By April, Instagram, Google Search, and Facebook shift to generating _more_ BOFU than TOFU revenue — they become closers as the campaign period matures.
+Comparing First-Touch and Last-Touch revenue per channel reveals a clear spectrum: TikTok Ads (−€5.2K) and Facebook Ads (−€4.2K) generate significantly more acquisition revenue than closing revenue — they initiate journeys that other channels finish. Google Search sits nearly balanced (−€0.2K), performing equally well at both ends. The surprise is Google Display (+€2.4K): the only channel that closes more than it initiates, acting as a silent converter for traffic other channels brought in.
 
 <img width="1977" height="1177" alt="tofu_bofu_revenue_gap" src="https://github.com/user-attachments/assets/baaa2552-7870-41ac-8c66-c9fe3b22a985" />
 
