@@ -156,26 +156,20 @@ BOFU ROAS values are higher than MOFU because last-touch attribution concentrate
 **120-Day LTV by Channel (All Cohorts, Dashboard Aggregates):**
 
 <table>
-  <tr>
-    <td>
-      <table>
-        <thead>
-          <tr><th>Channel</th><th>LTV (120d)</th><th>CAC</th><th>LTV:CAC</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Google Display</td><td>€48.95</td><td>€14.26</td><td>3.43</td></tr>
-          <tr><td>Instagram Ads</td><td>€43.55</td><td>€13.36</td><td>3.26</td></tr>
-          <tr><td>Google Search</td><td>€53.19</td><td>€16.48</td><td>3.23</td></tr>
-          <tr><td>TikTok Ads</td><td>€41.66</td><td>€14.02</td><td>2.97</td></tr>
-          <tr><td>Facebook Ads</td><td>€44.24</td><td>€14.97</td><td>2.95</td></tr>
-        </tbody>
-      </table>
-    </td>
-    <td>
-      <img src="https://github.com/user-attachments/assets/9cc49b57-6129-411f-9c23-ba1d9bead2c0" alt="LTV vs. CAC by Channel" width="900">
-    </td>
-  </tr>
+  <thead>
+    <tr><th>Channel</th><th>LTV (120d)</th><th>CAC</th><th>LTV:CAC</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Google Display</td><td>€48.95</td><td>€14.26</td><td>3.43</td></tr>
+    <tr><td>Instagram Ads</td><td>€43.55</td><td>€13.36</td><td>3.26</td></tr>
+    <tr><td>Google Search</td><td>€53.19</td><td>€16.48</td><td>3.23</td></tr>
+    <tr><td>TikTok Ads</td><td>€41.66</td><td>€14.02</td><td>2.97</td></tr>
+    <tr><td>Facebook Ads</td><td>€44.24</td><td>€14.97</td><td>2.95</td></tr>
+  </tbody>
 </table>
+
+<img src="https://github.com/user-attachments/assets/9cc49b57-6129-411f-9c23-ba1d9bead2c0" alt="LTV vs. CAC by Channel" width="900">
+   
 
 Google Display, Instagram Ads, and Google Search all operate in the healthy 3–5x band. Google Search justifies the highest CAC (€16.48) with the highest absolute LTV (€53.19) — it acquires the most valuable customers. Google Display achieves the best ratio (3.43) through a favorable combination of above-average LTV (€48.95, second only to Google Search) and below-average CAC (€14.26). TikTok and Facebook sit in the Monitor band: not unprofitable, but their per-user value does not justify aggressive scaling.
 
