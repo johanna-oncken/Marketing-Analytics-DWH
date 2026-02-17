@@ -104,7 +104,6 @@ The CPM-to-CVR Efficiency Ratio combines reach cost with conversion quality, pro
 
 **Goal:** Evaluate the full customer journey — how efficiently do touchpoints convert attention into revenue?
 
-
 **Key finding:** By April, every paid channel falls below the 1.5x profitability threshold when evaluated across the full customer journey. All channels start profitably in January (4.3–4.7x) but lose 70–77% of their MOFU ROAS within four months — confirming audience saturation not just at the top of the funnel, but across the entire conversion path. This is the strongest signal in the data that continued spend at current levels is unsustainable without new audience strategies or channel diversification.
 
 This analysis relies on `fact_attribution_linear_with_costs`, which distributes both revenue *and* costs equally across all touchpoints in a converting journey — a table I built after discovering that the standard linear model left costs unattributed at the funnel-stage level (see [Section 1.3](#13-attribution-insights)).
@@ -126,9 +125,6 @@ March is the tipping point: Google Search (1.56x) and TikTok Ads (1.67x) already
 ---
 
 #### 1.2.3) Profitability & Long-Term Growth (BOFU)
-
-**Goal:** Maximize revenue and drive sustainable, profitable growth.
-
 
 **Goal:** Maximize revenue and drive sustainable, profitable growth.
 
