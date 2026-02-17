@@ -210,9 +210,9 @@ The correlation between path length and purchase revenue is effectively zero (r 
 
 <pre>
    <code>
-SELECT                                                                                                r_correlation
-    (SUM(aabb))/(SQRT(SUM(a_2))*SQRT(SUM(b_2))) as r_correlation                                      -----------------------
-FROM (                                                                                                -0,00027886619616565117
+SELECT                                                                                              r_correlation
+    (SUM(aabb))/(SQRT(SUM(a_2))*SQRT(SUM(b_2))) as r_correlation                                    -----------------------
+FROM (                                                                                              -0,00027886619616565117
 SELECT 
     touchpoint_number,
     revenue,
