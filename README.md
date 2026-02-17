@@ -128,7 +128,7 @@ March is the tipping point: Google Search (1.56x) and TikTok Ads (1.67x) already
 
 **Goal:** Maximize revenue and drive sustainable, profitable growth.
 
-**Key finding:** While MOFU ROAS collapses below the profitability threshold by April, BOFU tells a different story: the closing machine still works. BOFU ROAS remains above 1.5x for most channels even in April, and BOFU CVR stabilizes at ~2.3% after an initial ramp-up — the problem is not conversion efficiency, but audience exhaustion further up the funnel. The 120-day LTV analysis confirms that three of five paid channels operate in the healthy 3–5x LTV:CAC band, with Google Search delivering the highest absolute lifetime value (€53.19) and Google Display the best efficiency ratio (3.43).
+**Key finding:** While MOFU ROAS collapses below the profitability threshold by April, BOFU (last-touch attribution) tells a different story: the closing machine still works. BOFU CVR stabilizes at ~2.3% after an initial ramp-up — the problem is not conversion efficiency, but audience exhaustion further up the funnel. The 120-day LTV analysis confirms that three of five paid channels operate in the healthy 3–5x LTV:CAC band, with Google Search delivering the highest absolute lifetime value (€53.19) and Google Display the best efficiency ratio (3.43).
 
 **Monthly BOFU ROAS (Last-Touch Attribution, Paid Channels):**
 
