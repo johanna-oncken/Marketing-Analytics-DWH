@@ -112,40 +112,14 @@ The CPM-to-CVR Efficiency Ratio combines reach cost with conversion quality, pro
 
 <table>
   <thead>
-    <tr><th>Channel</th><th>First-Touch ROAS</th><th>Linear ROAS</th><th>Last-Touch ROAS</th><th>Profile</th></tr>
+    <tr><th>Channel</th><th>Jan</th><th>Feb</th><th>Mar</th><th>Apr</th><th>120-Day</th></tr>
   </thead>
   <tbody>
-    <tr><td>TikTok Ads</td><td>3.06</td><td>2.11</td><td>5.68</td><td>Strongest closer, large TOFU-BOFU gap</td></tr>
-    <tr><td>Google Display</td><td>2.99</td><td>2.20</td><td>5.48</td><td>Highest linear ROAS, strong closer</td></tr>
-    <tr><td>Google Search</td><td>2.70</td><td>2.09</td><td>5.41</td><td>Weakest acquirer, strong closer</td></tr>
-    <tr><td>Facebook Ads</td><td>2.88</td><td>2.15</td><td>5.18</td><td>Mid-range across all stages</td></tr>
-    <tr><td>Instagram Ads</td><td>2.87</td><td>2.07</td><td>4.85</td><td>Lowest BOFU, smallest TOFU-BOFU gap</td></tr>
-  </tbody>
-</table>
-
-<table>
-  <thead>
-    <tr><th>Channel</th><th>First-Touch AOV</th><th>Linear AOV</th><th>Last-Touch AOV</th></tr>
-  </thead>
-  <tbody>
-    <tr><td>Google Search</td><td>€162.69</td><td>€40.42</td><td>€135.99</td></tr>
-    <tr><td>Google Display</td><td>€159.74</td><td>€39.39</td><td>€138.19</td></tr>
-    <tr><td>TikTok Ads</td><td>€157.28</td><td>€38.72</td><td>€133.23</td></tr>
-    <tr><td>Facebook Ads</td><td>€152.23</td><td>€37.69</td><td>€123.64</td></tr>
-    <tr><td>Instagram Ads</td><td>€145.90</td><td>€38.95</td><td>€137.79</td></tr>
-  </tbody>
-</table>
-
-<table>
-  <thead>
-    <tr><th>Channel</th><th>TOFU CVR</th><th>MOFU CVR</th><th>BOFU CVR</th></tr>
-  </thead>
-  <tbody>
-    <tr><td>Google Search</td><td>4.44</td><td>8.28%</td><td>2.26%</td></tr>
-    <tr><td>Google Display</td><td>4.30</td><td>8.01%</td><td>2.21%</td></tr>
-    <tr><td>TikTok Ads</td><td>4.38</td><td>7.76%</td><td>2.10%</td></tr>
-    <tr><td>Facebook Ads</td><td>4.40</td><td>7.72%</td><td>2.18%</td></tr>
-    <tr><td>Instagram Ads</td><td>4.46</td><td>7.70%</td><td>2.12%</td></tr>
+    <tr><td>Google Display</td><td>4.46x</td><td>2.66x</td><td>1.91x</td><td>1.20x</td><td>2.20x</td></tr>
+    <tr><td>TikTok Ads</td><td>4.74x</td><td>2.81x</td><td>1.67x</td><td>1.10x</td><td>2.11x</td></tr>
+    <tr><td>Facebook Ads</td><td>4.33x</td><td>2.72x</td><td>1.74x</td><td>1.28x</td><td>2.15x</td></tr>
+    <tr><td>Google Search</td><td>4.48x</td><td>2.86x</td><td>1.56x</td><td>1.13x</td><td>2.09x</td></tr>
+    <tr><td>Instagram Ads</td><td>4.27x</td><td>2.33x</td><td>1.68x</td><td>1.21x</td><td>2.07x</td></tr>
   </tbody>
 </table>
 
