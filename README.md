@@ -276,7 +276,7 @@ Based on the analysis results, the data suggests the following actions for a mar
 
 ### 1.6) Tactical Drill-Down (Dashboards)
 
-While strategic conclusions are drawn at the channel level in this README, campaign-level KPIs are available in the interactive Tableau dashboards for tactical optimization and drill-down.
+While strategic conclusions are drawn at the channel level in this README, campaign-level KPIs are available in the interactive Budget Allocation dashboard for tactical optimization and drill-down (click the image to take a closer look on **Tabelau Public**).
 
 <p align="center">
   <a href="https://public.tableau.com/views/Multi-TouchMarketingDashboard/Overall?:language=de-DE&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link">
@@ -286,9 +286,9 @@ While strategic conclusions are drawn at the channel level in this README, campa
 
 The dashboards enable:
 
-- **Campaign ranking and filtering** — sort by ROAS, CAC, CVR, and LTV:CAC across all 53 campaigns
-- **Attribution model comparison** — side-by-side first-touch, linear, and last-touch views per campaign
-- **Funnel-stage breakdown** — TOFU/MOFU/BOFU performance with correct cost attribution at each stage
+- **Campaign ranking and filtering** — sort by Revenue, ROAS, CPA, CVR across all 53 campaigns
+- **Funnel-stage breakdown** — filterable funnel stage views (TOFU/MOFU/BOFU) per campaign and correct cost attribution at each stage
+- **Channel filter logic** - By clicking a channel in one of the other visuals Campaign Drill-down gets filtered according to the selected parent channel
 - **Trend monitoring** — monthly performance tracking to identify saturation and intervention signals
 
 Campaign-level analysis is positioned as a tactical tool, not a parallel narrative. Where individual campaigns illustrate strategic patterns (e.g., Winter_Sale_2024 #21 as the top LTV:CAC performer, or the divergent trajectories of Flash_Sale_Weekend #44 vs. #17), they are referenced in the analysis above as supporting evidence.
