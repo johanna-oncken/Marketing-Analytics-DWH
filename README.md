@@ -164,6 +164,9 @@ BOFU ROAS values are higher than MOFU because last-touch attribution concentrate
 
 **BOFU CVR stabilization:** Across all paid channels, BOFU CVR jumps from 1.43% in January to 2.59% in February, then stabilizes around 2.3–2.4% through March and April. This plateau signals that closing efficiency is not deteriorating — the funnel converts at a consistent rate once users reach the bottom. The revenue decline visible in BOFU ROAS is driven by fewer users entering the funnel, not by worsening conversion at the exit.
 
+<img width="1977" height="1177" alt="bofu_cvr_by_channel" src="https://github.com/user-attachments/assets/53b3e7db-779a-4405-9ab4-9bc8c933c1d9" />
+
+
 **120-Day LTV by Channel (All Cohorts, Dashboard Aggregates):**
 
 <table>
