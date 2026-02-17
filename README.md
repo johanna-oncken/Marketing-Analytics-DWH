@@ -233,22 +233,7 @@ WHERE touchpoint_number > (SELECT AVG(touchpoints_in_path) FROM gold.fact_attrib
 
 ---
 
-### 1.4) Channel Profiles (Consolidated)
-
-Based on 18 KPI dimensions across revenue, cost, engagement, conversion, lifetime value, and path analysis:
-
-| Channel | Role | Key Strength | Key Weakness |
-|---|---|---|---|
-| **Google Display** | High value, low engagement | Highest LTV:CAC (6.01), highest AOV | Weakest engagement (CTR, CVR in decline) |
-| **Instagram Ads** | Consistent full-funnel performer | #1 or #2 across all 18 KPIs | No clear weakness |
-| **Google Search** | Premium acquisition, premium cost | Highest absolute LTV (€53.97) | Highest CAC, steepest April erosion |
-| **TikTok Ads** | Top-of-funnel volume driver | Only channel growing customers in April | Lowest LTV (€42.03), worst closing rate |
-| **Facebook Ads** | Weak across all dimensions | Moderate closing efficiency | Last in LTV:CAC, CPM-to-CVR, overall LTV |
-| **Email** | Retention and closing lever | Most efficient closer, only LTV rebound | Not a scalable acquisition channel |
-
----
-
-### 1.5) Strategic Recommendations
+### 1.4) Strategic Recommendations
 
 Based on the analysis results, the data suggests the following actions for a marketing team facing this scenario.
 
@@ -266,7 +251,7 @@ Based on the analysis results, the data suggests the following actions for a mar
 
 ---
 
-### 1.6) Limitations & Assumptions
+### 1.5) Limitations & Assumptions
 
 **Synthetic data:** All findings are based on synthetically generated data with intentional quality issues for ETL demonstration. Channel engagement volumes are unrealistically uniform (clicks, impressions, and touchpoints are near-identical across channels), limiting the differentiation potential that real data would provide.
 
@@ -282,7 +267,7 @@ Based on the analysis results, the data suggests the following actions for a mar
 
 ---
 
-### 1.7) Tactical Drill-Down (Dashboards)
+### 1.6) Tactical Drill-Down (Dashboards)
 
 While strategic conclusions are drawn at the channel level in this README, campaign-level KPIs are available in the interactive Tableau dashboards for tactical optimization and drill-down.
 
