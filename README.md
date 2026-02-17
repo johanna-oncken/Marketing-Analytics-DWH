@@ -206,7 +206,7 @@ My solution was `fact_attribution_linear_with_costs` — a new table that distri
 
 #### Path Length Does Not Predict Revenue
 
-The correlation between path length and purchase revenue is effectively zero (r = −0.00028). Short paths (1–3 touchpoints) and long paths (8+ touchpoints) produce nearly identical average order values (~€135 vs. ~€133). This challenges the assumption that "more touchpoints = higher basket size" and suggests that efficient, targeted journey design matters more than maximizing touchpoint volume.
+The correlation between path length and purchase revenue is effectively zero (r = −0.00028). Short paths (1–7 touchpoints) and long paths (8+ touchpoints) produce nearly identical average order values (~€135 vs. ~€133). This challenges the assumption that "more touchpoints = higher basket size" and suggests that efficient, targeted journey design matters more than maximizing touchpoint volume.
 
 <pre>
    <code>
@@ -228,7 +228,18 @@ FROM (
     FROM gold.fact_attribution_last_touch
 ) t ) b;
 
-See 05_magnitude_analysis.sql 10.14) Does the touchpoint number (position in the journey) correlate with revenue?
+See 05_magnitude_analysis.sql for Query No. 10.14) Does the touchpoint number (position in the journey) correlate with revenue?
+      and Queries No. 10.15) Are shorter or longer journeys associated with higher-value purchases?
+
+SELECT                                                                                              avg_revenue_short_path
+    AVG(revenue) AS avg_revenue_short_path                                                          -----------------------
+FROM gold.fact_attribution_last_touch                                                               135.797271 
+WHERE touchpoint_number <= (SELECT AVG(touchpoints_in_path) FROM gold.fact_attribution_linear);
+
+SELECT 
+    AVG(revenue) AS avg_revenue_long_path                                                           avg_revenue_long_path
+FROM gold.fact_attribution_last_touch                                                               ---------------------
+WHERE touchpoint_number > (SELECT AVG(touchpoints_in_path) FROM gold.fact_attribution_linear);      132.620637 
    </code>
 </pre>
 
