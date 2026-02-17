@@ -177,7 +177,7 @@ BOFU ROAS values are higher than MOFU because last-touch attribution concentrate
   </tr>
 </table>
 
-Google Display, Instagram Ads, and Google Search all operate in the healthy 3–5x band. Google Search justifies the highest CAC (€16.48) with the highest absolute LTV (€53.19) — it acquires the most valuable customers. Google Display achieves the best ratio (3.43) through the lowest CAC (€14.26) rather than the highest revenue per user. TikTok and Facebook sit in the Monitor band: not unprofitable, but their per-user value does not justify aggressive scaling.
+Google Display, Instagram Ads, and Google Search all operate in the healthy 3–5x band. Google Search justifies the highest CAC (€16.48) with the highest absolute LTV (€53.19) — it acquires the most valuable customers. Google Display achieves the best ratio (3.43) through a favorable combination of above-average LTV (€48.95, second only to Google Search) and below-average CAC (€14.26). TikTok and Facebook sit in the Monitor band: not unprofitable, but their per-user value does not justify aggressive scaling.
 
 **Instagram's April signal:** Instagram is the only paid channel where BOFU CVR improves in April (+28.7% MoM, rising from 1.98% to 2.55%). Combined with its April BOFU ROAS rebound (+9.5%), Instagram shows counter-cyclical closing strength — it performs better as other channels deteriorate, suggesting its audience is less saturated or more responsive in late-cycle conditions.
 
