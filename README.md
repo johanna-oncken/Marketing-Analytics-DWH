@@ -202,9 +202,7 @@ The most significant insight of this project emerged from a bug I discovered dur
 
 The root cause was a granularity mismatch. Revenue had been attributed to individual touchpoints, but costs remained at the aggregate campaign-day level in `fact_spend`. Joining these two tables directly produces distorted results because the row structures don't align.
 
-My solution was `fact_attribution_linear_with_costs` — a new table that distributes costs proportionally alongside revenue, so each touchpoint receives both a `revenue_share` and a `cost_share`. The impact became immediately visible: Google Search in April appeared to have 6.7x ROAS under the old model (no action needed), but actually had 0.39x ROAS with correct cost attribution (critical — budget is being burned). Without the fix, the declining performance of every paid channel would have been invisible.
-
-This was a learning experience in how cost attribution is often treated as an afterthought in marketing analytics — revenue attribution is well-documented, but aligning costs to the same granularity requires deliberate modeling. The technical details are documented in [Section 2.5](#25-why-fact_attribution_linear_with_costs-exists).
+My solution was `fact_attribution_linear_with_costs` — a new table that distributes costs proportionally alongside revenue, so each touchpoint receives both a `revenue_share` and a `cost_share`. The technical details are documented in [Section 2.5](#25-why-fact_attribution_linear_with_costs-exists).
 
 #### Path Length Does Not Predict Revenue
 
