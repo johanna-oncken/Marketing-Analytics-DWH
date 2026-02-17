@@ -210,9 +210,9 @@ The correlation between path length and purchase revenue is effectively zero (r 
 
 <pre>
    <code>
-SELECT 
-    (SUM(aabb))/(SQRT(SUM(a_2))*SQRT(SUM(b_2))) as r_correlation
-FROM (
+SELECT                                                                                                r_correlation
+    (SUM(aabb))/(SQRT(SUM(a_2))*SQRT(SUM(b_2))) as r_correlation                                      -----------------------
+FROM (                                                                                                -0,00027886619616565117
 SELECT 
     touchpoint_number,
     revenue,
@@ -228,9 +228,6 @@ FROM (
     FROM gold.fact_attribution_last_touch
 ) t ) b;
 
-r_correlation          
------------------------
--0,00027886619616565117
 See 05_magnitude_analysis.sql 10.14) Does the touchpoint number (position in the journey) correlate with revenue?
    </code>
 </pre>
