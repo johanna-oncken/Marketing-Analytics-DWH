@@ -248,6 +248,7 @@ Based on the analysis results, the data suggests the following actions for a mar
 <p align="center">
    <img width="586" height="265" alt="Repeat Purchase Growth" src="https://github.com/user-attachments/assets/167efc2c-129a-4be0-9406-bbb32b64bf03" />
 </p>
+
 ---
 
 ### 1.5) Limitations & Assumptions
