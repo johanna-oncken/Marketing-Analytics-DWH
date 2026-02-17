@@ -184,25 +184,6 @@ Comparing First-Touch and Last-Touch revenue per channel reveals a clear spectru
 
 <img width="1977" height="1177" alt="tofu_bofu_revenue_gap" src="https://github.com/user-attachments/assets/baaa2552-7870-41ac-8c66-c9fe3b22a985" />
 
-#### Attribution Model Comparison
-
-The three models produce different ROAS rankings — confirming that no single model tells the full story:
-
-<table>
-  <thead>
-    <tr><th>Channel</th><th>TOFU ROAS</th><th>MOFU ROAS</th><th>BOFU ROAS</th></tr>
-  </thead>
-  <tbody>
-    <tr><td>TikTok Ads</td><td>3.06</td><td>2.11</td><td>5.68</td></tr>
-    <tr><td>Google Display</td><td>2.99</td><td>2.20</td><td>5.48</td></tr>
-    <tr><td>Google Search</td><td>2.70</td><td>2.09</td><td>5.41</td></tr>
-    <tr><td>Facebook Ads</td><td>2.88</td><td>2.15</td><td>5.18</td></tr>
-    <tr><td>Instagram Ads</td><td>2.87</td><td>2.07</td><td>4.85</td></tr>
-  </tbody>
-</table>
-
-The spread between TOFU and BOFU ROAS varies significantly by channel. Instagram shows the smallest gap (1.69x factor), confirming its consistent full-funnel profile. Google Search ranks first in absolute revenue across models (twice #1, twice #2) despite mid-range ROAS — it generates the most total value, not the highest return per euro. BOFU ROAS values are generally higher because last-touch attribution concentrates credit on fewer, lower-cost touchpoints.
-
 #### What I Learned Building the Cost Attribution
 
 The most significant insight of this project emerged from a bug I discovered during development. The original `fact_attribution_linear` table distributes revenue equally across all touchpoints in a converting journey — standard practice for multi-touch attribution. But when I built the Tableau dashboards and applied funnel-stage filters, the numbers didn't add up: MOFU-filtered views showed revenue only from mid-funnel touchpoints, while costs still reflected _all_ touchpoints. The original approach summed spend without differentiating funnel stages, inflating the ROAS denominator for any filtered view. ROAS appeared roughly significantly worse than it should have been for any filtered view.
