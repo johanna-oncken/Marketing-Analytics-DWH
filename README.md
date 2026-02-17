@@ -158,18 +158,7 @@ BOFU ROAS values are higher than MOFU because last-touch attribution concentrate
 <table>
   <tr>
     <td>
-      <table>
-        <thead>
-          <tr><th>Channel</th><th>LTV (120d)</th><th>CAC</th><th>LTV:CAC</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Google Display</td><td>€48.95</td><td>€14.26</td><td>3.43</td></tr>
-          <tr><td>Instagram Ads</td><td>€43.55</td><td>€13.36</td><td>3.26</td></tr>
-          <tr><td>Google Search</td><td>€53.19</td><td>€16.48</td><td>3.23</td></tr>
-          <tr><td>TikTok Ads</td><td>€41.66</td><td>€14.02</td><td>2.97</td></tr>
-          <tr><td>Facebook Ads</td><td>€44.24</td><td>€14.97</td><td>2.95</td></tr>
-        </tbody>
-      </table>
+      <img src="https://github.com/user-attachments/assets/24879dad-be94-499c-b1b7-92c363167c4c" width="900">
     </td>
     <td>
       <img src="https://github.com/user-attachments/assets/9cc49b57-6129-411f-9c23-ba1d9bead2c0" alt="LTV vs. CAC by Channel" width="900">
