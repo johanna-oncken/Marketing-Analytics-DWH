@@ -193,6 +193,9 @@ Multi-touch attribution reveals channel dynamics that single-touch models cannot
 
 Google Display shows the largest gap between first-touch and last-touch attributed revenue (+€6,628 in January, 2.2x ratio) — it initiates journeys but rarely closes them. Instagram shows near-parity (gap of only €979), making it the most self-sufficient channel. By April, Instagram, Google Search, and Facebook shift to generating _more_ BOFU than TOFU revenue — they become closers as the campaign period matures.
 
+<img width="1977" height="1177" alt="tofu_bofu_revenue_gap" src="https://github.com/user-attachments/assets/baaa2552-7870-41ac-8c66-c9fe3b22a985" />
+
+
 #### What I Learned Building the Cost Attribution
 
 The most significant insight of this project emerged from a bug I discovered during development. The original `fact_attribution_linear` table distributes revenue equally across all touchpoints in a converting journey — standard practice for multi-touch attribution. But when I built the Tableau dashboards and applied funnel-stage filters, the numbers didn't add up: MOFU-filtered views showed revenue only from mid-funnel touchpoints, while costs still reflected _all_ touchpoints. ROAS appeared roughly three times worse than it should have been for any filtered view.
