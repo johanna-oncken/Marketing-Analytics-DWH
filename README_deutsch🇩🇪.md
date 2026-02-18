@@ -41,7 +41,7 @@ Marketing-Analytics-DWH/
 </pre>
 
 <h2>1) Marketing-Analyse</h2>
-<p>Aufgabe: Analyse von Werbedaten von Januar bis April 2024. Dieser Abschnitt beginnt mit der Stakeholder-Kommunikation und der Darstellung der Analyseergebnisse. Abschnitt 2 behandelt den Datenüberblick, die ETL-Pipeline und den Data-Warehouse-Aufbau.</p>
+<p>Aufgabe ist die Analyse von Werbedaten aus Januar bis April 2024. Ich beginne mit der Stakeholder-Kommunikation und der Prästentation der Analyseergebnissen. Abschnitt 2 ([Abschnitt 2](#2-End-To-End Data Warehouse und ETL)) behandelt den Datenüberblick, die ETL-Pipeline und den Data-Warehouse-Aufbau.</p>
 
 ### 1.1) Executive Summary
 
