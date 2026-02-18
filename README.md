@@ -274,7 +274,7 @@ Based on the analysis results, the data suggests the following actions for a mar
 
 **Cohort imbalance:** 93% of users are acquired in January. February and March cohorts are too small for statistically reliable cross-cohort comparisons. Within-January analysis is robust.
 
-**CPM and CTR limitation:** CPM values are unrealistically high (>€4,053 vs. typical €5–30) due to low synthetic impression volumes. Absolute CPM values are not benchmarkable; the CPM-to-CVR ratio aggregates across months and is not affected. Similarly, low impression volumes produce CTR values above 100% (~244%), which should be read as click intensity rather than literal conversion rates. Cross-channel comparisons remain valid.
+**CPM and CTR limitation:** CPM values are unrealistically high (>€4,053 vs. typical €5–30) due to low synthetic impression volumes. Absolute CPM values are not benchmarkable; the CPM-to-CVR ratio aggregates across months and is not affected. Similarly, low impression volumes produce CTR values above 100% (~244%), which should be read as click intensity rather than literal click-through rates. Cross-channel comparisons remain valid.
 
 ---
 
