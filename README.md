@@ -313,7 +313,7 @@ These are the directions I would explore with real production data and a longer 
 
 <hr>
 
-<h2 id="#2-end-to-end-data-warehouse-und-etl">2) End-To-End Data Warehouse and ETL</h2>
+<h2 id="2-end-to-end-data-warehouse-und-etl">2) End-To-End Data Warehouse and ETL</h2>
 <p>A SQL Server data warehouse for marketing analytics, built on a Bronze → Silver → Gold medallion architecture. The warehouse, named <strong>marketing_dw</strong>, integrates data from three source systems (marketing platform, web analytics, CRM system) and models it into a star schema with a fact constellation for multi-touch attribution.</p>
 <h4>2.1) Architecture</h4>
 <p>The warehouse follows a three-layer medallion architecture:</p>
