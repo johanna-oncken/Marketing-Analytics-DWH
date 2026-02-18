@@ -209,7 +209,7 @@ Meine Lösung war `fact_attribution_linear_with_costs` — eine neue Tabelle, di
 
 #### Pfadlänge prognostiziert keinen Umsatz
 
-Die Korrelation zwischen Pfadlänge und Kaufumsatz ist praktisch null (r = −0,00028). Kurze Pfade (1–7 Touchpoints) und lange Pfade (8+ Touchpoints) produzieren nahezu identische durchschnittliche Bestellwerte (~€135 vs. ~€133). Das stellt die Annahme in Frage, dass „mehr Touchpoints = höherer Warenkorbwert" und legt nahe, dass effizientes, gezieltes Journey-Design wichtiger ist als die Maximierung des Touchpoint-Volumens.
+Die Korrelation zwischen Pfadlänge und Kaufumsatz ist praktisch null (r = −0,00028). Kurze Pfade (1–7 Touchpoints) und lange Pfade (8+ Touchpoints) produzieren nahezu identische durchschnittliche Bestellwerte (~€135 vs. ~€133). Das stellt die Annahme „mehr Touchpoints = höherer Warenkorbwert" in Frage und legt nahe, dass effizientes, gezieltes Journey-Design wichtiger ist als die Maximierung des Touchpoint-Volumens.
 
 <pre>
    <code>
