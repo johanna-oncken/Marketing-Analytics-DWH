@@ -274,7 +274,7 @@ Die Analyseergebnisse dieses Szenarios legen einem Marketingteam folgende Maßna
 
 **Kohorten-Ungleichgewicht:** 93% der Nutzer werden im Januar akquiriert. Februar- und März-Kohorten sind zu klein für statistisch zuverlässige kohortenübergreifende Vergleiche. Die Within-Januar-Analyse ist robust.
 
-**CPM- und CTR-Limitation:** CPM-Werte sind unrealistisch hoch (>€4.053 vs. typische €5–30) aufgrund niedriger synthetischer Impression-Volumen. Absolute CPM-Werte sind nicht benchmarkbar; das CPM-zu-CVR-Verhältnis aggregiert über Monate und ist nicht betroffen. Ebenso produzieren niedrige Impression-Volumen CTR-Werte über 100% (~244%), die als Klickintensität statt als wörtliche Conversion-Raten gelesen werden sollten. Kanalübergreifende Vergleiche bleiben valide.
+**CPM- und CTR-Limitation:** CPM-Werte sind aufgrund niedriger synthetischer Impression-Volumen unrealistisch hoch (>€4.053 vs. typische €5–30). Absolute CPM-Werte sind nicht benchmarkable; das CPM-zu-CVR-Verhältnis aggregiert über Monate und ist nicht betroffen. Ebenso produzieren niedrige Impression-Volumen CTR-Werte über 100% (~244%), die als Klickintensität statt als wörtliche Click-Through-Raten gelesen werden sollten. Kanalübergreifende Vergleiche bleiben valide.
 
 ---
 
