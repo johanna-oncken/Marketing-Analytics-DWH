@@ -63,7 +63,7 @@ Die analysierten Multi-Touch-Marketingdaten über 9 Kanäle, 53 Kampagnen, ~8.50
 
 ### 1.2) Funnel-basierte Performance-Analyse
 
-Die Analyse ist um drei Funnel-Stufen strukturiert, die jeweils mit einem dedizierten Attributionsmodell ausgewertet werden, um Geschäftsfragen der passenden Messperspektive zuzuordnen.
+Die Analyse differenziert drei Funnel-Stufen, die jeweils mit einem dedizierten Attributionsmodell ausgewertet werden, um Geschäftsfragen der passenden Messperspektive zuzuordnen.
 
 | Funnel-Stufe | Attributionsmodell | Geschäftsfrage |
 |---|---|---|
