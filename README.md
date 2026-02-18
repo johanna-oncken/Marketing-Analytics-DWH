@@ -195,7 +195,9 @@ Multi-touch attribution reveals channel dynamics that single-touch models cannot
 
 Comparing First-Touch and Last-Touch revenue per channel reveals a clear spectrum: TikTok Ads (−€5.2K) and Facebook Ads (−€4.2K) generate significantly more acquisition revenue than closing revenue — they initiate journeys that other channels finish. Google Search sits nearly balanced (−€0.2K), performing equally well at both ends. The surprise is Google Display (+€2.4K): the only channel that closes more than it initiates, acting as a silent converter for traffic other channels brought in.
 
-<img width="1977" height="1177" alt="tofu_bofu_revenue_gap" src="https://github.com/user-attachments/assets/baaa2552-7870-41ac-8c66-c9fe3b22a985" />
+**TOFU vs. BOFU Revenue(€) by Channel (January-April 2024)
+
+<img width="100%" height="713" alt="tofu_bofu_revenue_gap" src="Bildschirmfoto 2026-02-18 um 11 30 46" src="https://github.com/user-attachments/assets/4e177ee0-8cb3-43c0-b764-40b3968c360b" />
 
 #### What I Learned Building the Cost Attribution
 
