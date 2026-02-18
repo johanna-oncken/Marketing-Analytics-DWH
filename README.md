@@ -53,7 +53,7 @@ Analysis of multi-touch marketing data across 9 channels, 53 campaigns, ~8,500 u
 
 **3. Google Search (the premium channel) and Google Display justify their cost through different strengths.** Google Search has the highest absolute LTV (€53.20), strongest revenue ranking across attribution models (twice #1, twice #2), and best lead quality. Google Display leads in LTV:CAC (3.4) despite the weakest engagement metrics (lowest click-through rate). It closes conversions that other channels initiate — the only paid channel with a positive TOFU-BOFU revenue gap (+€2.4K).
 
-**4. TikTok Ads drives new user acquisition, not lifetime value.** Lowest absolute LTV (€41.7) shortest last-touch paths (1.76 avg touchpoints), and the lowest April BOFU conversion rate (2.03%). TikTok converts quickly when it converts — but it converts rarely, and the users it brings are the least valuable long-term.
+**4. TikTok Ads drives new user acquisition, not lifetime value.** Lowest absolute LTV (€41.7), shortest last-touch paths (1.76 avg touchpoints), and the lowest April BOFU conversion rate (2.03%). TikTok converts quickly when it converts — but it converts rarely, and the users it brings are the least valuable long-term.
 
 **5. Facebook Ads is the consistent underperformer.** Last or near-last in revenue ranking across all attribution models (3x last, 1x second-to-last), worst lead quality, and worst closing efficiency among paid channels. Its CAC of €15.0 is the second-highest, but unlike Google Search (€16.5 CAC, €53.2 LTV), Facebook does not compensate with higher lifetime value (€44.2). Facebook costs nearly as much as the premium channel but delivers the weakest revenue performance.
 
