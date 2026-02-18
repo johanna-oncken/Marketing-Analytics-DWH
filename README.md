@@ -147,7 +147,7 @@ March is the tipping point: Google Search (1.56x) and TikTok Ads (1.67x) already
 
 BOFU ROAS values are higher than MOFU because last-touch attribution concentrates all credit on the final converting touchpoint. The decline pattern differs by channel: Google Search drops the most (7.85x → 1.97x, −75%), while TikTok Ads (4.57x) and Facebook Ads (4.27x) show the strongest April resilience. Instagram is the only channel with an April rebound (3.83x → 4.19x, +9.5%).
 
-<img width="100%" height="1177" alt="bofu_cvr_by_channel" src="https://github.com/user-attachments/assets/1b6d852c-e463-4935-b521-e0d06c5f1a33" />
+<img width="100%" height="1177" alt="bofu_cvr_by_channel" src="https://github.com/user-attachments/assets/2bfc550f-0704-499c-92a1-37083bd1ae61" />
 
 **BOFU CVR stabilization:** Across all paid channels, BOFU CVR jumps from 1.43% in January to 2.59% in February, then stabilizes around 2.3–2.4% through March and April. This plateau signals that closing efficiency is not deteriorating — the funnel converts at a consistent rate once users reach the bottom. The revenue decline visible in BOFU ROAS is driven by fewer users entering the funnel, not by worsening conversion at the exit.
 
