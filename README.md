@@ -79,7 +79,7 @@ The analysis is structured around three funnel stages, each evaluated using a de
 
 **Key finding:** Instagram Ads delivers the most cost-efficient reach across all attention metrics, while Google Search commands a premium that its conversion quality partially justifies.
 
-<table>
+<table align="center">
   <thead>
     <tr><th>Channel</th><th>Avg CPC</th><th>CTR Rank</th><th>CPM-to-CVR Ratio</th><th>Efficiency</th></tr>
   </thead>
