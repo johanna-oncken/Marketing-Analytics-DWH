@@ -131,20 +131,19 @@ March is the tipping point: Google Search (1.56x) and TikTok Ads (1.67x) already
 **Key finding:** While MOFU ROAS collapses below the profitability threshold by April, BOFU (last-touch attribution) tells a different story: the closing machine still works. BOFU CVR stabilizes at ~2.3% after an initial ramp-up — the problem is not conversion efficiency, but audience exhaustion further up the funnel. The 120-day LTV analysis confirms that three of five paid channels operate in the healthy 3–5x LTV:CAC band, with Google Search delivering the highest absolute lifetime value (€53.19) and Google Display the best efficiency ratio (3.43).
 
 **Monthly BOFU ROAS (Last-Touch Attribution, Paid Channels):**
-<p align="center">
-  <table>
-  <thead>
+
+<table align="center">
+   <thead>
     <tr><th>Channel</th><th>Jan</th><th>Feb</th><th>Mar</th><th>Apr</th></tr>
-  </thead>
-  <tbody>
+   </thead>
+   <tbody>
     <tr><td>Google Search</td><td>7.85x</td><td>6.40x</td><td>4.05x</td><td>1.97x</td></tr>
     <tr><td>TikTok Ads</td><td>6.61x</td><td>5.73x</td><td>5.33x</td><td>4.57x</td></tr>
     <tr><td>Instagram Ads</td><td>6.30x</td><td>4.67x</td><td>3.83x</td><td>4.19x</td></tr>
     <tr><td>Facebook Ads</td><td>5.96x</td><td>5.85x</td><td>4.28x</td><td>4.27x</td></tr>
     <tr><td>Google Display</td><td>5.07x</td><td>6.29x</td><td>5.70x</td><td>2.93x</td></tr>
-  </tbody>
+   </tbody>
 </table> 
-</p>
 
 BOFU ROAS values are higher than MOFU because last-touch attribution concentrates all credit on the final converting touchpoint. The decline pattern differs by channel: Google Search drops the most (7.85x → 1.97x, −75%), while TikTok Ads (4.57x) and Facebook Ads (4.27x) show the strongest April resilience. Instagram is the only channel with an April rebound (3.83x → 4.19x, +9.5%).
 
