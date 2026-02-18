@@ -112,7 +112,7 @@ This analysis relies on `fact_attribution_linear_with_costs`, which distributes 
 
 **MOFU ROAS by channel (January–April 2024):**
 
-<p align="center"><img src="https://github.com/user-attachments/assets/8de4836c-c7de-4ac8-b14b-ac87b5115d1c" alt="MOFU ROAS by Channel" width="100%"></p>
+<p align="center"><img src="https://github.com/user-attachments/assets/0c0db512-e76f-405b-9be3-384660de5bf8" alt="MOFU ROAS by Channel" width="100%"></p>
 
 **120-Day MOFU ROAS values (desc.):** Google Display 2.20x, Facebook Ads 2.15x, TikTok Ads 2.11x, Google Search 2.09x, Instagram Ads 2.07x
 
