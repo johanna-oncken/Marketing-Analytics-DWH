@@ -298,13 +298,13 @@ Die Dashboards ermöglichen:
 
 ---
 
-### 1.7) Was ich als Nächstes tun würde
+### 1.7) Nächste Schritte
 
-Dies sind die Richtungen, die ich mit realen Produktionsdaten und einem längeren Zeithorizont erkunden würde.
+Weitere Methodik, die ich mich mit realen Produktionsdaten und einem längeren Zeithorizont anwenden würde:
 
-**Zusätzliche Attributionsmodelle.** Das lineare Modell verteilt Credit gleichmäßig, was eine bewusste Vereinfachung ist. Der nächste Schritt wäre die Implementierung von Time-Decay-Attribution (höhere Gewichtung neuerer Touchpoints) und positionsbasierter Attribution (Betonung des ersten und letzten Touchs). Der Vergleich aller Modelle nebeneinander für dieselben Daten würde zeigen, wo sie übereinstimmen (robuste Erkenntnisse) und wo sie divergieren (Bereiche, die genauere Untersuchung erfordern). Ich würde auch verstehen wollen, wann lineare Attribution „gut genug" ist versus wann ein komplexeres Modell reale Budgetentscheidungen verändern würde.
+**Zusätzliche Attributionsmodelle.** Das lineare Modell verteilt Credit gleichmäßig, was eine bewusste Vereinfachung ist. Der nächste Schritt wäre die Implementierung von Time-Decay-Attribution (höhere Gewichtung neuerer Touchpoints) und Position-Based-Attribution (Betonung des ersten und letzten Touchs). Der Vergleich aller Modelle nebeneinander für dieselben Daten würde zeigen, wo sie übereinstimmen (robuste Erkenntnisse) und wo sie divergieren (Bereiche, die genauere Untersuchung erfordern). Darüberhinaus würde ich verstehen wollen, wann lineare Attribution „gut genug" ist versus wann ein komplexeres Modell reale Budgetentscheidungen verändern würde.
 
-**Kausalitätstests durch Holdout-Experimente.** Multi-Touch-Attribution zeigt, welche Kanäle _neben_ Conversions _erscheinen_ — aber sie kann nicht beweisen, dass ein Kanal die Conversion tatsächlich _verursacht_ hat. Ein Nutzer, der auf eine Google-Search-Anzeige klickt, hätte möglicherweise ohnehin gekauft. Der Standardprozess wäre Incrementality Testing (Holdout-Experimente): Anzeigen für eine zufällige Nutzergruppe unterdrücken und ihre Conversion-Rate mit der exponierten Gruppe vergleichen. Das ist etwas, das ich noch nicht gebaut habe, aber es ist die logische nächste Frage nach der Attribution — und die Frage, die ich in einem echten Marketingteam beantworten wollen würde.
+**Kausalitätstests durch Holdout-Experimente.** Multi-Touch-Attribution zeigt, welche Kanäle _neben_ Conversions _erscheinen_ — aber sie kann nicht beweisen, dass ein Kanal die Conversion tatsächlich _verursacht_ hat. Ein Nutzer, der auf eine Google-Search-Anzeige klickt, hätte möglicherweise ohnehin gekauft. Der Standardprozess wäre Incrementality Testing (Holdout-Experimente): Anzeigen für eine zufällige Nutzergruppe unterdrücken und ihre Conversion-Rate mit der exponierten Gruppe vergleichen. Die kausale Frage ist der nächstlogische Schritt im Anschluss an die Attribution.
 
 **Längeres LTV-Fenster und Retention-Modellierung.** Der aktuelle 120-Tage-LTV erfasst frühes Wiederkaufverhalten, aber wahrer Customer Lifetime Value erfordert 12–24 Monate Daten. Mit einem längeren Zeithorizont könnte man Kundensegmentierung basierend auf Kaufaktualität, -häufigkeit und -wert (RFM-Analyse) aufbauen, um zu identifizieren, welche Nutzersegmente die meiste Retention-Investition verdienen. Die 81%-Einmalkäufer-Rate ist der offensichtlichste Ausgangspunkt — zu verstehen, _warum_ diese Nutzer nicht zurückkehren, ist mehr wert als zu optimieren, welcher Kanal sie akquiriert.
 
