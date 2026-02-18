@@ -45,7 +45,7 @@ Marketing-Analytics-DWH/
 
 ### 1.1) Executive Summary
 
-Die Analyse von Multi-Touch-Marketingdaten über 9 Kanäle, 53 Kampagnen, ~8.500 Nutzer und 87.000+ Touchpoints (Januar–April 2024) ergibt fünf zentrale Erkenntnisse:
+Die analysierten Multi-Touch-Marketingdaten über 9 Kanäle, 53 Kampagnen, ~8.500 Nutzer und 87.000+ Touchpoints (Januar–April 2024) zeigen fünf zentrale Erkenntnisse:
 
 **1. Alle Paid-Kanäle folgen einem Launch → Sättigungs-Muster.** Der MOFU-ROAS im Januar lag zwischen 4,3x und 4,7x; bis April waren alle Kanäle unter 1,3x gefallen — ein Rückgang von bis zu 77%. Das deutet auf Zielgruppensättigung, nachlassende Werbewirksamkeit und steigenden Wettbewerb hin. Entscheidend: Dieser Rückgang hätte ohne die Kosten-Attributionskorrektur, die ich während der Entwicklung gebaut habe, nicht korrekt pro Funnel-Stufe analysiert werden können (siehe [Abschnitt 2.5](#25-warum-fact_attribution_linear_with_costs-existiert)).
 
