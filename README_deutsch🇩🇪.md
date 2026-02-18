@@ -41,13 +41,13 @@ Marketing-Analytics-DWH/
 </pre>
 
 <h2>1) Marketing-Analyse</h2>
-<p>Aufgabe ist die Analyse von Werbedaten aus Januar bis April 2024. Ich beginne mit der Stakeholder-Kommunikation und der Prästentation der Analyseergebnissen. [Abschnitt 2](#2-end-to-end-data-warehouse-und-etl) behandelt den Datenüberblick, die ETL-Pipeline und den Data-Warehouse-Aufbau.</p>
+<p>Aufgabe ist die Analyse von Werbedaten aus Januar bis April 2024. Ich beginne mit der Stakeholder-Kommunikation und der Präsentation der Analyseergebnisse. <a href="#2-end-to-end-data-warehouse-und-etl">Abschnitt 2</a> behandelt den Datenüberblick, die ETL-Pipeline und den Data-Warehouse-Aufbau.</p>
 
 ### 1.1) Executive Summary
 
 Die Analyse von Multi-Touch-Marketingdaten über 9 Kanäle, 53 Kampagnen, ~8.500 Nutzer und 87.000+ Touchpoints (Januar–April 2024) ergibt fünf zentrale Erkenntnisse:
 
-**1. Alle Paid-Kanäle folgen einem Launch → Sättigungs-Muster.** Der MOFU-ROAS im Januar lag zwischen 4,3x und 4,7x; bis April waren alle Kanäle unter 1,3x gefallen — ein Rückgang von bis zu 77%. Das deutet auf Zielgruppensättigung, nachlassende Werbewirksamkeit und steigenden Wettbewerb hin. Entscheidend: Dieser Rückgang hätte ohne die Kosten-Attributionskorrektur, die ich während der Entwicklung gebaut habe, nicht korrekt pro Funnel-Stufe analysiert werden können (siehe [Abschnitt 2.5](#25-why-fact_attribution_linear_with_costs-exists)).
+**1. Alle Paid-Kanäle folgen einem Launch → Sättigungs-Muster.** Der MOFU-ROAS im Januar lag zwischen 4,3x und 4,7x; bis April waren alle Kanäle unter 1,3x gefallen — ein Rückgang von bis zu 77%. Das deutet auf Zielgruppensättigung, nachlassende Werbewirksamkeit und steigenden Wettbewerb hin. Entscheidend: Dieser Rückgang hätte ohne die Kosten-Attributionskorrektur, die ich während der Entwicklung gebaut habe, nicht korrekt pro Funnel-Stufe analysiert werden können (siehe [Abschnitt 2.5](#25-warum-fact_attribution_linear_with_costs-existiert)).
 
 **2. Instagram Ads ist der konsistenteste Performer über alle Metriken.** Niedrigster CPM, bestes CPM-zu-CVR-Effizienzverhältnis und stärkste BOFU-Closing-Verbesserung im April (+28,7% CVR MoM). LTV:CAC von 3,3 platziert Instagram in der Top-Tier neben Google Search (3,2) und Google Display (3,4). Instagram ist der einzige Paid-Kanal, der über Kosteneffizienz, Closing, Retention und LTV:CAC-Verhältnis hinweg in der oberen Klasse performt — allerdings bei geringerem Volumen als andere Kanäle.
 
@@ -106,7 +106,7 @@ Das CPM-zu-CVR-Effizienzverhältnis kombiniert Reichweitenkosten mit Conversion-
 
 **Kernerkenntnis:** Bis April fällt jeder Paid-Kanal unter die 1,5x-Profitabilitätsschwelle bei Betrachtung der gesamten Customer Journey. Alle Kanäle starten profitabel im Januar (4,3–4,7x), verlieren aber 70–77% ihres MOFU-ROAS innerhalb von vier Monaten — was die Zielgruppensättigung nicht nur am oberen Ende des Funnels, sondern über den gesamten Conversion-Pfad hinweg bestätigt. Dies ist das stärkste Signal in den Daten, dass fortgesetzte Ausgaben auf aktuellem Niveau ohne neue Zielgruppenstrategien oder Kanaldiversifikation nicht tragbar sind.
 
-Diese Analyse stützt sich auf `fact_attribution_linear_with_costs`, die sowohl Umsatz *als auch* Kosten gleichmäßig auf alle Touchpoints einer konvertierenden Journey verteilt — eine Tabelle, die ich gebaut habe, nachdem ich entdeckte, dass das Standard-Linear-Modell Kosten auf Funnel-Stufen-Ebene nicht attribuiert hatte (siehe [Abschnitt 1.3](#13-attribution-insights)).
+Diese Analyse stützt sich auf `fact_attribution_linear_with_costs`, die sowohl Umsatz *als auch* Kosten gleichmäßig auf alle Touchpoints einer konvertierenden Journey verteilt — eine Tabelle, die ich gebaut habe, nachdem ich entdeckte, dass das Standard-Linear-Modell Kosten auf Funnel-Stufen-Ebene nicht attribuiert hatte (siehe [Abschnitt 1.3](#13-attributions-insights)).
 
 **Gesamt-MOFU-ROAS:** 2,12x (€147.679 Umsatz / €69.607 attribuierte Kosten)
 
@@ -205,7 +205,7 @@ Die bedeutsamste Erkenntnis dieses Projekts ergab sich aus einer Limitation, die
 
 Die Ursache war eine Granularitäts-Diskrepanz. Revenue war auf einzelne Touchpoints attribuiert worden, aber die Kosten blieben auf der aggregierten Kampagnen-Tages-Ebene in `fact_spend`. Einen direkten Join dieser beiden Tabellen zu machen, produziert verzerrte Ergebnisse, weil die Zeilenstrukturen nicht übereinstimmen.
 
-Meine Lösung war `fact_attribution_linear_with_costs` — eine neue Tabelle, die Kosten proportional neben dem Revenue verteilt, sodass jeder Touchpoint sowohl einen `revenue_share` als auch einen `cost_share` erhält. Die technischen Details sind in [Abschnitt 2.5](#25-why-fact_attribution_linear_with_costs-exists) dokumentiert.
+Meine Lösung war `fact_attribution_linear_with_costs` — eine neue Tabelle, die Kosten proportional neben dem Revenue verteilt, sodass jeder Touchpoint sowohl einen `revenue_share` als auch einen `cost_share` erhält. Die technischen Details sind in [Abschnitt 2.5](#25-warum-fact_attribution_linear_with_costs-existiert) dokumentiert.
 
 #### Pfadlänge prognostiziert keinen Umsatz
 
@@ -309,7 +309,7 @@ Dies sind die Richtungen, die ich mit realen Produktionsdaten und einem längere
 
 **Längeres LTV-Fenster und Retention-Modellierung.** Der aktuelle 120-Tage-LTV erfasst frühes Wiederkaufverhalten, aber wahrer Customer Lifetime Value erfordert 12–24 Monate Daten. Mit einem längeren Zeithorizont könnte man Kundensegmentierung basierend auf Kaufaktualität, -häufigkeit und -wert (RFM-Analyse) aufbauen, um zu identifizieren, welche Nutzersegmente die meiste Retention-Investition verdienen. Die 81%-Einmalkäufer-Rate ist der offensichtlichste Ausgangspunkt — zu verstehen, _warum_ diese Nutzer nicht zurückkehren, ist mehr wert als zu optimieren, welcher Kanal sie akquiriert.
 
-**Von Batch- zu inkrementeller Verarbeitung.** Das aktuelle Warehouse ([Abschnitt 2.1](#21-Architecture)) verwendet ein Full-Load-, Truncate-and-Insert-Muster. Das ist angemessen für ein Demo-Projekt, aber in der Produktion würde ich inkrementelles Laden (nur neue oder geänderte Datensätze), automatisierte Qualitätsprüfungen bei jedem Load und Alerting, wenn Schlüsselmetriken sich außerhalb erwarteter Bereiche bewegen, haben wollen. Das Ziel: Ein Sättigungsmuster wie das in diesen Daten im Februar sofort erkennen, nicht nach vier Monaten Batch-Analyse.
+**Von Batch- zu inkrementeller Verarbeitung.** Das aktuelle Warehouse ([Abschnitt 2.1](#21-architektur)) verwendet ein Full-Load-, Truncate-and-Insert-Muster. Das ist angemessen für ein Demo-Projekt, aber in der Produktion würde ich inkrementelles Laden (nur neue oder geänderte Datensätze), automatisierte Qualitätsprüfungen bei jedem Load und Alerting, wenn Schlüsselmetriken sich außerhalb erwarteter Bereiche bewegen, haben wollen. Das Ziel: Ein Sättigungsmuster wie das in diesen Daten im Februar sofort erkennen, nicht nach vier Monaten Batch-Analyse.
 
 <hr>
 
@@ -543,3 +543,4 @@ GROUP BY channel;</code></pre>
     <tr><td>Umfang</td><td>~8.500 User · ~3.500 Käufe · ~87.000 Touchpoints · ~70.000 Klicks · 53 Kampagnen · 9 Kanäle</td></tr>
   </tbody>
 </table>
+
