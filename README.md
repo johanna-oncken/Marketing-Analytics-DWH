@@ -293,7 +293,6 @@ The dashboards enable:
 - **Campaign ranking and filtering** — sort by Revenue, ROAS, CPA, CVR across all 53 campaigns
 - **Funnel-stage breakdown** — filterable funnel stage views (TOFU/MOFU/BOFU) per campaign and correct cost attribution at each stage
 - **Channel filter logic** - By clicking a channel in one of the other visuals Campaign Drill-down gets filtered according to the selected parent channel
-- **Trend monitoring** — monthly performance tracking to identify saturation and intervention signals
 
 > _Note on Spend: KPI Row shows ACTUAL SPEND (when money was spent) from gold.fact_spend. gold.roas shows ATTRIBUTED SPEND (spend linked to conversions) - different concept!"_
 
