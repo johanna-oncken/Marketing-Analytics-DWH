@@ -55,7 +55,7 @@ Die analysierten Multi-Touch-Marketingdaten über 9 Kanäle, 53 Kampagnen, ~8.50
 
 **4. TikTok Ads treibt Neukundenakquise, nicht Lifetime Value.** Niedrigster absoluter LTV (€41,7), kürzeste Last-Touch-Pfade (1,76 Touchpoints im Durchschnitt) und die niedrigste BOFU-Conversion-Rate im April (2,03%). TikTok konvertiert schnell, wenn es konvertiert — aber es konvertiert selten, und die gewonnenen Nutzer sind langfristig am wenigsten wertvoll.
 
-**5. Facebook Ads ist der konstante Underperformer.** Letzter oder vorletzter Platz im Revenue-Ranking über alle Attributionsmodelle (3x letzter, 1x vorletzter), schlechteste Lead-Qualität und schwächste Closing-Effizienz unter den Paid-Kanälen. Der CAC von €15,0 ist der zweithöchste, aber anders als Google Search (€16,5 CAC, €53,2 LTV) kompensiert Facebook nicht mit höherem Lifetime Value (€44,2). Facebook kostet fast so viel wie der Premium-Kanal, liefert aber die schwächste Revenue-Performance.
+**5. Facebook Ads ist der konstante Underperformer.** Letzter oder vorletzter Platz im Revenue-Ranking über alle Attributionsmodelle (3x letzter, 1x vorletzter), schlechteste Lead-Qualität und schwächste Closing-Effizienz unter den Paid-Kanälen. Der CAC von €15,0 ist der zweithöchste, aber anders als Google Search (€16,5 CAC; €53,2 LTV) kompensiert Facebook nicht mit höherem Lifetime Value (€44,2). Facebook kostet fast so viel wie der Premium-Kanal, liefert aber die schwächste Revenue-Performance.
 
 > _Hinweis: Diese Analyse verwendet synthetisch generierte Daten. Absolute Werte dienen als Demonstrationsrahmen; relative Vergleiche zwischen Kanälen und Kampagnen sind analytisch valide. Spezifische Datenlimitierungen werden inline in der gesamten Analyse vermerkt._
 
