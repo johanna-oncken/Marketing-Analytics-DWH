@@ -41,7 +41,7 @@ Marketing-Analytics-DWH/
 </pre>
 
 <h2>1) Marketing Analysis</h2>
-<p>Tasked with analyzing ad data from January to April 2024, I will start by addressing stakeholder communication and presenting the analysis results. [Section 2](#2-end-to-end-data-warehouse-and-etl) covers the data overview, ETL pipeline, and data warehouse build.</p>
+<p>Tasked with analyzing ad data from January to April 2024, I will start by addressing stakeholder communication and presenting the analysis results. <a href="#2-end-to-end-data-warehouse-und-etl">Section 2</a> covers the data overview, ETL pipeline, and data warehouse build.</p>
 
 ### 1.1) Executive Summary
 
