@@ -47,7 +47,7 @@ Marketing-Analytics-DWH/
 
 Analysis of multi-touch marketing data across 9 channels, 53 campaigns, ~8,500 users, and 87,000+ touchpoints (January–April 2024) reveals five key findings:
 
-**1. All paid channels follow a Launch → Saturation pattern.** January ROAS ranged from 4.3x to 6.6x; by April, all channels had dropped below 1.4x for mid and top of funnel — up to 77% decline. This points to audience saturation, declining ad effectiveness, and rising competition. Critically, this decline could not have been correctly analyzed per funnel stage without the cost attribution fix I built during development (see [Section 2.5](#25-why-fact_attribution_linear_with_costs-exists)).  
+**1. All paid channels follow a Launch → Saturation pattern.** January MOFU ROAS ranged from 4.3x to 4.7x; by April, all channels had dropped below 1.3x — up to 77% decline. This points to audience saturation, declining ad effectiveness, and rising competition. Critically, this decline could not have been correctly analyzed per funnel stage without the cost attribution fix I built during development (see [Section 2.5](#25-why-fact_attribution_linear_with_costs-exists)).  
 
 **2. Instagram Ads is the most consistent performer across all metrics.** Lowest CPM, best CPM-to-CVR efficiency ratio and strongest April BOFU closing improvement (+28.7% CVR MoM). LTV:CAC of 3.3 places it in the top tier alongside Google Search (3.2) and Google Display (3.4). Instagram is the only paid channel that performs in the top tier across cost efficiency, closing, retention, and LTV:CAC ratio — though at lower volume than other channels.
 
@@ -181,7 +181,7 @@ Google Display, Instagram Ads, and Google Search all operate in the healthy 3–
 
 **Instagram's April signal:** Instagram is the only paid channel where BOFU CVR improves in April (+28.7% MoM, rising from 1.98% to 2.55%). Combined with its April BOFU ROAS rebound (+9.5%), Instagram shows counter-cyclical closing strength — it performs better as other channels deteriorate, suggesting its audience is less saturated or more responsive in late-cycle conditions.
 
-> _Note: For visualization purposes I build a LTV & Cohort Analysis Dashboard, which you can see <a href="https://public.tableau.com/views/Multi-TouchMarketingDashboard/Overall2?:language=de-DE&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link" >here</a>. 120-day LTV cohort sizes are heavily skewed (Jan: 93%, Feb: 6.8%, Mar: 0.5%) due to the synthetic data generation. Cross-cohort comparisons are not interpretable; the LTV table above uses all-cohort aggregates to avoid this limitation. The January cohort's purchase rate remains stable at ~10% per month over four months, indicating strong retention for a non-subscription e-commerce model._
+> _Note: For visualization purposes I built a LTV & Cohort Analysis Dashboard, which you can see <a href="https://public.tableau.com/views/Multi-TouchMarketingDashboard/Overall2?:language=de-DE&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link" >here</a>. 120-day LTV cohort sizes are heavily skewed (Jan: 93%, Feb: 6.8%, Mar: 0.5%) due to the synthetic data generation. Cross-cohort comparisons are not interpretable; the LTV table above uses all-cohort aggregates to avoid this limitation. The January cohort's purchase rate remains stable at ~10% per month over four months, indicating strong retention for a non-subscription e-commerce model._
 
 ---
 
