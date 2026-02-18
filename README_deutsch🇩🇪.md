@@ -1,47 +1,162 @@
-# Marketing-Analytics-DWH
-<h3>End-to-end Data Warehouse (Bronze/Silver/Gold) mit Multi-Touch Attribution und Tableau Dashboards</h3>
-<p>
-   📍 Über dieses Projekt: Dieses Demo-Projekt dient der <strong>Präsentation von Fähigkeiten</strong> und verwendet <strong>synthetisch generierte Daten</strong>.<br>
-   👉 Klicke auf die Bilder, um die interaktiven Dashboards auf <strong>Tableau Public</strong> zu erkunden.
-</p>
-<p align="center">
-   <a href="https://public.tableau.com/views/Multi-TouchMarketingDashboard/Overall?:language=de-DE&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link">
-    <img src="https://github.com/user-attachments/assets/374a6cf6-2f55-4d5a-a97c-fd4636b1c662" width="30%" alt="Budget Allocation Dashboard"/>
-  </a>
-  <a href="https://public.tableau.com/views/Multi-TouchMarketingDashboard/Overall2?:language=de-DE&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link">
-    <img src="https://github.com/user-attachments/assets/da7e4af0-ce2a-44c6-8f08-ae042cbd7ad4" width="30%" alt="LTV Cohort Dashboard"/>
-  </a>
-  <a href="https://public.tableau.com/views/Multi-TouchMarketingDashboard/Overall3?:language=de-DE&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link">
-    <img src="https://github.com/user-attachments/assets/67e6bea1-75c6-4f61-8891-8810d2bf830f" width="30%" alt="Customer Journey Dashboard"/>
-  </a>
-</p>
-
-<p>📂 Repository-Struktur:</p>
-<pre>
-Marketing-Analytics-DWH/
-├── datasets/                · marketing_platform/ · web_analytics/ · crm_system/
-│             
-├── data_warehouse/
-│   ├── scripts/
-│   │   ├────────── bronze/
-│   │   ├────────── silver/  · profile_cleaning/
-│   │   ├────────── gold/
-│   │   ├────────── tests/   · quality_checks_silver/ · quality_checks_gold.sql
-│   │   └── init_database.sql
-│   └── docs/
-│ 
-└── marketing_analytics/
-    ├────────────── scripts/  01-04 (Exploration), 
-    │                         05-08 (Voranalyse),
-    │                         0901-0911 (Performance-Analyse),
-    │                         10 (Pfadlänge), 11 (Kanaleffizienz)
-    │
-    └────────────── results/ · performance_analysis/ · path_length_and_channel_efficiency/
-</pre>
-
 <h2>1) Marketing-Analyse</h2>
-<h4>1.1) Projektauftrag</h4>
-<p>Aufgabe ist die Analyse von Werbedaten aus Januar bis April 2024. Zunächst werden die Stakeholder-Kommunikation und die Analyseergebnisse vorgestellt. Abschnitt 2 behandelt die Datenübersicht, die ETL-Pipeline und den Aufbau des Data Warehouse.</p>
+<p>Aufgabe: Analyse von Werbedaten von Januar bis April 2024. Dieser Abschnitt beginnt mit der Stakeholder-Kommunikation und der Darstellung der Analyseergebnisse. Abschnitt 2 behandelt den Datenüberblick, die ETL-Pipeline und den Data-Warehouse-Aufbau.</p>
+
+### 1.1) Executive Summary
+
+Die Analyse von Multi-Touch-Marketingdaten über 9 Kanäle, 53 Kampagnen, ~8.500 Nutzer und 87.000+ Touchpoints (Januar–April 2024) ergibt fünf zentrale Erkenntnisse:
+
+**1. Alle Paid-Kanäle folgen einem Launch → Sättigungs-Muster.** Der MOFU-ROAS im Januar lag zwischen 4,3x und 4,7x; bis April waren alle Kanäle unter 1,3x gefallen — ein Rückgang von bis zu 77%. Das deutet auf Zielgruppensättigung, nachlassende Werbewirksamkeit und steigenden Wettbewerb hin. Entscheidend: Dieser Rückgang hätte ohne die Kosten-Attributionskorrektur, die ich während der Entwicklung gebaut habe, nicht korrekt pro Funnel-Stufe analysiert werden können (siehe [Abschnitt 2.5](#25-why-fact_attribution_linear_with_costs-exists)).
+
+**2. Instagram Ads ist der konsistenteste Performer über alle Metriken hinweg.** Niedrigster CPM, bestes CPM-zu-CVR-Effizienzverhältnis und stärkste BOFU-Closing-Verbesserung im April (+28,7% CVR MoM). LTV:CAC von 3,3 platziert Instagram in der Top-Tier neben Google Search (3,2) und Google Display (3,4). Instagram ist der einzige Paid-Kanal, der über Kosteneffizienz, Closing, Retention und LTV:CAC-Verhältnis hinweg in der oberen Klasse performt — allerdings bei geringerem Volumen als andere Kanäle.
+
+**3. Google Search (der Premium-Kanal) und Google Display rechtfertigen ihre Kosten durch unterschiedliche Stärken.** Google Search hat den höchsten absoluten LTV (€53,20), das stärkste Revenue-Ranking über alle Attributionsmodelle hinweg (zweimal #1, zweimal #2) und die beste Lead-Qualität. Google Display führt beim LTV:CAC (3,4) trotz der schwächsten Engagement-Metriken (niedrigste Klickrate). Es schließt Conversions ab, die andere Kanäle initiieren — der einzige Paid-Kanal mit positiver TOFU-BOFU-Revenue-Differenz (+€2,4K).
+
+**4. TikTok Ads treibt Neukundenakquise, nicht Lifetime Value.** Niedrigster absoluter LTV (€41,7), kürzeste Last-Touch-Pfade (1,76 Touchpoints im Durchschnitt) und die niedrigste BOFU-Conversion-Rate im April (2,03%). TikTok konvertiert schnell, wenn es konvertiert — aber es konvertiert selten, und die gewonnenen Nutzer sind langfristig am wenigsten wertvoll.
+
+**5. Facebook Ads ist der konstante Underperformer.** Letzter oder vorletzter Platz im Revenue-Ranking über alle Attributionsmodelle hinweg (3x letzter, 1x vorletzter), schlechteste Lead-Qualität und schwächste Closing-Effizienz unter den Paid-Kanälen. Der CAC von €15,0 ist der zweithöchste, aber anders als Google Search (€16,5 CAC, €53,2 LTV) kompensiert Facebook nicht mit höherem Lifetime Value (€44,2). Facebook kostet fast so viel wie der Premium-Kanal, liefert aber die schwächste Revenue-Performance.
+
+> _Hinweis: Diese Analyse verwendet synthetisch generierte Daten. Absolute Werte dienen als Demonstrationsrahmen; relative Vergleiche zwischen Kanälen und Kampagnen sind analytisch valide. Spezifische Datenlimitierungen werden inline in der gesamten Analyse vermerkt._
+
+---
+
+### 1.2) Funnel-basierte Performance-Analyse
+
+Die Analyse ist um drei Funnel-Stufen herum strukturiert, die jeweils mit einem dedizierten Attributionsmodell ausgewertet werden, um die Geschäftsfrage der passenden Messperspektive zuzuordnen.
+
+| Funnel-Stufe | Attributionsmodell | Geschäftsfrage |
+|---|---|---|
+| **TOFU** — Aufmerksamkeitseffizienz | First-Touch | Welche Kanäle erzeugen effizient qualifizierte Awareness? |
+| **MOFU** — Intent- & Conversionseffizienz | Linear (Multi-Touch) | Welche Kanäle tragen zur gesamten Conversion-Journey bei? |
+| **BOFU** — Profitabilität & Langfristwachstum | Last-Touch | Welche Kanäle erfassen Wert und treiben nachhaltigen Umsatz? |
+
+---
+
+#### 1.2.1) Aufmerksamkeitseffizienz (TOFU)
+
+**Ziel:** Effizient qualifizierte Awareness und Traffic generieren.
+
+**Kernerkenntnis:** Instagram Ads liefert die kosteneffizienteste Reichweite über alle Aufmerksamkeitsmetriken, während Google Search einen Premium-Preis verlangt, den seine Conversion-Qualität teilweise rechtfertigt.
+
+**TikToks Akquisitionssignal:** Von TikTok akquirierte Nutzer zeigen die kürzesten First-Purchase-Pfade über alle Monate (8,36 Touchpoints im Durchschnitt im April vs. 9,23 bei Instagram), was auf Zielgruppen mit hoher sofortiger Kaufabsicht hindeutet. Allerdings hat diese Geschwindigkeit ihren Preis — TikToks LTV ist der niedrigste unter den Paid-Kanälen (€41,70), was darauf hindeutet, dass schnelle Konvertierer nicht unbedingt langfristig wertvolle Kunden sind.
+
+> _Hinweis: CTR-Werte übersteigen 100% aufgrund synthetischer Daten (Klicks > Impressions) und sollten als Klickintensität gelesen werden. Relative Kanalvergleiche bleiben valide, obwohl die Differenzierung minimal ist (3,5% Gesamtspanne). Monatliche CAC/CPC/CPM-Trends spiegeln sinkende synthetische Ausgaben wider, nicht reale Effizienzgewinne. Kanalübergreifende Vergleiche bleiben valide._
+
+---
+
+#### 1.2.2) Intent- & Conversionseffizienz (MOFU)
+
+**Ziel:** Die gesamte Customer Journey bewerten — wie effizient wandeln Touchpoints Aufmerksamkeit in Umsatz um?
+
+**Kernerkenntnis:** Bis April fällt jeder Paid-Kanal unter die 1,5x-Profitabilitätsschwelle bei Betrachtung der gesamten Customer Journey. Alle Kanäle starten profitabel im Januar (4,3–4,7x), verlieren aber 70–77% ihres MOFU-ROAS innerhalb von vier Monaten — was die Zielgruppensättigung nicht nur am oberen Ende des Funnels, sondern über den gesamten Conversion-Pfad hinweg bestätigt. Dies ist das stärkste Signal in den Daten, dass fortgesetzte Ausgaben auf aktuellem Niveau ohne neue Zielgruppenstrategien oder Kanaldiversifikation nicht tragbar sind.
+
+Diese Analyse stützt sich auf `fact_attribution_linear_with_costs`, die sowohl Umsatz *als auch* Kosten gleichmäßig auf alle Touchpoints einer konvertierenden Journey verteilt — eine Tabelle, die ich gebaut habe, nachdem ich entdeckte, dass das Standard-Linear-Modell Kosten auf Funnel-Stufen-Ebene nicht attribuiert hatte (siehe [Abschnitt 1.3](#13-attribution-insights)).
+
+**Gesamt-MOFU-ROAS:** 2,12x (€147.679 Umsatz / €69.607 attribuierte Kosten)
+
+**120-Tage MOFU-ROAS-Werte (absteigend):** Google Display 2,20x, Facebook Ads 2,15x, TikTok Ads 2,11x, Google Search 2,09x, Instagram Ads 2,07x
+
+März ist der Kipppunkt: Google Search (1,56x) und TikTok Ads (1,67x) fallen bereits unter die 1,5x-Schwelle, während die übrigen Kanäle im April folgen. Facebook Ads zeigt die widerstandsfähigste April-Performance (1,28x) — immer noch unprofitabel, aber am langsamsten im Verfall. Die 120-Tage-Aggregate (2,07–2,20x) bleiben über der Schwelle, weil die starke Januar- und Februar-Performance den April-Einbruch maskiert.
+
+**Pfadlänge und der Vertrauenseffekt:** Der durchschnittliche konvertierende Nutzer interagiert mit 5 Touchpoints vor dem Kauf bei einem durchschnittlichen Bestellwert von €153,30. Wiederkaufende Kunden benötigen über alle Monate hinweg etwa 30% weniger Touchpoints als Erstkäufer (z.B. April: 4,31 Touchpoints im Durchschnitt für 250 Wiederholungskäufe vs. 8,90 für 555 Erstkäufe), was den Vertrauenseffekt validiert. Der Anteil der Wiederholungskäufe wächst von 4,4% im Januar auf 31,1% im April und baut eine stabile Wiederkauf-Engine auf, obwohl das Gesamtkaufvolumen sinkt (908 → 805).
+
+> _Hinweis: Monatliche MOFU-CVR- und AOV-Trends zeigen einheitliche Wachstums-/Rückgangskurven über alle Kanäle. Dies ist ein Artefakt synthetischer Daten — die generierten Daten produzieren nahezu identische Engagement-Volumen über die Kanäle, was zu parallelen Trendlinien führt, die bei realen Daten divergieren würden. Vergleiche innerhalb eines Monats bleiben valide._
+
+---
+
+#### 1.2.3) Profitabilität & Langfristwachstum (BOFU)
+
+**Ziel:** Umsatz maximieren und nachhaltiges, profitables Wachstum treiben.
+
+**Kernerkenntnis:** Während der MOFU-ROAS bis April unter die Profitabilitätsschwelle einbricht, erzählt der BOFU (Last-Touch-Attribution) eine andere Geschichte: Die Closing-Maschine funktioniert noch. Die BOFU-CVR stabilisiert sich bei ~2,3% nach einem anfänglichen Anstieg — das Problem ist nicht die Conversionseffizienz, sondern die Zielgruppenerschöpfung weiter oben im Funnel. Die 120-Tage-LTV-Analyse bestätigt, dass drei von fünf Paid-Kanälen im gesunden 3–5x LTV:CAC-Band operieren, wobei Google Search den höchsten absoluten Lifetime Value (€53,19) und Google Display das beste Effizienzverhältnis (3,43) liefert.
+
+BOFU-ROAS-Werte sind höher als MOFU, weil Last-Touch-Attribution den gesamten Credit auf den letzten konvertierenden Touchpoint konzentriert. Das Rückgangsmuster unterscheidet sich nach Kanal: Google Search fällt am stärksten (7,85x → 1,97x, −75%), während TikTok Ads (4,57x) und Facebook Ads (4,27x) die stärkste April-Resilienz zeigen. Instagram ist der einzige Kanal mit einem April-Rebound (3,83x → 4,19x, +9,5%).
+
+**BOFU-CVR-Stabilisierung:** Über alle Paid-Kanäle hinweg springt die BOFU-CVR von 1,43% im Januar auf 2,59% im Februar und stabilisiert sich dann bei etwa 2,3–2,4% im März und April. Dieses Plateau signalisiert, dass die Closing-Effizienz sich nicht verschlechtert — der Funnel konvertiert mit einer konstanten Rate, sobald Nutzer den unteren Bereich erreichen. Der in der BOFU-ROAS sichtbare Umsatzrückgang wird dadurch getrieben, dass weniger Nutzer in den Funnel eintreten, nicht durch nachlassende Conversion am Ausgang.
+
+**120-Tage LTV nach Kanal (Alle Kohorten, Dashboard-Aggregate):**
+
+Google Display, Instagram Ads und Google Search operieren alle im gesunden 3–5x-Band. Google Search rechtfertigt den höchsten CAC (€16,48) mit dem höchsten absoluten LTV (€53,19) — es akquiriert die wertvollsten Kunden. Google Display erreicht das beste Verhältnis (3,43) durch eine günstige Kombination aus überdurchschnittlichem LTV (€48,95, nur hinter Google Search) und unterdurchschnittlichem CAC (€14,26). TikTok und Facebook liegen im Monitor-Band: nicht unprofitabel, aber ihr Pro-Nutzer-Wert rechtfertigt keine aggressive Skalierung.
+
+**Instagrams April-Signal:** Instagram ist der einzige Paid-Kanal, bei dem die BOFU-CVR im April steigt (+28,7% MoM, von 1,98% auf 2,55%). In Kombination mit dem April-BOFU-ROAS-Rebound (+9,5%) zeigt Instagram antizyklische Closing-Stärke — es performt besser, während andere Kanäle sich verschlechtern, was darauf hindeutet, dass seine Zielgruppe weniger gesättigt oder reaktionsfreudiger in Spätphasen-Bedingungen ist.
+
+> _Hinweis: Zu Visualisierungszwecken habe ich ein LTV- & Kohortenanalyse-Dashboard gebaut, das <a href="https://public.tableau.com/views/Multi-TouchMarketingDashboard/Overall2?:language=de-DE&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link">hier</a> eingesehen werden kann. Die 120-Tage-LTV-Kohortengrößen sind stark verzerrt (Jan: 93%, Feb: 6,8%, Mär: 0,5%) aufgrund der synthetischen Datengenerierung. Kohortenübergreifende Vergleiche sind nicht interpretierbar; die obige LTV-Tabelle verwendet Alle-Kohorten-Aggregate, um diese Limitation zu umgehen. Die Kaufrate der Januar-Kohorte bleibt über vier Monate bei ~10% pro Monat stabil, was eine starke Retention für ein Nicht-Abonnement-E-Commerce-Modell anzeigt._
+
+---
+
+### 1.3) Attributions-Insights
+
+Multi-Touch-Attribution enthüllt Kanaldynamiken, die Single-Touch-Modelle nicht erfassen können.
+
+#### Assisting- vs. Closing-Rollen
+
+Der Vergleich von First-Touch- und Last-Touch-Revenue pro Kanal zeigt ein klares Spektrum: TikTok Ads (−€5,2K) und Facebook Ads (−€4,2K) generieren deutlich mehr Akquisitions-Revenue als Closing-Revenue — sie initiieren Journeys, die andere Kanäle abschließen. Google Search liegt nahezu ausgeglichen (−€0,2K) und performt an beiden Enden gleich gut. Die Überraschung ist Google Display (+€2,4K): der einzige Kanal, der mehr abschließt als er initiiert, und als stiller Konvertierer für Traffic agiert, den andere Kanäle herangebracht haben.
+
+#### Was ich beim Aufbau der Kosten-Attribution gelernt habe
+
+Die bedeutsamste Erkenntnis dieses Projekts ergab sich aus einer Limitation, die ich während der Entwicklung entdeckte. Die ursprüngliche `fact_attribution_linear`-Tabelle verteilt Revenue gleichmäßig auf alle Touchpoints einer konvertierenden Journey — Standardpraxis für Multi-Touch-Attribution. Aber als ich die Tableau-Dashboards baute und Funnel-Stufen-Filter anwendete, stimmten die Zahlen nicht: MOFU-gefilterte Ansichten zeigten Revenue nur von Mid-Funnel-Touchpoints, während die Kosten weiterhin _alle_ Touchpoints widerspiegelten. Der ursprüngliche Ansatz summierte Spend ohne Funnel-Stufen-Differenzierung und blähte den ROAS-Nenner für jede gefilterte Ansicht auf. Dadurch erschienen gefilterte ROAS-Werte deutlich schlechter als sie tatsächlich waren.
+
+Die Ursache war eine Granularitäts-Diskrepanz. Revenue war auf einzelne Touchpoints attribuiert worden, aber die Kosten blieben auf der aggregierten Kampagnen-Tages-Ebene in `fact_spend`. Einen direkten Join dieser beiden Tabellen zu machen, produziert verzerrte Ergebnisse, weil die Zeilenstrukturen nicht übereinstimmen.
+
+Meine Lösung war `fact_attribution_linear_with_costs` — eine neue Tabelle, die Kosten proportional neben dem Revenue verteilt, sodass jeder Touchpoint sowohl einen `revenue_share` als auch einen `cost_share` erhält. Die technischen Details sind in [Abschnitt 2.5](#25-why-fact_attribution_linear_with_costs-exists) dokumentiert.
+
+#### Pfadlänge prognostiziert keinen Umsatz
+
+Die Korrelation zwischen Pfadlänge und Kaufumsatz ist praktisch null (r = −0,00028). Kurze Pfade (1–7 Touchpoints) und lange Pfade (8+ Touchpoints) produzieren nahezu identische durchschnittliche Bestellwerte (~€135 vs. ~€133). Das stellt die Annahme in Frage, dass „mehr Touchpoints = höherer Warenkorbwert" und legt nahe, dass effizientes, gezieltes Journey-Design wichtiger ist als die Maximierung des Touchpoint-Volumens.
+
+---
+
+### 1.4) Strategische Empfehlungen
+
+Basierend auf den Analyseergebnissen legen die Daten folgende Maßnahmen für ein Marketingteam in diesem Szenario nahe.
+
+**Das Sättigungsmuster adressieren.** Bis April fällt jeder Paid-Kanal unter die 1,5x-Profitabilitätsschwelle über die gesamte Customer Journey (MOFU-ROAS), mit Rückgängen von 70–77% gegenüber den Januar-Spitzenwerten. Dies ist das dringendste Signal in den Daten. Die Antwort umfasst zwei Hebel: Auffrischung der Werbemittel zur Bekämpfung der Zielgruppen-Ermüdung und Erweiterung des Targetings, um neue Zielgruppensegmente zu erreichen, bevor bestehende Pools vollständig erschöpft sind.
+
+**Budget von Facebook zu Instagram und Google Display umschichten.** Facebook underperformt über mehrere Dimensionen hinweg ohne kompensatorische Stärke: schlechtestes CPM-zu-CVR-Verhältnis im TOFU, eine −€4,2K TOFU-BOFU-Revenue-Differenz, die zeigt, dass es Conversions initiiert, die es selten abschließt, und LTV:CAC im Monitor-Band (2,95) — ähnlich wie TikTok (2,97), aber anders als TikTok trägt Facebook kein bedeutendes Akquisitionsvolumen am oberen Ende des Funnels bei. Instagram und Google Display liegen beide im gesunden LTV:CAC-Band (3,26 und 3,43) und ergänzen sich in ihren Profilen — Instagram liefert die kosteneffizienteste Reichweite und die stärkste Spätphasen-Closing-Performance, während Google Display das beste Verhältnis durch eine günstige Kombination aus überdurchschnittlichem LTV und unterdurchschnittlichem CAC erreicht.
+
+**Kanäle nach Funnel-Rolle bewerten, nicht nach Single-Model-Metriken.** Die Attributionsanalyse zeigt, dass Kanäle als Ökosystem funktionieren. Google Display hat die schwächsten Engagement-Metriken (niedrigste CTR, rückläufige Klicks) und wäre ein natürlicher Kandidat für Budgetkürzungen basierend auf TOFU-Performance allein — dennoch ist es der einzige Kanal, der mehr Revenue abschließt als er initiiert (+€2,4K Differenz). Display zu kürzen würde den effektivsten stillen Closer des Funnels entfernen. Jeder Kanal sollte an der Metrik gemessen werden, die seiner Funnel-Rolle entspricht.
+
+**Retention priorisieren — 81% der Kunden kaufen nur einmal.** Dies ist der größte einzelne Wachstumshebel in den Daten. Wiederkaufende Kunden benötigen etwa 30% weniger Touchpoints als Erstkäufer, und der Anteil der Wiederholungskäufe wächst von 4,4% im Januar auf 31,1% im April — was beweist, dass sich organisch bereits eine Retention-Engine bildet. Investitionen in Post-Purchase-Journeys und Re-Engagement-Kampagnen würden diesen Effekt zu niedrigeren Kosten pro Conversion beschleunigen als Neukundenakquise.
+
+---
+
+### 1.5) Limitierungen & Annahmen
+
+**Synthetische Daten:** Alle Erkenntnisse basieren auf synthetisch generierten Daten mit absichtlichen Qualitätsproblemen zur ETL-Demonstration. Kanal-Engagement-Volumen sind unrealistisch einheitlich (Klicks, Impressions und Touchpoints sind nahezu identisch über die Kanäle), was das Differenzierungspotenzial einschränkt, das reale Daten bieten würden.
+
+**Monatliche Spend-Verteilung:** Der Roh-Spend bricht von €41.541 (Januar) auf €1.134 (April) ein — ein Rückgang von 97,3%. Dies ist ein Datengenerierungsartefakt, keine reale Budgetentscheidung. Monatliche kostenbasierte Trends (ROAS, CAC, CPA, CPC, CPM) sind von diesem Artefakt betroffen. Kanalübergreifende und kampagnenübergreifende relative Vergleiche innerhalb desselben Zeitraums sowie Gesamtzeitraum-Aggregate bleiben valide.
+
+**Kohorten-Ungleichgewicht:** 93% der Nutzer werden im Januar akquiriert. Februar- und März-Kohorten sind zu klein für statistisch zuverlässige kohortenübergreifende Vergleiche. Die Within-Januar-Analyse ist robust.
+
+**CPM- und CTR-Limitation:** CPM-Werte sind unrealistisch hoch (>€4.053 vs. typische €5–30) aufgrund niedriger synthetischer Impression-Volumen. Absolute CPM-Werte sind nicht benchmarkbar; das CPM-zu-CVR-Verhältnis aggregiert über Monate und ist nicht betroffen. Ebenso produzieren niedrige Impression-Volumen CTR-Werte über 100% (~244%), die als Klickintensität statt als wörtliche Conversion-Raten gelesen werden sollten. Kanalübergreifende Vergleiche bleiben valide.
+
+---
+
+### 1.6) Taktischer Drill-Down (Dashboards)
+
+Während strategische Schlussfolgerungen auf Kanal-Ebene in diesem README gezogen werden, sind kampagnenbezogene KPIs im interaktiven Budget-Allocation-Dashboard für taktische Optimierung und Drill-Down verfügbar.
+
+Die Dashboards ermöglichen:
+
+- **Kampagnen-Ranking und -Filterung** — Sortierung nach Revenue, ROAS, CPA, CVR über alle 53 Kampagnen
+- **Funnel-Stufen-Aufschlüsselung** — filterbare Funnel-Stufen-Ansichten (TOFU/MOFU/BOFU) pro Kampagne und korrekte Kosten-Attribution auf jeder Stufe
+- **Kanal-Filterlogik** — Durch Klick auf einen Kanal in einer der anderen Visualisierungen wird der Kampagnen-Drill-Down entsprechend dem ausgewählten übergeordneten Kanal gefiltert
+- **Trend-Monitoring** — monatliche Performance-Verfolgung zur Identifikation von Sättigungs- und Interventionssignalen
+
+> _Hinweis zu Spend: Die KPI-Zeile zeigt ACTUAL SPEND (wann Geld ausgegeben wurde) aus gold.fact_spend. gold.roas zeigt ATTRIBUTED SPEND (Spend verknüpft mit Conversions) — unterschiedliches Konzept!_
+
+---
+
+### 1.7) Was ich als Nächstes tun würde
+
+Dies sind die Richtungen, die ich mit realen Produktionsdaten und einem längeren Zeithorizont erkunden würde.
+
+**Zusätzliche Attributionsmodelle.** Das lineare Modell verteilt Credit gleichmäßig, was eine bewusste Vereinfachung ist. Der nächste Schritt wäre die Implementierung von Time-Decay-Attribution (höhere Gewichtung neuerer Touchpoints) und positionsbasierter Attribution (Betonung des ersten und letzten Touchs). Der Vergleich aller Modelle nebeneinander für dieselben Daten würde zeigen, wo sie übereinstimmen (robuste Erkenntnisse) und wo sie divergieren (Bereiche, die genauere Untersuchung erfordern). Ich würde auch verstehen wollen, wann lineare Attribution „gut genug" ist versus wann ein komplexeres Modell reale Budgetentscheidungen verändern würde.
+
+**Kausalitätstests durch Holdout-Experimente.** Multi-Touch-Attribution zeigt, welche Kanäle _neben_ Conversions _erscheinen_ — aber sie kann nicht beweisen, dass ein Kanal die Conversion tatsächlich _verursacht_ hat. Ein Nutzer, der auf eine Google-Search-Anzeige klickt, hätte möglicherweise ohnehin gekauft. Der Standardprozess wäre Incrementality Testing (Holdout-Experimente): Anzeigen für eine zufällige Nutzergruppe unterdrücken und ihre Conversion-Rate mit der exponierten Gruppe vergleichen. Das ist etwas, das ich noch nicht gebaut habe, aber es ist die logische nächste Frage nach der Attribution — und die Frage, die ich in einem echten Marketingteam beantworten wollen würde.
+
+**Längeres LTV-Fenster und Retention-Modellierung.** Der aktuelle 120-Tage-LTV erfasst frühes Wiederkaufverhalten, aber wahrer Customer Lifetime Value erfordert 12–24 Monate Daten. Mit einem längeren Zeithorizont könnte man Kundensegmentierung basierend auf Kaufaktualität, -häufigkeit und -wert (RFM-Analyse) aufbauen, um zu identifizieren, welche Nutzersegmente die meiste Retention-Investition verdienen. Die 81%-Einmalkäufer-Rate ist der offensichtlichste Ausgangspunkt — zu verstehen, _warum_ diese Nutzer nicht zurückkehren, ist mehr wert als zu optimieren, welcher Kanal sie akquiriert.
+
+**Von Batch- zu inkrementeller Verarbeitung.** Das aktuelle Warehouse ([Abschnitt 2.1](#21-Architecture)) verwendet ein Full-Load-, Truncate-and-Insert-Muster. Das ist angemessen für ein Demo-Projekt, aber in der Produktion würde ich inkrementelles Laden (nur neue oder geänderte Datensätze), automatisierte Qualitätsprüfungen bei jedem Load und Alerting, wenn Schlüsselmetriken sich außerhalb erwarteter Bereiche bewegen, haben wollen. Das Ziel: Ein Sättigungsmuster wie das in diesen Daten im Februar sofort erkennen, nicht nach vier Monaten Batch-Analyse.
 
 <hr>
 
