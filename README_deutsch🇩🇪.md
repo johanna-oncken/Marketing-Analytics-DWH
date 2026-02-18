@@ -250,7 +250,7 @@ WHERE touchpoint_number > (SELECT AVG(touchpoints_in_path) FROM gold.fact_attrib
 
 ### 1.4) Strategische Empfehlungen
 
-Basierend auf den Analyseergebnissen legen die Daten folgende Maßnahmen für ein Marketingteam in diesem Szenario nahe.
+Die Analyseergebnisse dieses Szenarios legen einem Marketingteam folgende Maßnahmen nahe:
 
 **Das Sättigungsmuster adressieren.** Bis April fällt jeder Paid-Kanal unter die 1,5x-Profitabilitätsschwelle über die gesamte Customer Journey (MOFU-ROAS), mit Rückgängen von 70–77% gegenüber den Januar-Spitzenwerten. Dies ist das dringendste Signal in den Daten. Die Antwort umfasst zwei Hebel: Auffrischung der Werbemittel zur Bekämpfung der Zielgruppen-Ermüdung und Erweiterung des Targetings, um neue Zielgruppensegmente zu erreichen, bevor bestehende Pools vollständig erschöpft sind.
 
