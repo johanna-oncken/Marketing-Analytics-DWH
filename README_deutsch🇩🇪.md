@@ -128,7 +128,7 @@ März ist der Kipppunkt: Google Search (1,56x) und TikTok Ads (1,67x) fallen ber
 
 **Ziel:** Umsatz maximieren und nachhaltiges, profitables Wachstum treiben.
 
-**Kernerkenntnis:** Während der MOFU-ROAS bis April unter die Profitabilitätsschwelle einbricht, erzählt der BOFU (Last-Touch-Attribution) eine andere Geschichte: Die Closing-Maschine funktioniert noch. Die BOFU-CVR stabilisiert sich bei ~2,3% nach einem anfänglichen Anstieg — das Problem ist nicht die Conversionseffizienz, sondern die Zielgruppenerschöpfung weiter oben im Funnel. Die 120-Tage-LTV-Analyse bestätigt, dass drei von fünf Paid-Kanälen im gesunden 3–5x LTV:CAC-Band operieren, wobei Google Search den höchsten absoluten Lifetime Value (€53,19) und Google Display das beste Effizienzverhältnis (3,43) liefert.
+**Kernerkenntnis:** Während der MOFU-ROAS bis April unter die Profitabilitätsschwelle einbricht, erzählt der BOFU (Last-Touch-Attribution) eine andere Geschichte: Der Closing-Mechanismus funktioniert noch. Die BOFU-CVR stabilisiert sich bei ~2,3% nach einem anfänglichen Anstieg — das Problem ist nicht die Conversionseffizienz, sondern die Zielgruppenerschöpfung weiter oben im Funnel. Die 120-Tage-LTV-Analyse bestätigt, dass drei von fünf Paid-Kanälen im gesunden 3–5x LTV:CAC-Band operieren, wobei Google Search den höchsten absoluten Lifetime Value (€53,19) und Google Display das beste Effizienzverhältnis (3,43) liefert.
 
 **Monatlicher BOFU-ROAS (Last-Touch-Attribution, Paid-Kanäle):**
 
