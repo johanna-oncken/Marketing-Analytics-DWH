@@ -160,7 +160,7 @@ Across all paid channels, BOFU CVR jumps from 1.43% in January to 2.59% in Febru
 <table>
   <tr>
     <td>
-       <img src="https://github.com/user-attachments/assets/9cc49b57-6129-411f-9c23-ba1d9bead2c0" alt="LTV vs. CAC by Channel" width="70%" height="353">
+       <img src="https://github.com/user-attachments/assets/9cc49b57-6129-411f-9c23-ba1d9bead2c0" alt="LTV vs. CAC by Channel" width="70%" height="600">
     </td>
     <td>
         <table>
