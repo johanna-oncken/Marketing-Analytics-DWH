@@ -157,7 +157,7 @@ Across all paid channels, BOFU CVR jumps from 1.43% in January to 2.59% in Febru
 
 **120-Day LTV by Channel (All Cohorts, Dashboard Aggregates):**
 
-<table height="300">
+<table height="360">
   <tr>
     <td>
         <table height="100%">
