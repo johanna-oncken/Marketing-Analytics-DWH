@@ -124,7 +124,7 @@ März ist der Kipppunkt: Google Search (1,56x) und TikTok Ads (1,67x) fallen ber
 
 ---
 
-#### 1.2.3) Profitabilität & Langfristwachstum (BOFU)
+#### 1.2.3) Profitabilität & Langzeitwachstum (BOFU)
 
 **Ziel:** Umsatz maximieren und nachhaltiges, profitables Wachstum treiben.
 
