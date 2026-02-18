@@ -2,7 +2,7 @@
 <h3>End-to-End Data Warehouse (Bronze/Silver/Gold) mit Multi-Touch-Attribution und Tableau-Dashboards</h3>
 <p>
    📍 Info: Dieses Demo-Projekt dient der <strong>Demonstration von Fähigkeiten</strong> und verwendet <strong>synthetisch generierte Daten</strong>.<br>
-   👉 Um die interaktiven Dashboards auf <strong>Tableau Public</strong> zu erkunden, bitte auf das jeweilige Bild klicken.
+   👉 Für die Detailansicht der interaktiven Dashboards auf <strong>Tableau Public</strong>, bitte auf das jeweilige Bild klicken.
 </p>
 <p align="center">
    <a href="https://public.tableau.com/views/Multi-TouchMarketingDashboard/Overall?:language=de-DE&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link">
