@@ -280,7 +280,7 @@ Die Analyseergebnisse dieses Szenarios legen einem Marketingteam folgende Maßna
 
 ### 1.6) Taktischer Drill-Down (Dashboards)
 
-Während strategische Schlussfolgerungen auf Kanal-Ebene in diesem README gezogen werden, sind kampagnenbezogene KPIs im interaktiven Budget-Allocation-Dashboard für taktische Optimierung und Drill-Down verfügbar (klicken Sie auf das Bild, um es auf der Website von **Tableau Public** genauer anzusehen).
+Während strategische Schlussfolgerungen in diesem README auf Kanal-Ebene gezogen werden, sind im interaktiven Budget-Allocation-Dashboard kampagnenbezogene KPIs für taktische Optimierung und Drill-Down verfügbar (durch einen Klick auf das Bild öffnet sich das **Tableau Public** Dashboard).
 
 <p align="center">
   <a href="https://public.tableau.com/views/Multi-TouchMarketingDashboard/Overall?:language=de-DE&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link">
@@ -292,8 +292,7 @@ Die Dashboards ermöglichen:
 
 - **Kampagnen-Ranking und -Filterung** — Sortierung nach Revenue, ROAS, CPA, CVR über alle 53 Kampagnen
 - **Funnel-Stufen-Aufschlüsselung** — filterbare Funnel-Stufen-Ansichten (TOFU/MOFU/BOFU) pro Kampagne und korrekte Kosten-Attribution auf jeder Stufe
-- **Kanal-Filterlogik** — Durch Klick auf einen Kanal in einer der anderen Visualisierungen wird der Kampagnen-Drill-Down entsprechend dem ausgewählten übergeordneten Kanal gefiltert
-- **Trend-Monitoring** — monatliche Performance-Verfolgung zur Identifikation von Sättigungs- und Interventionssignalen
+- **Kanal-Filterlogik** — Durch Klick auf einen Kanal in einer der anderen Visualisierungen wird der Kampagnen-Drill-Down entsprechend dem ausgewählten übergeordneten Kanal (parent channel) gefiltert
 
 > _Hinweis zu Spend: Die KPI-Zeile zeigt ACTUAL SPEND (wann Geld ausgegeben wurde) aus gold.fact_spend. gold.roas zeigt ATTRIBUTED SPEND (Spend verknüpft mit Conversions) — unterschiedliches Konzept!_
 
