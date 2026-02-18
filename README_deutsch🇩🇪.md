@@ -270,7 +270,7 @@ Die Analyseergebnisse dieses Szenarios legen einem Marketingteam folgende Maßna
 
 **Synthetische Daten:** Alle Erkenntnisse basieren auf synthetisch generierten Daten mit absichtlichen Qualitätsproblemen zur ETL-Demonstration. Kanal-Engagement-Volumen sind unrealistisch einheitlich (Klicks, Impressions und Touchpoints sind nahezu identisch über die Kanäle), was das Differenzierungspotenzial einschränkt, das reale Daten bieten würden.
 
-**Monatliche Spend-Verteilung:** Der Roh-Spend bricht von €41.541 (Januar) auf €1.134 (April) ein — ein Rückgang von 97,3%. Dies ist ein Datengenerierungsartefakt, keine reale Budgetentscheidung. Monatliche kostenbasierte Trends (ROAS, CAC, CPA, CPC, CPM) sind von diesem Artefakt betroffen. Kanalübergreifende und kampagnenübergreifende relative Vergleiche innerhalb desselben Zeitraums sowie Gesamtzeitraum-Aggregate bleiben valide.
+**Monatliche Spend-Verteilung:** Der Rohdaten-Spend bricht von €41.541 (Januar) auf €1.134 (April) ein — ein Rückgang von 97,3%. Dies ist ein Datengenerierungsartefakt, keine reale Budgetentscheidung. Monatliche kostenbasierte Trends (ROAS, CAC, CPA, CPC, CPM) sind von diesem Artefakt betroffen. Kanalübergreifende und kampagnenübergreifende relative Vergleiche innerhalb desselben Zeitraums sowie Gesamtzeitraum-Aggregate bleiben valide.
 
 **Kohorten-Ungleichgewicht:** 93% der Nutzer werden im Januar akquiriert. Februar- und März-Kohorten sind zu klein für statistisch zuverlässige kohortenübergreifende Vergleiche. Die Within-Januar-Analyse ist robust.
 
