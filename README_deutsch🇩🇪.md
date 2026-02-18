@@ -104,7 +104,7 @@ Das CPM-zu-CVR-Effizienzverhältnis kombiniert Reichweitenkosten mit Conversion-
 
 **Ziel:** Die gesamte Customer Journey bewerten — wie effizient wandeln Touchpoints Aufmerksamkeit in Umsatz um?
 
-**Kernerkenntnis:** Bis April fällt jeder Paid-Kanal unter die 1,5x-Profitabilitätsschwelle bei Betrachtung der gesamten Customer Journey. Alle Kanäle starten profitabel im Januar (4,3–4,7x), verlieren aber 70–77% ihres MOFU-ROAS innerhalb von vier Monaten — was die Zielgruppensättigung nicht nur am oberen Ende des Funnels, sondern über den gesamten Conversion-Pfad hinweg bestätigt. Dies ist das stärkste Signal in den Daten, dass fortgesetzte Ausgaben auf aktuellem Niveau ohne neue Zielgruppenstrategien oder Kanaldiversifikation nicht tragbar sind.
+**Kernerkenntnis:** Bis April fällt jeder Paid-Kanal unter die 1,5x-Profitabilitätsschwelle (Break-Even ROAS) bei Betrachtung der gesamten Customer Journey. Alle Kanäle starten profitabel im Januar (4,3–4,7x), verlieren aber 70–77% ihres MOFU-ROAS innerhalb von vier Monaten — was die Zielgruppensättigung nicht nur am oberen Ende des Funnels, sondern über den gesamten Conversion-Pfad hinweg bestätigt. Dies ist das stärkste Signal in den Daten, dass fortgesetzte Ausgaben auf aktuellem Niveau ohne neue Zielgruppenstrategien oder Kanaldiversifikation nicht tragbar sind.
 
 Diese Analyse stützt sich auf `fact_attribution_linear_with_costs`, die sowohl Umsatz *als auch* Kosten gleichmäßig auf alle Touchpoints einer konvertierenden Journey verteilt — eine Tabelle, die ich gebaut habe, nachdem ich entdeckte, dass das Standard-Linear-Modell Kosten auf Funnel-Stufen-Ebene nicht attribuiert hatte (siehe [Abschnitt 1.3](#13-attributions-insights)).
 
