@@ -69,7 +69,7 @@ Die Analyse differenziert drei Funnel-Stufen, die jeweils mit einem dedizierten 
 |---|---|---|
 | **TOFU** — Aufmerksamkeitseffizienz | First-Touch | Welche Kanäle erzeugen effizient qualifizierte Awareness? |
 | **MOFU** — Intent- & Conversionseffizienz | Linear (Multi-Touch) | Welche Kanäle tragen zur gesamten Conversion-Journey bei? |
-| **BOFU** — Profitabilität & Langfristwachstum | Last-Touch | Welche Kanäle erfassen Wert und treiben nachhaltigen Umsatz? |
+| **BOFU** — Profitabilität & Langzeitwachstum | Last-Touch | Welche Kanäle erfassen Wert und treiben nachhaltigen Umsatz? |
 
 ---
 
