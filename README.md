@@ -276,7 +276,7 @@ Based on the analysis results, the data suggests the following actions for a mar
 
 ### 1.6) Tactical Drill-Down (Dashboards)
 
-While strategic conclusions are drawn at the channel level in this README, campaign-level KPIs are available in the interactive Budget Allocation dashboard for tactical optimization and drill-down (click the image to take a closer look on **Tabelau Public's** website).
+While strategic conclusions are drawn at the channel level in this README, campaign-level KPIs are available in the interactive Budget Allocation dashboard for tactical optimization and drill-down (click the image to take a closer look on **Tableau Public's** website).
 
 <p align="center">
   <a href="https://public.tableau.com/views/Multi-TouchMarketingDashboard/Overall?:language=de-DE&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link">
