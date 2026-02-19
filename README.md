@@ -197,7 +197,7 @@ Comparing First-Touch and Last-Touch revenue per channel reveals a clear spectru
 
 **TOFU vs. BOFU Revenue(€) by Channel (January-April 2024):**
 
-<img width="100%" height="713" alt="tofu_bofu_revenue_gap" src="https://github.com/user-attachments/assets/4e177ee0-8cb3-43c0-b764-40b3968c360b" />
+<img width="100%" height="732" alt="tofu_bofu_revenue_gap" src="https://github.com/user-attachments/assets/9428c719-685c-424c-9516-5a3066ef1454" />
 
 #### What I Learned Building the Cost Attribution
 
